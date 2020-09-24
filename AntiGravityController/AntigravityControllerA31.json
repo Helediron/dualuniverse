@@ -1,0 +1,272 @@
+{
+	"slots": {
+		"0": {
+			"name": "slot1",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"1": {
+			"name": "slot2",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"2": {
+			"name": "slot3",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"3": {
+			"name": "slot4",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"4": {
+			"name": "slot5",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"5": {
+			"name": "slot6",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"6": {
+			"name": "slot7",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"7": {
+			"name": "slot8",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"8": {
+			"name": "slot9",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"9": {
+			"name": "slot10",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-1": {
+			"name": "unit",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-2": {
+			"name": "system",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-3": {
+			"name": "library",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		}
+	},
+	"handlers": [{
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": "0"
+			},
+			"key": "0"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": "0"
+			},
+			"key": "1"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": "1"
+			},
+			"key": "2"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": "1"
+			},
+			"key": "3"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": "2"
+			},
+			"key": "4"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": "2"
+			},
+			"key": "5"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": "3"
+			},
+			"key": "6"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": "3"
+			},
+			"key": "7"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": "4"
+			},
+			"key": "8"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": "4"
+			},
+			"key": "9"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: unit, start\n--\nlocal isOK = true\nlocal startMsg = \"\"\nlocal stdText = \" to the programming board \"\nlocal stdText2 = \" is linked to a wrong element. It is not \"\n\n-- Autoconnect/check linked slots in seat prorgamming board to usual variables.\nfor key, value in pairs(unit) do\n  if type(key) == \"string\" and type(value) == \"table\" and\n   type(value.export) == \"table\" and value.getElementClass then\n    local slotName = key\n    local element = value\n    local slotClass = element.getElementClass()\n    debugp(\"Linked element:\", slotName, slotClass)\n    -- Test each link by looking if there exists a unique function.\n    if element.setHTML then\n      -- This is unit.screen\n      if unit.screen and unit.screen.setHTML and unit.screen.getId() == element.getId() then\n        debugp(\"Found unit.screen\", slotName)\n        screen = element\n      elseif unit.screen1 and unit.screen1.setHTML and unit.screen1.getId() == element.getId() then\n        debugp(\"Found unit.screen1\", slotName)\n        screen1 = element\n        screen = element\n      elseif unit.screen2 and unit.screen2.setHTML and unit.screen2.getId() == element.getId() then\n        debugp(\"Found unit.screen2\", slotName)\n        screen2 = element\n      elseif unit.screen3 and unit.screen3.setHTML and unit.screen3.getId() == element.getId() then\n        debugp(\"Found unit.screen3\", slotName)\n        screen3 = element\n      elseif not screen and not screen1 then\n        debugp(\"Connected screen/screen1 from\", slotName)\n        screen = element\n        screen1 = element\n        screen.setCenteredText(\"Initializing...\")\n      elseif not screen2 then\n        screen2 = element\n        debugp(\"Connected unit.screen2 from\", slotName)\n      elseif not screen3 then\n        screen3 = element\n        debugp(\"Connected unit.screen3 from\", slotName)\n      end\n    elseif element.getConstructMass then\n      -- This is unit.core\n      debugp(\"Connected core from\", slotName)\n      core = element\n    elseif element.getNbKeys then\n      -- This is unit.shared databank\n      debugp(\"Connected shared databank from\", slotName)\n      shared = element\n    elseif element.setBaseAltitude then\n      -- This is unit.antigrav\n      debugp(\"Connected unit.antigrav from\", slotName)\n      antigrav = element\n    end\n  end\nend\n\n-- Check what has been linked to programming board. \n-- Check if link is missing and is the link to right element.\nif antigrav == nil then\n  startMsg = \"<div>Please link an antigravity generator\" .. stdText .. \".</div>\"\n  isOK = false\nelseif antigrav.setBaseAltitude == nil then\n  startMsg = \"<div>Slot antigrav\" .. stdText2 .. \"antigravity generator.</div>\"\n  isOK = false\nend\nif screen == nil then\n  startMsg = startMsg .. \"<div>Please link a screen\" .. stdText .. \".</div>\"\n  isOK = false\nelseif screen.setCenteredText == nil then\n  startMsg = startMsg .. \"<div>Slot screen\" .. stdText2 .. \"screen.</div>\"\n  isOK = false\nend\nif core == nil then\n  startMsg = startMsg .. \"<div>Please link the ship core\" .. stdText .. \".</div>\"\n  isOK = false\nelseif core.g == nil then\n  startMsg = startMsg .. \"<div>Slot core\" .. stdText2 .. \"core.</div>\"\n  isOK = false\nend\ngvStartOK = isOK\n\n\nif gvStartOK then\n  -- Initialize\n  screen.setCenteredText(\"Initializing...\")\n  \n  readAGGState()\n  gvAggBaseAltitude = utils.round(core.getAltitude(), 100)\n  if gvAggBaseAltitude < 1000 then\n    gvAggBaseAltitude = 1000\n  end\n\n  if antigrav ~= nil then\n    gvAggEnabled = (antigrav.getState() > 0)\n  end\n\n  -- Calculate button hitboxes.\n  local vh = 15\n  for i = 1,6 do\n    if i == 4 then\n      vh = 60\n    end\n    local button = {id = (\"b\"..i), enabled=true, td=\"<td>\", top=vh/100, bottom=(vh + 10)/100, left=5/100, right=30/100}\n    table.insert(gvButtons, button)\n    vh = vh + 11\n  end\n  \n  gvButtons[1].label=\"Lock\"\n  gvButtons[2].label=\"Activate\"\n  gvButtons[3].label=\"Base Alt\"\n  gvButtons[4].label=\"Up\"\n  gvButtons[5].label=\"Down\"\n  gvButtons[6].label=\"BaseA-10\"\n\n  evaluateButtons()\n\n  self.setTimer(\"antigrav\", 0.1)\n  if gvAggEnabled then\n    if gvShowAGWidget then\n      antigrav.show()\n    end\n    like(0, 104)\n  else\n    like(0, 105)\n  end\n  unit.hide()\nelse\n  -- Do not start, but show errors on HUD (we might not have screen)\n  system.setScreen([[<style type=\"text/css\">\n.widget_header h2::before {\n  content: \"AG PB Error\";\n  color: darkred;\n}\n</style>\n<div style='color:yellow;'>]] .. startMsg .. [[</div>]])\n  system.showScreen(1)\nend\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": "-1"
+			},
+			"key": "10"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: unit, stop\n--\nsystem.setScreen(\"\")\nsystem.showScreen(false)\n\nif gvStartOK then\n  gvAggLocked = true\n  like(0, 108)\n  updateScreen() \n\n  self.stopTimer(\"antigrav\")\n\n  if antigrav then\n  antigrav.hide()\n  end\nend\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [],
+				"signature": "stop()",
+				"slotKey": "-1"
+			},
+			"key": "11"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: unit, tick (antigrav)\n-- \n--\ntickAntigrav()\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"value": "antigrav"
+					}
+				],
+				"signature": "tick(timerId)",
+				"slotKey": "-1"
+			},
+			"key": "12"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: system, update\n--\nif gvStartOK and (gvUpdateScreens or gvMouseDown) then\n  gvUpdateScreens = false\n  updateScreen() \nend\n--\n-- End of antrigravity generator script snippet\n",
+			"filter": {
+				"args": [],
+				"signature": "update()",
+				"slotKey": "-2"
+			},
+			"key": "13"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: system, start\n--\nlocal json = require(\"dkjson\")\nlocal format = string.format\n\nif not gvSystemHasStarted then\n  gvDebugList = {}\n  local lastprint = \"\"\n\n  -- Time for automatic lock (tenth of seconds)\n  gvAutoLockTicks = 1200 --export\n  -- How many times user has to click \"Disable\" before generator is disabled\n  gvDisableSafetyCount = 3 --export\n  -- Shall we show AGG widget when AGG is enabled\n  gvShowAGWidget = false --export\n\n  -- Internal variables\n  gvStartOK = false\n  gvAggLocked = true\n  gvTicker = 0\n  gvLastActionTick = 0\n\n  gvAggBaseAltitude = 1000\n  gvAggBaseAltitudeUnset = true\n  gvHoldingAlert = false\n\n  gvAggEnabled = false\n  gvDisableCounter = gvDisableSafetyCount\n\n  -- Manage increasing/decreasing base altitude\n  gvAggCounterTick = 0\n  gvAggCounterIncreasing = false\n  gvAggCounterDecreasing = false\n\n  -- AGG state\n  gvCurrentBaseAltitude = 0\n  gvCurrentAntiGPower = 0\n  gvPreviousAntiGPower = 0\n  gvHoldTicker = 0\n  gvCurrentAntiGravityField = 0\n\n  -- Mouse and button management on left edge\n  gvButtons = {}\n  gvMouseX = 0\n  gvMouseY = 0\n  gvMouseDown = false\n  gvButtonSelected = 0\n  \n  -- UI feedback\n  gvAttention = 0\n  gvDislikeButton = 0\n  gvLikeButton = 0\n  gvHintButton = 0\n  gvAttentionMessage = \"\"\n  gvAttentionVisible = false\n\n  -- Fix to bug where seat/other PBs trigger my system/start second time\n  gvSystemHasStarted = true\nend\n\nfunction strAppend(buffer, ...)\n  for i = 1, select('#',...) do\n    local strval = select(i,...)\n    table.insert(buffer, strval)\n  end\nend\n\n-- Debug print\nfunction debugp(...)\n  local buffer = {}\n  for i = 1, select('#',...) do\n    local val = select(i,...) or \"nil\"\n    local strval\n    if type(val) == \"number\" then\n      local absval = math.abs(val)\n      if absval >= 100000000 then\n        strval = string.format(\"%.0fM\", val/1000000)\n      elseif absval >= 100000 then\n        strval = string.format(\"%.0fK\", val/1000)\n      elseif absval >= 100 or math.abs(val - math.floor(val)) < 0.0000001 then\n        strval = string.format(\"%.0f\", val)\n      elseif absval >= 1 then\n        strval = string.format(\"%.3f\", val)\n      elseif absval >= 0.01 then\n        strval = string.format(\"%.4f\", val)\n      else\n        strval = string.format(\"%.6f\", val)\n      end\n    else\n      strval = tostring(val)\n      if strval:len() > 30 then\n        strval = string.sub(strval, 1, 38) .. \"..\"\n      end\n    end\n    if i > 1 then\n      table.insert(buffer, \" \")\n    end\n    table.insert(buffer, strval)\n  end\n  table.insert(buffer, \".\")\n  local str = table.concat(buffer)\n    \n  if str and string.len(str) > 2 and str ~= lastprint then\n    system.print(\"ag: \" .. str)\n    system.logInfo(\"ag: \" .. str)\n    lastprint = str\n  end\n  if #gvDebugList > 10 then\n    table.remove(gvDebugList, 1)\n  end\n  strAppend(gvDebugList, str)\nend\n\n\n-- React to mouse events from screen.\nfunction evaluateButtons()\n  local selected = 0\n  \n  if #gvButtons >= 6 then\n    gvButtons[2].enabled = not gvAggLocked\n    gvButtons[3].enabled = not gvAggLocked\n    gvButtons[4].enabled = not gvAggLocked\n    gvButtons[5].enabled = not gvAggLocked\n    gvButtons[6].enabled = gvAggEnabled\n\n    gvButtons[1].label= gvAggLocked and \"Unlock\" or \"Lock\"\n    gvButtons[2].label= gvAggEnabled and \"Disable\" or \"Activate\"\n\n\n    -- Set button styles\n    for i, button in ipairs(gvButtons) do\n      local classStr = \"b\"\n      \n      -- Hover effect\n      if button.left < gvMouseX and gvMouseX < button.right and button.top < gvMouseY and gvMouseY < button.bottom then\n        if gvMouseDown and gvButtonSelected == i then\n          classStr = classStr .. \" s\"\n        else\n          classStr = classStr .. \" n\"\n        end\n        selected = i\n      end\n      \n      if not button.enabled then\n        classStr = classStr .. \" d\"\n      end\n\n      if gvAttention > 0 then\n        -- We have message on screen. Highlight the button it's associated to.\n        if gvHintButton == i then\n          classStr = classStr .. \" h\"\n        end\n        if gvDislikeButton == i then\n          classStr = classStr .. \" e\"\n        elseif gvLikeButton == i then\n          classStr = classStr .. \" l\"\n        end\n      end\n\n      button.td = [[<td class=\"]] .. classStr .. [[\">]] .. button.label\n    end\n  end\n  return selected\nend\n\nfunction buildMessage(msg, classStr)\n  if msg and msg > 0 then\n    local msgText = \"AAARGH!\"\n    if msg == 1 then\n      msgText = \"Please unlock first\"\n    elseif msg == 2 then\n      msgText = \"Please activate antigravity first\"\n    elseif msg == 3 then\n      msgText = \"Can't go below 1000m.\"\n    elseif msg == 101 then\n      msgText = \"Click 'Base Alt' to save new altitude.\"\n    elseif msg == 102 then\n      msgText = \"Unlocked.\"\n    elseif msg == 103 then\n      msgText = \"Locked.\"\n    elseif msg == 104 then\n      msgText = \"Antigravity is active. Check base altitude on widget.\"\n    elseif msg == 105 then\n      msgText = \"Antigravity is disabled.\"\n    elseif msg == 106 then\n      msgText = \"Base altitude set. Verify actual value from widget.\"\n    elseif msg == 107 then\n      msgText = \"Use buttons on left with mouse. Unlock first.\"\n    elseif msg == 108 then\n      msgText = \"Antigravity controller PB is off.\"\n    elseif msg == 109 then\n      msgText = \"Click Disable \" .. gvDisableCounter .. \" more times to disable.\"\n    elseif msg == 110 then\n      msgText = \"Ship has entered antigravity holding range.\"\n    end\n\n    gvAttentionMessage = \"<div class='\" .. classStr .. \"'>\" .. msgText .. \"</div>\"\n    gvAttentionVisible = true  \n  end\nend\n\nfunction dislike(buttonNo, msg)\n  gvDislikeButton = buttonNo\n  gvLikeButton = 0\n  gvAttention = 50\n  hint(1, 0)\n  buildMessage(msg, \"dislike\")\nend\n\nfunction like(buttonNo, msg)\n  gvLikeButton = buttonNo\n  gvDislikeButton = 0\n  gvAttention = 50\n  buildMessage(msg, \"hint\")\nend\n\nfunction hint(buttonNo, msg)\n  gvHintButton = buttonNo\n  gvAttention = 50\n  buildMessage(msg, \"hint\")\nend\n\nfunction readAGGState()\n  local agjson = antigrav.getData()\n  local obj, pos, err = json.decode (agjson, 1, nil)\n  gvCurrentBaseAltitude = 0\n  gvCurrentAntiGPower = 0\n  gvCurrentAntiGravityField = 0\n\n  if err then\n    debugp (\"Error:\" .. err)\n  else\n    if type(obj) ==\"table\" then\n      gvCurrentBaseAltitude = math.floor(obj.baseAltitude)\n      gvCurrentAntiGPower = math.floor(obj.antiGPower * 100)\n      gvCurrentAntiGravityField = math.floor(obj.antiGravityField * 100)\n    end\n  end\nend\n\nfunction onToggleAGG()\n  gvAggEnabled = (antigrav.getState() > 0)\n  if gvAggEnabled and gvDisableCounter > 1 then\n    -- Safety counter, require multiple disable clicks\n    gvDisableCounter = gvDisableCounter - 1\n    hint(2, 109)\n  else\n    antigrav.toggle()\n    gvAggEnabled = (antigrav.getState() > 0)\n    -- Show/hide AGG widget.\n    if gvAggEnabled then\n      if gvShowAGWidget then\n        antigrav.show()\n      end\n      like(2, 104)\n      gvDisableCounter = gvDisableSafetyCount\n    else\n      antigrav.hide()\n      like(2, 105)\n    end\n  end\nend\n\nfunction onToggleLock()\n  if gvAggLocked then\n    gvAggLocked = false\n    like(1, 102)\n  else\n    gvAggLocked = true\n    like(1, 103)\n  end\nend\n\nfunction onSetBaseAltitude()\n  antigrav.setBaseAltitude(gvAggBaseAltitude)\n  gvAggBaseAltitudeUnset = false\n  like(3, 106)\nend\n\nfunction onIncreaseAltPressed()\n  -- Increase/decrease so that at lower altitudes make smaller steps\n  if gvAggBaseAltitude < 20000 then\n    gvAggBaseAltitude = gvAggBaseAltitude + 100\n  elseif gvAggBaseAltitude < 30000 then\n    gvAggBaseAltitude = gvAggBaseAltitude + 500\n  else\n    gvAggBaseAltitude = gvAggBaseAltitude + 5000\n  end\n\n  gvAggCounterTick = 0\n  gvAggCounterIncreasing = true\n  gvAggCounterDecreasing = false\n  gvAggBaseAltitudeUnset = true\nend\n\nfunction onIncreaseAltReleased()\n  gvAggCounterTick = 0\n  gvAggCounterIncreasing = false\n  gvAggCounterDecreasing = false\n  hint(3, 101)\nend\n\nfunction onDecreaseAltPressed()\n  if gvAggBaseAltitude >= 35000 then\n    gvAggBaseAltitude = gvAggBaseAltitude - 5000\n  elseif gvAggBaseAltitude >= 20500 then\n    gvAggBaseAltitude = gvAggBaseAltitude - 500\n  else\n    gvAggBaseAltitude = gvAggBaseAltitude - 100\n  end\n  if gvAggBaseAltitude < 1000 then\n    gvAggBaseAltitude = 1000\n    dislike(5, 3)\n  else\n    gvAggCounterTick = 0\n    gvAggCounterIncreasing = false\n    gvAggCounterDecreasing = true\n  end\n  gvAggBaseAltitudeUnset = true\nend\n\nfunction onDecreaseAltReleased()\n  if gvAggCounterDecreasing then\n    gvAggCounterTick = 0\n    gvAggCounterIncreasing = false\n    gvAggCounterDecreasing = false\n    hint(3, 101)\n  end\nend\n\nfunction onFloatDown10m()\n  gvAggBaseAltitude = gvAggBaseAltitude - 10\n  if gvAggBaseAltitude < 1000 then\n    gvAggBaseAltitude = 1000\n    dislike(5, 3)\n  end\n  antigrav.setBaseAltitude(gvAggBaseAltitude)\nend\n\nfunction onButtonDown(buttonNo)\n  local button = gvButtons[buttonNo]  \n  if not button or not button.enabled then\n  if buttonNo >= 2 and buttonNo <= 5 and gvAggLocked then\n    dislike(button, 1)\n  end\n  if buttonNo == 6 and not gvAggEnabled then\n    dislike(button, 2)\n  end\n\n  return\n  end\n  if buttonNo == 4 then\n  onIncreaseAltPressed()\n  elseif buttonNo == 5 then\n  onDecreaseAltPressed()\n  end\n   \nend\n\nfunction onButtonUp(buttonNo)\n  local button = gvButtons[buttonNo]  \n  if not button or not button.enabled then\n  return\n  end\n\n  if buttonNo == 4 then\n  onIncreaseAltReleased()\n  elseif buttonNo == 5 then\n  onDecreaseAltReleased()\n  end\nend\n\nfunction onClick(buttonNo)\n  local button = gvButtons[buttonNo]  \n  if not button or not button.enabled then\n    return\n  end\n\n  if buttonNo == 1 then\n    onToggleLock()\n  elseif buttonNo == 2 then\n    onToggleAGG()\n  elseif buttonNo == 3 then\n    onSetBaseAltitude()\n  elseif buttonNo == 6 then\n    onFloatDown10m()\n  end\n  \n  if buttonNo ~= 2 then\n    gvDisableCounter = gvDisableSafetyCount\n  end\nend\n\nfunction updateScreen() \n  local page = [[<html>\n  <head>\n  <meta charset=\"utf-8\">\n  <title>Stats</title>\n  <style type=\"text/css\">\n.datapart {\n  font-size: 9vh;\n  color: #FFFFFF;\n  padding: 3%\n}\n.b {\n  background: #b7de01;\n  box-shadow: 0px 5px #687e00;\n  color: blue;\n  cursor: pointer;\n  border-radius: 3px;\n  text-align: center;\n}\n.n {}\n.h {color: green; }\n.s {background-color:yellow; }\n.e {background-color:red; }\n.l {background-color:green; }\n.d {background-color:gray !important; }\n.dislike {color: yellow; font-size: 7vh;}\n.hint {color: palegreen; font-size: 7vh;}\n</style>\n</head>\n<body>\n<div align=\"center\" style=\"width: 100%; height: 100%; background-color: black;\">]]\n\n\n  local agstate = \"OFF\"\n  if antigrav ~= nil then\n    gvAggEnabled = (antigrav.getState() > 0)\n    if gvAggEnabled then\n      agstate = \"ACTIVE\"\n    end\n  end\n\n  local aglock = gvAggLocked and \"Locked\" or \"Unlocked\"\n  local aghcolor = gvAggBaseAltitudeUnset and \"#301020\" or \"#207010\"\n\n  \n  local altitude = core.getAltitude()\n  local altm = altitude\n  local altunits = \"m\"\n  if altm > 9900000 then\n    altm = altm / 1000\n    altunits = \"km\"\n  end\n  local altitudeStr = format(\"%.0f%s\", altm, altunits)\n\n  local gravity = core.g()\n  \n  local buttonNo = evaluateButtons()\n  if gvMouseDown then\n    -- Simulate mouseup for previously clicked button if user moves out of button.\n    gvMouseX = screen.getMouseX()\n    gvMouseY = screen.getMouseY()\n    if buttonNo ~= gvButtonSelected or gvMouseX < 0.05 or gvMouseX > 0.95 or gvMouseY < 0.05 or  gvMouseY > 0.95 then\n      if gvButtonSelected > 0 then\n        onButtonUp(gvButtonSelected)\n      end\n      gvButtonSelected = 0\n    end    \n  end\n\n  local vertical = -vec3(core.getWorldGravity())\n  local velocity = vec3(core.getWorldVelocity())\n  local vertVelVect = velocity:project_on(vertical)\n  local vertVel = vertVelVect:len()\n  local vertcolor = math.abs(vertVel) > 20 and \"inherit\" or \"#207010\"\n\n  local message = gvAttentionMessage\n  if gvAggEnabled and message == \"\" then\n    -- Message when no other message visible.\n    if gvCurrentAntiGravityField < 50 then\n      message = message .. \"Not enough pulsors or not linked to AGG\"\n    end\n    if gvCurrentAntiGPower > 0 then\n      message = message .. \"HOLD:\" .. gvCurrentAntiGPower ..\"%\"\n    end\n\n    message = message .. \"<br />\" .. gvCurrentBaseAltitude\n  end\n  \n  if #gvButtons >= 6 then\n    page = page ..  [[<div class=datapart><table height=95% width=95%>\n    <tr><th width=30%>Control</th><th></th><th>Antigrav.</th><th>State</th></tr>]] ..\n    [[<tr>]] .. gvButtons[1].td .. [[</td><td></td><td>]] .. aglock .. [[</td><td rowspan=3>]] .. message .. [[</td></tr>]] ..\n    [[<tr>]] .. gvButtons[2].td .. [[</td><td></td><td>]] .. agstate .. [[</td><td></td></tr>\n    <tr>]] .. gvButtons[3].td .. [[</td><td></td><td  style=\"background-color:]] .. aghcolor .. [[;\">]] .. format(\"%.0f\", gvAggBaseAltitude) .. [[</td><td></td></tr>\n\n    <tr><th>Altitude</th><th></th><th>Ship</th><th></th></tr>]] ..\n    [[<tr>]] .. gvButtons[4].td .. [[</td><td></td><td>Altitude:</td><td>]] .. altitudeStr .. [[</td></tr>\n    <tr>]] .. gvButtons[5].td .. [[</td><td></td><td>Vert spd:</td><td  style=\"background-color:]] .. vertcolor .. [[;\">]] .. format(\"%.0f\", vertVel) .. [[m/s</td></tr>\n    <tr>]] .. gvButtons[6].td .. [[</td><td></td><td>Gravity:</td><td>]] .. format(\"%.6f\", gravity) .. [[</td></tr>]] ..\n    [[</table></div>]]\n  end\n  page = page .. [[</div></body></html>]]\n  screen.setHTML(page)\n  \n  if gvCurrentAntiGPower > 0 and ((gvTicker - gvHoldTicker) < 400 or velocity:len() > 10) then\n    -- Show hold message on middle of HUD.\n    local aggrab = \"AG HOLD \" .. format(\"%.0f\", gvCurrentAntiGPower) .. \"%\"\n    local color = (gvCurrentAntiGPower > 20 and gvCurrentAntiGPower < 60) and \"lightgreen\" or \"yellow\"\n    local str = \"<div><h1 style='position:absolute;left:44vw;top:60vh;width:13vw;text-align:center;color:\" .. color .. \";background-color:rgba(0,0,0,0.5);align:center'>\" .. aggrab .. \"</h1></div>\"\n    system.setScreen(str)\n  elseif gvHoldTicker > 0 then\n    -- Take away the HUD message\n    system.setScreen(\"\")\n    system.showScreen(0)\n    gvHoldTicker = 0\n  end\nend\n\nfunction tickAntigrav()\n  -- Method executed ten times per second\n  gvTicker = gvTicker + 1\n  if (gvTicker % 20) == 0 then\n    gvUpdateScreens = true\n  end\n  readAGGState()\n  \n  if gvCurrentAntiGPower >= 1 and gvPreviousAntiGPower < 1 then\n    -- AGG is starting to hold. Show HUD message\n    gvHoldTicker = gvTicker\n    system.showScreen(1)\n  end\n  gvPreviousAntiGPower = gvCurrentAntiGPower;\n\n\n  if gvAttention > 0 then\n    -- After awhile, turn off UI message.\n    if (gvTicker % 5) == 0 then\n      gvUpdateScreens = true\n    end        \n    gvAttention = gvAttention - 1\n    if gvAttention < 40 then\n      -- Remove possible button highlight\n      gvDislikeButton = 0\n      gvLikeButton = 0\n      gvHintButton = 0\n    end\n    if gvAttentionVisible and gvAttention < 20 then\n      gvAttentionMessage = \"\"\n      gvAttentionVisible = false\n    end\n  end\n\n  if gvAggCounterIncreasing or gvAggCounterDecreasing then\n    -- Handle long press of base altitude increase/decrease button.\n    -- If user presses very long time, increase tick amount progressively\n    -- E.g. the ship might have millions of meters in altitude. \n    -- Get down to zero altitude in reasonable time.\n    gvAggCounterTick = gvAggCounterTick + 1\n    if gvAggCounterTick > 10 then\n      local delta = 0\n      if gvAggBaseAltitude < 5000 then\n        delta = 100\n      elseif gvAggBaseAltitude < 10000 then\n        delta = 500\n      else\n        delta = 5000\n      end\n\n      if gvAggCounterDecreasing then\n        delta = delta * -1\n      end\n      if gvAggCounterTick > 400 and gvAggBaseAltitude > 10000000 then\n        delta = delta * 2000\n      elseif gvAggCounterTick > 200 and gvAggBaseAltitude > 1000000 then\n        delta = delta * 200\n      elseif gvAggCounterTick > 100 and gvAggBaseAltitude > 200000 then\n        delta = delta * 20\n      end\n      gvAggBaseAltitude = gvAggBaseAltitude + delta\n      gvAggBaseAltitude = math.max(1000, gvAggBaseAltitude)\n    end\n  end\n\n  local altitude = core.getAltitude()\n  local altDiff = math.abs(altitude - gvAggBaseAltitude)\n  local gravity = core.g()\n\n  local idleTicks = gvTicker - gvLastActionTick\n  if idleTicks > gvAutoLockTicks and not gvAggLocked then\n    -- Idle timer to lock UI automatically after few minutes.\n    gvAggLocked = true\n    like(0, 103)\n  elseif idleTicks == 80 and gvTicker < 120 then\n    hint(1, 107)\n  end\nend\n\n--\n-- End of antrigravity generator script snippet\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": "-2"
+			},
+			"key": "14"
+		}
+	],
+	"methods": [],
+	"events": []
+}

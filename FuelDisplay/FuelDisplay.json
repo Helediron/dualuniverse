@@ -1,0 +1,131 @@
+{
+	"slots": {
+		"0": {
+			"name": "screen",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"1": {
+			"name": "tank1",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"2": {
+			"name": "tank2",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"3": {
+			"name": "tank3",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"4": {
+			"name": "tank4",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"5": {
+			"name": "tank5",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"6": {
+			"name": "tank6",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"7": {
+			"name": "tank7",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"8": {
+			"name": "tank8",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"9": {
+			"name": "tank9",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-1": {
+			"name": "unit",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-2": {
+			"name": "system",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-3": {
+			"name": "library",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		}
+	},
+	"handlers": [{
+			"code": "------------------\n--- unit.start()\n------------------\n--unit.hide()\n\nlocal tanks = {}\nlocal useSlotName = false --export\nlocal useElementName = true --export\nlocal sortBySize = false --export\n\n-- Analyze all links into prorgamming board.\nfor key, value in pairs(self) do\n  if type(key) == \"string\" and type(value) == \"table\" and type(value.export) == \"table\" then\n    local slotName, element = key, value\n\n    -- Test each link by looking if there exists a unique function.\n    if element.setHTML then\n    -- This is screen. Support two of them\n      if not screen1 then \n        screen1 = element\n        screen1.setCenteredText(\"Initializing...\")\n      elseif not screen2 and element.getId() ~= screen1.getId() then \n        screen2 = element\n      end\n    elseif element.getSelfMass then\n    -- This is container\n      local jsonstr = element.getData()\n      debugp(\"Slot: \" .. slotName .. \"/\" .. element.getElementClass() .. \"/\" .. jsonstr)\n      local obj, pos, err = json.decode (jsonstr, 1, nil)\n      local elemName = \"\"\n\n      if err then\n        debugp (\"Error:\" .. err)\n      else\n        if type(obj) ==\"table\" then\n          elementName = obj.name\n        end\n      end\n      local s = string.upper (element.getElementClass())\n\n      -- Is this a tank, and which type? (Rocket tanks missing)\n      local fuelType\n      if s:find(\"ATMOFUEL\") then\n        fuelType = \"atmo\"\n      elseif s:find(\"SPACEFUEL\") then\n        fuelType = \"space\"\n      else\n        system.print(\"Unknown tank: \" .. slotName .. \".\")\n      end\n      if fuelType then\n        -- Find out exact tank type\n        local selfMass = element.getSelfMass()\n        local nearestMass = 999999999\n        local nearestIndex = 0\n        for j,t in ipairs(gvTankTypes) do\n          local diff = math.abs(t.mass - selfMass)\n          if diff < nearestMass and fuelType == t.fuel then\n            nearestMass = diff\n            nearestIndex = j\n          end\n        end\n        if nearestIndex > 0 then\n          -- Build a record which saves info about this tank.\n          local typeInfo = gvTankTypes[nearestIndex]\n          local tankType = typeInfo.fuel .. \"-\" .. typeInfo.size\n          local itemsMass = element.getItemsMass()\n          local name = useElementName and elementName or useSlotName and slotName:gsub(\"_\", \" \") or tankType\n          table.insert(tanks, {elem=element,fuel=fuelType, name=name, typeInfo=typeInfo,\n                       tankType=tankType, lastPctFill=0, timeToEmptyLast=\"-\"})\n        end\n      end\n    end\n  end\nend\n\n-- Sort by size/name\nlocal keys = {}\nfor i,v in ipairs(tanks) do\n  local massKey = sortBySize and (999999 - v.elem.getSelfMass()) or 0\n  local key = string.format(\"a%06.0f,\", massKey) .. v.name .. \" >\" .. v.elem.getId()\n  --debugp(\"key:\" .. key)\n  table.insert(keys, key)\nend\ntable.sort(keys)\nfor i,k in ipairs(keys) do\n  --debugp(\"key2:\" .. k)\n\n  for j,v in ipairs(tanks) do\n    if k:find(\">\" .. v.elem.getId()) then\n      table.insert(gvFueltanks, v)\n    end\n  end\nend\n\n-- Hide our widget and optionally make HUD display visible on game display.\nunit.hide()\nif displayHUD then\n    system.showScreen(1)\n    gvSystemScreenVisible = true\nend\ngvUnitStarted = true\n-- End of script section\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": "-1"
+			},
+			"key": "0"
+		}, {
+			"code": "------------------\n--- unit.stop()\n------------------\nif displayHUD then\n  system.setScreen(\"\")\n  system.showScreen(0)    \nend\n-- End of script section\n",
+			"filter": {
+				"args": [],
+				"signature": "stop()",
+				"slotKey": "-1"
+			},
+			"key": "1"
+		}, {
+			"code": "-------------------\n--- system.update()\n-------------------\nif frameCount > framesPerUpdate and gvUnitStarted then\n  frameCount = 0\n\n  local data\n  local show\n  local hudVisible = false\n\n  local page, data, show = fueltankScreen()\n  local pageHtml = gvPageHeader .. gvScreenHeader .. page .. gvScreenTrailer .. gvPageTrailer\n  screen1.setHTML(pageHtml)\n  if screen2 then\n    screen2.setHTML(pageHtml)\n  end  \n  if displayHUD and show then\n    local str = gvPageHeader .. gvHudHeader .. page .. gvHudTrailer .. gvPageTrailer\n    system.setScreen(str)\n    hudVisible = true\n  end\n\n  if hudVisible ~= gvSystemScreenVisible then\n    gvSystemScreenVisible = hudVisible\n    if gvSystemScreenVisible then\n      system.showScreen(1)\n    else\n      system.setScreen(\"\")\n      system.showScreen(0)\n    end\n  end\nend\nframeCount = frameCount + 1\n-- End of script section\n",
+			"filter": {
+				"args": [],
+				"signature": "update()",
+				"slotKey": "-2"
+			},
+			"key": "2"
+		}, {
+			"code": "------------------\n--- system.start()\n------------------\n\njson = require(\"dkjson\")\nvec3 = require(\"cpml.vec3\")\nrad2deg = require(\"cpml.constants\").rad2deg\nformat = string.format\n\n-- Only do first system.start() (they leak between seats/PB) \nif not gvSystemHasStarted then\n  -- Debug helpers\n  local lastprint = \"\"\n  gvDebugList = {}\n\n  -- How often to redraw screen (roughly 20/framesPerUpdate FPS)\n  framesPerUpdate = 60\n  frameCount = 0\n  gvSystemScreenVisible = false\n  gvCalculatingCycle = 0\n\n  displayHUD = true --export: Show screen on HUD\n  showDebug = false --export: Print some debug data to chat notification tab\n\n  -- Initialize tank variables\n  gvFueltanks = {}\n  gvFuelCalculationTime = 0 \n  gvSystemHasStarted = true\n  gvTankTypes = {}\n  table.insert(gvTankTypes, {fuel=\"atmo\", size=\"Xs\", mass=38.99, density=4, volume=100})\n  table.insert(gvTankTypes, {fuel=\"atmo\", size=\"S\", mass=140.26, density=4, volume=400})\n  table.insert(gvTankTypes, {fuel=\"atmo\", size=\"M\", mass=513.94, density=4, volume=1600})\n  table.insert(gvTankTypes, {fuel=\"atmo\", size=\"L\", mass=1910, density=4, volume=12800})\n\n  table.insert(gvTankTypes, {fuel=\"space\", size=\"S\", mass=140.26, density=6, volume=400})\n  table.insert(gvTankTypes, {fuel=\"space\", size=\"M\", mass=513.94, density=6, volume=1600})\n  table.insert(gvTankTypes, {fuel=\"space\", size=\"L\", mass=1910, density=6, volume=12800})\n\nend\n\n-- Fast string gluer\nfunction strAppend(buffer, ...)\n  for i = 1, select('#',...) do\n    local strval = select(i,...)\n    table.insert(buffer, strval)\n  end\nend\n\n-- Print to debug\nfunction debugp(str)\n  if showDebug and str and string.len(str) > 2 and str ~= lastprint then\n    system.print(\"fuel: \" .. str)\n    system.logInfo(\"fuel: \" .. str)\n    lastprint = str\n  end\n  if #gvDebugList > 10 then\n    table.remove(gvDebugList, 1)\n  end\n  strAppend(gvDebugList, str)\nend\n\n-- Constant parts of html page.\n-- At end, .du-hud class positions the HUD display. vw=% of view width, vh=%of view height\ngvPageHeader = [[<html>\n<head>\n<meta charset=\"utf-8\">\n<title>Stats</title>\n<style type=\"text/css\">\n.du-data {\n  font-size: 8vh;\n  color: white;\n}\n.du-table {\n  margin: 1%;\n}\n.du-table tr:nth-child(even) {\n  background-color: rgba(10,10,10,0.6);\n}\n.du-table tr:nth-child(odd) {\n  background-color: rgba(80,80,80,0.8);\n}\n.du-table th {\n  color: white;\n  background-color: rgba(0,0,0,0.6);\n  width:250px;\n}\n.du-table td {\n  border: 1px solid coral;\n  position: relative;\n  padding-right: 4px;\n  white-space: nowrap;\n}\n.du-table td small{\n  font-size: 50%;\n  position: absolute;\nright: 0;\n  z-index: 2;\n  color: yellow;\n}\n\n.du-bar:after,.du-bar:before {content:\"\";display:table;clear:both}\n.du-bar {padding:0.01em 0px; background: repeating-linear-gradient(\n  to right,\n  transparent ,\n  transparent 17px,\n  #666 17px,\n  #666 20px\n);}\n.du-progress {padding: 4px 0 4px 0;}\n.du-blue,.du-hover-blue:hover{color:#fff!important;background-color:#2150b0!important}\n.du-cyan,.du-hover-cyan:hover{color:#000!important;background-color:#00a0c4!important}\n.du-indigo,.du-hover-indigo:hover{color:#fff!important;background-color:#3021a0!important}\n.du-orange,.du-hover-deep-orange:hover{color:#fff!important;background-color:#c05722!important}\n.du-red,.du-hover-red:hover{color:#fff!important;background-color:#b03020!important}\n.du-teal,.du-hover-teal:hover{color:#fff!important;background-color:#005050!important}\n.du-yellow,.du-hover-yellow:hover{color:#fff!important;background-color:#a08020!important}\n.du-white,.du-hover-white:hover{color:#000!important;background-color:#fff!important}\n.du-black,.du-hover-black:hover{color:#fff!important;background-color:#000!important}\n.du-grey,.du-hover-grey:hover,.du-gray,.du-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important}\n.du-light-grey,.du-hover-light-grey:hover,.du-light-gray,.du-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}\n.du-dark-grey,.du-hover-dark-grey:hover,.du-dark-gray,.du-hover-dark-gray:hover{color:#fff!important;background-color:#414141!important}\n.b {\n  background: #b7de01;\n  box-shadow: 0px 5px #687e00;\n  color: blue;\n  cursor: pointer;\n  border-radius: 3px;\n  text-align: center;\n}\n.n {}\n.ar {text-align:right; padding: 0 8px 0 0;}\n.ac {text-align:center; padding: 0 8px 0 0;}\n.h {color: green; }\n.s {background-color:yellow; }\n.e {background-color:red; }\n.l {background-color:green; }\n.d {background-color:gray !important; }\n.dislike {color: yellow; font-size: 7vh;}\n.hint {color: palegreen; font-size: 7vh;}\n.du-free-panel {\n  position: fixed;\n  display: block;\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  border: 0;\n  font-size: 0.9vw;\n}\n.du-hud {position:absolute;left:1vw;top:50vh;width:20vw;height:18vh;}\n</style>\n</head>\n<body>\n]]\n\ngvPageTrailer = [[</body></html>]]\ngvScreenHeader = [[<div class=\"du-data\">]]\ngvHudHeader = [[<div class=\"du-free-panel du-hud\">]]\ngvDivHeader = [[<table class=\"du-table\">]]\n\ngvDivTrailer = [[</table>]]\ngvScreenTrailer = [[</div>]]\ngvHudTrailer = [[</div>]]\n\nfunction isNaN(v) \n  return type(v) == \"number\" and v ~= v \nend\n\n-- Build screen html\nfunction fueltankScreen()  \n  local page = gvDivHeader\n  \n  -- Recalculate fuel consumption every 15 seconds\n  local calculateConsumption = false\n  local fuelIsBurning = false;\n  if (system.getTime() - gvFuelCalculationTime) >= 15 then\n    calculateConsumption = true\n    gvFuelCalculationTime = system.getTime()\n    gvCalculatingCycle = gvCalculatingCycle + 1\n  end\n  local playerDistance = vec3(unit.getMasterPlayerRelativePosition()):len()\n  if playerDistance > 150 then\n    if playerDistance > 200 then\n      unit.exit()\n    end\n    return \"<div>Too far from ship.</div>\", {}, true     \n  end\n\n  page = page ..  [[\n    <tr><th>&Hscr;</th><th>Tank</th><th>%</th><th>h:m</th> <th>Lit</th><th>L/m</th><th>Tot</th><th>Ton</th></tr>]]\n  for i,v in ipairs(gvFueltanks) do\n    local itemsMass = v.elem:getItemsMass() or 0\n    local litres = itemsMass / v.typeInfo.density\n    if not v.litresInit then\n      v.litresInit = litres or 0\n      v.litresLast = litres or 0\n      v.litresUsed = 0\n      v.litresPerMinute = 0\n    end\n    local pctFill = 0\n    local timeLeft = 0\n\n    -- Read element data. It's json string. Decode it into obj\n    local jsonstr = v.elem.getData()\n    local obj, pos, err = json.decode (jsonstr, 1, nil)\n    if err then\n      debugp (\"Error:\" .. err)\n    else\n      if type(obj) ==\"table\" then\n        pctFill = obj.percentage\n        timeLeft = obj.timeLeft\n      end\n    end\n\n    local pctWhole = utils.round(pctFill, 1)\n    local timeToEmptyClass = \"\"\n    local timeToEmptyLast = v.timeToEmptyLast\n    local pctStr = format([[<div class=\"du-progress\">\n      <div class=\"du-bar %s\" style=\"width:%.0f%%\">%.0f</div></div>]], (v.typeInfo.fuel == \"space\") and \"du-indigo\" or \"du-blue\", pctWhole, pctWhole)\n    if calculateConsumption then\n    -- timeToEmpty = Estimated Time to Empty (hours:mins, ignore seconds).\n    -- Estimate when we will run out of fuel from consumed mass.\n      timeToEmptyLast = \"-\"\n      if v.itemsMassLast then\n        local massDiff = v.itemsMassLast - itemsMass\n        if massDiff > 0.0001 then\n          -- Cut to tops 99 hours\n          local timeToEmpty = math.min(5940, utils.round(timeLeft / 60, 1))\n\n          timeToEmptyLast = format(\"%.0f:%02.0f\", timeToEmpty / 60, timeToEmpty % 60)\n          -- Highlight cell if only few minutes left\n          if timeToEmpty <= 2 then\n            timeToEmptyClass = \" du-red\"\n          elseif timeToEmpty < 5 then\n            timeToEmptyClass = \" du-orange\"\n          end\n        end\n      end\n      v.litresUsed = v.litresInit - litres\n      v.litresPerMinute = (v.litresLast - litres) * 4\n      v.litresLast = litres\n    \n      v.itemsMassLast = itemsMass\n      v.timeToEmptyLast = timeToEmptyLast\n          \n    end\n    \n    local litresStr = litres >= 10000 and format(\"%.fK\", \n      litres/1000) or format(\"%.f\", litres)\n    local litresUsedStr = v.litresUsed >= 10000 and format(\"%.fK\",\n      v.litresUsed/1000) or format(\"%.f\", v.litresUsed)\n    local litresPerMinuteStr = \n         v.litresPerMinute >= 10 and format(\"%.f\", v.litresPerMinute) \n      or v.litresPerMinute >= 0.1 and format(\"%.1f\", v.litresPerMinute) \n      or v.litresPerMinute >= 0.000001 and \"~0\"\n      or \"\"\n    \n    -- Turn on HUD only when something consumes fuel \n    fuelIsBurning = fuelIsBurning or timeToEmptyLast ~= \"-\"\n\n    page = page .. [[<tr><td>]] .. i .. [[</td><td>]] .. v.name .. [[</td><td class=ar>]] .. \n      pctStr .. [[</td>\n      <td class=\"ac]] .. timeToEmptyClass .. [[\">]] .. timeToEmptyLast .. [[</td>\n      <td class=ar>]] .. litresStr  .. [[</td>\n      <td class=ar>]] .. litresPerMinuteStr  .. [[</td>\n      <td class=ar>]] .. litresUsedStr  .. [[</td>\n      <td class=ar>]] .. format(\"%.0f\", itemsMass/1000) .. [[t</td></tr>]]\n  end\n  page = page .. gvDivTrailer\n  \n  -- Return html, skip, and burn (and anyway shortly after stated)\n  return page, {}, fuelIsBurning or gvCalculatingCycle < 2\nend\n-- End of script section\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": "-2"
+			},
+			"key": "3"
+		}
+	],
+	"methods": [],
+	"events": []
+}

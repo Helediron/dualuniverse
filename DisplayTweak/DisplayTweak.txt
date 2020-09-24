@@ -1,0 +1,87 @@
+---------------------------------------------------------------------------------
+-- tweak UI script, append to system, "update"
+--
+    local str = SetScreenTweak()
+    system.setScreen(str)
+end
+-- end tweak UI script
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- tweak UI script, unit, replace start
+--
+
+function SetScreenTweak()
+    
+return [[<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+.screen_widget_wrapper {
+	animation: none;
+}
+
+.screen_widget_wrapper .widget_header {
+	display: none;
+}
+
+.du-free-panel {
+	position: fixed;
+	display: block;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color:rgba(0, 0, 0, 0.7);
+	border: 1px solid white;
+  	font-size: 0.7vw;
+	/* z-index: -1; */
+}
+
+.du-vscale {
+	top: 33vh;
+	left: 80vw;
+	width: 5vw;
+	height: 34vh;
+}
+
+.du-minimap {
+	top: 8vh;
+	left: 88vw;
+	width: 8vw;
+	height: 13vh;
+    background-color:rgba(200, 200, 200, 0.7);
+}
+</style>
+</head>
+<body>
+<div class="du-free-panel du-vscale">
+</div>
+<div class="du-free-panel du-minimap">
+</div>
+</body></html>]]
+
+end
+
+system.showScreen(1)
+-- end tweak UI script
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+--tweak UI script, append to unit, stop
+system.setScreen("")
+system.showScreen(0)
+-- end tweak UI script
+---------------------------------------------------------------------------------

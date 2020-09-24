@@ -1,0 +1,803 @@
+---------------------------------------------------------------------------------
+-- Antrigravity generator script for a programming board.
+--
+-- Instructions:
+-- - Install a programming board and a screen to a ship. Size S screen is fine.
+-- - Link the ships core to PB (Programming Board). 
+-- - Link the ships antigravity generator to PB.
+-- - Link the screen to PB.
+-- - Inspect the new links (point to them) and check on left side, what are their names (Slot1, Slot2, Slot3)
+-- - Right click the PB, this element, edit Lua. 
+-- - Rename each slotx on the left side. Make sure you don't mix them. 
+--    - Core's name is "core" (without quotes).
+--    - AGG's name is "antigrav".
+--    - Screen's name is "screen".
+-- - Save the changes in Lua screen by clicking "Apply" on bottom right.
+-- - Verify the link names in build mode.
+-- - Go back editing PB Lua.
+-- - Select first "system" on left. On second column bottom click "ADD FILTER".
+-- - Point the triangle on the new filter and select start.
+-- - In this file select the "system, start" snippet code (everything between 
+--   the long dashlines, including them) and copy to clipboard. (System, start is 
+--   really long, hundreds of line, because it has all function definitions.)
+-- - Click the LUA EDITOR area on right and paste the code from clipboard.
+-- - Continue adding the new events to system, unit and screen.
+--    - The unit, tick needs a parameter. Enter to the field after tick value "antigrav".
+--    - The screen will have two events. Both need two parameters. Set them to "*" (star).
+--    - antigrav and core don't have any events.
+-- - Save changes.
+-- - Start the PB.
+-- - If links are wrong PB shows error on bottom right.
+-- - If everything is set up right, the screen shows antigravity status table.
+-- - Look at the screen. Point with mouse buttons on left and click them. Don't use F.
+-- - AG controls are behind a "lock". Start by clicking "Unlock" button.
+-- - The script shows/hides the antigravity widget.
+-- - Buttons get locked again after two minutes from last click.
+--
+-- The base altitude acts a bit strangely. The script cannot read the current value from AGG.
+-- You have to look it from the widget. Instead the script has a NEW BASE ALTITUDE visible on screen.
+-- Make sure to adjust the new value what you intended before setting it to AGG. 
+--
+-- Use Up/Down buttons to increase/decrease the new base altitude. You can press long time to tick value up/down. 
+-- Steps get larger the longer mouse is pressed. When you have right base value on screen, 
+-- click "Base Alt" button to save the new value to AGG.
+--
+-- Note that AGG starts SLOWLY ticking the actual base altitude towards the new value. It may take HOURS.
+--
+-- When AGG is active, you can use the "BaseA-10" button to immediately float down ten meters. 
+-- It subtracts ten from the new base altitude on screen and sets the new base altitude immediately to AGG.
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: system, start
+--
+local json = require("dkjson")
+local format = string.format
+
+if not gvSystemHasStarted then
+  local lastprint = ""
+
+  -- Time for automatic lock (tenth of seconds)
+  gvAutoLockTicks = 1200 --export
+  -- How many times user has to click "Disable" before generator is disabled
+  gvDisableSafetyCount = 3 --export
+  -- Shall we show AGG widget when AGG is enabled
+  gvShowAGWidget = false --export
+
+  -- Internal variables
+  gvStartOK = false
+  gvAggLocked = true
+  gvTicker = 0
+  gvLastActionTick = 0
+
+  gvAggBaseAltitude = 1000
+  gvAggBaseAltitudeUnset = true
+  gvHoldingAlert = false
+
+  gvAggEnabled = false
+  gvDisableCounter = gvDisableSafetyCount
+
+  -- Manage increasing/decreasing base altitude
+  gvAggCounterTick = 0
+  gvAggCounterIncreasing = false
+  gvAggCounterDecreasing = false
+
+  -- AGG state
+  gvCurrentBaseAltitude = 0
+  gvCurrentAntiGPower = 0
+  gvPreviousAntiGPower = 0
+  gvHoldTicker = 0
+  gvCurrentAntiGravityField = 0
+
+  -- Mouse and button management on left edge
+  gvButtons = {}
+  gvMouseX = 0
+  gvMouseY = 0
+  gvMouseDown = false
+  gvButtonSelected = 0
+  
+  -- UI feedback
+  gvAttention = 0
+  gvDislikeButton = 0
+  gvLikeButton = 0
+  gvHintButton = 0
+  gvAttentionMessage = ""
+  gvAttentionVisible = false
+
+  -- Fix to bug where seat/other PBs trigger my system/start second time
+  gvSystemHasStarted = true
+end
+
+-- Debug print
+function debugp(str)
+  if str and string.len(str) > 2 and str ~= lastprint then
+    system.print("ag: " .. str)
+    system.logInfo("ag: " .. str)
+    lastprint = str
+  end
+  if #gvDebugList > 10 then
+    table.remove(gvDebugList, 1)
+  end
+  strAppend(gvDebugList, str)
+end
+
+-- React to mouse events from screen.
+function evaluateButtons()
+  local selected = 0
+  
+  if #gvButtons >= 6 then
+    gvButtons[2].enabled = not gvAggLocked
+    gvButtons[3].enabled = not gvAggLocked
+    gvButtons[4].enabled = not gvAggLocked
+    gvButtons[5].enabled = not gvAggLocked
+    gvButtons[6].enabled = gvAggEnabled
+
+    gvButtons[1].label= gvAggLocked and "Unlock" or "Lock"
+    gvButtons[2].label= gvAggEnabled and "Disable" or "Activate"
+
+
+    -- Set button styles
+    for i, button in ipairs(gvButtons) do
+      local classStr = "b"
+      
+      -- Hover effect
+      if button.left < gvMouseX and gvMouseX < button.right and button.top < gvMouseY and gvMouseY < button.bottom then
+        if gvMouseDown and gvButtonSelected == i then
+          classStr = classStr .. " s"
+        else
+          classStr = classStr .. " n"
+        end
+        selected = i
+      end
+      
+      if not button.enabled then
+        classStr = classStr .. " d"
+      end
+
+      if gvAttention > 0 then
+        -- We have message on screen. Highlight the button it's associated to.
+        if gvHintButton == i then
+          classStr = classStr .. " h"
+        end
+        if gvDislikeButton == i then
+          classStr = classStr .. " e"
+        elseif gvLikeButton == i then
+          classStr = classStr .. " l"
+        end
+      end
+
+      button.td = [[<td class="]] .. classStr .. [[">]] .. button.label
+    end
+  end
+  return selected
+end
+
+function buildMessage(msg, classStr)
+  if msg and msg > 0 then
+    local msgText = "AAARGH!"
+    if msg == 1 then
+      msgText = "Please unlock first"
+    elseif msg == 2 then
+      msgText = "Please activate antigravity first"
+    elseif msg == 3 then
+      msgText = "Can't go below 1000m."
+    elseif msg == 101 then
+      msgText = "Click 'Base Alt' to save new altitude."
+    elseif msg == 102 then
+      msgText = "Unlocked."
+    elseif msg == 103 then
+      msgText = "Locked."
+    elseif msg == 104 then
+      msgText = "Antigravity is active. Check base altitude on widget."
+    elseif msg == 105 then
+      msgText = "Antigravity is disabled."
+    elseif msg == 106 then
+      msgText = "Base altitude set. Verify actual value from widget."
+    elseif msg == 107 then
+      msgText = "Use buttons on left with mouse. Unlock first."
+    elseif msg == 108 then
+      msgText = "Antigravity controller PB is off."
+    elseif msg == 109 then
+      msgText = "Click Disable " .. gvDisableCounter .. " more times to disable."
+    elseif msg == 110 then
+      msgText = "Ship has entered antigravity holding range."
+    end
+
+    gvAttentionMessage = "<div class='" .. classStr .. "'>" .. msgText .. "</div>"
+    gvAttentionVisible = true  
+  end
+end
+
+function dislike(buttonNo, msg)
+  gvDislikeButton = buttonNo
+  gvLikeButton = 0
+  gvAttention = 50
+  hint(1, 0)
+  buildMessage(msg, "dislike")
+end
+
+function like(buttonNo, msg)
+  gvLikeButton = buttonNo
+  gvDislikeButton = 0
+  gvAttention = 50
+  buildMessage(msg, "hint")
+end
+
+function hint(buttonNo, msg)
+  gvHintButton = buttonNo
+  gvAttention = 50
+  buildMessage(msg, "hint")
+end
+
+function readAGGState()
+  local agjson = antigrav.getData()
+  local obj, pos, err = json.decode (agjson, 1, nil)
+  gvCurrentBaseAltitude = 0
+  gvCurrentAntiGPower = 0
+  gvCurrentAntiGravityField = 0
+
+  if err then
+    debugp ("Error:" .. err)
+  else
+    if type(obj) =="table" then
+      gvCurrentBaseAltitude = math.floor(obj.baseAltitude)
+      gvCurrentAntiGPower = math.floor(obj.antiGPower * 100)
+      gvCurrentAntiGravityField = math.floor(obj.antiGravityField * 100)
+    end
+  end
+end
+
+function onToggleAGG()
+  gvAggEnabled = (antigrav.getState() > 0)
+  if gvAggEnabled and gvDisableCounter > 1 then
+    -- Safety counter, require multiple disable clicks
+    gvDisableCounter = gvDisableCounter - 1
+    hint(2, 109)
+  else
+    antigrav.toggle()
+    gvAggEnabled = (antigrav.getState() > 0)
+    -- Show/hide AGG widget.
+    if gvAggEnabled then
+      if gvShowAGWidget then
+        antigrav.show()
+      end
+      like(2, 104)
+      gvDisableCounter = gvDisableSafetyCount
+    else
+      antigrav.hide()
+      like(2, 105)
+    end
+  end
+end
+
+function onToggleLock()
+  if gvAggLocked then
+    gvAggLocked = false
+    like(1, 102)
+  else
+    gvAggLocked = true
+    like(1, 103)
+  end
+end
+
+function onSetBaseAltitude()
+  antigrav.setBaseAltitude(gvAggBaseAltitude)
+  gvAggBaseAltitudeUnset = false
+  like(3, 106)
+end
+
+function onIncreaseAltPressed()
+  -- Increase/decrease so that at lower altitudes make smaller steps
+  if gvAggBaseAltitude < 20000 then
+    gvAggBaseAltitude = gvAggBaseAltitude + 100
+  elseif gvAggBaseAltitude < 30000 then
+    gvAggBaseAltitude = gvAggBaseAltitude + 500
+  else
+    gvAggBaseAltitude = gvAggBaseAltitude + 5000
+  end
+
+  gvAggCounterTick = 0
+  gvAggCounterIncreasing = true
+  gvAggCounterDecreasing = false
+  gvAggBaseAltitudeUnset = true
+end
+
+function onIncreaseAltReleased()
+  gvAggCounterTick = 0
+  gvAggCounterIncreasing = false
+  gvAggCounterDecreasing = false
+  hint(3, 101)
+end
+
+function onDecreaseAltPressed()
+  if gvAggBaseAltitude >= 35000 then
+    gvAggBaseAltitude = gvAggBaseAltitude - 5000
+  elseif gvAggBaseAltitude >= 20500 then
+    gvAggBaseAltitude = gvAggBaseAltitude - 500
+  else
+    gvAggBaseAltitude = gvAggBaseAltitude - 100
+  end
+  if gvAggBaseAltitude < 1000 then
+    gvAggBaseAltitude = 1000
+    dislike(5, 3)
+  else
+    gvAggCounterTick = 0
+    gvAggCounterIncreasing = false
+    gvAggCounterDecreasing = true
+  end
+  gvAggBaseAltitudeUnset = true
+end
+
+function onDecreaseAltReleased()
+  if gvAggCounterDecreasing then
+    gvAggCounterTick = 0
+    gvAggCounterIncreasing = false
+    gvAggCounterDecreasing = false
+    hint(3, 101)
+  end
+end
+
+function onFloatDown10m()
+  gvAggBaseAltitude = gvAggBaseAltitude - 10
+  if gvAggBaseAltitude < 1000 then
+    gvAggBaseAltitude = 1000
+    dislike(5, 3)
+  end
+  antigrav.setBaseAltitude(gvAggBaseAltitude)
+end
+
+function onButtonDown(buttonNo)
+  local button = gvButtons[buttonNo]  
+  if not button or not button.enabled then
+  if buttonNo >= 2 and buttonNo <= 5 and gvAggLocked then
+    dislike(button, 1)
+  end
+  if buttonNo == 6 and not gvAggEnabled then
+    dislike(button, 2)
+  end
+
+  return
+  end
+  if buttonNo == 4 then
+  onIncreaseAltPressed()
+  elseif buttonNo == 5 then
+  onDecreaseAltPressed()
+  end
+   
+end
+
+function onButtonUp(buttonNo)
+  local button = gvButtons[buttonNo]  
+  if not button or not button.enabled then
+  return
+  end
+
+  if buttonNo == 4 then
+  onIncreaseAltReleased()
+  elseif buttonNo == 5 then
+  onDecreaseAltReleased()
+  end
+end
+
+function onClick(buttonNo)
+  local button = gvButtons[buttonNo]  
+  if not button or not button.enabled then
+    return
+  end
+
+  if buttonNo == 1 then
+    onToggleLock()
+  elseif buttonNo == 2 then
+    onToggleAGG()
+  elseif buttonNo == 3 then
+    onSetBaseAltitude()
+  elseif buttonNo == 6 then
+    onFloatDown10m()
+  end
+  
+  if buttonNo ~= 2 then
+    gvDisableCounter = gvDisableSafetyCount
+  end
+end
+
+function updateScreen() 
+  local page = [[<html>
+  <head>
+  <meta charset="utf-8">
+  <title>Stats</title>
+  <style type="text/css">
+.datapart {
+  font-size: 9vh;
+  color: #FFFFFF;
+  padding: 3%
+}
+.b {
+  background: #b7de01;
+  box-shadow: 0px 5px #687e00;
+  color: blue;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+}
+.n {}
+.h {color: green; }
+.s {background-color:yellow; }
+.e {background-color:red; }
+.l {background-color:green; }
+.d {background-color:gray !important; }
+.dislike {color: yellow; font-size: 7vh;}
+.hint {color: palegreen; font-size: 7vh;}
+</style>
+</head>
+<body>
+<div align="center" style="width: 100%; height: 100%; background-color: black;">]]
+
+
+  local agstate = "OFF"
+  if antigrav ~= nil then
+    gvAggEnabled = (antigrav.getState() > 0)
+    if gvAggEnabled then
+      agstate = "ACTIVE"
+    end
+  end
+
+  local aglock = gvAggLocked and "Locked" or "Unlocked"
+  local aghcolor = gvAggBaseAltitudeUnset and "#301020" or "#207010"
+
+  
+  local altitude = core.getAltitude()
+  local altm = altitude
+  local altunits = "m"
+  if altm > 9900000 then
+    altm = altm / 1000
+    altunits = "km"
+  end
+  local altitudeStr = format("%.0f%s", altm, altunits)
+
+  local gravity = core.g()
+  
+  local buttonNo = evaluateButtons()
+  if gvMouseDown then
+    -- Simulate mouseup for previously clicked button if user moves out of button.
+    gvMouseX = screen.getMouseX()
+    gvMouseY = screen.getMouseY()
+    if buttonNo ~= gvButtonSelected or gvMouseX < 0.05 or gvMouseX > 0.95 or gvMouseY < 0.05 or  gvMouseY > 0.95 then
+      if gvButtonSelected > 0 then
+        onButtonUp(gvButtonSelected)
+      end
+      gvButtonSelected = 0
+    end    
+  end
+
+  local vertical = -vec3(core.getWorldGravity())
+  local velocity = vec3(core.getWorldVelocity())
+  local vertVelVect = velocity:project_on(vertical)
+  local vertVel = vertVelVect:len()
+  local vertcolor = math.abs(vertVel) > 20 and "inherit" or "#207010"
+
+  local message = gvAttentionMessage
+  if gvAggEnabled and message == "" then
+    -- Message when no other message visible.
+    if gvCurrentAntiGravityField < 50 then
+      message = message .. "Not enough pulsors or not linked to AGG"
+    end
+    if gvCurrentAntiGPower > 0 then
+      message = message .. "HOLD:" .. gvCurrentAntiGPower .."%"
+    end
+
+    message = message .. "<br />" .. gvCurrentBaseAltitude
+  end
+  
+  if #gvButtons >= 6 then
+    page = page ..  [[<div class=datapart><table height=95% width=95%>
+    <tr><th width=30%>Control</th><th></th><th>Antigrav.</th><th>State</th></tr>]] ..
+    [[<tr>]] .. gvButtons[1].td .. [[</td><td></td><td>]] .. aglock .. [[</td><td rowspan=3>]] .. message .. [[</td></tr>]] ..
+    [[<tr>]] .. gvButtons[2].td .. [[</td><td></td><td>]] .. agstate .. [[</td><td></td></tr>
+    <tr>]] .. gvButtons[3].td .. [[</td><td></td><td  style="background-color:]] .. aghcolor .. [[;">]] .. format("%.0f", gvAggBaseAltitude) .. [[</td><td></td></tr>
+
+    <tr><th>Altitude</th><th></th><th>Ship</th><th></th></tr>]] ..
+    [[<tr>]] .. gvButtons[4].td .. [[</td><td></td><td>Altitude:</td><td>]] .. altitudeStr .. [[</td></tr>
+    <tr>]] .. gvButtons[5].td .. [[</td><td></td><td>Vert spd:</td><td  style="background-color:]] .. vertcolor .. [[;">]] .. format("%.0f", vertVel) .. [[m/s</td></tr>
+    <tr>]] .. gvButtons[6].td .. [[</td><td></td><td>Gravity:</td><td>]] .. format("%.6f", gravity) .. [[</td></tr>]] ..
+    [[</table></div>]]
+  end
+  page = page .. [[</div></body></html>]]
+  screen.setHTML(page)
+  
+  if gvCurrentAntiGPower > 0 and ((gvTicker - gvHoldTicker) < 400 or velocity:len() > 10) then
+    -- Show hold message on middle of HUD.
+    local aggrab = "AG HOLD " .. format("%.0f", gvCurrentAntiGPower) .. "%"
+    local color = (gvCurrentAntiGPower > 20 and gvCurrentAntiGPower < 60) and "lightgreen" or "yellow"
+    local str = "<div><h1 style='position:absolute;left:44vw;top:60vh;width:13vw;text-align:center;color:" .. color .. ";background-color:rgba(0,0,0,0.5);align:center'>" .. aggrab .. "</h1></div>"
+    system.setScreen(str)
+  elseif gvHoldTicker > 0 then
+    -- Take away the HUD message
+    system.setScreen("")
+    system.showScreen(0)
+    gvHoldTicker = 0
+  end
+end
+
+function tickAntigrav()
+  -- Method executed ten times per second
+  gvTicker = gvTicker + 1
+  if (gvTicker % 20) == 0 then
+    gvUpdateScreens = true
+  end
+  readAGGState()
+  
+  if gvCurrentAntiGPower >= 1 and gvPreviousAntiGPower < 1 then
+    -- AGG is starting to hold. Show HUD message
+    gvHoldTicker = gvTicker
+    system.showScreen(1)
+  end
+  gvPreviousAntiGPower = gvCurrentAntiGPower;
+
+
+  if gvAttention > 0 then
+    -- After awhile, turn off UI message.
+    if (gvTicker % 5) == 0 then
+      gvUpdateScreens = true
+    end        
+    gvAttention = gvAttention - 1
+    if gvAttention < 40 then
+      -- Remove possible button highlight
+      gvDislikeButton = 0
+      gvLikeButton = 0
+      gvHintButton = 0
+    end
+    if gvAttentionVisible and gvAttention < 20 then
+      gvAttentionMessage = ""
+      gvAttentionVisible = false
+    end
+  end
+
+  if gvAggCounterIncreasing or gvAggCounterDecreasing then
+    -- Handle long press of base altitude increase/decrease button.
+    -- If user presses very long time, increase tick amount progressively
+    -- E.g. the ship might have millions of meters in altitude. 
+    -- Get down to zero altitude in reasonable time.
+    gvAggCounterTick = gvAggCounterTick + 1
+    if gvAggCounterTick > 10 then
+      local delta = 0
+      if gvAggBaseAltitude < 5000 then
+        delta = 100
+      elseif gvAggBaseAltitude < 10000 then
+        delta = 500
+      else
+        delta = 5000
+      end
+
+      if gvAggCounterDecreasing then
+        delta = delta * -1
+      end
+      if gvAggCounterTick > 400 and gvAggBaseAltitude > 10000000 then
+        delta = delta * 2000
+      elseif gvAggCounterTick > 200 and gvAggBaseAltitude > 1000000 then
+        delta = delta * 200
+      elseif gvAggCounterTick > 100 and gvAggBaseAltitude > 200000 then
+        delta = delta * 20
+      end
+      gvAggBaseAltitude = gvAggBaseAltitude + delta
+      gvAggBaseAltitude = math.max(1000, gvAggBaseAltitude)
+    end
+  end
+
+  local altitude = core.getAltitude()
+  local altDiff = math.abs(altitude - gvAggBaseAltitude)
+  local gravity = core.g()
+
+  local idleTicks = gvTicker - gvLastActionTick
+  if idleTicks > gvAutoLockTicks and not gvAggLocked then
+    -- Idle timer to lock UI automatically after few minutes.
+    gvAggLocked = true
+    like(0, 103)
+  elseif idleTicks == 80 and gvTicker < 120 then
+    hint(1, 107)
+  end
+end
+
+--
+-- End of antrigravity generator script snippet
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: system, update
+--
+if gvStartOK and (gvUpdateScreens or gvMouseDown or gvAttention > 0) then
+  gvUpdateScreens = false
+  updateScreen() 
+end
+--
+-- End of antrigravity generator script snippet
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: unit, start
+--
+local isOK = true
+local startMsg = ""
+local stdText = " to the programming board and name the link as "
+local stdText2 = " is linked to a wrong element. It is not "
+
+-- Check what has been linked to programming board. 
+-- Check if link is missing and is the link to right element.
+if antigrav == nil then
+  startMsg = "<div>Please link an antigravity generator" .. stdText .. "antigrav.</div>"
+  isOK = false
+elseif antigrav.setBaseAltitude == nil then
+  startMsg = "<div>Slot antigrav" .. stdText2 .. "antigravity generator.</div>"
+  isOK = false
+end
+if screen == nil then
+  startMsg = startMsg .. "<div>Please link a screen" .. stdText .. "screen.</div>"
+  isOK = false
+elseif screen.setCenteredText == nil then
+  startMsg = startMsg .. "<div>Slot screen" .. stdText2 .. "screen.</div>"
+  isOK = false
+end
+if core == nil then
+  startMsg = startMsg .. "<div>Please link the ship core" .. stdText .. "core.</div>"
+  isOK = false
+elseif core.g == nil then
+  startMsg = startMsg .. "<div>Slot core" .. stdText2 .. "core.</div>"
+  isOK = false
+end
+gvStartOK = isOK
+
+
+if gvStartOK then
+  -- Initialize
+  screen.setCenteredText("Initializing...")
+  
+  readAGGState()
+  gvAggBaseAltitude = utils.round(core.getAltitude(), 100)
+  if gvAggBaseAltitude < 1000 then
+    gvAggBaseAltitude = 1000
+  end
+
+  if antigrav ~= nil then
+    gvAggEnabled = (antigrav.getState() > 0)
+  end
+
+  -- Calculate button hitboxes.
+  local vh = 15
+  for i = 1,6 do
+    if i == 4 then
+      vh = 60
+    end
+    local button = {id = ("b"..i), enabled=true, td="<td>", top=vh/100, bottom=(vh + 10)/100, left=5/100, right=30/100}
+    table.insert(gvButtons, button)
+    vh = vh + 11
+  end
+  
+  gvButtons[1].label="Lock"
+  gvButtons[2].label="Activate"
+  gvButtons[3].label="Base Alt"
+  gvButtons[4].label="Up"
+  gvButtons[5].label="Down"
+  gvButtons[6].label="BaseA-10"
+
+  evaluateButtons()
+
+  self.setTimer("antigrav", 0.1)
+  if gvAggEnabled then
+    if gvShowAGWidget then
+      antigrav.show()
+    end
+    like(0, 104)
+  else
+    like(0, 105)
+  end
+  unit.hide()
+else
+  -- Do not start, but show errors on HUD (we might not have screen)
+  system.setScreen([[<style type="text/css">
+.widget_header h2::before {
+  content: "AG PB Error";
+  color: darkred;
+}
+</style>
+<div style='color:yellow;'>]] .. startMsg .. [[</div>]])
+  system.showScreen(1)
+end
+--
+-- End of antrigravity generator script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: unit, stop
+--
+system.setScreen("")
+system.showScreen(false)
+
+if gvStartOK then
+  gvAggLocked = true
+  like(0, 108)
+  updateScreen() 
+
+  self.stopTimer("antigrav")
+
+  if antigrav then
+  antigrav.hide()
+  end
+end
+--
+-- End of antrigravity generator script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: unit, tick (antigrav)
+-- 
+--
+tickAntigrav()
+--
+-- End of antrigravity generator script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: screen, mouseDown (*, *)
+--
+gvMouseX = x
+gvMouseY = y
+gvMouseDown = true
+gvAttention = 0
+gvDislikeButton = 0
+gvLikeButton = 0
+gvButtonSelected = evaluateButtons()
+onButtonDown(gvButtonSelected)
+--
+-- End of antrigravity generator script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Antrigravity generator script, add new event: screen, mouseUp (*, *)
+--
+gvMouseX = x
+gvMouseY = y
+gvMouseDown = false
+local buttonNo = evaluateButtons()
+if gvButtonSelected > 0 and gvButtonSelected == buttonNo then
+  onButtonUp(buttonNo)
+  onClick(buttonNo)
+end
+gvButtonSelected = -buttonNo
+gvLastActionTick = gvTicker
+--
+-- End of antrigravity generator script snippet
+---------------------------------------------------------------------------------
+

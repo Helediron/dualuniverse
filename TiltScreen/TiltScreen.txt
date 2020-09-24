@@ -1,0 +1,471 @@
+---------------------------------------------------------------------------------
+-- Tilt script, add new event: system, start
+--
+local format = string.format
+
+gvDebugList = {}
+
+function strAppend(buffer, ...)
+  for i = 1, select('#',...) do
+    local strval = select(i,...)
+    table.insert(buffer, strval)
+  end
+end
+
+local lastprint = ""
+function debugp(str)
+    if str and string.len(str) > 2 and str ~= lastprint then
+        system.print("tilt: " .. str)
+        system.logInfo("tilt: " .. str)
+        lastprint = str
+    end
+    if #gvDebugList > 10 then
+        table.remove(gvDebugList, 1)
+    end
+    strAppend(gvDebugList, str)
+end
+
+
+if not gvSystemHasStarted then
+
+    -- Internal variables
+    gvStartOK = false
+    gvTicker = 0
+	gvUpdateScreens = false
+    
+	gvNoTilt = 1.0 --export
+    gvHullWidth = 28 --export
+    gvHullLength = 28 --export
+    displayHUD=true--export: Show screen on HUD
+
+    
+    gvAltitudeFront = 0
+    gvTiltFront = 0
+    gvAltitudeBack = 0
+    gvTiltBack = 0
+    gvAltitudeRight = 0
+    gvTiltRight = 0
+    gvAltitudeLeft = 0
+    gvTiltLeft = 0
+	gvRollPlanet = 0
+	gvPitchPlanet = 0
+    gvSystemScreenVisible = false
+
+
+    debugp("system.start")
+    max = 999999999
+    rads90 = 90 * constants.deg2rad
+    rads10 = 10 * constants.deg2rad
+    rads001 = 0.01 * constants.deg2rad
+    axisz = vec3.new(0,0,1)
+    axisy = vec3.new(0,1,0)
+    axisx = vec3.new(1,0,0)
+
+gvPageHeader = [[<html>
+<head>
+<meta charset="utf-8">
+<title>Stats</title>
+<style type="text/css">
+.du-data {
+    font-size: 8vh;
+    color: white;
+	width: 100%
+	height: 100%
+}
+.idle {
+    text-align: center;
+    padding-top: 45vh;
+}
+.du-table {
+    margin: 1%;
+}
+.du-table tr:nth-child(even) {
+	background-color: #111;
+}
+.du-table tr:nth-child(odd) {
+	background-color: #222;
+}
+.du-table th {
+	color: white;
+	background-color: black;
+    width:250px;
+}
+.du-table td {
+    border: 1px solid coral;
+	position: relative;
+    padding-right: 4px;
+}
+.du-table td small{
+    font-size: 4vh;
+	position: absolute;
+right: 0;
+	z-index: 2;
+	color: yellow;
+}
+
+.du-bar:after,.du-bar:before {content:"";display:table;clear:both}
+.du-bar {padding:0.01em 0px; background: repeating-linear-gradient(
+  to right,
+  transparent ,
+  transparent 17px,
+  #666 17px,
+  #666 20px
+);}
+.du-progress {padding: 4px 0 4px 0;}
+.du-blue,.du-hover-blue:hover{color:#fff!important;background-color:#2150b0!important}
+.du-cyan,.du-hover-cyan:hover{color:#000!important;background-color:#00a0c4!important}
+.du-indigo,.du-hover-indigo:hover{color:#fff!important;background-color:#3021a0!important}
+.du-orange,.du-hover-deep-orange:hover{color:#fff!important;background-color:#c05722!important}
+.du-red,.du-hover-red:hover{color:#fff!important;background-color:#b03020!important}
+.du-teal,.du-hover-teal:hover{color:#fff!important;background-color:#005050!important}
+.du-yellow,.du-hover-yellow:hover{color:#fff!important;background-color:#a08020!important}
+.du-white,.du-hover-white:hover{color:#000!important;background-color:#fff!important}
+.du-black,.du-hover-black:hover{color:#fff!important;background-color:#000!important}
+.du-grey,.du-hover-grey:hover,.du-gray,.du-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important}
+.du-light-grey,.du-hover-light-grey:hover,.du-light-gray,.du-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}
+.du-dark-grey,.du-hover-dark-grey:hover,.du-dark-gray,.du-hover-dark-gray:hover{color:#fff!important;background-color:#414141!important}
+.b {
+  background: #b7de01;
+  box-shadow: 0px 5px #687e00;
+  color: blue;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+}
+.n {}
+.ar {text-align:right; padding: 0 8px 0 0;}
+.ac {text-align:center; padding: 0 8px 0 0;}
+.h {color: green; }
+.s {background-color:yellow; }
+.e {background-color:red; }
+.l {background-color:green; }
+.d {background-color:gray !important; }
+.dislike {color: yellow; font-size: 7vh;}
+.hint {color: palegreen; font-size: 7vh;}
+.du-free-panel {
+	position: fixed;
+	display: block;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: 0;
+  	font-size: 0.7vw;
+}
+.du-hud {position:absolute;left:5vw;top:20vh;width:20vw;height:20vh;}
+</style>
+</head>
+<body>
+]]
+
+gvPageTrailer = [[</body></html>]]
+gvScreenHeader = [[<div class="du-data">]]
+gvHudHeader = [[<div class="du-free-panel du-hud">]]
+gvDivHeader = [[<table class="du-table">]]
+
+gvDivTrailer = [[</table>]]
+gvScreenTrailer = [[</div>]]
+gvHudTrailer = [[</div>]]
+
+    
+    gvSystemHasStarted = true
+end
+
+function isNaN(v) 
+    return type(v) == "number" and v ~= v 
+end
+
+function planeAngle(vect, to, plane, right, decimals)
+  
+  if not decimals then
+    decimals = 0.001
+  end
+  if vect:angle_between(plane) < rads001 or (math.pi - vect:angle_between(plane)) < rads001 then
+    return nil
+  end
+  local flatVect = vect:project_on_plane(plane)
+  local angle = flatVect:angle_between(to)
+  local rightAngle = flatVect:angle_between(right)
+  if rightAngle > rads90 then
+    angle = -angle
+  end
+  if not angle or isNaN(angle) then
+    return nil
+  end
+  return utils.round(angle*constants.rad2deg, decimals)
+end
+
+function meterStr(distance)
+    if not distance then
+        return ""
+    end
+    if distance < 0 then
+        return "--"
+    end
+
+    local units = "m"
+    if distance > 20000000 then
+        distance = distance / 1000000
+        units = "M"
+    elseif distance > 20000 then
+        distance = distance / 1000
+        units = "K"
+    end
+    local distanceStr = format("%1.1f%s", distance, units)
+	return distanceStr
+end
+    
+function degreeStr(degs)
+    if not degs then
+        return "--"
+    end
+    local units = "&deg;"
+    local degsStr = format("%1.1f%s", degs, units)
+	return degsStr
+end
+    
+
+
+
+function tiltScreen() 
+    local page = gvDivHeader
+
+	local tiltNameFront = math.abs(gvTiltFront) < gvNoTilt and "--" or gvTiltFront > 0 and "right" or "left"
+	local tiltNameBack = math.abs(gvTiltBack) < gvNoTilt and "--" or gvTiltBack > 0 and "right" or "left"
+	local tiltNameRight = math.abs(gvTiltRight) < gvNoTilt and "--" or gvTiltRight > 0 and "back" or "frwd"
+	local tiltNameLeft = math.abs(gvTiltLeft) < gvNoTilt and "--" or gvTiltLeft > 0 and "back" or "frwd"
+	local tiltNamePitch = math.abs(gvPitchPlanet) < gvNoTilt and "--" or gvPitchPlanet > 0 and "frwd" or "back"
+	local tiltNameRoll = math.abs(gvRollPlanet) < gvNoTilt and "--" or gvRollPlanet > 0 and "right" or "left"
+
+
+
+
+	if gvAltitudeFront > 0 then
+      page = page ..  [[
+        <tr><th width=30%>Edge</th><th>Tilt</th><th>To</th><th>Dist</th></tr>]] ..
+        [[<tr><td>]] .. "Front" .. [[</td><td>]] .. degreeStr(gvTiltFront) .. [[</td><td>]] .. tiltNameFront .. [[</td><td>]] .. meterStr(gvAltitudeFront) .. [[</td></tr>]] ..
+        [[<tr><td>]] .. "Back" .. [[</td><td>]] .. degreeStr(gvTiltBack) .. [[</td><td>]] .. tiltNameBack .. [[</td><td>]] .. meterStr(gvAltitudeBack) .. [[</td></tr>]] ..
+        [[<tr><td>]] .. "Right" .. [[</td><td>]] .. degreeStr(gvTiltRight) .. [[</td><td>]] .. tiltNameRight .. [[</td><td>]] .. meterStr(gvAltitudeRight) .. [[</td></tr>]] ..
+        [[<tr><td>]] .. "Left" .. [[</td><td>]] .. degreeStr(gvTiltLeft) .. [[</td><td>]] .. tiltNameLeft .. [[</td><td>]] .. meterStr(gvAltitudeLeft) .. [[</td></tr>]] ..
+        [[<tr><td>]] .. "Pitch" .. [[</td><td>]] .. degreeStr(-gvPitchPlanet) .. [[</td><td>]] .. tiltNamePitch .. [[</td><td>]] .. meterStr((gvAltitudeRight + gvAltitudeLeft) / 2) .. [[</td></tr>]] ..
+        [[<tr><td>]] .. "Roll" .. [[</td><td>]] .. degreeStr(gvRollPlanet) .. [[</td><td>]] .. tiltNameRoll .. [[</td><td>]] .. meterStr((gvAltitudeBack + gvAltitudeFront) / 2) .. [[</td></tr>]] ..
+
+
+    	gvDivTrailer
+    else
+      page = [[<div class="du-data idle">Not close to ground</div>]]
+    end
+	return page, {}, (gvAltitudeFront > 0 and gvAltitudeFront < 50)    
+end
+
+function tickTilt()
+    gvTicker = gvTicker + 1
+    
+    local updateFreq = (gvAltitudeFront > 0 and gvAltitudeFront < 100) and 5 or 20
+
+	if (gvTicker % updateFreq) == 0 then
+        gvAltitudeFront = 0
+        gvAltitudeBack = 0
+        gvAltitudeRight = 0
+        gvAltitudeLeft = 0
+        gvTiltFront = 0
+        gvTiltBack = 0
+        gvTiltRight = 0
+        gvTiltLeft = 0
+
+    local cwp = vec3(core.getConstructWorldPos())
+    local vertical = -vec3(core.getWorldGravity())
+    local wg = vec3(core.getWorldGravity())
+    local forward = vec3(core.getConstructWorldOrientationForward())
+    local right = vec3(core.getConstructWorldOrientationRight())
+    local up = vec3(core.getConstructWorldOrientationUp())
+    local horizonForward = forward:project_on_plane(vertical):normalize()
+    local horizonRight = right:project_on_plane(vertical):normalize()
+
+    local pitchPlanet = -planeAngle(forward, horizonForward, horizonRight, vertical, 0.1) or 0
+    local rollPlanet = -planeAngle(right, horizonRight, horizonForward, vertical, 0.1) or 0
+
+        local altitudeFR = telefr.getDistance()
+        local altitudeFL = telefl.getDistance()
+        local altitudeBR = telebr.getDistance()
+        local altitudeBL = telebl.getDistance()
+
+        --debugp("FR " .. meterStr(altitudeFR) .. ",BR " .. meterStr(altitudeBR) .. ",FL " .. meterStr(altitudeFL) .. ",BL " .. meterStr(altitudeBL) .. " .")
+        if altitudeFR and altitudeFR >= 0 and altitudeFL and altitudeFL >= 0 then
+	        gvAltitudeFront = (altitudeFR + altitudeFL) / 2
+			local vect = vec3.new(gvHullWidth, 0, altitudeFR - altitudeFL)
+            local sign = axisz:angle_between(vect) < rads90 and -1 or 1
+    	    gvTiltFront = (axisx:angle_between(vect) * constants.rad2deg * sign) - rollPlanet
+            --debugp("Front A " .. meterStr(gvAltitudeFront) .. ",T " .. gvTiltFront .. ",T " .. degreeStr(gvTiltFront) .. " .")
+        end
+        if altitudeBR and altitudeBR >= 0 and altitudeBL and altitudeBL >= 0 then
+	        gvAltitudeBack = (altitudeBR + altitudeBL) / 2
+			local vect = vec3.new(gvHullWidth, 0, altitudeBR - altitudeBL)
+            local sign = axisz:angle_between(vect) < rads90 and -1 or 1
+    	    gvTiltBack = (axisx:angle_between(vect) * constants.rad2deg * sign) - rollPlanet
+        end
+
+        if altitudeFR and altitudeFR >= 0 and altitudeBR and altitudeBR >= 0 then
+	        gvAltitudeRight = (altitudeFR + altitudeBR) / 2
+			local vect = vec3.new(0, gvHullLength, altitudeFR - altitudeBR)
+            local sign = axisz:angle_between(vect) < rads90 and -1 or 1
+    	    gvTiltRight = (axisy:angle_between(vect) * constants.rad2deg * sign) - pitchPlanet
+        end
+
+        if altitudeFL and altitudeFL >= 0 and altitudeBL and altitudeBL >= 0 then
+	        gvAltitudeLeft = (altitudeFL + altitudeBL) / 2
+			local vect = vec3.new(0, gvHullLength, altitudeFL - altitudeBL)
+            local sign = axisz:angle_between(vect) < rads90 and -1 or 1
+    	    gvTiltLeft = (axisy:angle_between(vect) * constants.rad2deg * sign) - pitchPlanet
+        end
+		gvRollPlanet = rollPlanet
+		gvPitchPlanet = pitchPlanet
+        
+    	gvUpdateScreens = true
+    end
+end
+
+--
+-- End of tilt script snippet
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Tilt script, add new event: system, update
+--
+if gvUpdateScreens and gvStartOK then
+    gvUpdateScreens = false
+    local hudVisible = false
+    local data
+    local show
+    local page, data, show = tiltScreen() 
+    if screen then
+      screen.setHTML(gvPageHeader .. gvScreenHeader .. page .. gvScreenTrailer .. gvPageTrailer)
+    end
+    if displayHUD and show then
+      local str = gvPageHeader .. gvHudHeader .. page .. gvHudTrailer .. gvPageTrailer
+      system.setScreen(str)
+      hudVisible = true
+    end
+    
+    if hudVisible ~= gvSystemScreenVisible then
+	  gvSystemScreenVisible = hudVisible
+      if gvSystemScreenVisible then
+        system.showScreen(1)
+      else
+        system.setScreen("")
+        system.showScreen(0)
+      end
+    end
+end
+--
+-- End of Tilt script snippet
+
+
+
+
+---------------------------------------------------------------------------------
+-- Tilt script, add new event: unit, start
+--
+local isOK = true
+local startMsg = ""
+local stdText = " to the programming board and name the link as "
+local stdText2 = " is linked to a wrong element. It is not "
+if core == nil then
+    startMsg = startMsg .. "<div>Please link the core" .. stdText .. "core.</div>"
+    isOK = false
+elseif core.getConstructMass == nil then
+    startMsg = startMsg .. "<div>Slot core" .. stdText2 .. "core.</div>"
+    isOK = false
+end
+if screen == nil then
+    startMsg = startMsg .. "<div>Please link a screen" .. stdText .. "screen.</div>"
+    isOK = false
+elseif screen.setCenteredText == nil then
+    startMsg = startMsg .. "<div>Slot screen" .. stdText2 .. "screen.</div>"
+    isOK = false
+end
+if telefr == nil then
+    startMsg = startMsg .. "<div>Please link a telemeter" .. stdText .. "telefr.</div>"
+    isOK = false
+elseif telefr.getDistance == nil then
+    startMsg = startMsg .. "<div>Slot telefr" .. stdText2 .. "telemeter.</div>"
+    isOK = false
+elseif telefl == nil then
+    startMsg = startMsg .. "<div>Please link a telemeter" .. stdText .. "telefl.</div>"
+    isOK = false
+elseif telefl.getDistance == nil then
+    startMsg = startMsg .. "<div>Slot telefl" .. stdText2 .. "telemeter.</div>"
+    isOK = false
+elseif telebr == nil then
+    startMsg = startMsg .. "<div>Please link a telemeter" .. stdText .. "telebr.</div>"
+    isOK = false
+elseif telebr.getDistance == nil then
+    startMsg = startMsg .. "<div>Slot telebr" .. stdText2 .. "telemeter.</div>"
+    isOK = false
+elseif telebl == nil then
+    startMsg = startMsg .. "<div>Please link a telemeter" .. stdText .. "telebl.</div>"
+    isOK = false
+elseif telebl.getDistance == nil then
+    startMsg = startMsg .. "<div>Slot telebl" .. stdText2 .. "telemeter.</div>"
+    isOK = false
+end
+gvStartOK = isOK
+
+
+if gvStartOK then
+  -- Initialize
+  screen.setCenteredText("Initializing...")
+  
+
+  self.setTimer("tilt", 0.1)
+  unit.hide()
+  if displayHUD then
+    system.showScreen(1)
+    gvSystemScreenVisible = true
+  end
+else
+  system.setScreen([[<style type="text/css">
+.widget_header h2::before {
+    content: "PB Error";
+    color: darkred;
+}
+</style>
+<div style='color:yellow;'>]] .. startMsg .. [[</div>]])
+  system.showScreen(1)
+  gvSystemScreenVisible = true
+end
+--
+-- End of tilt script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------
+-- Tilt script, add new event: unit, stop
+--
+system.setScreen("")
+system.showScreen(0)
+
+if gvStartOK then
+  self.stopTimer("tilt")
+end
+--
+-- End of tilt script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- Tilt script, add new event: unit, tick (tilt)
+-- 
+--
+tickTilt()
+--
+-- End of tilt script snippet
+---------------------------------------------------------------------------------
+

@@ -1,0 +1,168 @@
+{
+	"slots": {
+		"0": {
+			"name": "screen",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"1": {
+			"name": "telefr",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"2": {
+			"name": "telefl",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"3": {
+			"name": "telebr",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"4": {
+			"name": "telebl",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"5": {
+			"name": "core",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"6": {
+			"name": "slot7",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"7": {
+			"name": "slot8",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"8": {
+			"name": "slot9",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"9": {
+			"name": "slot10",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-1": {
+			"name": "unit",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-2": {
+			"name": "system",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		},
+		"-3": {
+			"name": "library",
+			"type": {
+				"events": [],
+				"methods": []
+			}
+		}
+	},
+	"handlers": [{
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseDown (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = true\ngvAttention = 0\ngvDislikeButton = 0\ngvLikeButton = 0\ngvButtonSelected = evaluateButtons()\nonButtonDown(gvButtonSelected)\n--\n-- End of ntrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseDown(x,y)",
+				"slotKey": 2
+			},
+			"key": "0"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Antrigravity generator script, add new event: screen, mouseUp (*, *)\n--\ngvMouseX = x\ngvMouseY = y\ngvMouseDown = false\nlocal buttonNo = evaluateButtons()\nif gvButtonSelected > 0 and gvButtonSelected == buttonNo then\n  onButtonUp(buttonNo)\n  onClick(buttonNo)\nend\ngvButtonSelected = -buttonNo\ngvLastActionTick = gvTicker\n--\n-- End of antrigravity generator script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"variable": "*"
+					}, {
+						"variable": "*"
+					}
+				],
+				"signature": "mouseUp(x,y)",
+				"slotKey": 2
+			},
+			"key": "1"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Tilt script, add new event: unit, start\n--\nlocal isOK = true\nlocal startMsg = \"\"\nlocal stdText = \" to the programming board and name the link as \"\nlocal stdText2 = \" is linked to a wrong element. It is not \"\nif core == nil then\n    startMsg = startMsg .. \"<div>Please link the core\" .. stdText .. \"core.</div>\"\n    isOK = false\nelseif core.getConstructMass == nil then\n    startMsg = startMsg .. \"<div>Slot core\" .. stdText2 .. \"core.</div>\"\n    isOK = false\nend\nif screen == nil then\n    startMsg = startMsg .. \"<div>Please link a screen\" .. stdText .. \"screen.</div>\"\n    isOK = false\nelseif screen.setCenteredText == nil then\n    startMsg = startMsg .. \"<div>Slot screen\" .. stdText2 .. \"screen.</div>\"\n    isOK = false\nend\nif telefr == nil then\n    startMsg = startMsg .. \"<div>Please link a telemeter\" .. stdText .. \"telefr.</div>\"\n    isOK = false\nelseif telefr.getDistance == nil then\n    startMsg = startMsg .. \"<div>Slot telefr\" .. stdText2 .. \"telemeter.</div>\"\n    isOK = false\nelseif telefl == nil then\n    startMsg = startMsg .. \"<div>Please link a telemeter\" .. stdText .. \"telefl.</div>\"\n    isOK = false\nelseif telefl.getDistance == nil then\n    startMsg = startMsg .. \"<div>Slot telefl\" .. stdText2 .. \"telemeter.</div>\"\n    isOK = false\nelseif telebr == nil then\n    startMsg = startMsg .. \"<div>Please link a telemeter\" .. stdText .. \"telebr.</div>\"\n    isOK = false\nelseif telebr.getDistance == nil then\n    startMsg = startMsg .. \"<div>Slot telebr\" .. stdText2 .. \"telemeter.</div>\"\n    isOK = false\nelseif telebl == nil then\n    startMsg = startMsg .. \"<div>Please link a telemeter\" .. stdText .. \"telebl.</div>\"\n    isOK = false\nelseif telebl.getDistance == nil then\n    startMsg = startMsg .. \"<div>Slot telebl\" .. stdText2 .. \"telemeter.</div>\"\n    isOK = false\nend\ngvStartOK = isOK\n\n\nif gvStartOK then\n  -- Initialize\n  screen.setCenteredText(\"Initializing...\")\n  \n\n  self.setTimer(\"tilt\", 0.1)\n  unit.hide()\n  if displayHUD then\n    system.showScreen(1)\n    gvSystemScreenVisible = true\n  end\nelse\n  system.setScreen([[<style type=\"text/css\">\n.widget_header h2::before {\n    content: \"PB Error\";\n    color: darkred;\n}\n</style>\n<div style='color:yellow;'>]] .. startMsg .. [[</div>]])\n  system.showScreen(1)\n  gvSystemScreenVisible = true\nend\n--\n-- End of tilt script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": -1
+			},
+			"key": "2"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Tilt script, add new event: unit, stop\n--\nsystem.setScreen(\"\")\nsystem.showScreen(0)\n\nif gvStartOK then\n  self.stopTimer(\"tilt\")\nend\n--\n-- End of tilt script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [],
+				"signature": "stop()",
+				"slotKey": -1
+			},
+			"key": "3"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Tilt script, add new event: unit, tick (tilt)\n-- \n--\ntickTilt()\n--\n-- End of tilt script snippet\n---------------------------------------------------------------------------------\n",
+			"filter": {
+				"args": [{
+						"value": "tilt"
+					}
+				],
+				"signature": "tick(timerId)",
+				"slotKey": -1
+			},
+			"key": "4"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Tilt script, add new event: system, update\n--\nif gvUpdateScreens and gvStartOK then\n    gvUpdateScreens = false\n    local hudVisible = false\n    local data\n    local show\n    local page, data, show = tiltScreen() \n    if screen then\n      screen.setHTML(gvPageHeader .. gvScreenHeader .. page .. gvScreenTrailer .. gvPageTrailer)\n    end\n    if displayHUD and show then\n      local str = gvPageHeader .. gvHudHeader .. page .. gvHudTrailer .. gvPageTrailer\n      system.setScreen(str)\n      hudVisible = true\n    end\n    \n    if hudVisible ~= gvSystemScreenVisible then\n\t  gvSystemScreenVisible = hudVisible\n      if gvSystemScreenVisible then\n        system.showScreen(1)\n      else\n        system.setScreen(\"\")\n        system.showScreen(0)\n      end\n    end\nend\n--\n-- End of Tilt script snippet\n",
+			"filter": {
+				"args": [],
+				"signature": "update()",
+				"slotKey": -2
+			},
+			"key": "5"
+		}, {
+			"code": "---------------------------------------------------------------------------------\n-- Tilt script, add new event: system, start\n--\nlocal format = string.format\n\ngvDebugList = {}\n\nfunction strAppend(buffer, ...)\n  for i = 1, select('#',...) do\n    local strval = select(i,...)\n    table.insert(buffer, strval)\n  end\nend\n\nlocal lastprint = \"\"\nfunction debugp(str)\n    if str and string.len(str) > 2 and str ~= lastprint then\n        system.print(\"tilt: \" .. str)\n        system.logInfo(\"tilt: \" .. str)\n        lastprint = str\n    end\n    if #gvDebugList > 10 then\n        table.remove(gvDebugList, 1)\n    end\n    strAppend(gvDebugList, str)\nend\n\n\nif not gvSystemHasStarted then\n\n    -- Internal variables\n    gvStartOK = false\n    gvTicker = 0\n\tgvUpdateScreens = false\n    \n\tgvNoTilt = 1.0 --export\n    gvHullWidth = 28 --export\n    gvHullLength = 28 --export\n    displayHUD=true--export: Show screen on HUD\n\n    \n    gvAltitudeFront = 0\n    gvTiltFront = 0\n    gvAltitudeBack = 0\n    gvTiltBack = 0\n    gvAltitudeRight = 0\n    gvTiltRight = 0\n    gvAltitudeLeft = 0\n    gvTiltLeft = 0\n\tgvRollPlanet = 0\n\tgvPitchPlanet = 0\n    gvSystemScreenVisible = false\n\n\n    debugp(\"system.start\")\n    max = 999999999\n    rads90 = 90 * constants.deg2rad\n    rads10 = 10 * constants.deg2rad\n    rads001 = 0.01 * constants.deg2rad\n    axisz = vec3.new(0,0,1)\n    axisy = vec3.new(0,1,0)\n    axisx = vec3.new(1,0,0)\n\ngvPageHeader = [[<html>\n<head>\n<meta charset=\"utf-8\">\n<title>Stats</title>\n<style type=\"text/css\">\n.du-data {\n    font-size: 8vh;\n    color: white;\n\twidth: 100%\n\theight: 100%\n}\n.idle {\n    text-align: center;\n    padding-top: 45vh;\n}\n.du-table {\n    margin: 1%;\n}\n.du-table tr:nth-child(even) {\n\tbackground-color: #111;\n}\n.du-table tr:nth-child(odd) {\n\tbackground-color: #222;\n}\n.du-table th {\n\tcolor: white;\n\tbackground-color: black;\n    width:250px;\n}\n.du-table td {\n    border: 1px solid coral;\n\tposition: relative;\n    padding-right: 4px;\n}\n.du-table td small{\n    font-size: 4vh;\n\tposition: absolute;\nright: 0;\n\tz-index: 2;\n\tcolor: yellow;\n}\n\n.du-bar:after,.du-bar:before {content:\"\";display:table;clear:both}\n.du-bar {padding:0.01em 0px; background: repeating-linear-gradient(\n  to right,\n  transparent ,\n  transparent 17px,\n  #666 17px,\n  #666 20px\n);}\n.du-progress {padding: 4px 0 4px 0;}\n.du-blue,.du-hover-blue:hover{color:#fff!important;background-color:#2150b0!important}\n.du-cyan,.du-hover-cyan:hover{color:#000!important;background-color:#00a0c4!important}\n.du-indigo,.du-hover-indigo:hover{color:#fff!important;background-color:#3021a0!important}\n.du-orange,.du-hover-deep-orange:hover{color:#fff!important;background-color:#c05722!important}\n.du-red,.du-hover-red:hover{color:#fff!important;background-color:#b03020!important}\n.du-teal,.du-hover-teal:hover{color:#fff!important;background-color:#005050!important}\n.du-yellow,.du-hover-yellow:hover{color:#fff!important;background-color:#a08020!important}\n.du-white,.du-hover-white:hover{color:#000!important;background-color:#fff!important}\n.du-black,.du-hover-black:hover{color:#fff!important;background-color:#000!important}\n.du-grey,.du-hover-grey:hover,.du-gray,.du-hover-gray:hover{color:#000!important;background-color:#9e9e9e!important}\n.du-light-grey,.du-hover-light-grey:hover,.du-light-gray,.du-hover-light-gray:hover{color:#000!important;background-color:#f1f1f1!important}\n.du-dark-grey,.du-hover-dark-grey:hover,.du-dark-gray,.du-hover-dark-gray:hover{color:#fff!important;background-color:#414141!important}\n.b {\n  background: #b7de01;\n  box-shadow: 0px 5px #687e00;\n  color: blue;\n  cursor: pointer;\n  border-radius: 3px;\n  text-align: center;\n}\n.n {}\n.ar {text-align:right; padding: 0 8px 0 0;}\n.ac {text-align:center; padding: 0 8px 0 0;}\n.h {color: green; }\n.s {background-color:yellow; }\n.e {background-color:red; }\n.l {background-color:green; }\n.d {background-color:gray !important; }\n.dislike {color: yellow; font-size: 7vh;}\n.hint {color: palegreen; font-size: 7vh;}\n.du-free-panel {\n\tposition: fixed;\n\tdisplay: block;\n\tmargin: 0;\n\tpadding: 0;\n\tbox-sizing: border-box;\n\tborder: 0;\n  \tfont-size: 0.7vw;\n}\n.du-hud {position:absolute;left:5vw;top:20vh;width:20vw;height:20vh;}\n</style>\n</head>\n<body>\n]]\n\ngvPageTrailer = [[</body></html>]]\ngvScreenHeader = [[<div class=\"du-data\">]]\ngvHudHeader = [[<div class=\"du-free-panel du-hud\">]]\ngvDivHeader = [[<table class=\"du-table\">]]\n\ngvDivTrailer = [[</table>]]\ngvScreenTrailer = [[</div>]]\ngvHudTrailer = [[</div>]]\n\n    \n    gvSystemHasStarted = true\nend\n\nfunction isNaN(v) \n    return type(v) == \"number\" and v ~= v \nend\n\nfunction planeAngle(vect, to, plane, right, decimals)\n  \n  if not decimals then\n    decimals = 0.001\n  end\n  if vect:angle_between(plane) < rads001 or (math.pi - vect:angle_between(plane)) < rads001 then\n    return nil\n  end\n  local flatVect = vect:project_on_plane(plane)\n  local angle = flatVect:angle_between(to)\n  local rightAngle = flatVect:angle_between(right)\n  if rightAngle > rads90 then\n    angle = -angle\n  end\n  if not angle or isNaN(angle) then\n    return nil\n  end\n  return utils.round(angle*constants.rad2deg, decimals)\nend\n\nfunction meterStr(distance)\n    if not distance then\n        return \"\"\n    end\n    if distance < 0 then\n        return \"--\"\n    end\n\n    local units = \"m\"\n    if distance > 20000000 then\n        distance = distance / 1000000\n        units = \"M\"\n    elseif distance > 20000 then\n        distance = distance / 1000\n        units = \"K\"\n    end\n    local distanceStr = format(\"%1.1f%s\", distance, units)\n\treturn distanceStr\nend\n    \nfunction degreeStr(degs)\n    if not degs then\n        return \"--\"\n    end\n    local units = \"&deg;\"\n    local degsStr = format(\"%1.1f%s\", degs, units)\n\treturn degsStr\nend\n    \n\n\n\nfunction tiltScreen() \n    local page = gvDivHeader\n\n\tlocal tiltNameFront = math.abs(gvTiltFront) < gvNoTilt and \"--\" or gvTiltFront > 0 and \"right\" or \"left\"\n\tlocal tiltNameBack = math.abs(gvTiltBack) < gvNoTilt and \"--\" or gvTiltBack > 0 and \"right\" or \"left\"\n\tlocal tiltNameRight = math.abs(gvTiltRight) < gvNoTilt and \"--\" or gvTiltRight > 0 and \"back\" or \"frwd\"\n\tlocal tiltNameLeft = math.abs(gvTiltLeft) < gvNoTilt and \"--\" or gvTiltLeft > 0 and \"back\" or \"frwd\"\n\tlocal tiltNamePitch = math.abs(gvPitchPlanet) < gvNoTilt and \"--\" or gvPitchPlanet > 0 and \"frwd\" or \"back\"\n\tlocal tiltNameRoll = math.abs(gvRollPlanet) < gvNoTilt and \"--\" or gvRollPlanet > 0 and \"right\" or \"left\"\n\n\n\n\n\tif gvAltitudeFront > 0 then\n      page = page ..  [[\n        <tr><th width=30%>Edge</th><th>Tilt</th><th>To</th><th>Dist</th></tr>]] ..\n        [[<tr><td>]] .. \"Front\" .. [[</td><td>]] .. degreeStr(gvTiltFront) .. [[</td><td>]] .. tiltNameFront .. [[</td><td>]] .. meterStr(gvAltitudeFront) .. [[</td></tr>]] ..\n        [[<tr><td>]] .. \"Back\" .. [[</td><td>]] .. degreeStr(gvTiltBack) .. [[</td><td>]] .. tiltNameBack .. [[</td><td>]] .. meterStr(gvAltitudeBack) .. [[</td></tr>]] ..\n        [[<tr><td>]] .. \"Right\" .. [[</td><td>]] .. degreeStr(gvTiltRight) .. [[</td><td>]] .. tiltNameRight .. [[</td><td>]] .. meterStr(gvAltitudeRight) .. [[</td></tr>]] ..\n        [[<tr><td>]] .. \"Left\" .. [[</td><td>]] .. degreeStr(gvTiltLeft) .. [[</td><td>]] .. tiltNameLeft .. [[</td><td>]] .. meterStr(gvAltitudeLeft) .. [[</td></tr>]] ..\n        [[<tr><td>]] .. \"Pitch\" .. [[</td><td>]] .. degreeStr(-gvPitchPlanet) .. [[</td><td>]] .. tiltNamePitch .. [[</td><td>]] .. meterStr((gvAltitudeRight + gvAltitudeLeft) / 2) .. [[</td></tr>]] ..\n        [[<tr><td>]] .. \"Roll\" .. [[</td><td>]] .. degreeStr(gvRollPlanet) .. [[</td><td>]] .. tiltNameRoll .. [[</td><td>]] .. meterStr((gvAltitudeBack + gvAltitudeFront) / 2) .. [[</td></tr>]] ..\n\n\n    \tgvDivTrailer\n    else\n      page = [[<div class=\"du-data idle\">Not close to ground</div>]]\n    end\n\treturn page, {}, (gvAltitudeFront > 0 and gvAltitudeFront < 50)    \nend\n\nfunction tickTilt()\n    gvTicker = gvTicker + 1\n    \n    local updateFreq = (gvAltitudeFront > 0 and gvAltitudeFront < 100) and 5 or 20\n\n\tif (gvTicker % updateFreq) == 0 then\n        gvAltitudeFront = 0\n        gvAltitudeBack = 0\n        gvAltitudeRight = 0\n        gvAltitudeLeft = 0\n        gvTiltFront = 0\n        gvTiltBack = 0\n        gvTiltRight = 0\n        gvTiltLeft = 0\n\n    local cwp = vec3(core.getConstructWorldPos())\n    local vertical = -vec3(core.getWorldGravity())\n    local wg = vec3(core.getWorldGravity())\n    local forward = vec3(core.getConstructWorldOrientationForward())\n    local right = vec3(core.getConstructWorldOrientationRight())\n    local up = vec3(core.getConstructWorldOrientationUp())\n    local horizonForward = forward:project_on_plane(vertical):normalize()\n    local horizonRight = right:project_on_plane(vertical):normalize()\n\n    local pitchPlanet = -planeAngle(forward, horizonForward, horizonRight, vertical, 0.1) or 0\n    local rollPlanet = -planeAngle(right, horizonRight, horizonForward, vertical, 0.1) or 0\n\n        local altitudeFR = telefr.getDistance()\n        local altitudeFL = telefl.getDistance()\n        local altitudeBR = telebr.getDistance()\n        local altitudeBL = telebl.getDistance()\n\n        --debugp(\"FR \" .. meterStr(altitudeFR) .. \",BR \" .. meterStr(altitudeBR) .. \",FL \" .. meterStr(altitudeFL) .. \",BL \" .. meterStr(altitudeBL) .. \" .\")\n        if altitudeFR and altitudeFR >= 0 and altitudeFL and altitudeFL >= 0 then\n\t        gvAltitudeFront = (altitudeFR + altitudeFL) / 2\n\t\t\tlocal vect = vec3.new(gvHullWidth, 0, altitudeFR - altitudeFL)\n            local sign = axisz:angle_between(vect) < rads90 and -1 or 1\n    \t    gvTiltFront = (axisx:angle_between(vect) * constants.rad2deg * sign) - rollPlanet\n            --debugp(\"Front A \" .. meterStr(gvAltitudeFront) .. \",T \" .. gvTiltFront .. \",T \" .. degreeStr(gvTiltFront) .. \" .\")\n        end\n        if altitudeBR and altitudeBR >= 0 and altitudeBL and altitudeBL >= 0 then\n\t        gvAltitudeBack = (altitudeBR + altitudeBL) / 2\n\t\t\tlocal vect = vec3.new(gvHullWidth, 0, altitudeBR - altitudeBL)\n            local sign = axisz:angle_between(vect) < rads90 and -1 or 1\n    \t    gvTiltBack = (axisx:angle_between(vect) * constants.rad2deg * sign) - rollPlanet\n        end\n\n        if altitudeFR and altitudeFR >= 0 and altitudeBR and altitudeBR >= 0 then\n\t        gvAltitudeRight = (altitudeFR + altitudeBR) / 2\n\t\t\tlocal vect = vec3.new(0, gvHullLength, altitudeFR - altitudeBR)\n            local sign = axisz:angle_between(vect) < rads90 and -1 or 1\n    \t    gvTiltRight = (axisy:angle_between(vect) * constants.rad2deg * sign) - pitchPlanet\n        end\n\n        if altitudeFL and altitudeFL >= 0 and altitudeBL and altitudeBL >= 0 then\n\t        gvAltitudeLeft = (altitudeFL + altitudeBL) / 2\n\t\t\tlocal vect = vec3.new(0, gvHullLength, altitudeFL - altitudeBL)\n            local sign = axisz:angle_between(vect) < rads90 and -1 or 1\n    \t    gvTiltLeft = (axisy:angle_between(vect) * constants.rad2deg * sign) - pitchPlanet\n        end\n\t\tgvRollPlanet = rollPlanet\n\t\tgvPitchPlanet = pitchPlanet\n        \n    \tgvUpdateScreens = true\n    end\nend\n\n--\n-- End of tilt script snippet\n",
+			"filter": {
+				"args": [],
+				"signature": "start()",
+				"slotKey": -2
+			},
+			"key": "6"
+		}
+	],
+	"methods": [],
+	"events": []
+}

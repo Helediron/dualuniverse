@@ -1,0 +1,841 @@
+---------------------------------------------------------------------------------
+--follower pet script, replace system, start
+---------------------
+-- The code is compatible with DU A3.1 .
+-- 
+-- Simple script to control a pet. This is intended for fun and education. 
+--
+-- Features:
+-- - The pet keeps looking towards you. If it was moving, it stops and turns.
+-- - When closer than 5 meters it freezes itself. Asimov's robot rule 1.
+-- - When closer than 10 meters it idles. After awhile it sits down.
+-- - When further than 10 meters away it moves towards the owner.
+-- - When seeing an obstacle in front of itself it tries randomly to move around.
+-- - The pet shows a small info widget about its state.
+--
+-- This is not a smart pet. It's the bare-bones minimum implemetation. 
+--
+-- Limitations:
+-- - This WILL do stupid things and will continue until shut down or runs
+--     out of fuel
+-- - The pet ignores vertical dimension.
+-- - Having only one telemeter to see is very limiting.
+-- - Collision avoidance is simplest possible. 
+-- 
+-- INSTRUCTIONS (assuming atmosphere):
+-- Build a pet as a hovership. 
+-- Install remote controller.
+-- Install hover engine as usual.
+-- Install fuel tank as usual.
+-- Install adjustors as usual.
+-- Install atmo brake(s) as usual.
+-- Install four atmo engines shooting back, forward, right, and left. 
+--   You can even skip left-, right-and forward-shooting engines, 
+--   if you don't need obstacle avoiding. But if you leave them out
+--   the pet will just stare the obstacle forever.
+-- The engine shooting right should be tagged as "strafeleft". 
+--   (right click, this element, tags)
+-- The engine shooting left should be tagged as "straferight".
+-- Install a telemeter or vbooster pointing forward and link it to RC and 
+--   name the link "telefwd".
+-- Note: If the status screen shows obstable permanently *beyond* 100 
+--   meters, check your links!
+-- Install a telemeter or vbooster pointing down and link it to RC and 
+--   name the link "teledown".
+-- In system, remove all actionstart, actionloop, and actionstop events, 
+--   all of them. Leave only update and flush into system slot.
+-- Below are script snippets. The first comment line describes how the 
+--   snippet should be installed.
+-- - "Replace" means you have to first delete whatever code there is.
+-- - "Append" means that leave whatever code there already is and paste 
+--     new code after the existing code.
+-- - "Add new" means you need to create a new event into either system 
+--     or unit. Then select the type, e.g. tick. If there is value in
+--     parenthesis like tick(follower), type that value "follower"
+--     next to the type "tick".
+---------------------------------------------------------------------------------
+
+pitchInput = 0
+rollInput = 0
+yawInput = 0
+brakeInput = 0
+
+-- end follower pet script
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- follower pet script, change marked places in system, flush
+-- - Flush exported parameters are not exported.
+-- - Changed "final inputs"
+-- - autoNavigationAcceleration modification to disable engines when onGround
+---------------------------------------------------------------------------------
+
+-- constants: use 'myvar = defaultValue --export: description' to expose the variable in context menu
+---------------------------------------------------------------------------------
+-- follower pet script, changed all --export: to --Xexport: to hide them from parameters
+local pitchSpeedFactor = 0.8 --Xexport: This factor will increase/decrease the player input along the pitch axis<br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01
+local yawSpeedFactor =  1 --Xexport: This factor will increase/decrease the player input along the yaw axis<br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01
+local rollSpeedFactor = 1.5 --Xexport: This factor will increase/decrease the player input along the roll axis<br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01
+               
+local brakeSpeedFactor = 3 --Xexport: When braking, this factor will increase the brake force by brakeSpeedFactor * velocity<br>Valid values: Superior or equal to 0.01
+local brakeFlatFactor = 1 --Xexport: When braking, this factor will increase the brake force by a flat brakeFlatFactor * velocity direction><br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01
+
+local autoRoll = true --Xexport: [Only in atmosphere]<br>When the pilot stops rolling,  flight model will try to get back to horizontal (no roll)
+local autoRollFactor = 2 --Xexport: [Only in atmosphere]<br>When autoRoll is engaged, this factor will increase to strength of the roll back to 0<br>Valid values: Superior or equal to 0.01
+
+local turnAssist = false --Xexport: [Only in atmosphere]<br>When the pilot is rolling, the flight model will try to add yaw and pitch to make the construct turn better<br>The flight model will start by adding more yaw the more horizontal the construct is and more pitch the more vertical it is
+local turnAssistFactor = 2 --Xexport: [Only in atmosphere]<br>This factor will increase/decrease the turnAssist effect<br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01
+
+local torqueFactor = 2 -- Force factor applied to reach rotationSpeed<br>(higher value may be unstable)<br>Valid values: Superior or equal to 0.01                             
+
+-- validate params
+pitchSpeedFactor = math.max(pitchSpeedFactor, 0.01)
+yawSpeedFactor = math.max(yawSpeedFactor, 0.01)
+rollSpeedFactor = math.max(rollSpeedFactor, 0.01)
+torqueFactor = math.max(torqueFactor, 0.01)
+brakeSpeedFactor = math.max(brakeSpeedFactor, 0.01)
+brakeFlatFactor = math.max(brakeFlatFactor, 0.01)
+autoRollFactor = math.max(autoRollFactor, 0.01)
+turnAssistFactor = math.max(turnAssistFactor, 0.01)
+
+-- final inputs
+---------------------------------------------------------------------------------
+-- follower pet script, changed
+local finalPitchInput = pitchInput or 0 --+ system.getControlDeviceForwardInput()
+local finalRollInput = rollInput or 0 --+ system.getControlDeviceYawInput()
+local finalYawInput = gvYawInput or 0 --yawInput - system.getControlDeviceLeftRightInput()
+local finalBrakeInput = brakeInput
+---------------------------------------------------------------------------------
+
+               
+-- Axis
+local worldVertical = vec3(core.getWorldVertical()) -- along gravity
+local constructUp = vec3(core.getConstructWorldOrientationUp())
+local constructForward = vec3(core.getConstructWorldOrientationForward())
+local constructRight = vec3(core.getConstructWorldOrientationRight())
+local constructVelocity = vec3(core.getWorldVelocity())
+local constructVelocityDir = vec3(core.getWorldVelocity()):normalize()
+local currentRollDeg = getRoll(worldVertical, constructForward, constructRight)
+local currentRollDegAbs = math.abs(currentRollDeg)
+local currentRollDegSign = utils.sign(currentRollDeg)
+
+-- Rotation
+local constructAngularVelocity = vec3(core.getWorldAngularVelocity())
+local targetAngularVelocity = finalPitchInput * pitchSpeedFactor * constructRight 
+                                + finalRollInput * rollSpeedFactor * constructForward
+                                + finalYawInput * yawSpeedFactor * constructUp
+              
+-- In atmosphere?
+if worldVertical:len() > 0.01 and unit.getAtmosphereDensity() > 0.0 then
+    local autoRollRollThreshold = 1.0
+    -- autoRoll on AND currentRollDeg is big enough AND player is not rolling
+    if autoRoll == true and currentRollDegAbs > autoRollRollThreshold and finalRollInput == 0 then
+        local targetRollDeg = utils.clamp(0,currentRollDegAbs-30, currentRollDegAbs+30);  -- we go back to 0 within a certain limit
+        if (rollPID == nil) then 
+            rollPID = pid.new(autoRollFactor * 0.01, 0, autoRollFactor * 0.1) -- magic number tweaked to have a default factor in the 1-10 range
+        end
+        rollPID:inject(targetRollDeg - currentRollDeg)
+        local autoRollInput = rollPID:get()
+        
+        targetAngularVelocity = targetAngularVelocity + autoRollInput * constructForward
+    end 
+    local turnAssistRollThreshold = 20.0
+    -- turnAssist AND currentRollDeg is big enough AND player is not pitching or yawing
+    if turnAssist == true and currentRollDegAbs > turnAssistRollThreshold and finalPitchInput == 0 and finalYawInput == 0 then
+        local rollToPitchFactor = turnAssistFactor * 0.1 -- magic number tweaked to have a default factor in the 1-10 range
+        local rollToYawFactor = turnAssistFactor * 0.025 -- magic number tweaked to have a default factor in the 1-10 range
+        
+        -- rescale (turnAssistRollThreshold -> 180) to (0 -> 180)
+        local rescaleRollDegAbs = ((currentRollDegAbs - turnAssistRollThreshold) / (180 - turnAssistRollThreshold)) * 180
+        local rollVerticalRatio = 0
+        if rescaleRollDegAbs < 90 then
+            rollVerticalRatio = rescaleRollDegAbs / 90    
+        elseif rescaleRollDegAbs < 180 then
+            rollVerticalRatio = (180 - rescaleRollDegAbs) / 90   
+        end
+        
+        rollVerticalRatio = rollVerticalRatio * rollVerticalRatio
+        
+        local turnAssistYawInput = - currentRollDegSign * rollToYawFactor * (1.0 - rollVerticalRatio)
+        local turnAssistPitchInput = rollToPitchFactor * rollVerticalRatio    
+                                
+        targetAngularVelocity = targetAngularVelocity 
+                            + turnAssistPitchInput * constructRight 
+                            + turnAssistYawInput * constructUp
+    end
+end
+
+-- Engine commands
+local keepCollinearity = 1 -- for easier reading
+local dontKeepCollinearity = 0 -- for easier reading
+local tolerancePercentToSkipOtherPriorities = 1 -- if we are within this tolerance (in%), we don't go to the next priorities
+
+-- Rotation
+local angularAcceleration = torqueFactor * (targetAngularVelocity - constructAngularVelocity)
+local airAcceleration = vec3(core.getWorldAirFrictionAngularAcceleration())
+angularAcceleration = angularAcceleration - airAcceleration -- Try to compensate air friction                                            
+Nav:setEngineTorqueCommand('torque', angularAcceleration, keepCollinearity, 'airfoil', '', '', tolerancePercentToSkipOtherPriorities)
+
+-- Brakes
+local brakeAcceleration = -finalBrakeInput * (brakeSpeedFactor * constructVelocity + brakeFlatFactor * constructVelocityDir)
+Nav:setEngineForceCommand('brake', brakeAcceleration)
+
+-- AutoNavigation regroups all the axis command by 'TargetSpeed'
+local autoNavigationEngineTags = ''
+local autoNavigationAcceleration = vec3()
+local autoNavigationUseBrake = false
+
+-- Longitudinal Translation
+local longitudinalEngineTags = 'thrust analog longitudinal'
+local longitudinalCommandType = Nav.axisCommandManager:getAxisCommandType(axisCommandId.longitudinal)
+if (longitudinalCommandType == axisCommandType.byThrottle) then
+    local longitudinalAcceleration = Nav.axisCommandManager:composeAxisAccelerationFromThrottle(longitudinalEngineTags,axisCommandId.longitudinal)
+    Nav:setEngineForceCommand(longitudinalEngineTags, longitudinalAcceleration, keepCollinearity)           
+elseif  (longitudinalCommandType == axisCommandType.byTargetSpeed) then
+    local longitudinalAcceleration = Nav.axisCommandManager:composeAxisAccelerationFromTargetSpeed(axisCommandId.longitudinal)
+    autoNavigationEngineTags = autoNavigationEngineTags .. ' , ' .. longitudinalEngineTags
+    autoNavigationAcceleration = autoNavigationAcceleration + longitudinalAcceleration
+    if (Nav.axisCommandManager:getTargetSpeed(axisCommandId.longitudinal) == 0 or -- we want to stop
+        Nav.axisCommandManager:getCurrentToTargetDeltaSpeed(axisCommandId.longitudinal) < - Nav.axisCommandManager:getTargetSpeedCurrentStep(axisCommandId.longitudinal) * 0.5) -- if the longitudinal velocity would need some braking   
+    then
+        autoNavigationUseBrake = true
+    end
+    
+end
+
+-- Lateral Translation
+local lateralStrafeEngineTags = 'thrust analog lateral'
+local lateralCommandType = Nav.axisCommandManager:getAxisCommandType(axisCommandId.lateral)
+if (lateralCommandType == axisCommandType.byThrottle) then
+    local lateralStrafeAcceleration =  Nav.axisCommandManager:composeAxisAccelerationFromThrottle(lateralStrafeEngineTags,axisCommandId.lateral)
+    Nav:setEngineForceCommand(lateralStrafeEngineTags, lateralStrafeAcceleration, keepCollinearity)                
+elseif  (lateralCommandType == axisCommandType.byTargetSpeed) then
+    local lateralAcceleration = Nav.axisCommandManager:composeAxisAccelerationFromTargetSpeed(axisCommandId.lateral)
+    autoNavigationEngineTags = autoNavigationEngineTags .. ' , ' .. lateralStrafeEngineTags
+    autoNavigationAcceleration = autoNavigationAcceleration + lateralAcceleration
+end
+
+-- Vertical Translation
+local verticalStrafeEngineTags = 'thrust analog vertical'
+local verticalCommandType = Nav.axisCommandManager:getAxisCommandType(axisCommandId.vertical)
+if (verticalCommandType == axisCommandType.byThrottle) then
+    local verticalStrafeAcceleration = Nav.axisCommandManager:composeAxisAccelerationFromThrottle(verticalStrafeEngineTags,axisCommandId.vertical)
+    Nav:setEngineForceCommand(verticalStrafeEngineTags, verticalStrafeAcceleration, keepCollinearity, 'airfoil', 'ground', '', tolerancePercentToSkipOtherPriorities)
+elseif  (verticalCommandType == axisCommandType.byTargetSpeed) then
+    local verticalAcceleration = Nav.axisCommandManager:composeAxisAccelerationFromTargetSpeed(axisCommandId.vertical)
+    autoNavigationEngineTags = autoNavigationEngineTags .. ' , ' .. verticalStrafeEngineTags
+    autoNavigationAcceleration = autoNavigationAcceleration + verticalAcceleration
+end
+
+---------------------------------------------------------------------------------
+-- follower pet script, added
+if gvOnGround == 1 then
+  autoNavigationAcceleration = vec3()
+  Nav:setEngineForceCommand(autoNavigationEngineTags .. ', brake', autoNavigationAcceleration, dontKeepCollinearity, '', '', '', tolerancePercentToSkipOtherPriorities)
+end
+---------------------------------------------------------------------------------
+
+
+
+-- Auto Navigation (Cruise Control)
+if (autoNavigationAcceleration:len() > constants.epsilon) then               
+    if (brakeInput ~= 0 or autoNavigationUseBrake or math.abs(constructVelocityDir:dot(constructForward)) < 0.95)  -- if the velocity is not properly aligned with the forward
+    then
+        autoNavigationEngineTags = autoNavigationEngineTags .. ', brake'
+    end
+    Nav:setEngineForceCommand(autoNavigationEngineTags, autoNavigationAcceleration, dontKeepCollinearity, '', '', '', tolerancePercentToSkipOtherPriorities)
+end
+
+-- Rockets
+Nav:setBoosterCommand('rocket_engine')
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+-- follower script, replace system, update
+-- If you don't want the little status panel visible, leave this away.
+--
+if gvUnitInitialized then
+  --Nav:update()
+  --Nav.axisCommandManager:setMasterMode(unit.getControlMasterModeId())
+  setLongSpeed(speedKmh)
+
+  if gvTicker % 10 == 0 then
+    -- Update screen once per every 20th tick(follower) call = 2 seconds
+    local str = "<div>"
+    str = str .. SetScreenFollower()
+    str = str .. "</div>"
+    system.setScreen(str)
+        
+  end
+end
+-- end follower script
+---------------------------------------------------------------------------------    
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+--follower pet script, add system, actionstart(antigravity)
+---------------------
+gvRandomMode = not gvRandomMode
+gvStartPosition = vec3(core.getConstructWorldPos())
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+--follower pet script, replace unit, start
+---------------------
+gvTicker = 0
+-- Debug helpers
+showDebug = false --export
+local lastprint = ""
+gvDebugList = {}
+-- Fast string gluer
+function strAppend(buffer, ...)
+  for i = 1, select('#',...) do
+    local strval = select(i,...)
+    table.insert(buffer, strval)
+  end
+end
+
+-- Print to debug
+function debugp(...)
+  local buffer = {}
+  local tag = ""
+  table.insert(buffer, "pet:")
+  for i = 1, select('#',...) do
+    local strval = select(i,...) or "nil"
+    if i > 1 then
+      table.insert(buffer, " ")
+    else
+      tag = strval
+    end
+    table.insert(buffer, tostring(strval))
+  end
+  table.insert(buffer, ".")
+
+  local str = table.concat(buffer)
+  if showDebug and str and string.len(str) > 2 and tag ~= lastprint then
+    system.print(str)
+    system.logInfo(str)
+    lastprint = tag
+  end
+  if #gvDebugList > 10 then
+    table.remove(gvDebugList, 1)
+  end
+  strAppend(gvDebugList, str)
+end
+
+gvDefaultFloatDistance = 2.5 --export
+gvExtraLiftWhenMoving = 1.5 --export
+gvWonderingArea = 100 --export
+gvWonderingTime = 15 --export
+gvTooClose = 7 --export
+gvYawPID = pid.new(1, 0, 5)
+gvDownObstacle = 0
+gvYawInput = 0
+gvFloatDistance = gvDefaultFloatDistance
+gvRandomMode = false --export
+gvStartPosition = vec3(core.getConstructWorldPos())
+gvRandomPosition = gvStartPosition
+gvOwnerLocalPos = vec3()
+gvRandomStartTicker = -500
+math.randomseed (system.getTime() + gvStartPosition:len())
+
+gvOwnerYaw = vec3(0,0,0)
+gvOwnerAngle = 0
+gvOwnerDistance = 0
+gvVelocity = 0
+speedKmh = 0
+speedKmhPrevious = 0
+gvTurning = 0
+gvStoppedTick = 0
+gvMovingTick = 0
+gvAvoidTick = 0
+gvStopped = 1
+gvOnGround = 1
+gvComeDownNow = 0
+gvFwdObstacle = 0
+gvAvoiding = 0
+gvAvoidUntil = 0
+gvYawDamping = 0.02
+targetAverage = 0
+targetAverageIndex = 1
+targetAverageSize = 40
+targetAverageTable = {}
+for i = 1, targetAverageSize do
+  table.insert(targetAverageTable, 0)
+end
+
+speedAverage = 0
+speedAverageIndex = 1
+speedAverageSize = 40
+speedAverageTable = {}
+for i = 1, speedAverageSize do
+  table.insert(speedAverageTable, 0)
+end
+
+-- Release brakes a bit later.
+brakeInput = 1
+
+Nav = Navigator.new(system, core, unit)
+Nav.axisCommandManager:setupCustomTargetSpeedRanges(axisCommandId.longitudinal, {2, 10, 50, 100})
+Nav.axisCommandManager:setTargetGroundAltitude(0.5)
+
+unit.hide()
+
+-- Get individual axis controllers
+gvCmdLong =  Nav.axisCommandManager.axisCommands[axisCommandId.longitudinal]
+gvCmdSide =  Nav.axisCommandManager.axisCommands[axisCommandId.lateral]
+gvCmdVert =  Nav.axisCommandManager.axisCommands[axisCommandId.vertical]
+Nav.axisCommandManager:setMasterMode(axisCommandType.byTargetSpeed)
+
+--if unit.isRemoteControlled() then
+--  system.freeze(1)
+--end
+
+-- Start the tick(follower) function ten times per second.
+self.setTimer("follower", 0.1)
+
+-- Show the SCREEN widget. If you don't want the little status panel visible, 
+-- comment out the following line.
+system.showScreen(1)
+
+debugp("Started")
+
+-- Function to generate html fragment for SCREEN widget about follower peting.
+function SetScreenFollower()
+    local page = {}
+    strAppend(page, [[
+<style type="text/css">
+.screen_widget_wrapper .widget_header {display: none;}
+.du-header {color:black; background-color:white; width:200px; height:30px;}
+</style>
+<div class="du-header">
+<div style="padding:4px; font-size: 16px; text-align:center;">PET STATUS</div>
+</div>
+]])
+    -- gvOwnerLocalPos
+    --gvAvoiding
+    strAppend(page, "<div><table>")
+    strAppend(page, "<tr><td>Angle:</td><td>", string.format("%4.1f", gvOwnerAngle * constants.rad2deg), " d</td>")
+    strAppend(page, "<td>Owner:</td><td>", string.format("%.0f", gvOwnerLocalPos.x), 
+	  "/", string.format("%.0f", gvOwnerLocalPos.y), "/", string.format("%.0f", gvOwnerLocalPos.z), 
+	  "</td></tr>")
+
+    strAppend(page, "<tr><td>Dist:</td><td>", string.format("%4.1f", gvOwnerDistance), "m</td>")
+    strAppend(page, "<td>Obstacle:</td><td>", string.format("%4.1f", gvFwdObstacle), "m</td></tr>")
+
+    strAppend(page, "<tr><td>Speed:</td><td>", string.format("%4.1f", gvVelocity), "km/h</td>")
+    strAppend(page, "<td>Target:</td><td>", string.format("%4.1f", speedKmh), "km/h</td></tr>")
+
+    strAppend(page, "<tr><td>Average:</td><td>", string.format("%4.1f", speedAverage), "km/h</td>")
+    strAppend(page, "<td>Target:</td><td>", string.format("%4.1f", targetAverage), "km/h</td></tr>")
+
+
+    strAppend(page, "<tr><td>Floats:</td><td>", string.format("%4.1f", gvDownObstacle), "m</td>")
+    strAppend(page, "<td>Avoiding:</td><td>", ((gvAvoiding == 1) and "left" or (gvAvoiding == -1) and "right" or "no"), "</td></tr>")
+
+    strAppend(page, "<tr><td colspan=2>")
+    if unit.getAtmosphereDensity() < 0.1 then
+        strAppend(page, "need AIR! ")
+    end
+    if gvComeDownNow == 1 then
+        strAppend(page, "Kneeling. ")
+    elseif gvStopped == 1 then
+        strAppend(page, "Idle. ")
+    end
+    if brakeInput > 0 then
+        strAppend(page, "Braking. ")
+    end
+    if gvOnGround == 1 then
+        strAppend(page, "On ground. ")
+    end
+
+    strAppend(page, "</td><td colspan=2>", gvRandomMode and "Random" or "Follower", " Ctrl+G toggles</td>")    
+    
+    strAppend(page, "</td></tr></table></div>")
+    --
+    return table.concat(page)
+end
+
+function setLongSpeed(speedKmh)
+  if speedKmh ~= speedKmhPrevious then
+    --debugp("New speed", speedKmh)
+    gvCmdLong:setCommandByTargetSpeed(speedKmh)
+    speedKmhPrevious = speedKmh
+  end
+end
+
+function setSideSpeed(speedKmh)
+  --debugp("New sidespeed", speedKmh)
+  gvCmdSide:setCommandByTargetSpeed(speedKmh)
+end
+
+gvUnitInitialized = true
+-- end follower pet script
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+--- replace unit.stop()
+------------------
+self.stopTimer("follower")
+system.setScreen("")
+system.showScreen(0)    
+
+--
+-- End of follower pet script snippet
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+---------------------------------------------------------------------------------
+--follower pet script, add new event tick(follower)
+--
+-- This tick function gets executed repeatedly ten times per second.
+-- The little intelligence the pet has is all here.
+--
+gvTicker = gvTicker + 1
+
+if gvTicker < 50 then
+  -- First seconds
+  if gvTicker < 30 then
+    return
+  end
+  if brakeInput > 0 then
+    brakeInput = brakeInput - 0.1
+  end
+  if brakeInput <= 0.01 then
+    brakeInput = 0
+  end
+end
+
+local worldVertical = vec3(core.getWorldVertical())
+local worldUp = vec3(core.getConstructWorldOrientationUp())
+local worldForward = vec3(core.getConstructWorldOrientationForward())
+local worldRight = vec3(core.getConstructWorldOrientationRight())
+local worldVelocity = vec3(core.getWorldVelocity())
+local worldVelocityDir = vec3(core.getWorldVelocity()):normalize()
+local worldAngularVelocity = vec3(core.getWorldAngularVelocity())
+local yawVelocity = worldAngularVelocity:dot(worldUp)
+local horizonForward = worldForward:project_on_plane(worldVertical)
+local horizonRight = worldRight:project_on_plane(worldVertical)
+
+
+local velocityVec = worldVelocity:project_on_plane(worldUp)
+gvVelocity = velocityVec:len() * 3.6
+gvForwardSpeed = velocityVec:project_on(horizonForward):len()
+gvRightSpeed = velocityVec:project_on(horizonRight):len()
+
+local degs90 = 90 * constants.deg2rad
+local degs60 = 60 * constants.deg2rad
+local degs5 = 5 * constants.deg2rad
+
+local pitchCurrent = worldForward:angle_between(horizonForward)
+if worldForward:angle_between(worldVertical) > degs90 then
+  pitchCurrent = -pitchCurrent
+end
+if math.abs(pitchCurrent) > degs5 and gvOnGround == 0 then
+  pitchInput = utils.clamp(pitchCurrent, -1, 1)
+  gvAvoiding = 1
+else
+  pitchInput = 0
+end
+
+local rollCurrent = worldRight:angle_between(horizonRight)
+if worldRight:angle_between(worldVertical) > degs90 then
+  rollCurrent = -rollCurrent
+end
+if math.abs(rollCurrent) > degs5 and gvOnGround == 0 then
+  rollInput = utils.clamp(-rollCurrent, -1, 1)
+  gvAvoiding = rollCurrent > 0 and -1 or 1
+  setSideSpeed(0)
+else
+  rollInput = 0
+end
+if math.abs(pitchCurrent) > degs60 or math.abs(rollCurrent) > degs60 then
+  debugp("I've fallen", pitchCurrent, rollCurrent)
+  unit.exit()
+end
+
+-- Detect obstacle ahead
+gvFwdObstacle = 102
+if telefwd  ~= nil then
+  -- Make a safe call, in case telemeter is linked incorrectly.
+  local ok,distance = pcall(telefwd.getDistance, telefwd)
+  if not ok then
+    ok,distance = pcall(telefwd.distance, telefwd)
+  end
+  if ok and distance ~= -1 then
+    gvFwdObstacle = utils.round(distance, 0.1)
+  else
+    gvFwdObstacle = 101
+  end
+end
+
+gvDownObstacle = 102
+if teledown  ~= nil then
+  -- Make a safe call, in case telemeter is linked incorrectly.
+  local ok,distance = pcall(teledown.getDistance, teledown)
+  if not ok then
+      ok,distance = pcall(teledown.distance, teledown)
+  end
+  if ok and distance ~= -1 then
+      gvDownObstacle = utils.round(distance, 0.1)
+  else
+      gvDownObstacle = 101
+  end
+end
+
+--
+-- Calculate where owner is. 
+-- Simplify physics and locations to horizontal angle, distance, and speed.
+local cwg = vec3(core.getConstructWorldPos())
+realOwnerLocalPos = vec3(unit.getMasterPlayerRelativePosition())
+
+if gvRandomMode and realOwnerLocalPos:len() > 10 then
+  if (gvTicker - gvRandomStartTicker) > gvWonderingTime * 10 then
+   gvRandomStartTicker = gvTicker
+   local dist = gvStartPosition:dist(cwg)
+   local area = gvWonderingArea * 0.5 
+   if dist > area then
+     gvRandomPosition = gvStartPosition 
+     debugp("Random, return to start")
+   else
+     local randomVect = vec3(math.random (-area, area), math.random (-area, area), math.random (-area, area)):project_on_plane(worldVertical)
+     gvRandomPosition = gvRandomPosition + randomVect            
+     debugp("Random, new pos", randomVect:len())
+   end
+  end
+  gvOwnerLocalPos = gvRandomPosition - cwg
+else
+  gvOwnerLocalPos = realOwnerLocalPos
+end
+gvOwnerYaw = gvOwnerLocalPos:project_on_plane(worldUp)
+gvOwnerAngle= gvOwnerYaw:angle_between(worldForward)
+local rightAngle= gvOwnerYaw:angle_between(worldRight)
+if (rightAngle * constants.rad2deg) < 90 then
+  gvOwnerAngle = -gvOwnerAngle
+end
+gvOwnerDistance = gvOwnerYaw:len()
+
+gvYawPID:inject(gvOwnerAngle)
+gvYawInput = gvYawPID:get()
+
+local speedCheck = 1
+if targetAverage > 1.5 and speedKmh > 5 then
+  speedCheck = speedAverage / targetAverage
+end
+speedKmh = 0
+
+
+if gvOwnerDistance < 6 then
+  debugp("state: very close")
+  -- Freeze when close to owner
+  if gvTurning ~= 0 then
+    yawInput = 0
+    gvTurning = 0        
+  end
+  gvComeDownNow = 1
+  if gvTicker > 50 then
+    brakeInput = gvVelocity > 0.5 and 1 or 0
+  end
+else
+  -- Decide movement
+    -- Not too close
+    gvComeDownNow = 0
+    if gvTicker > 50 and gvTicker > gvAvoidTick + 20 and brakeInput == 1 then
+      -- Reset brakes after stopping in front of obstacle
+      debugp("Obstacle brakes released")
+      brakeInput = 0
+    end
+
+    if gvOwnerDistance < 10 then
+      debugp("state: idle")
+      -- We are idling close by owner. Land if nothing happens for awhile.
+      gvAvoiding = 0
+      if gvStopped == 0 then
+        gvStopped = 1
+        gvFloatOffset = 0
+        gvStoppedTick = gvTicker
+      end
+    else
+      if gvStopped == 1 then
+        debugp("Getting up")
+        -- Can't turn if landed. Get up.
+        gvStopped = 0
+        gvFloatDistance = Nav.axisCommandManager.targetGroundAltitude
+        gvMovingTick = gvTicker
+      end
+
+      if gvAvoiding == 0 then
+        if gvFwdObstacle < gvTooClose  or speedCheck < 0.3 then
+          -- Something is in front of us or blocking us. 
+          -- Select randomly either left or right detour.
+          -- Pick randomly left or right.
+          gvAvoiding = gvTicker % 2
+          if gvAvoiding ~= 1 then
+            gvAvoiding = -1
+          end
+          gvAvoidTick = gvTicker
+          if speedCheck < 0.3 then
+            -- We are stuck but don't know how
+            gvAvoidUntil = gvTicker + 50
+          end
+          if gvFwdObstacle < gvTooClose then
+            brakeInput = 1
+          end
+          debugp("Obstacle ahead", gvFwdObstacle, speedCheck, gvAvoiding)
+        else
+          gvFloatOffset = 0
+
+          -- Decide movement towards owner
+          local absAngle = math.abs(gvOwnerAngle) * constants.rad2deg
+          if  absAngle > 5 then
+            -- Rotate left/right until looking at owner.
+            speedKmh = 2
+            debugp("state: turning", absAngle)
+          elseif gvDownObstacle > 1 then
+            if gvTicker > gvMovingTick + 50 then
+              speedKmh = utils.clamp((gvOwnerDistance - 10), 2, 30)
+            else
+              if gvTicker > gvMovingTick + 20 then
+                setSideSpeed(0)
+              end
+              speedKmh = 5
+            end
+            if  gvVelocity > 1 then
+              gvFloatOffset = utils.clamp(gvVelocity * 0.3, 0, gvExtraLiftWhenMoving)
+            end
+            debugp("state: moving", speedKmh, gvFloatOffset)
+          end
+        end
+      else
+        -- We are avoiding an obstacle.
+        speedKmh = 0
+        if  gvFwdObstacle > gvTooClose * 1.2 + 2 and gvVelocity > 1 and gvTicker > gvAvoidUntil then
+          -- We got rid of the obstacle.
+          gvAvoiding = 0
+          gvMovingTick = gvTicker
+          debugp("Obstacle avoided")
+        else
+          debugp("Obstacle avoiding", gvAvoiding)
+          -- Continue random avoidance. 
+          -- This pet isn't very smart and has only one eye...
+          if gvAvoiding == 1 then
+            setSideSpeed(-5)
+            if gvTicker % 60 == 0 and gvRightSpeed > -1 then
+              gvAvoiding = -1
+              debugp("Obstacle avoiding, switch to right", gvAvoiding, gvRightSpeed)
+            end
+          elseif gvAvoiding == -1 then
+            setSideSpeed(5)
+            if gvTicker % 57 == 0 and gvRightSpeed < 1 then
+              gvAvoiding = 1
+              debugp("Obstacle avoiding, switch to left", gvAvoiding, gvRightSpeed)
+            end
+          end
+          if gvTicker % 70 == 0 then
+            -- Try backing up too.
+            setSideSpeed(0)
+            speedKmh = -5
+              debugp("Obstacle avoiding, backing", gvAvoiding)        
+          end
+          if gvTicker % 87 == 0 then
+            gvFloatOffset = 8
+		  speedKmh = 5
+            debugp("Obstacle avoiding, jumping", gvAvoiding)
+          end
+          if gvTicker % 167 == 0 then
+            gvFloatOffset = 0
+            debugp("Obstacle avoiding, puzzled", gvAvoiding)
+          end
+        end
+      end
+    end
+end
+
+
+if gvStopped == 1 or gvComeDownNow == 1 then
+  if Nav.axisCommandManager.targetGroundAltitude > 0 and 
+   (gvTicker - gvStoppedTick) > 100 or gvComeDownNow == 1 then
+    gvFloatDistance = gvFloatDistance - 0.1
+    Nav.axisCommandManager:setTargetGroundAltitude(gvFloatDistance)
+    debugp("Descending", gvFloatDistance)
+  else
+    gvOnGround = 1
+  end
+else
+  gvOnGround = 0
+  local floatDistance = gvDefaultFloatDistance + gvFloatOffset
+  local diff = floatDistance - Nav.axisCommandManager.targetGroundAltitude
+  if math.abs(diff) > 0.2 then
+    gvFloatDistance = gvFloatDistance + utils.clamp(diff, -0.1, 0.1)
+    Nav.axisCommandManager:setTargetGroundAltitude(gvFloatDistance)
+    debugp("Ascending", gvFloatDistance, diff)
+  end
+end
+
+--[[
+if speedKmh == 0 and gvOnGround == 0 and math.abs(gvVelocity) > 1 then
+  brakeInput = 1
+  --debugp("Braking")
+elseif brakeInput > 0 then
+  brakeInput = 0
+  --debugp("Stopping braking")
+end
+--]]
+
+speedAverageTable[speedAverageIndex] = gvVelocity
+speedAverageIndex = speedAverageIndex + 1
+if speedAverageIndex > speedAverageSize then
+  speedAverageIndex = 1
+end
+local sum = 0
+for i = 1, speedAverageSize do
+  sum = sum + speedAverageTable[i]
+end
+speedAverage = sum / speedAverageSize
+
+targetAverageTable[targetAverageIndex] = speedKmh
+targetAverageIndex = targetAverageIndex + 1
+if targetAverageIndex > targetAverageSize then
+  targetAverageIndex = 1
+end
+local sum = 0
+for i = 1, targetAverageSize do
+  sum = sum + targetAverageTable[i]
+end
+targetAverage = sum / targetAverageSize
+
+-- end follower pet script
+---------------------------------------------------------------------------------
+
+
+
+
