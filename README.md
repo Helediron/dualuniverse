@@ -8,6 +8,13 @@ These scripts are not actively maintained, but a historic collection from dark t
 
 Manage antigravity generator with a "touchscreen". Poke the screen with your mouse, *not* with F.
 
+Installation instructions:
+
+- Install ship elements, programming board and screen.
+- Copy the whole file content to clipboard, then right-click programming board, "Advanced, Paste Lua configuration from clipboard".
+- Link programming board to screen, core and antigravity generator. The core and generator show a warning that event will be wiped. That is okay and answer "YES".
+- Turn on screen and programming board
+
 ## FollowerPet
 
 "The Moose". A simple follower pet which either follows you or wanders randomly in a small area spreading disorder. Press antigravity to switch mode. Extremely stupid being. It will try to hump your ship. Tweak with Lua parameters.
