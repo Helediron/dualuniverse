@@ -4,6 +4,8 @@ This is collection of scripts from DU Alpha. These were last time tested in Alph
 
 These scripts are not actively maintained, but a historic collection from dark times we don't (cannot) speak about.
 
+Beta note: Right click a used programming board and select "remove dynamic properties" before reusing it.
+
 ## AntiGravityController
 
 Manage antigravity generator with a "touchscreen". Poke the screen with your mouse, *not* with F.
