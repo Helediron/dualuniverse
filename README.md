@@ -40,6 +40,7 @@ Installation instructions:
 
 - Alt+J toggles the HUD visibility. There is also a Lua parameter for initial visibility.
 - NQ changed antigravity key from Ctrl+G to Alt+G. Updated HUD accordingly.
+- NQ added distance function to hover engines, so hover engines can be used to measure distances too.
 
 
 Features:
