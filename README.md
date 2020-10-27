@@ -24,7 +24,7 @@ Manage antigravity generator with a "touchscreen". Poke the screen with your mou
 Installation instructions:
 
 - Install ship elements, programming board and screen.
-- Copy the whole file content to clipboard, then right-click programming board, "Advanced, Paste Lua configuration from clipboard".
+- Copy the whole JSON file content to clipboard, then right-click programming board, "Advanced, Paste Lua configuration from clipboard".
 - Link programming board to screen, core and antigravity generator. The core and generator show a warning that event will be wiped. That is okay and answer "YES".
 - Turn on screen and programming board
 
@@ -34,7 +34,13 @@ Installation instructions:
 
 
 - The new version wants two telemeters/vboosters, one pointing forward (telefws) and one down (teledown).
-- The pet has only one key input: Ctrl+G toggles between follow and wandering mode.
+- The pet has only one key input: Alt+G toggles between follow and wandering mode.
+
+2020-10-27 new:
+
+- Alt+J toggles the HUD visibility. There is also a Lua parameter for initial visibility.
+- NQ changed antigravity key from Ctrl+G to Alt+G. Updated HUD accordingly.
+
 
 Features:
 
