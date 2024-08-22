@@ -1,0 +1,11 @@
+[Unit]
+Description=My Dual Universe Server
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash -c "/home/server/start_mydu.sh"
+ExecStop=/bin/bash -c "/home/server/stop_mydu.sh"
+
+[Install]
+WantedBy=multi-user.target

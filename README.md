@@ -1,5 +1,10 @@
 # dualuniverse
 
+2024: Added MyDU Linux installation and MyDU-Autostart systemd service scripts to autostart MyDU.
+
+
+Old:
+
 This is collection of scripts from DU Alpha. These were last time tested in Alpha 3.1, and some even earlier.
 
 These scripts are not actively maintained, but a historic collection from dark times we don't (cannot) speak about.
