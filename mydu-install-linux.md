@@ -279,7 +279,7 @@ Note that starting of the service might take few minutes.
 - Start the game client.
 - Log in with your **Novaquark** credentials.
 - On the next, MYDU SERVERS screen enter
-  - Server URL: <https://mydu.example.com:44443>
+  - Server URL: <https://mydu.example.com:44443> (drop :44443 away if using default port.)
   - Login: username you just created
   - Password: password you just created for the user.
 - Click JOIN.
