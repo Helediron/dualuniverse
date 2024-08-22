@@ -61,7 +61,7 @@ There are multiple Cloudflared DDNS containers available. Just pick one which sa
 
 Configure the DNS with Cloudflare Dashboard. Select your domain name and then DNS:
 
-- Add **A** (type A that is - an IPv4 **A**ddress) record mydu.example.com and set this to point to some IP address. Your public IP is fine. 
+- Add **A** (type A that is - an IPv4 **A**ddress) record mydu.example.com and set this to point to some IP address. Your public IP is fine.
 - Add **CNAME** records:
   - du-orleans.example.com -> mydu.example.com
   - du-queueing.example.com: not needed due to later change, which uses mydu hostname. If you skip the renaming (in config/domains.json), create the CNAME record -> mydu.example.com .
@@ -162,7 +162,6 @@ This defines the top-level domain name, handles all du-something hostnames, exce
 }
 ```
 
-
 - In your router, add port forwardings: 80 and 443 to same ports, to 10.10.10.40 .
 Note that the port 80 forwarding is temporary, needed only during the certificate generation.
 - Run SSL certification generation:
@@ -217,7 +216,7 @@ Note: certificates expire after every three months. Run this command then to ren
 
 ## https port forwarding
 
-Note: using alternative port is optional but it reduces alot of intrusion attempts. When you open port 80 and/or 443 into your home network, all bots see that your IP is a web server and start poking around. 
+Note: using alternative port is optional but it reduces alot of intrusion attempts. When you open port 80 and/or 443 into your home network, all bots see that your IP is a web server and start poking around.
 
 The port 9210 is gRPC service in mydu. It's not http traffic and challenging to get proxied.
 
@@ -262,7 +261,6 @@ The output should look like this:
   public_url: https://du-voxel.example.com:44443
 ```
 
-
 ## Test the server
 
 - Start the service:
@@ -271,17 +269,17 @@ The output should look like this:
 sudo ./scripts/up.sh
 ```
 
-Note that starting of the service might take few minutes. 
+Note that starting of the service might take few minutes.
 
 - Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com/> . Login as admin/admin. Now is great time to change the password for user "admin" . Click Users on left, enter new password for admin and click Update Password.
 
-## Test the game.
+## Test the game
 
 - In backoffice, create a new user.
-- Start the game client. 
+- Start the game client.
 - Log in with your **Novaquark** credentials.
 - On the next, MYDU SERVERS screen enter
-  - Server URL: https://mydu.example.com:44443
+  - Server URL: <https://mydu.example.com:44443>
   - Login: username you just created
   - Password: password you just created for the user.
 - Click JOIN.
