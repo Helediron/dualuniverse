@@ -2,7 +2,6 @@
 
 2024: Added MyDU Linux installation and MyDU-Autostart systemd service scripts to autostart MyDU.
 
-
 Old:
 
 This is collection of scripts from DU Alpha. These were last time tested in Alpha 3.1, and some even earlier.
@@ -37,7 +36,6 @@ Installation instructions:
 
 "The Moose". A simple follower pet which either follows you or wanders randomly in a small area spreading disorder. Press antigravity to switch mode. Extremely stupid being. It will try to hump your ship. Tweak with Lua parameters.
 
-
 - The new version wants two telemeters/vboosters, one pointing forward (telefws) and one down (teledown).
 - The pet has only one key input: Alt+G toggles between follow and wandering mode.
 
@@ -46,7 +44,6 @@ Installation instructions:
 - Alt+J toggles the HUD visibility. There is also a Lua parameter for initial visibility.
 - NQ changed antigravity key from Ctrl+G to Alt+G. Updated HUD accordingly.
 - NQ added distance function to hover engines, so hover engines can be used to measure distances too.
-
 
 Features:
 
@@ -101,7 +98,7 @@ The script has configurable parameters. Change them by right-clicking the progra
 - showDebug: should be kept false. If true, it writes some debug info to chat/notifications.
 - useSlotName: If true then the name on display is the link's name. You need to edit the Lua script to be able to change them.
 - useElementName: If true then the name on display is the one set by right-clicking a tank in build mode, Actions for this element, Rename element.
-- Note: if both useSlotName and useElementName are false, then the name on display is <tank type>-<tank size>, e.g. "space-S". This is the default.
+- Note: if both useSlotName and useElementName are false, then the name on display is \<tank type\>-\<tank size\>, e.g. "space-S". This is the default.
 - sortBySize: if true, tanks are sorted by size. If false, display order is uncertain.
 - displayHUD: if true, the tank display is also visible on game display for the player who started the programming board. The HUD display is only visible initially and then when fuel is actually consumed.
 
