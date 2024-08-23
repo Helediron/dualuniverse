@@ -162,6 +162,19 @@ This defines the top-level domain name, handles all du-something hostnames, exce
 }
 ```
 
+If you have wrapped the backoffice behind Cloudflare tunnel, then they actually provice certificate. Tunnelling also blocks MyDU's certificate generation for du-backoffice hostname. To get around that, add temporarily a fake hostname before certificate generation and remove the change afterwards.
+
+```json
+{
+  "tld": "example.com",
+  "prefix": "du-",
+  "services": {
+      "queueing": "mydu",
+      "backoffice": "du-bo"
+  }
+}
+```
+
 - In your router, add port forwardings: 80 and 443 to same ports, to 10.10.10.40 .
 Note that the port 80 forwarding is temporary, needed only during the certificate generation.
 - Run SSL certification generation:
@@ -271,11 +284,13 @@ sudo ./scripts/up.sh
 
 Note that starting of the service might take few minutes.
 
-- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com/> . Login as admin/admin. Now is great time to change the password for user "admin" . Click Users on left, enter new password for admin and click Update Password.
+- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com/> . Login as admin/admin.
+- Now is great time to change the password for user "admin" . Click Users on left, enter new password for admin and click Update Password.
+- Create your first player account. Under Insert an user enter Login, Display Name and Password and click Create user. On right select "game" and click Add Role.
+- Save also now the item hierarchy for later customization. Click "Item Hierarchy" on the left and then Download from top. This will download items.yaml file. Save it.
 
 ## Test the game
 
-- In backoffice, create a new user.
 - Start the game client.
 - Log in with your **Novaquark** credentials.
 - On the next, MYDU SERVERS screen enter
