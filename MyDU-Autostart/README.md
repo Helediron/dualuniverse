@@ -19,7 +19,6 @@ wget https://raw.githubusercontent.com/Helediron/dualuniverse/master/MyDU-Autost
 chmod +x *mydu.sh
 ```
 
-
 - Make systemd to recognize the new service:
 
 ```sh
