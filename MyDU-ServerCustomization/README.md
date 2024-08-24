@@ -1,6 +1,8 @@
-#Customize MyDU item hierarchy.
+# Customize MyDU item hierarchy
 
 **This is a test. There is no guarantee that this works.**
+
+Script: items-changes.ps1
 
 The script changes values in the item hierarchy. It takes a default export from backoffice, modifies it and writes out the modified version.
 
@@ -18,3 +20,8 @@ winget install --id MikeFarah.yq
 - Click Download on top. Save the items.yaml file next to the script.
 - Run the script.
 - Select the items-changed.yaml in backoffice on top and click Update from File.
+
+Script: FixBlueprints.ps1
+
+Updates blueprint files and changes CreatorId to 2 (Aphelia) and all playerId's to 0.
+Pass an argument, e.g. *.json to scan something else than \*.blueprint .
