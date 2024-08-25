@@ -29,18 +29,5 @@ done
 docker compose --ansi never --progress plain down
 sleep 5
 
-#./scripts/up.sh
-docker-compose --ansi never --progress plain up -d kafka postgres mongo rabbitmq redis zookeeper smtp --detach 2>&1 | tee -a logs/startup.log
-sleep 10
-
-docker compose --ansi never --progress plain up -d voxel market constructs backoffice queueing --detach 2>&1 | tee -a logs/startup.log
-sleep 10
-
-docker compose --ansi never --progress plain up -d front node orleans --detach 2>&1 | tee -a logs/startup.log
-sleep 10
-
-sleep 10
-docker-compose --ansi never --progress plain up -d nodemanager nginx prometheus logrotate --detach 2>&1 | tee -a logs/startup.log
-
-sleep 10
+./scripts/up.sh
 exit 0

@@ -5,6 +5,5 @@ if [ "$EUID" -ne 0 ]
   exit 1
 fi
 
-#./scripts/down.sh
-docker compose --ansi never --progress plain down
+./scripts/down.sh
 exit 0
