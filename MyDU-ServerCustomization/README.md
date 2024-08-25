@@ -2,6 +2,10 @@
 
 **This is a test. There is no guarantee that this works.**
 
+## Script: up.sh
+
+Improved **scripts/up.sh** script. It waits and checks each container they really have started by trying to connect a port in each container. Starting order is also slightly changed to minimize container panics.
+
 ## Script: FixBlueprints.ps1
 
 Updates blueprint files and changes CreatorId to 2 (Aphelia) and all playerId's to 0.
