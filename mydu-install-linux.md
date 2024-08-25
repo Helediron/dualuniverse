@@ -67,18 +67,8 @@ Configure the DNS with Cloudflare Dashboard. Select your domain name and then DN
   - du-queueing.example.com: not needed due to later change, which uses mydu hostname. If you skip the renaming (in config/domains.json), create the CNAME record -> mydu.example.com .
   - du-usercontent.example.com -> mydu.example.com
   - du-voxel.example.com -> mydu.example.com
-  - du-backoffice.example.com: don't create if using Cloudflare tunnelling. If not using tunnelling, create the CNAME record -> mydu.example.com .
+  - du-backoffice.example.com: -> mydu.example.com
 - Set up Cloudflare DDNS to update mydu.example.com .
-
-## Set up Cloudflare tunnelling for backoffice
-
-This is an optional step. If not doing it, make sure you create the CNAME for du-backoffice in previous chapter.
-
-- Create a Zero Trust tunnel in Cloudflare dashboard. Select Docker. Save the token.
-- In the tunnel configuration, public hostnames, set up proxied address du-backoffice.example.com to https, 10.10.10.40 . Turn on Additional Settings -> TLS -> "No TLS verify".
-- Install Cloudflared Docker container (a plain version, not DDNS) in your local network and set the token to one you got for the tunnel.
-
-Note that this is a minimum setup which already increases the security of the backoffice site. The tunnel effectively blocks direct connections to backoffice and forces traffic through Cloudflare firewall. You can further tighten security with Cloudflare tools.
 
 ## Set up MyDU service
 
@@ -94,7 +84,6 @@ sudo docker run --rm -it -v ./mydu:/output novaquark/dual-server-fastinstall:lat
 ```sh
 sudo chown -R $USER:$USER mydu 
 cd mydu
-cp config/dual.yaml config/dual.yaml.ori
 python3 scripts/config-set-domain.py config/dual.yaml http://mydu.example.com 10.10.10.40
 mkdir prometheus-data && sudo chmod a+w prometheus-data
 ```
@@ -117,10 +106,10 @@ sudo docker ps
 
 All containers should be running steadily. In first few minutes you may see some restarting but it should settle soon. If not, check logfiles under ./logs folder.
 
-- Set admin password to admin:
+- Set admin password to admin123. Don't use any special characters in the password (the shell may modify them):
 
 ```sh
-sudo scripts/admin-set-password.sh admin admin
+sudo scripts/admin-set-password.sh admin admin123
 ```
 
 You can change the password later to a longer one via backoffice website.
@@ -162,19 +151,6 @@ This defines the top-level domain name, handles all du-something hostnames, exce
 }
 ```
 
-If you have wrapped the backoffice behind Cloudflare tunnel, then they actually provice certificate. Tunnelling also blocks MyDU's certificate generation for du-backoffice hostname. To get around that, add temporarily a fake hostname before certificate generation and remove the change afterwards.
-
-```json
-{
-  "tld": "example.com",
-  "prefix": "du-",
-  "services": {
-      "queueing": "mydu",
-      "backoffice": "du-bo"
-  }
-}
-```
-
 - In your router, add port forwardings: 80 and 443 to same ports, to 10.10.10.40 .
 Note that the port 80 forwarding is temporary, needed only during the certificate generation.
 - Run SSL certification generation:
@@ -198,27 +174,17 @@ sudo ./scripts/ssl.sh --config-nginx
 nano docker-compose.yml
 ```
 
-Find section with line "nginx:", then section "ports:" under it and make it look like this:
+Find section with line "nginx:", then section "ports:" uncomment the port 443 line:
 
 ```yaml
 ...
     nginx:
-        image: nginx
-        volumes:
-          - ./nginx:/etc/nginx
-          - ./data:/data   # need access to user_content
-          - ./letsencrypt:/etc/letsencrypt
+        ...
         ports:
-          #- "9630:9630"   # queueing service
-          #- "10111:10111" # orleans (construct elements)
-          #- "8081:8081"   # voxels
-          #- "12000:12000" # backoffice
-          #- "10000:10000" # servers user_content
+          ...
           - "443:443"     # <-- enable this for SSL mode
 ...
 ```
-
-Comment out current port mappings and uncomment the last, 443 line.
 
 Note: certificates expire after every three months. Run this command then to renew them:
 
@@ -266,12 +232,59 @@ grep example.com config/dual.yaml
 The output should look like this:
 
 ```txt
-  public_url: https://du-backoffice.example.com
+  public_url: https://du-backoffice.example.com:44443
   item_bank_url: https://mydu.example.com:44443/public/itembank/serialized
   orleans_public_url: https://du-orleans.example.com:44443
   user_content_cdn: https://du-usercontent.example.com:44443
   voxel_public_url: https://du-voxel.example.com:44443
   public_url: https://du-voxel.example.com:44443
+```
+
+Note that using non-default port leads to a slight bug. Using http or using URL to root causes redirect to an address without the port, which leads to a timeout error. Fix this by editing nginx configuration for backoffice
+
+```sh
+nano nginx/conf.d/backoffice.conf
+```
+
+Edit a line:
+> proxy_set_header Host $host;
+
+and change the $host with explicit host:port value:
+
+```txt
+ proxy_set_header Host du-backoffice.example.com:44443;
+```
+
+## Update hosts
+
+This step mitigates the risk of getting error "Temporary failure in name resolution". Docker *should* handle hosts, but that "temporary failure" has occurred few times. If you never saw the error you can skip this.
+
+```sh
+sudo nano /etc/hosts
+```
+
+Append following content to the end of the file
+
+```txt
+10.5.0.101 prometheus
+10.5.0.200 smtp
+10.5.0.100 nginx
+10.5.0.7 mongo
+10.5.0.8 redis
+10.5.0.9 postgres
+10.5.0.10 rabbitmq
+10.5.0.11 zookeeper
+10.5.0.12 kafka
+10.5.0.5 front
+10.5.0.6 node
+10.5.0.13 orleans
+10.5.0.14 constructs
+10.5.0.15 queueing
+10.5.0.16 voxel
+10.5.0.17 market
+10.5.0.18 backoffice
+10.5.0.19 nodemanager
+10.5.0.20 sandbox
 ```
 
 ## Test the server
@@ -284,7 +297,7 @@ sudo ./scripts/up.sh
 
 Note that starting of the service might take few minutes.
 
-- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com/> . Login as admin/admin.
+- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com:44443> . Login as admin/admin123 .
 - Now is great time to change the password for user "admin" . Click Users on left, enter new password for admin and click Update Password.
 - Create your first player account. Under Insert an user enter Login, Display Name and Password and click Create user. On right select "game" and click Add Role.
 - Save also now the item hierarchy for later customization. Click "Item Hierarchy" on the left and then Download from top. This will download items.yaml file. Save it.
