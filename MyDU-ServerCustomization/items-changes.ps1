@@ -1,3 +1,5 @@
+# THIS IS OBSOLETE. SEE Yaml-Rewriter.ps1
+
 Function modify($rule) {
     $TempFile = Get-Item items-temp.yaml
 	Write-Host $rule, $TempFile.Length
