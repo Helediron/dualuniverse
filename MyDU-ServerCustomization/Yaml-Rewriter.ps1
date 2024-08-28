@@ -9,18 +9,40 @@ function False { return $false }
 
 $keywords = @{}
 $patterns = @{}
+function VerifySectionParameters($filter, $func) {
+  if (!$filter -or $filter.Length -lt 1) {
+    Write-Error "Mising or too short modifier name: $filter ."
+    exit 2
+  }
+  if ($keywords.ContainsKey($filter)) {
+    Write-Error "Duplicate modifier name: $filter ."
+    exit 2
+  }
+  if (!$func) {
+    Write-Error "Missing modifier function: $filter ."
+    exit 2
+  }
+  $funcType = $func.GetType().Name
+  if ($funcType -ne "ScriptBlock") {
+    Write-Error "Modifier function is not a script: $filter ."
+    exit 2
+  }
+}  
+
 function AddSectionModifier($filter, $func) {
+  VerifySectionParameters $filter  $func
   if ($filter -match "[A-Za-z][A-Za-z0-9]*") {
     # Add plain property names into keyword table for direct access.
     $keywords[$filter] = $func
     Write-Output "Added keyword modifier $filter"
   }
   else {
-    Write-Error "Section modifier name <$filter> is not plain YAML property name"
+    Write-Error "Modifier name <$filter> is not plain YAML property name"
   }
 }
 function AddPatternModifier($filter, $func) {
   # Add REGEX to patterns.
+  VerifySectionParameters $filter  $func
   $patterns[$filter] = $func
   Write-Output "Added pattern modifier $filter"
 }
@@ -117,6 +139,12 @@ AddSectionModifier "Part" { param([string]$name, [hashtable]$values)
   
 AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values) 
   $values.calibrationGracePeriodHours = 7200
+  return $values
+}
+
+AddSectionModifier "BaseItem" { param([string]$name, [hashtable]$values) 
+  $values.transferUnitBatchSize = 10
+  $values.transferUnitSpeedFactor = 10
   return $values
 }
 
@@ -274,31 +302,37 @@ foreach ($doc in $yamlDocs) {
               $newValue2 = $null
               if ($newType -eq $oldType) {
                 $newValue2 = $newValue1
-              } else {
+              }
+              else {
                 if ($oldType -eq "Double") {
                   $newValue2 = [Double]$newValue1
-                } elseif ($oldType -eq "Int32") {
+                }
+                elseif ($oldType -eq "Int32") {
                   if ($newType -eq "Double") {
                     # Allow change from int to double when new value has significant decimals
                     $rounded = ([Math]::Round($newValue1, 0))
                     $decimals = 0.0
                     if ($rounded -lt $newValue1 ) {
                       $decimals = $newValue1 - $rounded
-                    } else {
+                    }
+                    else {
                       $decimals = $rounded - $newValue1
                     }
                     if ($decimals -lt 0.000000001) {
                       $newValue2 = [Int32]$rounded
                       Write-Output "    Type change $key2 double to int <$newValue1> to <$newValue2>"
-                    } else {
+                    }
+                    else {
                       $newValue2 = $newValue1
                     }
   
-                  } else {
+                  }
+                  else {
                     $newValue2 = [Int32]$newValue1
                     Write-Output "    Type change $key2 $newType to int <$newValue1> to <$newValue2>"
                   }
-                } else {
+                }
+                else {
                   $newValue2 = $newValue1
                   Write-Output "    Type change $key2 $oldType to $newType <$newValue1> to <$newValue2>"
                 }
@@ -328,14 +362,16 @@ foreach ($doc in $yamlDocs) {
       $newText = ConvertTo-Yaml $modifiedObj
       $newText = $newText -replace ': ""', ": ''"
       $yamlText = $newText
-    } else {
+    }
+    else {
       # No processors found. Keep original
       $yamlText = $doc
     }
     if ($docCount -gt 1) {
       if ($changes -gt 0) {
         Add-Content -Path $OUTFILE "---"
-      } else {
+      }
+      else {
         # Unchanged doc starts with newline
         Add-Content -NoNewline -Path $OUTFILE "---"
       }

@@ -13,23 +13,42 @@ Pass an argument, e.g. *.json to scan something else than \*.blueprint .
 
 ## Script: Generate-Markets.ps1
 
+Note: This script requires programming knowledge.
+
 This script generates prices for all tradeable items in MyDU item hierarchy.
 
 - Download items.yaml .
 - Optionally run Yaml-Rewriter.ps1 .
-- Generate-Markets.ps1
+- Run the script:
+
+```ps
+.\Generate-Markets.ps1 > markets.log
+```
+
+Note: The script generates lots of tracing. The command above directs it to a file markets.log . You should inspect the content afterwards.
+
 - Move file markets.csv to MyDU server.
-- Replace the content in files data/market_orders/*.csv with the content from markets.csv
+- Replace the content in files mydu/data/market_orders/*.csv with the content from markets.csv
 
-The current implementation has a sample generator function which calculates price from item weight, tier and size. The script understands inherited properties in item hierarchy. It only generates price when
+The current implementation has a sample generator function which calculates price from item weight, tier and size. The default implementation generates relatively cheap prices. You can adjust the price by modifying values in $tierTable, $scaleTable, and  $globalMultiplier.
 
-- The item is not a group item (i.e. is nobody's parent).
-- Attribute isTradeable is true (on the item or on any parents.
+The code also makes one item to a money source. It generates buy orders for e.g. iron scrap with huge price. Set $MoneySourceItem to the name of an item ("IronScrap" by default), or change to e.g. "nocheating!" to disable it.
+
+There is also $fixed_pricing function, which just sets all prices to 42. You can use this function just to generate a full table of items
+
+To make your own version, find $sample_pricing function and follow instructions in comments above it.
+
+The script understands inherited properties in item hierarchy. It only generates price when
+
+- The item is not a parent item (it is nobody's parent).
+- Attribute isTradeable is true (the attribute is on the item or inherited from above).
 - Attribute hidden is false or non-existent.
+
+Note: Use PowerShell version 7 to run this script. I don't know how backwards-compatible it is.
 
 ## Script: Yaml-Rewriter.ps1
 
-Note: Simple changes into yaml files, like changing a value of properties, should be pretty straight-forward with this script. But it has parts that require quite a lot of PowerShell knowledge.
+Note: This script requires programming knowledge. Simple changes into yaml files, like changing a value of properties, should be pretty straight-forward with this script. But it has parts that require quite a lot of PowerShell knowledge.
 
 Note: Use PowerShell version 7 to run this script. I don't know how backwards-compatible it is.
 
@@ -41,9 +60,9 @@ Install-Module powershell-yaml
 
 The script reads one YAML file items.yaml (item hierarchy), changes values according to modifier functions, and writes out a modified file items-changed.yaml.
 
-The intention with this script is to allow trying different settings. It always starts from the default export file. If something goes wrong, import the default items.yaml and start again. Add/delete modifications in the script and try again. Also if you need to reinstall the whole server, you have the changes stored in the script, and you can run them again.
+The intention with this script is to make a modified items hierarchy file to allow trying different settings. It always starts from the default export file and writes out a modified version. You should then import it and test. If something goes wrong, import the default items.yaml and start again. Add/delete modifications in the script and try again. Also if you need to reinstall the whole server, you have the changes stored in the script, and you can run them again.
 
-Read the script and make your own copy. The script is a sample what could be done, and you should modify it for your own purposes.
+Read the script and make your own copy. The script is a **sample** what could be done, and you should modify it for your own purposes.
 
 - Set input and output files to $INFILE and $OUTFILE
 - Add/remove AddSectionModifier or AddPatternModifier functions, or modify existing ones.
