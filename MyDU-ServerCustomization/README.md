@@ -6,6 +6,10 @@
 
 Improved **scripts/up.sh** script. It waits and checks each container they really have started by trying to connect a port in each container. Starting order is also slightly changed to minimize container panics.
 
+## Script: admin-seed-markets.sh
+
+Simple script to upload and seed new market orders from data/market_orders . Place it into ./scripts folder and start in MyDU top folder.
+
 ## Script: FixBlueprints.ps1
 
 Updates blueprint files and changes CreatorId to 2 (Aphelia) and all playerId's to 0.
