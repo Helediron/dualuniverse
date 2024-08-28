@@ -46,6 +46,8 @@ The script understands inherited properties in item hierarchy. It only generates
 
 Note: Use PowerShell version 7 to run this script. I don't know how backwards-compatible it is.
 
+Inserting the complete list of market orders wil be a slow operation. It would update nearly two million orders. Use the script admin-seed-markets.sh for updating the orders.
+
 ## Script: Yaml-Rewriter.ps1
 
 Note: This script requires programming knowledge. Simple changes into yaml files, like changing a value of properties, should be pretty straight-forward with this script. But it has parts that require quite a lot of PowerShell knowledge.
