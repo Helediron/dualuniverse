@@ -11,6 +11,22 @@ Improved **scripts/up.sh** script. It waits and checks each container they reall
 Updates blueprint files and changes CreatorId to 2 (Aphelia) and all playerId's to 0.
 Pass an argument, e.g. *.json to scan something else than \*.blueprint .
 
+## Script: Generate-Markets.ps1
+
+This script generates prices for all tradeable items in MyDU item hierarchy.
+
+- Download items.yaml .
+- Optionally run Yaml-Rewriter.ps1 .
+- Generate-Markets.ps1
+- Move file markets.csv to MyDU server.
+- Replace the content in files data/market_orders/*.csv with the content from markets.csv
+
+The current implementation has a sample generator function which calculates price from item weight, tier and size. The script understands inherited properties in item hierarchy. It only generates price when
+
+- The item is not a group item (i.e. is nobody's parent).
+- Attribute isTradeable is true (on the item or on any parents.
+- Attribute hidden is false or non-existent.
+
 ## Script: Yaml-Rewriter.ps1
 
 Note: Simple changes into yaml files, like changing a value of properties, should be pretty straight-forward with this script. But it has parts that require quite a lot of PowerShell knowledge.
