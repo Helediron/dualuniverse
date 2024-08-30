@@ -59,12 +59,17 @@ AddSectionModifier "Character" { param([string]$name, [hashtable]$values)
   $values.talentPointsPerSecond = 100
   $values.nanopackMassMul = 0.001
   $values.nanopackMaxVolume = 400000
-  $values.nanopackMaxSlots = 64
+  $values.nanopackMaxSlots = 100
   $values.defaultWallet = 2000000000.0
   $values.calibrationChargeMax = 100
   $values.calibrationChargeAtStart = 50
   $values.maxConstructs = 100
   $values.orgConstructSlots = 100  
+  return $values
+}
+
+AddSectionModifier "ArkshipModel" { param([string]$name, [hashtable]$values) 
+  $values.displayName = "Arkship on [EU] Nord"
   return $values
 }
 
@@ -84,7 +89,7 @@ AddSectionModifier "FetchConstructConfig" { param([string]$name, [hashtable]$val
   $values.hasTimeLimit = false
   $values.fromPlanetSurface = true
   $values.delay = "60"
-  $values.maxDistance = 4000000
+  $values.maxDistance = 400000000.0
   return $values
 }
 
@@ -120,9 +125,9 @@ AddSectionModifier "TerritoriesConfig" { param([string]$name, [hashtable]$values
   $values.playerTerritoryFeeFactor = 500
   $values.playerTerritoryFeeExponant = 0
   $values.initialExpirationDelayDays = 3
-  $values.maxBalanceInFeeDays = 999
+  $values.maxBalanceInFeeDays = 99999
   $values.requisitionDelayDays = 14
-  $values.upkeepIntervalDays = 999
+  $values.upkeepIntervalDays = 365
   $values.upkeepFee = 500
   return $values
 }
@@ -143,11 +148,42 @@ AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values)
 }
 
 AddSectionModifier "BaseItem" { param([string]$name, [hashtable]$values) 
-  $values.transferUnitBatchSize = 10
-  $values.transferUnitSpeedFactor = 10
+  $values.transferUnitSpeedFactor = 0.01
   return $values
 }
 
+AddPatternModifier "Material" { param([string]$name, [hashtable]$values) 
+  if ($values.transferUnitSpeedFactor) {
+    $values.transferUnitSpeedFactor = $values.transferUnitSpeedFactor / 10
+  }
+  return $values
+}
+
+
+AddSectionModifier "WarpCellStandard" { param([string]$name, [hashtable]$values) 
+  $values.unitMass = 1
+  $values.unitVolume = 2
+  return $values
+}
+
+AddSectionModifier "ItemContainer" { param([string]$name, [hashtable]$values) 
+  $values.nbIndustryPlugIn = 20
+  $values.nbControlPlugOut = 20
+  return $values
+}
+
+AddSectionModifier "ControlUnit" { param([string]$name, [hashtable]$values) 
+  $values.nbControlPlugOut = 20
+  return $values
+}
+
+AddPatternModifier "^(Aileron|Stabilizer|Wing)X.*Large" { param([string]$name, [hashtable]$values) 
+  if ($values.hidden) {
+    $values.hidden = False
+  }
+  return $values
+}
+  
 AddPatternModifier "^AtmosphericVerticalBooster" { param([string]$name, [hashtable]$values) 
   if ($values.parent -and $values.parent -match "^AtmosphericVerticalBooster.*Group") {
     if ($values.maxPower) {
@@ -162,9 +198,6 @@ AddPatternModifier "^AtmosphericVerticalBooster" { param([string]$name, [hashtab
       }
       elseif ($values.level -eq 5) {
         [int]$values.maxPower = $values.maxPower * 10
-      }
-      if ($values.maxAltitude) {
-        $values.maxAltitude = $values.maxAltitude + 20
       }
     }
   }

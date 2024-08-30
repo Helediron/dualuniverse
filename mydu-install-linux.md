@@ -4,7 +4,7 @@ This installation guide uses a Linux virtual server to host the MyDU service pub
 
 I'm using free Cloudflare account and have purchased (as an example) **example.com** domain name from there. You need ability to manage your public DNS domain to create new A and CNAME records.
 
-My local network is using (as an example) address **10.10.10.0/24** . The server will be installed into address (as an example) **10.10.10.40** .
+My local network is using (as an example) address **10.10.10.0/24** . The server will be installed into address (as an example) **10.10.10.40** . My public IP is (as an example) 1.2.3.4 .
 
 It does not matter what virtualization platform you use.
 
@@ -53,7 +53,7 @@ The *voxel_public_url* is the address that the game client uses. It resolves to 
 
 ## Set up Cloudflare dynamic DNS
 
-This step will create required DNS entries for MyDU.
+This step will create required DNS entries for MyDU. Feel free to use other DDNS providers.
 
 Note that Cloudflare is the company and Cloudflared is a widely used tunnelling proxy. The idea is that the proxy connects from inside of your internal network to Cloudflare, and then Cloudflare finds where you are, and can route traffic from outside into your local network via that Cloudflared proxy.
 
@@ -161,12 +161,26 @@ sudo ./scripts/ssl.sh --create-certs
 
 Answer the questions and make sure certificates get generated successfully. The script starts a temporary webserver and the certificate authority will try to connect to your server to verify your domain is valid. If this fails, make sure you did have port 80 correctly forwarded to your server.
 
-- Continue SSL configuration:
+- Continue SSL configuration (The IP address 1.2.3.4 is your public IP address):
 
 ```sh
-sudo ./scripts/ssl.sh --config-dual 10.10.10.40
+sudo ./scripts/ssl.sh --config-dual 1.2.3.4
 sudo ./scripts/ssl.sh --config-nginx
 ```
+
+Check the results:
+
+```sh
+grep external_host config/dual.yaml
+```
+
+The output should look like this:
+
+```txt
+external_host: 1.2.3.4
+```
+
+Note that you cannot use a hostname in external_host - even if it's a DDNS host. There is a bug in DU and services won't start unless it is an IP address.
 
 - Edit file docker-compose.yml and change nginx reverse proxy external ports. All services will use same https incoming port 443. (Note: the reverse proxy combines the services into one incoming port. It sorts out the services by looking server name in http headers.)
 
@@ -212,12 +226,12 @@ If you decide NOT to change default port, add these port forwarders and skip the
 
 If you decide to move away from default, add these port forwarders:
 
-- In your router change port forwardings (port 44443 is an example):
-  - Port 44443 to 443 in 10.10.10.40
+- In your router change port forwardings (port 9211 is an example):
+  - Port 9211 to 443 in 10.10.10.40
   - Port 9210 to 9210 in 10.10.10.40
   - Remove all other port forwarders.
 
-- Edit file config/dual.yaml and change all public URLs by adding :44443 after each hostname EXCEPT don't change the backoffice URL. Search all example.com in the file:
+- Edit file config/dual.yaml and change all public URLs by adding :9211 after each hostname EXCEPT don't change the backoffice URL. Search all example.com in the file:
 
 ```sh
 nano config/dual.yaml
@@ -226,19 +240,21 @@ nano config/dual.yaml
 - After editing check the results:
 
 ```sh
-grep example.com config/dual.yaml
+grep https config/dual.yaml
 ```
 
 The output should look like this:
 
 ```txt
-  public_url: https://du-backoffice.example.com:44443
-  item_bank_url: https://mydu.example.com:44443/public/itembank/serialized
-  orleans_public_url: https://du-orleans.example.com:44443
-  user_content_cdn: https://du-usercontent.example.com:44443
-  voxel_public_url: https://du-voxel.example.com:44443
-  public_url: https://du-voxel.example.com:44443
+  public_url: https://du-backoffice.example.com:9211
+  item_bank_url: https://mydu.example.com:9211/public/itembank/serialized
+  orleans_public_url: https://du-orleans.example.com:9211
+  user_content_cdn: https://du-usercontent.example.com:9211
+  voxel_public_url: https://du-voxel.example.com:9211
+  public_url: https://du-voxel.example.com:9211
 ```
+
+```sh
 
 Note that using non-default port leads to a slight bug. Using http or using URL to root causes redirect to an address without the port, which leads to a timeout error. Fix this by editing nginx configuration for backoffice
 
@@ -252,12 +268,12 @@ Edit a line:
 and change the $host with explicit host:port value:
 
 ```txt
- proxy_set_header Host du-backoffice.example.com:44443;
+ proxy_set_header Host du-backoffice.example.com:9211;
 ```
 
 ## Update hosts
 
-This step mitigates the risk of getting error "Temporary failure in name resolution". Docker *should* handle hosts, but that "temporary failure" has occurred few times. If you never saw the error you can skip this.
+This step mitigates the risk of getting error "Temporary failure in name resolution".
 
 ```sh
 sudo nano /etc/hosts
@@ -297,7 +313,7 @@ sudo ./scripts/up.sh
 
 Note that starting of the service might take few minutes.
 
-- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com:44443> . Login as admin/admin123 .
+- Try the backoffice. If you have VPN, turn it on to "move" yourself out from home network. You might test also with phone by turning first WiFi off. Navigate in browser to <https://du-backoffice.example.com:9211> . Login as admin/admin123. 
 - Now is great time to change the password for user "admin" . Click Users on left, enter new password for admin and click Update Password.
 - Create your first player account. Under Insert an user enter Login, Display Name and Password and click Create user. On right select "game" and click Add Role.
 - Save also now the item hierarchy for later customization. Click "Item Hierarchy" on the left and then Download from top. This will download items.yaml file. Save it.
@@ -307,7 +323,7 @@ Note that starting of the service might take few minutes.
 - Start the game client.
 - Log in with your **Novaquark** credentials.
 - On the next, MYDU SERVERS screen enter
-  - Server URL: <https://mydu.example.com:44443> (drop :44443 away if using default port.)
+  - Server URL: <https://mydu.example.com:9211> (drop :9211 away if using default port.)
   - Login: username you just created
   - Password: password you just created for the user.
 - Click JOIN.
