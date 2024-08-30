@@ -6,6 +6,10 @@
 
 Improved **scripts/up.sh** script. It waits and checks each container they really have started by trying to connect a port in each container. Starting order is also slightly changed to minimize container panics.
 
+## Script: ddns-watcher.sh
+
+This script may be useful if your MyDU installation is behind dynamic DNS name. MyDU requires public IP in its configuration file config/dual.yaml. This script watches if the IP of a hostname changes. It then updates the config file with new IP and restarts MyDU. Let cron run it periodically.
+
 ## Script: admin-seed-markets.sh
 
 Simple script to upload and seed new market orders from data/market_orders . Place it into ./scripts folder and start in MyDU top folder.
