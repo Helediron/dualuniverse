@@ -2,6 +2,8 @@
 
 **This is a test. There is no guarantee that this works.**
 
+**Any "Nord" file is specific to my server. Do NOT use them blindly.**
+
 ## Script: up.sh
 
 Improved **scripts/up.sh** script. It waits and checks each container they really have started by trying to connect a port in each container. Starting order is also slightly changed to minimize container panics.
