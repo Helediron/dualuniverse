@@ -9,7 +9,7 @@ Systemd files to start and stop MyDU automatically when server starts/shutdowns.
 Script to customize MyDU item hierarchy.
 <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization>
 
-Old:
+# Old stuff
 
 This is collection of scripts from DU Alpha. These were last time tested in Alpha 3.1, and some even earlier.
 
