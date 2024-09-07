@@ -190,7 +190,8 @@ BaseShieldConfig:
 ---
 CoherentConfig:
   parent: FeaturesConfig
-  imageCDNList: ["assets.prod.novaquark.com"]
+  imageCDNList:
+  - '*'
 ---
 ConstructCompactionConfig:
   parent: FeaturesConfig
@@ -43341,8 +43342,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 20
   nbControlPlugOut: 20
+  nbIndustryPlugIn: 20
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -50784,7 +50785,7 @@ AtmosphericEngineXtraSmallGroup:
 RocketEngineLarge:
   parent: RocketEngine
   displayName: Rocket Engine
-  subdescription: Large rocket engines can be used to launch very large payloads such as the largest ships or space stations. The optimal construct mass for large rocket engines is 1750000kg.
+  subdescription: Large rocket engines can be used to launch very large payloads such as the largest ships or space stations. The optimal construct mass for large rocket engines is 1750000kg. Max power boosted 2.6 * basic.
   newPlayerDefaultQty: 0
   maxPower: 46800000
   unitMass: 3392.98
@@ -50807,7 +50808,7 @@ RocketEngineLarge:
 RocketEngineMedium:
   parent: RocketEngine
   displayName: Rocket Engine
-  subdescription: Rocket Engines M can be used to launch medium-sized payloads such as ships or large cargo. The optimal construct mass for medium rocket engines is 885000kg.
+  subdescription: Rocket Engines M can be used to launch medium-sized payloads such as ships or large cargo. The optimal construct mass for medium rocket engines is 885000kg. Max power boosted 2.6 * basic.
   newPlayerDefaultQty: 0
   maxPower: 7800000
   unitMass: 680.05
@@ -50829,7 +50830,7 @@ RocketEngineMedium:
 RocketEngineSmall:
   parent: RocketEngine
   displayName: Rocket Engine
-  subdescription: Rocket engines S can be used to launch small payloads such as fighters or light cargo. The optimal construct mass for small rocket engines is 20000kg.
+  subdescription: Rocket engines S can be used to launch small payloads such as fighters or light cargo. The optimal construct mass for small rocket engines is 20000kg. Max power boosted 2.6 * basic.
   newPlayerDefaultQty: 0
   maxPower: 1300000
   unitMass: 223.76
@@ -51635,7 +51636,7 @@ AtmosphericEngineLarge:
 AtmosphericEngineLargeFreight:
   parent: AtmosphericEngineLargeGroup
   displayName: Uncommon Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
   fuelRate: 3.84E-07
@@ -51652,7 +51653,7 @@ AtmosphericEngineLargeFreight:
 AtmosphericEngineLargeFreight3:
   parent: AtmosphericEngineLargeGroup
   displayName: Advanced Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5616000
   fuelRate: 2.88E-07
@@ -51669,7 +51670,7 @@ AtmosphericEngineLargeFreight3:
 AtmosphericEngineLargeFreight4:
   parent: AtmosphericEngineLargeGroup
   displayName: Rare Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 17280000
   fuelRate: 2.16E-07
@@ -51686,7 +51687,7 @@ AtmosphericEngineLargeFreight4:
 AtmosphericEngineLargeFreight5:
   parent: AtmosphericEngineLargeGroup
   displayName: Exotic Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 34560000
   fuelRate: 1.62E-07
@@ -51703,7 +51704,7 @@ AtmosphericEngineLargeFreight5:
 AtmosphericEngineLargeManeuver:
   parent: AtmosphericEngineLargeGroup
   displayName: Uncommon Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
   fuelRate: 3.84E-07
@@ -51720,7 +51721,7 @@ AtmosphericEngineLargeManeuver:
 AtmosphericEngineLargeManeuver3:
   parent: AtmosphericEngineLargeGroup
   displayName: Advanced Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5616000
   fuelRate: 2.88E-07
@@ -51737,7 +51738,7 @@ AtmosphericEngineLargeManeuver3:
 AtmosphericEngineLargeManeuver4:
   parent: AtmosphericEngineLargeGroup
   displayName: Rare Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 17280000
   fuelRate: 2.16E-07
@@ -51754,7 +51755,7 @@ AtmosphericEngineLargeManeuver4:
 AtmosphericEngineLargeManeuver5:
   parent: AtmosphericEngineLargeGroup
   displayName: Exotic Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 34560000
   fuelRate: 1.62E-07
@@ -51771,7 +51772,7 @@ AtmosphericEngineLargeManeuver5:
 AtmosphericEngineLargeMilitary:
   parent: AtmosphericEngineLargeGroup
   displayName: Uncommon Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 3369600
   fuelRate: 6.144E-07
@@ -51788,7 +51789,7 @@ AtmosphericEngineLargeMilitary:
 AtmosphericEngineLargeMilitary3:
   parent: AtmosphericEngineLargeGroup
   displayName: Advanced Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8087040
   fuelRate: 7.373E-07
@@ -51805,7 +51806,7 @@ AtmosphericEngineLargeMilitary3:
 AtmosphericEngineLargeMilitary4:
   parent: AtmosphericEngineLargeGroup
   displayName: Rare Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 29859840
   fuelRate: 8.847E-07
@@ -51822,7 +51823,7 @@ AtmosphericEngineLargeMilitary4:
 AtmosphericEngineLargeMilitary5:
   parent: AtmosphericEngineLargeGroup
   displayName: Exotic Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 71663616
   fuelRate: 1.062E-06
@@ -51839,7 +51840,7 @@ AtmosphericEngineLargeMilitary5:
 AtmosphericEngineLargeSafe:
   parent: AtmosphericEngineLargeGroup
   displayName: Uncommon Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2667600
   fuelRate: 5.12E-07
@@ -51856,7 +51857,7 @@ AtmosphericEngineLargeSafe:
 AtmosphericEngineLargeSafe3:
   parent: AtmosphericEngineLargeGroup
   displayName: Advanced Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5068440
   fuelRate: 5.12E-07
@@ -51873,7 +51874,7 @@ AtmosphericEngineLargeSafe3:
 AtmosphericEngineLargeSafe4:
   parent: AtmosphericEngineLargeGroup
   displayName: Rare Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 14815440
   fuelRate: 5.12E-07
@@ -51890,7 +51891,7 @@ AtmosphericEngineLargeSafe4:
 AtmosphericEngineLargeSafe5:
   parent: AtmosphericEngineLargeGroup
   displayName: Exotic Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 28149328
   fuelRate: 5.12E-07
@@ -51924,7 +51925,7 @@ AtmosphericEngineMedium:
 AtmosphericEngineMediumFreight:
   parent: AtmosphericEngineMediumGroup
   displayName: Uncommon Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
   fuelRate: 4.8E-07
@@ -51941,7 +51942,7 @@ AtmosphericEngineMediumFreight:
 AtmosphericEngineMediumFreight3:
   parent: AtmosphericEngineMediumGroup
   displayName: Advanced Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 936000
   fuelRate: 3.6E-07
@@ -51958,7 +51959,7 @@ AtmosphericEngineMediumFreight3:
 AtmosphericEngineMediumFreight4:
   parent: AtmosphericEngineMediumGroup
   displayName: Rare Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 2880000
   fuelRate: 2.7E-07
@@ -51975,7 +51976,7 @@ AtmosphericEngineMediumFreight4:
 AtmosphericEngineMediumFreight5:
   parent: AtmosphericEngineMediumGroup
   displayName: Exotic Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 5760000
   fuelRate: 2.025E-07
@@ -51992,7 +51993,7 @@ AtmosphericEngineMediumFreight5:
 AtmosphericEngineMediumManeuver:
   parent: AtmosphericEngineMediumGroup
   displayName: Uncommon Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
   fuelRate: 4.8E-07
@@ -52009,7 +52010,7 @@ AtmosphericEngineMediumManeuver:
 AtmosphericEngineMediumManeuver3:
   parent: AtmosphericEngineMediumGroup
   displayName: Advanced Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 936000
   fuelRate: 3.6E-07
@@ -52026,7 +52027,7 @@ AtmosphericEngineMediumManeuver3:
 AtmosphericEngineMediumManeuver4:
   parent: AtmosphericEngineMediumGroup
   displayName: Rare Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 2880000
   fuelRate: 2.7E-07
@@ -52043,7 +52044,7 @@ AtmosphericEngineMediumManeuver4:
 AtmosphericEngineMediumManeuver5:
   parent: AtmosphericEngineMediumGroup
   displayName: Exotic Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 5760000
   fuelRate: 2.025E-07
@@ -52060,7 +52061,7 @@ AtmosphericEngineMediumManeuver5:
 AtmosphericEngineMediumMilitary:
   parent: AtmosphericEngineMediumGroup
   displayName: Uncommon Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 561600
   fuelRate: 7.68E-07
@@ -52077,7 +52078,7 @@ AtmosphericEngineMediumMilitary:
 AtmosphericEngineMediumMilitary3:
   parent: AtmosphericEngineMediumGroup
   displayName: Advanced Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1347840
   fuelRate: 9.216E-07
@@ -52094,7 +52095,7 @@ AtmosphericEngineMediumMilitary3:
 AtmosphericEngineMediumMilitary4:
   parent: AtmosphericEngineMediumGroup
   displayName: Rare Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 4976640
   fuelRate: 1.106E-06
@@ -52111,7 +52112,7 @@ AtmosphericEngineMediumMilitary4:
 AtmosphericEngineMediumMilitary5:
   parent: AtmosphericEngineMediumGroup
   displayName: Exotic Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 11943936
   fuelRate: 1.327E-06
@@ -52128,7 +52129,7 @@ AtmosphericEngineMediumMilitary5:
 AtmosphericEngineMediumSafe:
   parent: AtmosphericEngineMediumGroup
   displayName: Uncommon Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 444600
   fuelRate: 6.4E-07
@@ -52145,7 +52146,7 @@ AtmosphericEngineMediumSafe:
 AtmosphericEngineMediumSafe3:
   parent: AtmosphericEngineMediumGroup
   displayName: Advanced Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 844740
   fuelRate: 6.4E-07
@@ -52162,7 +52163,7 @@ AtmosphericEngineMediumSafe3:
 AtmosphericEngineMediumSafe4:
   parent: AtmosphericEngineMediumGroup
   displayName: Rare Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 2469240
   fuelRate: 6.4E-07
@@ -52179,7 +52180,7 @@ AtmosphericEngineMediumSafe4:
 AtmosphericEngineMediumSafe5:
   parent: AtmosphericEngineMediumGroup
   displayName: Exotic Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 4691552
   fuelRate: 6.4E-07
@@ -52213,7 +52214,7 @@ AtmosphericEngineSmall:
 AtmosphericEngineSmallFreight:
   parent: AtmosphericEngineSmallGroup
   displayName: Uncommon Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
   fuelRate: 6E-07
@@ -52230,7 +52231,7 @@ AtmosphericEngineSmallFreight:
 AtmosphericEngineSmallFreight3:
   parent: AtmosphericEngineSmallGroup
   displayName: Advanced Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 156000
   fuelRate: 4.5E-07
@@ -52247,7 +52248,7 @@ AtmosphericEngineSmallFreight3:
 AtmosphericEngineSmallFreight4:
   parent: AtmosphericEngineSmallGroup
   displayName: Rare Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 480000
   fuelRate: 3.375E-07
@@ -52264,7 +52265,7 @@ AtmosphericEngineSmallFreight4:
 AtmosphericEngineSmallFreight5:
   parent: AtmosphericEngineSmallGroup
   displayName: Exotic Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 960000
   fuelRate: 2.531E-07
@@ -52281,7 +52282,7 @@ AtmosphericEngineSmallFreight5:
 AtmosphericEngineSmallManeuver:
   parent: AtmosphericEngineSmallGroup
   displayName: Uncommon Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
   fuelRate: 6E-07
@@ -52298,7 +52299,7 @@ AtmosphericEngineSmallManeuver:
 AtmosphericEngineSmallManeuver3:
   parent: AtmosphericEngineSmallGroup
   displayName: Advanced Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 156000
   fuelRate: 4.5E-07
@@ -52315,7 +52316,7 @@ AtmosphericEngineSmallManeuver3:
 AtmosphericEngineSmallManeuver4:
   parent: AtmosphericEngineSmallGroup
   displayName: Rare Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 480000
   fuelRate: 3.375E-07
@@ -52332,7 +52333,7 @@ AtmosphericEngineSmallManeuver4:
 AtmosphericEngineSmallManeuver5:
   parent: AtmosphericEngineSmallGroup
   displayName: Exotic Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 960000
   fuelRate: 2.531E-07
@@ -52349,7 +52350,7 @@ AtmosphericEngineSmallManeuver5:
 AtmosphericEngineSmallMilitary:
   parent: AtmosphericEngineSmallGroup
   displayName: Uncommon Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 93600
   fuelRate: 9.6E-07
@@ -52366,7 +52367,7 @@ AtmosphericEngineSmallMilitary:
 AtmosphericEngineSmallMilitary3:
   parent: AtmosphericEngineSmallGroup
   displayName: Advanced Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 224640
   fuelRate: 1.152E-06
@@ -52383,7 +52384,7 @@ AtmosphericEngineSmallMilitary3:
 AtmosphericEngineSmallMilitary4:
   parent: AtmosphericEngineSmallGroup
   displayName: Rare Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 829440
   fuelRate: 1.382E-06
@@ -52400,7 +52401,7 @@ AtmosphericEngineSmallMilitary4:
 AtmosphericEngineSmallMilitary5:
   parent: AtmosphericEngineSmallGroup
   displayName: Exotic Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 1990656
   fuelRate: 1.659E-06
@@ -52417,7 +52418,7 @@ AtmosphericEngineSmallMilitary5:
 AtmosphericEngineSmallSafe:
   parent: AtmosphericEngineSmallGroup
   displayName: Uncommon Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 74100
   fuelRate: 8E-07
@@ -52434,7 +52435,7 @@ AtmosphericEngineSmallSafe:
 AtmosphericEngineSmallSafe3:
   parent: AtmosphericEngineSmallGroup
   displayName: Advanced Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 140790
   fuelRate: 8E-07
@@ -52451,7 +52452,7 @@ AtmosphericEngineSmallSafe3:
 AtmosphericEngineSmallSafe4:
   parent: AtmosphericEngineSmallGroup
   displayName: Rare Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 411536
   fuelRate: 8E-07
@@ -52468,7 +52469,7 @@ AtmosphericEngineSmallSafe4:
 AtmosphericEngineSmallSafe5:
   parent: AtmosphericEngineSmallGroup
   displayName: Exotic Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 781920
   fuelRate: 8E-07
@@ -52502,7 +52503,7 @@ AtmosphericEngineXtraSmall:
 AtmosphericEngineXtraSmallFreight:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Uncommon Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 13000
   fuelRate: 7.5E-07
@@ -52519,7 +52520,7 @@ AtmosphericEngineXtraSmallFreight:
 AtmosphericEngineXtraSmallFreight3:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Advanced Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 26000
   fuelRate: 5.625E-07
@@ -52536,7 +52537,7 @@ AtmosphericEngineXtraSmallFreight3:
 AtmosphericEngineXtraSmallFreight4:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Rare Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 80000
   fuelRate: 4.219E-07
@@ -52553,7 +52554,7 @@ AtmosphericEngineXtraSmallFreight4:
 AtmosphericEngineXtraSmallFreight5:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Exotic Freight Atmospheric Engine
-  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up.
+  subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 160000
   fuelRate: 3.164E-07
@@ -52570,7 +52571,7 @@ AtmosphericEngineXtraSmallFreight5:
 AtmosphericEngineXtraSmallManeuver:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Uncommon Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 13000
   fuelRate: 7.5E-07
@@ -52587,7 +52588,7 @@ AtmosphericEngineXtraSmallManeuver:
 AtmosphericEngineXtraSmallManeuver3:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Advanced Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 26000
   fuelRate: 5.625E-07
@@ -52604,7 +52605,7 @@ AtmosphericEngineXtraSmallManeuver3:
 AtmosphericEngineXtraSmallManeuver4:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Rare Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 80000
   fuelRate: 4.219E-07
@@ -52621,7 +52622,7 @@ AtmosphericEngineXtraSmallManeuver4:
 AtmosphericEngineXtraSmallManeuver5:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Exotic Maneuver Atmospheric Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 160000
   fuelRate: 3.164E-07
@@ -52638,7 +52639,7 @@ AtmosphericEngineXtraSmallManeuver5:
 AtmosphericEngineXtraSmallMilitary:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Uncommon Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 15600
   fuelRate: 1.2E-06
@@ -52655,7 +52656,7 @@ AtmosphericEngineXtraSmallMilitary:
 AtmosphericEngineXtraSmallMilitary3:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Advanced Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 37440
   fuelRate: 1.44E-06
@@ -52672,7 +52673,7 @@ AtmosphericEngineXtraSmallMilitary3:
 AtmosphericEngineXtraSmallMilitary4:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Rare Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 138240
   fuelRate: 1.728E-06
@@ -52689,7 +52690,7 @@ AtmosphericEngineXtraSmallMilitary4:
 AtmosphericEngineXtraSmallMilitary5:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Exotic Military Atmospheric Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 331776
   fuelRate: 2.074E-06
@@ -52706,7 +52707,7 @@ AtmosphericEngineXtraSmallMilitary5:
 AtmosphericEngineXtraSmallSafe:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Uncommon Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 12350
   fuelRate: 1E-06
@@ -52723,7 +52724,7 @@ AtmosphericEngineXtraSmallSafe:
 AtmosphericEngineXtraSmallSafe3:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Advanced Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 23465
   fuelRate: 1E-06
@@ -52740,7 +52741,7 @@ AtmosphericEngineXtraSmallSafe3:
 AtmosphericEngineXtraSmallSafe4:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Rare Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 68592
   fuelRate: 1E-06
@@ -52757,7 +52758,7 @@ AtmosphericEngineXtraSmallSafe4:
 AtmosphericEngineXtraSmallSafe5:
   parent: AtmosphericEngineXtraSmallGroup
   displayName: Exotic Safe Atmospheric Engine
-  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful.
+  subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 130320
   fuelRate: 1E-06
@@ -52791,7 +52792,7 @@ SpaceEngineLarge:
 SpaceEngineLargeFreight:
   parent: SpaceEngineLargeGroup
   displayName: Uncommon Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
   fuelRate: 1.92E-07
@@ -52808,7 +52809,7 @@ SpaceEngineLargeFreight:
 SpaceEngineLargeFreight3:
   parent: SpaceEngineLargeGroup
   displayName: Advanced Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
   fuelRate: 1.44E-07
@@ -52825,7 +52826,7 @@ SpaceEngineLargeFreight3:
 SpaceEngineLargeFreight4:
   parent: SpaceEngineLargeGroup
   displayName: Rare Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
   fuelRate: 1.08E-07
@@ -52842,7 +52843,7 @@ SpaceEngineLargeFreight4:
 SpaceEngineLargeFreight5:
   parent: SpaceEngineLargeGroup
   displayName: Exotic Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
   fuelRate: 8.1E-08
@@ -52859,7 +52860,7 @@ SpaceEngineLargeFreight5:
 SpaceEngineLargeManeuver:
   parent: SpaceEngineLargeGroup
   displayName: Uncommon Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
   fuelRate: 2.048E-07
@@ -52876,7 +52877,7 @@ SpaceEngineLargeManeuver:
 SpaceEngineLargeManeuver3:
   parent: SpaceEngineLargeGroup
   displayName: Advanced Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
   fuelRate: 1.638E-07
@@ -52893,7 +52894,7 @@ SpaceEngineLargeManeuver3:
 SpaceEngineLargeManeuver4:
   parent: SpaceEngineLargeGroup
   displayName: Rare Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
   fuelRate: 1.311E-07
@@ -52910,7 +52911,7 @@ SpaceEngineLargeManeuver4:
 SpaceEngineLargeManeuver5:
   parent: SpaceEngineLargeGroup
   displayName: Exotic Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
   fuelRate: 1.049E-07
@@ -52927,7 +52928,7 @@ SpaceEngineLargeManeuver5:
 SpaceEngineLargeMilitary:
   parent: SpaceEngineLargeGroup
   displayName: Uncommon Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 5054400
   fuelRate: 3.072E-07
@@ -52944,7 +52945,7 @@ SpaceEngineLargeMilitary:
 SpaceEngineLargeMilitary3:
   parent: SpaceEngineLargeGroup
   displayName: Advanced Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 12130560
   fuelRate: 3.686E-07
@@ -52961,7 +52962,7 @@ SpaceEngineLargeMilitary3:
 SpaceEngineLargeMilitary4:
   parent: SpaceEngineLargeGroup
   displayName: Rare Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 44789760
   fuelRate: 4.424E-07
@@ -52978,7 +52979,7 @@ SpaceEngineLargeMilitary4:
 SpaceEngineLargeMilitary5:
   parent: SpaceEngineLargeGroup
   displayName: Exotic Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 107495424
   fuelRate: 5.308E-07
@@ -52995,7 +52996,7 @@ SpaceEngineLargeMilitary5:
 SpaceEngineLargeSafe:
   parent: SpaceEngineLargeGroup
   displayName: Uncommon Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
   fuelRate: 2.304E-07
@@ -53012,7 +53013,7 @@ SpaceEngineLargeSafe:
 SpaceEngineLargeSafe3:
   parent: SpaceEngineLargeGroup
   displayName: Advanced Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
   fuelRate: 2.074E-07
@@ -53029,7 +53030,7 @@ SpaceEngineLargeSafe3:
 SpaceEngineLargeSafe4:
   parent: SpaceEngineLargeGroup
   displayName: Rare Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
   fuelRate: 1.866E-07
@@ -53046,7 +53047,7 @@ SpaceEngineLargeSafe4:
 SpaceEngineLargeSafe5:
   parent: SpaceEngineLargeGroup
   displayName: Exotic Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
   fuelRate: 1.68E-07
@@ -53080,7 +53081,7 @@ SpaceEngineMedium:
 SpaceEngineMediumFreight:
   parent: SpaceEngineMediumGroup
   displayName: Uncommon Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
   fuelRate: 2.4E-07
@@ -53097,7 +53098,7 @@ SpaceEngineMediumFreight:
 SpaceEngineMediumFreight3:
   parent: SpaceEngineMediumGroup
   displayName: Advanced Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
   fuelRate: 1.8E-07
@@ -53114,7 +53115,7 @@ SpaceEngineMediumFreight3:
 SpaceEngineMediumFreight4:
   parent: SpaceEngineMediumGroup
   displayName: Rare Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
   fuelRate: 1.35E-07
@@ -53131,7 +53132,7 @@ SpaceEngineMediumFreight4:
 SpaceEngineMediumFreight5:
   parent: SpaceEngineMediumGroup
   displayName: Exotic Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
   fuelRate: 1.012E-07
@@ -53148,7 +53149,7 @@ SpaceEngineMediumFreight5:
 SpaceEngineMediumManeuver:
   parent: SpaceEngineMediumGroup
   displayName: Uncommon Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
   fuelRate: 2.56E-07
@@ -53165,7 +53166,7 @@ SpaceEngineMediumManeuver:
 SpaceEngineMediumManeuver3:
   parent: SpaceEngineMediumGroup
   displayName: Advanced Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
   fuelRate: 2.048E-07
@@ -53182,7 +53183,7 @@ SpaceEngineMediumManeuver3:
 SpaceEngineMediumManeuver4:
   parent: SpaceEngineMediumGroup
   displayName: Rare Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
   fuelRate: 1.638E-07
@@ -53199,7 +53200,7 @@ SpaceEngineMediumManeuver4:
 SpaceEngineMediumManeuver5:
   parent: SpaceEngineMediumGroup
   displayName: Exotic Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
   fuelRate: 1.311E-07
@@ -53216,7 +53217,7 @@ SpaceEngineMediumManeuver5:
 SpaceEngineMediumMilitary:
   parent: SpaceEngineMediumGroup
   displayName: Uncommon Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 842400
   fuelRate: 3.84E-07
@@ -53233,7 +53234,7 @@ SpaceEngineMediumMilitary:
 SpaceEngineMediumMilitary3:
   parent: SpaceEngineMediumGroup
   displayName: Advanced Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 2021760
   fuelRate: 4.608E-07
@@ -53250,7 +53251,7 @@ SpaceEngineMediumMilitary3:
 SpaceEngineMediumMilitary4:
   parent: SpaceEngineMediumGroup
   displayName: Rare Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 7464960
   fuelRate: 5.53E-07
@@ -53267,7 +53268,7 @@ SpaceEngineMediumMilitary4:
 SpaceEngineMediumMilitary5:
   parent: SpaceEngineMediumGroup
   displayName: Exotic Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 17915904
   fuelRate: 6.636E-07
@@ -53284,7 +53285,7 @@ SpaceEngineMediumMilitary5:
 SpaceEngineMediumSafe:
   parent: SpaceEngineMediumGroup
   displayName: Uncommon Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
   fuelRate: 2.88E-07
@@ -53301,7 +53302,7 @@ SpaceEngineMediumSafe:
 SpaceEngineMediumSafe3:
   parent: SpaceEngineMediumGroup
   displayName: Advanced Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
   fuelRate: 2.592E-07
@@ -53318,7 +53319,7 @@ SpaceEngineMediumSafe3:
 SpaceEngineMediumSafe4:
   parent: SpaceEngineMediumGroup
   displayName: Rare Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
   fuelRate: 2.333E-07
@@ -53335,7 +53336,7 @@ SpaceEngineMediumSafe4:
 SpaceEngineMediumSafe5:
   parent: SpaceEngineMediumGroup
   displayName: Exotic Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
   fuelRate: 2.1E-07
@@ -53369,7 +53370,7 @@ SpaceEngineSmall:
 SpaceEngineSmallFreight:
   parent: SpaceEngineSmallGroup
   displayName: Uncommon Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
   fuelRate: 3E-07
@@ -53386,7 +53387,7 @@ SpaceEngineSmallFreight:
 SpaceEngineSmallFreight3:
   parent: SpaceEngineSmallGroup
   displayName: Advanced Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
   fuelRate: 2.25E-07
@@ -53403,7 +53404,7 @@ SpaceEngineSmallFreight3:
 SpaceEngineSmallFreight4:
   parent: SpaceEngineSmallGroup
   displayName: Rare Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
   fuelRate: 1.687E-07
@@ -53420,7 +53421,7 @@ SpaceEngineSmallFreight4:
 SpaceEngineSmallFreight5:
   parent: SpaceEngineSmallGroup
   displayName: Exotic Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
   fuelRate: 1.266E-07
@@ -53437,7 +53438,7 @@ SpaceEngineSmallFreight5:
 SpaceEngineSmallManeuver:
   parent: SpaceEngineSmallGroup
   displayName: Uncommon Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
   fuelRate: 3.2E-07
@@ -53454,7 +53455,7 @@ SpaceEngineSmallManeuver:
 SpaceEngineSmallManeuver3:
   parent: SpaceEngineSmallGroup
   displayName: Advanced Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
   fuelRate: 2.56E-07
@@ -53471,7 +53472,7 @@ SpaceEngineSmallManeuver3:
 SpaceEngineSmallManeuver4:
   parent: SpaceEngineSmallGroup
   displayName: Rare Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
   fuelRate: 2.048E-07
@@ -53488,7 +53489,7 @@ SpaceEngineSmallManeuver4:
 SpaceEngineSmallManeuver5:
   parent: SpaceEngineSmallGroup
   displayName: Exotic Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
   fuelRate: 1.638E-07
@@ -53505,7 +53506,7 @@ SpaceEngineSmallManeuver5:
 SpaceEngineSmallMilitary:
   parent: SpaceEngineSmallGroup
   displayName: Uncommon Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 140400
   fuelRate: 4.8E-07
@@ -53522,7 +53523,7 @@ SpaceEngineSmallMilitary:
 SpaceEngineSmallMilitary3:
   parent: SpaceEngineSmallGroup
   displayName: Advanced Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 336960
   fuelRate: 5.76E-07
@@ -53539,7 +53540,7 @@ SpaceEngineSmallMilitary3:
 SpaceEngineSmallMilitary4:
   parent: SpaceEngineSmallGroup
   displayName: Rare Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 1244160
   fuelRate: 6.912E-07
@@ -53556,7 +53557,7 @@ SpaceEngineSmallMilitary4:
 SpaceEngineSmallMilitary5:
   parent: SpaceEngineSmallGroup
   displayName: Exotic Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 2985984
   fuelRate: 8.294E-07
@@ -53573,7 +53574,7 @@ SpaceEngineSmallMilitary5:
 SpaceEngineSmallSafe:
   parent: SpaceEngineSmallGroup
   displayName: Uncommon Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
   fuelRate: 3.6E-07
@@ -53590,7 +53591,7 @@ SpaceEngineSmallSafe:
 SpaceEngineSmallSafe3:
   parent: SpaceEngineSmallGroup
   displayName: Advanced Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
   fuelRate: 3.24E-07
@@ -53607,7 +53608,7 @@ SpaceEngineSmallSafe3:
 SpaceEngineSmallSafe4:
   parent: SpaceEngineSmallGroup
   displayName: Rare Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
   fuelRate: 2.916E-07
@@ -53624,7 +53625,7 @@ SpaceEngineSmallSafe4:
 SpaceEngineSmallSafe5:
   parent: SpaceEngineSmallGroup
   displayName: Exotic Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
   fuelRate: 2.624E-07
@@ -53658,7 +53659,7 @@ SpaceEngineXtraLarge:
 SpaceEngineXtraLargeFreight:
   parent: SpaceEngineXtraLargeGroup
   displayName: Uncommon Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
   fuelRate: 1.536E-07
@@ -53675,7 +53676,7 @@ SpaceEngineXtraLargeFreight:
 SpaceEngineXtraLargeFreight3:
   parent: SpaceEngineXtraLargeGroup
   displayName: Advanced Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
   fuelRate: 1.152E-07
@@ -53692,7 +53693,7 @@ SpaceEngineXtraLargeFreight3:
 SpaceEngineXtraLargeFreight4:
   parent: SpaceEngineXtraLargeGroup
   displayName: Rare Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
   fuelRate: 8.64E-08
@@ -53709,7 +53710,7 @@ SpaceEngineXtraLargeFreight4:
 SpaceEngineXtraLargeFreight5:
   parent: SpaceEngineXtraLargeGroup
   displayName: Exotic Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
   fuelRate: 6.48E-08
@@ -53726,7 +53727,7 @@ SpaceEngineXtraLargeFreight5:
 SpaceEngineXtraLargeManeuver:
   parent: SpaceEngineXtraLargeGroup
   displayName: Uncommon Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
   fuelRate: 1.638E-07
@@ -53743,7 +53744,7 @@ SpaceEngineXtraLargeManeuver:
 SpaceEngineXtraLargeManeuver3:
   parent: SpaceEngineXtraLargeGroup
   displayName: Advanced Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
   fuelRate: 1.311E-07
@@ -53760,7 +53761,7 @@ SpaceEngineXtraLargeManeuver3:
 SpaceEngineXtraLargeManeuver4:
   parent: SpaceEngineXtraLargeGroup
   displayName: Rare Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
   fuelRate: 1.049E-07
@@ -53777,7 +53778,7 @@ SpaceEngineXtraLargeManeuver4:
 SpaceEngineXtraLargeManeuver5:
   parent: SpaceEngineXtraLargeGroup
   displayName: Exotic Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
   fuelRate: 8.389E-08
@@ -53794,7 +53795,7 @@ SpaceEngineXtraLargeManeuver5:
 SpaceEngineXtraLargeMilitary:
   parent: SpaceEngineXtraLargeGroup
   displayName: Uncommon Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 30326400
   fuelRate: 2.458E-07
@@ -53811,7 +53812,7 @@ SpaceEngineXtraLargeMilitary:
 SpaceEngineXtraLargeMilitary3:
   parent: SpaceEngineXtraLargeGroup
   displayName: Advanced Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 72783360
   fuelRate: 2.949E-07
@@ -53828,7 +53829,7 @@ SpaceEngineXtraLargeMilitary3:
 SpaceEngineXtraLargeMilitary4:
   parent: SpaceEngineXtraLargeGroup
   displayName: Rare Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 268738560
   fuelRate: 3.539E-07
@@ -53845,7 +53846,7 @@ SpaceEngineXtraLargeMilitary4:
 SpaceEngineXtraLargeMilitary5:
   parent: SpaceEngineXtraLargeGroup
   displayName: Exotic Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 644972544
   fuelRate: 4.247E-07
@@ -53862,7 +53863,7 @@ SpaceEngineXtraLargeMilitary5:
 SpaceEngineXtraLargeSafe:
   parent: SpaceEngineXtraLargeGroup
   displayName: Uncommon Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
   fuelRate: 1.843E-07
@@ -53879,7 +53880,7 @@ SpaceEngineXtraLargeSafe:
 SpaceEngineXtraLargeSafe3:
   parent: SpaceEngineXtraLargeGroup
   displayName: Advanced Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
   fuelRate: 1.659E-07
@@ -53896,7 +53897,7 @@ SpaceEngineXtraLargeSafe3:
 SpaceEngineXtraLargeSafe4:
   parent: SpaceEngineXtraLargeGroup
   displayName: Rare Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
   fuelRate: 1.493E-07
@@ -53913,7 +53914,7 @@ SpaceEngineXtraLargeSafe4:
 SpaceEngineXtraLargeSafe5:
   parent: SpaceEngineXtraLargeGroup
   displayName: Exotic Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
   fuelRate: 1.344E-07
@@ -53947,7 +53948,7 @@ SpaceEngineXtraSmall:
 SpaceEngineXtraSmallFreight:
   parent: SpaceEngineXtraSmallGroup
   displayName: Uncommon Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
   fuelRate: 3.75E-07
@@ -53964,7 +53965,7 @@ SpaceEngineXtraSmallFreight:
 SpaceEngineXtraSmallFreight3:
   parent: SpaceEngineXtraSmallGroup
   displayName: Advanced Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
   fuelRate: 2.813E-07
@@ -53981,7 +53982,7 @@ SpaceEngineXtraSmallFreight3:
 SpaceEngineXtraSmallFreight4:
   parent: SpaceEngineXtraSmallGroup
   displayName: Rare Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
   fuelRate: 2.109E-07
@@ -53998,7 +53999,7 @@ SpaceEngineXtraSmallFreight4:
 SpaceEngineXtraSmallFreight5:
   parent: SpaceEngineXtraSmallGroup
   displayName: Exotic Freight Space Engine
-  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up.
+  subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
   fuelRate: 1.582E-07
@@ -54015,7 +54016,7 @@ SpaceEngineXtraSmallFreight5:
 SpaceEngineXtraSmallManeuver:
   parent: SpaceEngineXtraSmallGroup
   displayName: Uncommon Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
   fuelRate: 4E-07
@@ -54032,7 +54033,7 @@ SpaceEngineXtraSmallManeuver:
 SpaceEngineXtraSmallManeuver3:
   parent: SpaceEngineXtraSmallGroup
   displayName: Advanced Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
   fuelRate: 3.2E-07
@@ -54049,7 +54050,7 @@ SpaceEngineXtraSmallManeuver3:
 SpaceEngineXtraSmallManeuver4:
   parent: SpaceEngineXtraSmallGroup
   displayName: Rare Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
   fuelRate: 2.56E-07
@@ -54066,7 +54067,7 @@ SpaceEngineXtraSmallManeuver4:
 SpaceEngineXtraSmallManeuver5:
   parent: SpaceEngineXtraSmallGroup
   displayName: Exotic Maneuver Space Engine
-  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant.
+  subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
   fuelRate: 2.048E-07
@@ -54083,7 +54084,7 @@ SpaceEngineXtraSmallManeuver5:
 SpaceEngineXtraSmallMilitary:
   parent: SpaceEngineXtraSmallGroup
   displayName: Uncommon Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 23400
   fuelRate: 6E-07
@@ -54100,7 +54101,7 @@ SpaceEngineXtraSmallMilitary:
 SpaceEngineXtraSmallMilitary3:
   parent: SpaceEngineXtraSmallGroup
   displayName: Advanced Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 56160
   fuelRate: 7.2E-07
@@ -54117,7 +54118,7 @@ SpaceEngineXtraSmallMilitary3:
 SpaceEngineXtraSmallMilitary4:
   parent: SpaceEngineXtraSmallGroup
   displayName: Rare Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 207360
   fuelRate: 8.64E-07
@@ -54134,7 +54135,7 @@ SpaceEngineXtraSmallMilitary4:
 SpaceEngineXtraSmallMilitary5:
   parent: SpaceEngineXtraSmallGroup
   displayName: Exotic Military Space Engine
-  subdescription: The Military variation is more powerful and resistant, but consumes more fuel.
+  subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 497664
   fuelRate: 1.037E-06
@@ -54151,7 +54152,7 @@ SpaceEngineXtraSmallMilitary5:
 SpaceEngineXtraSmallSafe:
   parent: SpaceEngineXtraSmallGroup
   displayName: Uncommon Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
   fuelRate: 4.5E-07
@@ -54168,7 +54169,7 @@ SpaceEngineXtraSmallSafe:
 SpaceEngineXtraSmallSafe3:
   parent: SpaceEngineXtraSmallGroup
   displayName: Advanced Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
   fuelRate: 4.05E-07
@@ -54185,7 +54186,7 @@ SpaceEngineXtraSmallSafe3:
 SpaceEngineXtraSmallSafe4:
   parent: SpaceEngineXtraSmallGroup
   displayName: Rare Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
   fuelRate: 3.645E-07
@@ -54202,7 +54203,7 @@ SpaceEngineXtraSmallSafe4:
 SpaceEngineXtraSmallSafe5:
   parent: SpaceEngineXtraSmallGroup
   displayName: Exotic Safe Space Engine
-  subdescription: The Safe variation is significantly faster to warm up and more resistant.
+  subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
   fuelRate: 3.281E-07
@@ -54286,7 +54287,7 @@ HoverEngineLarge:
 HoverEngineLargeFreight:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2340000
   fuelRate: 7.5E-09
@@ -54297,7 +54298,7 @@ HoverEngineLargeFreight:
 HoverEngineLargeFreight3:
   parent: HoverEngineLargeGroup
   displayName: Advanced freight hover engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 4680000
   fuelRate: 5.625E-09
@@ -54308,7 +54309,7 @@ HoverEngineLargeFreight3:
 HoverEngineLargeFreight4:
   parent: HoverEngineLargeGroup
   displayName: Rare Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 14400000
   fuelRate: 4.219E-09
@@ -54319,7 +54320,7 @@ HoverEngineLargeFreight4:
 HoverEngineLargeFreight5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 28800000
   fuelRate: 3.164E-09
@@ -54330,7 +54331,7 @@ HoverEngineLargeFreight5:
 HoverEngineLargeManeuver:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2106000
   fuelRate: 1E-08
@@ -54341,7 +54342,7 @@ HoverEngineLargeManeuver:
 HoverEngineLargeManeuver3:
   parent: HoverEngineLargeGroup
   displayName: Advanced Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 3790800
   fuelRate: 1E-08
@@ -54352,7 +54353,7 @@ HoverEngineLargeManeuver3:
 HoverEngineLargeManeuver4:
   parent: HoverEngineLargeGroup
   displayName: Rare Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 10497600
   fuelRate: 1E-08
@@ -54363,7 +54364,7 @@ HoverEngineLargeManeuver4:
 HoverEngineLargeManeuver5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 18895680
   fuelRate: 1E-08
@@ -54374,7 +54375,7 @@ HoverEngineLargeManeuver5:
 HoverEngineLargeMilitary:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
   fuelRate: 1.15E-08
@@ -54385,7 +54386,7 @@ HoverEngineLargeMilitary:
 HoverEngineLargeMilitary3:
   parent: HoverEngineLargeGroup
   displayName: Advanced Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6739200
   fuelRate: 1.322E-08
@@ -54396,7 +54397,7 @@ HoverEngineLargeMilitary3:
 HoverEngineLargeMilitary4:
   parent: HoverEngineLargeGroup
   displayName: Rare Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 24883200
   fuelRate: 1.521E-08
@@ -54407,7 +54408,7 @@ HoverEngineLargeMilitary4:
 HoverEngineLargeMilitary5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 59719680
   fuelRate: 1.749E-08
@@ -54429,7 +54430,7 @@ HoverEngineLargeUnder:
 HoverEngineLargeUnderFreight:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Freight Flat Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2340000
   fuelRate: 7.5E-09
@@ -54440,7 +54441,7 @@ HoverEngineLargeUnderFreight:
 HoverEngineLargeUnderFreight3:
   parent: HoverEngineLargeGroup
   displayName: Advanced Freight Flat Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 4680000
   fuelRate: 5.625E-09
@@ -54451,7 +54452,7 @@ HoverEngineLargeUnderFreight3:
 HoverEngineLargeUnderFreight4:
   parent: HoverEngineLargeGroup
   displayName: Rare Freight Flat Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 14400000
   fuelRate: 4.219E-09
@@ -54462,7 +54463,7 @@ HoverEngineLargeUnderFreight4:
 HoverEngineLargeUnderFreight5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Freight Flat Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 28800000
   fuelRate: 3.164E-09
@@ -54473,7 +54474,7 @@ HoverEngineLargeUnderFreight5:
 HoverEngineLargeUnderManeuver:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Maneuver Flat Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2106000
   fuelRate: 1E-08
@@ -54484,7 +54485,7 @@ HoverEngineLargeUnderManeuver:
 HoverEngineLargeUnderManeuver3:
   parent: HoverEngineLargeGroup
   displayName: Advanced Maneuver Flat Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 3790800
   fuelRate: 1E-08
@@ -54495,7 +54496,7 @@ HoverEngineLargeUnderManeuver3:
 HoverEngineLargeUnderManeuver4:
   parent: HoverEngineLargeGroup
   displayName: Rare Maneuver Flat Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 10497600
   fuelRate: 1E-08
@@ -54506,7 +54507,7 @@ HoverEngineLargeUnderManeuver4:
 HoverEngineLargeUnderManeuver5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Maneuver Flat Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 18895680
   fuelRate: 1E-08
@@ -54517,7 +54518,7 @@ HoverEngineLargeUnderManeuver5:
 HoverEngineLargeUnderMilitary:
   parent: HoverEngineLargeGroup
   displayName: Uncommon Military Flat Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
   fuelRate: 1.15E-08
@@ -54528,7 +54529,7 @@ HoverEngineLargeUnderMilitary:
 HoverEngineLargeUnderMilitary3:
   parent: HoverEngineLargeGroup
   displayName: Advanced Military Flat Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6739200
   fuelRate: 1.322E-08
@@ -54539,7 +54540,7 @@ HoverEngineLargeUnderMilitary3:
 HoverEngineLargeUnderMilitary4:
   parent: HoverEngineLargeGroup
   displayName: Rare Military Flat Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 24883200
   fuelRate: 1.521E-08
@@ -54550,7 +54551,7 @@ HoverEngineLargeUnderMilitary4:
 HoverEngineLargeUnderMilitary5:
   parent: HoverEngineLargeGroup
   displayName: Exotic Military Flat Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 59719680
   fuelRate: 1.749E-08
@@ -54572,7 +54573,7 @@ HoverEngineMedium:
 HoverEngineMediumFreight:
   parent: HoverEngineMediumGroup
   displayName: Uncommon Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 390000
   fuelRate: 7.5E-09
@@ -54583,7 +54584,7 @@ HoverEngineMediumFreight:
 HoverEngineMediumFreight3:
   parent: HoverEngineMediumGroup
   displayName: Advanced Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 780000
   fuelRate: 5.625E-09
@@ -54594,7 +54595,7 @@ HoverEngineMediumFreight3:
 HoverEngineMediumFreight4:
   parent: HoverEngineMediumGroup
   displayName: Rare Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 2400000
   fuelRate: 4.219E-09
@@ -54605,7 +54606,7 @@ HoverEngineMediumFreight4:
 HoverEngineMediumFreight5:
   parent: HoverEngineMediumGroup
   displayName: Exotic Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 4800000
   fuelRate: 3.164E-09
@@ -54616,7 +54617,7 @@ HoverEngineMediumFreight5:
 HoverEngineMediumManeuver:
   parent: HoverEngineMediumGroup
   displayName: Uncommon Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 351000
   fuelRate: 1E-08
@@ -54627,7 +54628,7 @@ HoverEngineMediumManeuver:
 HoverEngineMediumManeuver3:
   parent: HoverEngineMediumGroup
   displayName: Advanced Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 631800
   fuelRate: 1E-08
@@ -54638,7 +54639,7 @@ HoverEngineMediumManeuver3:
 HoverEngineMediumManeuver4:
   parent: HoverEngineMediumGroup
   displayName: Rare Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 1749600
   fuelRate: 1E-08
@@ -54649,7 +54650,7 @@ HoverEngineMediumManeuver4:
 HoverEngineMediumManeuver5:
   parent: HoverEngineMediumGroup
   displayName: Exotic Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 3149280
   fuelRate: 1E-08
@@ -54660,7 +54661,7 @@ HoverEngineMediumManeuver5:
 HoverEngineMediumMilitary:
   parent: HoverEngineMediumGroup
   displayName: Uncommon Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
   fuelRate: 1.15E-08
@@ -54671,7 +54672,7 @@ HoverEngineMediumMilitary:
 HoverEngineMediumMilitary3:
   parent: HoverEngineMediumGroup
   displayName: Advanced Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1123200
   fuelRate: 1.322E-08
@@ -54682,7 +54683,7 @@ HoverEngineMediumMilitary3:
 HoverEngineMediumMilitary4:
   parent: HoverEngineMediumGroup
   displayName: Rare Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 4147200
   fuelRate: 1.521E-08
@@ -54693,7 +54694,7 @@ HoverEngineMediumMilitary4:
 HoverEngineMediumMilitary5:
   parent: HoverEngineMediumGroup
   displayName: Exotic Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 9953280
   fuelRate: 1.749E-08
@@ -54715,7 +54716,7 @@ HoverEngineSmall:
 HoverEngineSmallFreight:
   parent: HoverEngineSmallGroup
   displayName: Uncommon Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 65000
   fuelRate: 7.5E-09
@@ -54726,7 +54727,7 @@ HoverEngineSmallFreight:
 HoverEngineSmallFreight3:
   parent: HoverEngineSmallGroup
   displayName: Advanced Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 130000
   fuelRate: 5.625E-09
@@ -54737,7 +54738,7 @@ HoverEngineSmallFreight3:
 HoverEngineSmallFreight4:
   parent: HoverEngineSmallGroup
   displayName: Rare Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 400000
   fuelRate: 4.219E-09
@@ -54748,7 +54749,7 @@ HoverEngineSmallFreight4:
 HoverEngineSmallFreight5:
   parent: HoverEngineSmallGroup
   displayName: Exotic Freight Hover Engine
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 800000
   fuelRate: 3.164E-09
@@ -54759,7 +54760,7 @@ HoverEngineSmallFreight5:
 HoverEngineSmallManeuver:
   parent: HoverEngineSmallGroup
   displayName: Uncommon Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 58500
   fuelRate: 1E-08
@@ -54770,7 +54771,7 @@ HoverEngineSmallManeuver:
 HoverEngineSmallManeuver3:
   parent: HoverEngineSmallGroup
   displayName: Advanced Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 105300
   fuelRate: 1E-08
@@ -54781,7 +54782,7 @@ HoverEngineSmallManeuver3:
 HoverEngineSmallManeuver4:
   parent: HoverEngineSmallGroup
   displayName: Rare Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 291600
   fuelRate: 1E-08
@@ -54792,7 +54793,7 @@ HoverEngineSmallManeuver4:
 HoverEngineSmallManeuver5:
   parent: HoverEngineSmallGroup
   displayName: Exotic Maneuver Hover Engine
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 524880
   fuelRate: 1E-08
@@ -54803,7 +54804,7 @@ HoverEngineSmallManeuver5:
 HoverEngineSmallMilitary:
   parent: HoverEngineSmallGroup
   displayName: Uncommon Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
   fuelRate: 1.15E-08
@@ -54814,7 +54815,7 @@ HoverEngineSmallMilitary:
 HoverEngineSmallMilitary3:
   parent: HoverEngineSmallGroup
   displayName: Advanced Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 187200
   fuelRate: 1.322E-08
@@ -54825,7 +54826,7 @@ HoverEngineSmallMilitary3:
 HoverEngineSmallMilitary4:
   parent: HoverEngineSmallGroup
   displayName: Rare Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 691200
   fuelRate: 1.521E-08
@@ -54836,7 +54837,7 @@ HoverEngineSmallMilitary4:
 HoverEngineSmallMilitary5:
   parent: HoverEngineSmallGroup
   displayName: Exotic Military Hover Engine
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 1658880
   fuelRate: 1.749E-08
@@ -54858,7 +54859,7 @@ AtmosphericVerticalBoosterLarge:
 AtmosphericVerticalBoosterLargeFreight:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Uncommon Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
   fuelRate: 3.75E-07
@@ -54869,7 +54870,7 @@ AtmosphericVerticalBoosterLargeFreight:
 AtmosphericVerticalBoosterLargeFreight3:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Advanced Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
   fuelRate: 2.813E-07
@@ -54880,7 +54881,7 @@ AtmosphericVerticalBoosterLargeFreight3:
 AtmosphericVerticalBoosterLargeFreight4:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Rare Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
   fuelRate: 2.109E-07
@@ -54891,7 +54892,7 @@ AtmosphericVerticalBoosterLargeFreight4:
 AtmosphericVerticalBoosterLargeFreight5:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Exotic Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
   fuelRate: 1.582E-07
@@ -54902,7 +54903,7 @@ AtmosphericVerticalBoosterLargeFreight5:
 AtmosphericVerticalBoosterLargeManeuver:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Uncommon Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 3790800
   fuelRate: 5E-07
@@ -54913,7 +54914,7 @@ AtmosphericVerticalBoosterLargeManeuver:
 AtmosphericVerticalBoosterLargeManeuver3:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Advanced Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6823440
   fuelRate: 5E-07
@@ -54924,7 +54925,7 @@ AtmosphericVerticalBoosterLargeManeuver3:
 AtmosphericVerticalBoosterLargeManeuver4:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Rare Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 18895680
   fuelRate: 5E-07
@@ -54935,7 +54936,7 @@ AtmosphericVerticalBoosterLargeManeuver4:
 AtmosphericVerticalBoosterLargeManeuver5:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Exotic Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 34012224
   fuelRate: 5E-07
@@ -54946,7 +54947,7 @@ AtmosphericVerticalBoosterLargeManeuver5:
 AtmosphericVerticalBoosterLargeMilitary:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Uncommon Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 5054400
   fuelRate: 5.75E-07
@@ -54957,7 +54958,7 @@ AtmosphericVerticalBoosterLargeMilitary:
 AtmosphericVerticalBoosterLargeMilitary3:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Advanced Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 12130560
   fuelRate: 6.612E-07
@@ -54968,7 +54969,7 @@ AtmosphericVerticalBoosterLargeMilitary3:
 AtmosphericVerticalBoosterLargeMilitary4:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Rare Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 44789760
   fuelRate: 7.604E-07
@@ -54979,7 +54980,7 @@ AtmosphericVerticalBoosterLargeMilitary4:
 AtmosphericVerticalBoosterLargeMilitary5:
   parent: AtmosphericVerticalBoosterLargeGroup
   displayName: Exotic Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 107495424
   fuelRate: 8.745E-07
@@ -55001,7 +55002,7 @@ AtmosphericVerticalBoosterMedium:
 AtmosphericVerticalBoosterMediumFreight:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Uncommon Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
   fuelRate: 3.75E-07
@@ -55012,7 +55013,7 @@ AtmosphericVerticalBoosterMediumFreight:
 AtmosphericVerticalBoosterMediumFreight3:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Advanced Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
   fuelRate: 2.813E-07
@@ -55023,7 +55024,7 @@ AtmosphericVerticalBoosterMediumFreight3:
 AtmosphericVerticalBoosterMediumFreight4:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Rare Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
   fuelRate: 2.109E-07
@@ -55034,7 +55035,7 @@ AtmosphericVerticalBoosterMediumFreight4:
 AtmosphericVerticalBoosterMediumFreight5:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Exotic Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
   fuelRate: 1.582E-07
@@ -55045,7 +55046,7 @@ AtmosphericVerticalBoosterMediumFreight5:
 AtmosphericVerticalBoosterMediumManeuver:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Uncommon Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 631800
   fuelRate: 5E-07
@@ -55056,7 +55057,7 @@ AtmosphericVerticalBoosterMediumManeuver:
 AtmosphericVerticalBoosterMediumManeuver3:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Advanced Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1137240
   fuelRate: 5E-07
@@ -55067,7 +55068,7 @@ AtmosphericVerticalBoosterMediumManeuver3:
 AtmosphericVerticalBoosterMediumManeuver4:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Rare Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 3149280
   fuelRate: 5E-07
@@ -55078,7 +55079,7 @@ AtmosphericVerticalBoosterMediumManeuver4:
 AtmosphericVerticalBoosterMediumManeuver5:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Exotic Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 5668704
   fuelRate: 5E-07
@@ -55089,7 +55090,7 @@ AtmosphericVerticalBoosterMediumManeuver5:
 AtmosphericVerticalBoosterMediumMilitary:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Uncommon Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 842400
   fuelRate: 5.75E-07
@@ -55100,7 +55101,7 @@ AtmosphericVerticalBoosterMediumMilitary:
 AtmosphericVerticalBoosterMediumMilitary3:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Advanced Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 2021760
   fuelRate: 6.612E-07
@@ -55111,7 +55112,7 @@ AtmosphericVerticalBoosterMediumMilitary3:
 AtmosphericVerticalBoosterMediumMilitary4:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Rare Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 7464960
   fuelRate: 7.604E-07
@@ -55122,7 +55123,7 @@ AtmosphericVerticalBoosterMediumMilitary4:
 AtmosphericVerticalBoosterMediumMilitary5:
   parent: AtmosphericVerticalBoosterMediumGroup
   displayName: Exotic Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 17915904
   fuelRate: 8.745E-07
@@ -55144,7 +55145,7 @@ AtmosphericVerticalBoosterSmall:
 AtmosphericVerticalBoosterSmallFreight:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Uncommon Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
   fuelRate: 3.75E-07
@@ -55155,7 +55156,7 @@ AtmosphericVerticalBoosterSmallFreight:
 AtmosphericVerticalBoosterSmallFreight3:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Advanced Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
   fuelRate: 2.813E-07
@@ -55166,7 +55167,7 @@ AtmosphericVerticalBoosterSmallFreight3:
 AtmosphericVerticalBoosterSmallFreight4:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Rare Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
   fuelRate: 2.109E-07
@@ -55177,7 +55178,7 @@ AtmosphericVerticalBoosterSmallFreight4:
 AtmosphericVerticalBoosterSmallFreight5:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Exotic Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
   fuelRate: 1.582E-07
@@ -55188,7 +55189,7 @@ AtmosphericVerticalBoosterSmallFreight5:
 AtmosphericVerticalBoosterSmallManeuver:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Uncommon Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 105300
   fuelRate: 5E-07
@@ -55199,7 +55200,7 @@ AtmosphericVerticalBoosterSmallManeuver:
 AtmosphericVerticalBoosterSmallManeuver3:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Advanced Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 189540
   fuelRate: 5E-07
@@ -55210,7 +55211,7 @@ AtmosphericVerticalBoosterSmallManeuver3:
 AtmosphericVerticalBoosterSmallManeuver4:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Rare Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 524880
   fuelRate: 5E-07
@@ -55221,7 +55222,7 @@ AtmosphericVerticalBoosterSmallManeuver4:
 AtmosphericVerticalBoosterSmallManeuver5:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Exotic Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 944784
   fuelRate: 5E-07
@@ -55232,7 +55233,7 @@ AtmosphericVerticalBoosterSmallManeuver5:
 AtmosphericVerticalBoosterSmallMilitary:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Uncommon Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 140400
   fuelRate: 5.75E-07
@@ -55243,7 +55244,7 @@ AtmosphericVerticalBoosterSmallMilitary:
 AtmosphericVerticalBoosterSmallMilitary3:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Advanced Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 336960
   fuelRate: 6.612E-07
@@ -55254,7 +55255,7 @@ AtmosphericVerticalBoosterSmallMilitary3:
 AtmosphericVerticalBoosterSmallMilitary4:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Rare Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 1244160
   fuelRate: 7.604E-07
@@ -55265,7 +55266,7 @@ AtmosphericVerticalBoosterSmallMilitary4:
 AtmosphericVerticalBoosterSmallMilitary5:
   parent: AtmosphericVerticalBoosterSmallGroup
   displayName: Exotic Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 2985984
   fuelRate: 8.745E-07
@@ -55287,7 +55288,7 @@ AtmosphericVerticalBoosterXtraSmall:
 AtmosphericVerticalBoosterXtraSmallFreight:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Uncommon Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
   fuelRate: 3.75E-07
@@ -55298,7 +55299,7 @@ AtmosphericVerticalBoosterXtraSmallFreight:
 AtmosphericVerticalBoosterXtraSmallFreight3:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Advanced Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
   fuelRate: 2.813E-07
@@ -55309,7 +55310,7 @@ AtmosphericVerticalBoosterXtraSmallFreight3:
 AtmosphericVerticalBoosterXtraSmallFreight4:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Rare Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
   fuelRate: 2.109E-07
@@ -55320,7 +55321,7 @@ AtmosphericVerticalBoosterXtraSmallFreight4:
 AtmosphericVerticalBoosterXtraSmallFreight5:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Exotic Freight Vertical Booster
-  subdescription: The freight variation consumes less fuel but has smaller range
+  subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
   fuelRate: 1.582E-07
@@ -55331,7 +55332,7 @@ AtmosphericVerticalBoosterXtraSmallFreight5:
 AtmosphericVerticalBoosterXtraSmallManeuver:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Uncommon Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 17550
   fuelRate: 5E-07
@@ -55342,7 +55343,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver:
 AtmosphericVerticalBoosterXtraSmallManeuver3:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Advanced Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 31590
   fuelRate: 5E-07
@@ -55353,7 +55354,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver3:
 AtmosphericVerticalBoosterXtraSmallManeuver4:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Rare Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 87480
   fuelRate: 5E-07
@@ -55364,7 +55365,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver4:
 AtmosphericVerticalBoosterXtraSmallManeuver5:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Exotic Maneuver Vertical Booster
-  subdescription: The maneuver variation has more range but is less powerful
+  subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 157472
   fuelRate: 5E-07
@@ -55375,7 +55376,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver5:
 AtmosphericVerticalBoosterXtraSmallMilitary:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Uncommon Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 23400
   fuelRate: 5.75E-07
@@ -55386,7 +55387,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary:
 AtmosphericVerticalBoosterXtraSmallMilitary3:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Advanced Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 56160
   fuelRate: 6.612E-07
@@ -55397,7 +55398,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary3:
 AtmosphericVerticalBoosterXtraSmallMilitary4:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Rare Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 207360
   fuelRate: 7.604E-07
@@ -55408,7 +55409,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary4:
 AtmosphericVerticalBoosterXtraSmallMilitary5:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Exotic Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel
+  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 497664
   fuelRate: 8.745E-07
@@ -55419,7 +55420,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary5:
 AdjusterLarge2:
   parent: Adjustor
   displayName: Uncommon Adjustor
-  subdescription: 'CUSTOM: Uncommon Adjustor has double power '
+  subdescription: Max power boosted 1.3 * basic.
   maxPower: 166400
   unitMass: 1550
   unitVolume: 619.2
@@ -55432,7 +55433,7 @@ AdjusterLarge2:
 AdjusterLarge3:
   parent: Adjustor
   displayName: Advanced Adjustor
-  subdescription: 'CUSTOM: Advanced Adjustor has 5 x power '
+  subdescription: Max power boosted 2.6 * basic.
   maxPower: 332800
   unitMass: 1550
   unitVolume: 619.2
@@ -55445,7 +55446,7 @@ AdjusterLarge3:
 AdjusterLarge4:
   parent: Adjustor
   displayName: Rare Adjustor
-  subdescription: 'CUSTOM: Rare Adjustor has 12 x power '
+  subdescription: Max power boosted 8 * basic.
   maxPower: 1024000
   unitMass: 1550
   unitVolume: 619.2
@@ -55458,7 +55459,7 @@ AdjusterLarge4:
 AdjusterLarge5:
   parent: Adjustor
   displayName: Exotic Adjustor
-  subdescription: 'CUSTOM: Exotic Adjustor has 25 x power '
+  subdescription: Max power boosted 16 * basic.
   maxPower: 2048000
   unitMass: 1550
   unitVolume: 619.2
@@ -55471,7 +55472,7 @@ AdjusterLarge5:
 RetroEngineLarge2:
   parent: Spacebrake
   displayName: Uncommon Retro-rocket Brake
-  subdescription: 'CUSTOM: Uncommon Brake has 2 x power'
+  subdescription: Max power boosted 1.3 * basic.
   functionInSpace: true
   maxPower: 4680000
   unitMass: 3770.9
@@ -55492,7 +55493,7 @@ RetroEngineLarge2:
 RetroEngineLarge3:
   parent: Spacebrake
   displayName: Advanced Retro-rocket Brake
-  subdescription: 'CUSTOM: Advanced Brake has 4 x power'
+  subdescription: Max power boosted 2.6 * basic.
   functionInSpace: true
   maxPower: 9360000
   unitMass: 3770.9
@@ -55513,7 +55514,7 @@ RetroEngineLarge3:
 RetroEngineLarge4:
   parent: Spacebrake
   displayName: Rare Retro-rocket Brake
-  subdescription: 'CUSTOM: Rare Brake has 8 x power'
+  subdescription: Max power boosted 8 * basic.
   functionInSpace: true
   maxPower: 28800000
   unitMass: 3770.9
@@ -55534,7 +55535,7 @@ RetroEngineLarge4:
 RetroEngineLarge5:
   parent: Spacebrake
   displayName: Exotic Retro-rocket Brake
-  subdescription: 'CUSTOM: Exotic Brake has 25 x power'
+  subdescription: Max power boosted 16 * basic.
   functionInSpace: true
   maxPower: 57600000
   unitMass: 3770.9
@@ -55555,5 +55556,23 @@ RetroEngineLarge5:
 Ion:
   parent: SolarSystemPlanet
   constructId: 120
-  moonsConstructId: []
+  moonsConstructId: [121, 122]
   maxStaticAltitude: 2000
+---
+Feli:
+  parent: SolarSystemPlanet
+  constructId: 5
+  moonsConstructId: [50]
+  maxStaticAltitude: 19300
+---
+Lacobus:
+  parent: SolarSystemPlanet
+  constructId: 100
+  moonsConstructId: [101, 102, 103]
+  maxStaticAltitude: 2400
+---
+Symeon:
+  parent: SolarSystemPlanet
+  constructId: 110
+  moonsConstructId: []
+  maxStaticAltitude: 1200

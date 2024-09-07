@@ -1,5 +1,5 @@
 # Set input and output file
-$INFILE = ".\items-changed.yaml"
+$INFILE = ".\items-nord-changed.yaml"
 if (!(Test-Path $INFILE)) {
   $INFILE = ".\items.yaml"
 }
@@ -35,7 +35,7 @@ $scaleTable = @{
   "xxxxl" = 4
 }
 
-$globalMultiplier = 10.0
+$globalMultiplier = 1.0
 
 $weight_pricing =
 {

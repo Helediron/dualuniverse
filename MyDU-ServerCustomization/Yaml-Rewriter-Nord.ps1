@@ -237,6 +237,10 @@ AddSectionModifier "Element" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
+AddSectionModifier "CoherentConfig" { param([string]$name, [hashtable]$values) 
+  $values.imageCDNList = ,"*"
+  return $values, $true
+}
 
 AddPatternModifier "^(Aileron|Stabilizer|Wing)X.*Large" { param([string]$name, [hashtable]$values) 
   if ($values.hidden) {
@@ -255,17 +259,29 @@ AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
       return $values, $false  
     } else {
       if ($values.maxPower) {
+        $multiplier = 1
         if ($values.level -eq 2) {
-          [int]$values.maxPower = $values.maxPower * 1.3
+          $multiplier = 1.3
         }
         elseif ($values.level -eq 3) {
-          [int]$values.maxPower = $values.maxPower * 2.6
+          $multiplier = 2.6
         }
         elseif ($values.level -eq 4) {
-          [int]$values.maxPower = $values.maxPower * 8
+          $multiplier = 8
         }
         elseif ($values.level -eq 5) {
-          [int]$values.maxPower = $values.maxPower * 16
+          $multiplier = 16
+        }
+        if ($multiplier -gt 1) {
+          [int]$values.maxPower = $values.maxPower * $multiplier
+          $oldText = ""
+          if ($values.subdescription) {
+            $oldText = $values.subdescription
+            if ($oldText.Length -gt 0) {
+              $oldText = $oldText + " "
+            }
+          }
+          $values.subdescription = $oldText + "Max power boosted $multiplier * basic."
         }
       }
       if ($values.t50 -and $values.t50 -gt 30) {
@@ -286,17 +302,21 @@ AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
       #   }
       # }
       if ($values.hitpoints) {
+        $multiplier = 1
         if ($values.level -eq 2) {
-          [int]$values.hitpoints = $values.hitpoints * 1.5
+          $multiplier = 1.5
         }
         elseif ($values.level -eq 3) {
-          [int]$values.hitpoints = $values.hitpoints * 3
+          $multiplier = 3
         }
         elseif ($values.level -eq 4) {
-          [int]$values.hitpoints = $values.hitpoints * 4.5
+          $multiplier = 4.5
         }
         elseif ($values.level -eq 5) {
-          [int]$values.hitpoints = $values.hitpoints * 6
+          $multiplier = 6
+        }
+        if ($multiplier -gt 1) {
+          [int]$values.hitpoints = $values.hitpoints * $multiplier
         }
       }
     }
