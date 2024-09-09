@@ -20,16 +20,17 @@ This procedure creates one market. You can use a construct blueprint or make a c
 - If not yet in construct,Add all Market Pods and link them to Market Unit.
 - Relog
 - Try buying something.
-- In backoffice go to markets and scroll to last. Note first column ID.
+- In backoffice go to markets and scroll to last. It should be with name "My Market". Note first column ID.
 - At bottom, in "Batch parameter update" enter Market ID, owner 3, Name as you want, and put 0 to all taxes and fees. This will update the name of the market.
 - If the market should become a "system" market, Go to Constructs in backoffice, Overview tab, Edit and change "Player ID" to 2. Note the construct ID. Switch to Properties tab and edit:  
     "isFixture": true  
     Under "header":  
       "uniqueIdentifier": "planetsMarkets/<CID>_Marketplace_<Planet>_<number>",  
         where <CID> is construction id. Sample:  
-        "uniqueIdentifier": "planetsMarkets/123456_Marketplace_Ion_1",  
-    "constructIdHint": <CID>,  
-      where <CID> is construction id  
+        "uniqueIdentifier": "planetsMarkets/123456_Marketplace_Ion_1",
+      "folder": "planetsMarkets",  
+      "constructIdHint": <CID>,  
+        where <CID> is construction id  
     Scroll to bottom and press "Save".  
     Using e.g. PGAdmin, open Postgres table "market", search your new market and change column "owner_id" to 3 and update.
 - If making your own market, add e.g. "Market" tag to construct. Then in RDMS make a new policy "actor:All, rights:Use Elements, tag:Market".
