@@ -19161,7 +19161,7 @@ Other:
   parent: ConstructElement
   displayName: Other
   description: dev only
-  hidden: true
+  hidden: false
 ---
 Piloting:
   parent: ConstructElement
@@ -26881,26 +26881,26 @@ MarketPodUnit:
   parent: Other
   displayName: Market Pods
   description: It offers access to the market for one person. It must be linked to a  market unit.
-  hidden: true
+  hidden: false
   isUseable: true
   visibilityLOD: 4
   resistances:
-    antimatter: 0.0
-    thermic: 0.0
-    kinetic: 0.0
-    electromagnetic: 0.0
+    antimatter: 0
+    thermic: 0
+    kinetic: 0
+    electromagnetic: 0
 ---
 MarketUnit:
   parent: Other
   displayName: Markets
   description: This device deploys a market on your construct. It must be linked to storage facilities and at least one Market Pod. When installed, it creates your marketplace and other players can start buying and selling things from here. It cannot be installed on a dynamic construct.
-  hidden: true
+  hidden: false
   visibilityLOD: 4
   resistances:
-    antimatter: 0.0
-    thermic: 0.0
-    kinetic: 0.0
-    electromagnetic: 0.0
+    antimatter: 0
+    thermic: 0
+    kinetic: 0
+    electromagnetic: 0
 ---
 RadarUnit:
   parent: Other

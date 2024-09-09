@@ -168,11 +168,23 @@ AddSectionModifier "Part" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
-<# AddSectionModifier "MarketPodUnit" { param([string]$name, [hashtable]$values) 
+AddSectionModifier "Other" { param([string]$name, [hashtable]$values) 
+  # Parent of many other parents. Making this hidden:false for MarketPodUnit, but make sure other, unused children have hidden:true
+  $values.hidden = $false
+  return $values, $true
+}
+AddSectionModifier "MarketUnit" { param([string]$name, [hashtable]$values) 
+  # Parent of many other parents. Making this hidden:false for MarketPodUnit, but make sure other, unused children have hidden:true
+  $values.hidden = $false
+  return $values, $true
+}
+AddSectionModifier "MarketPodUnit" { param([string]$name, [hashtable]$values) 
+  # Parent of MarketPod. There is also "FakeMarketPod"
   $values.hidden = $false
   return $values, $true
 }
 
+<# 
 AddSectionModifier "CoreUnitStatic512" { param([string]$name, [hashtable]$values) 
   $values.hidden = $false
   $values.displayName = "Static Core Unit"
