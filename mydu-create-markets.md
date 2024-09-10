@@ -23,15 +23,20 @@ This procedure creates one market. You can use a construct blueprint or make a c
 - In backoffice go to markets and scroll to last. It should be with name "My Market". Note first column ID.
 - At bottom, in "Batch parameter update" enter Market ID, owner 3, Name as you want, and put 0 to all taxes and fees. This will update the name of the market.
 - To add the market to planet's POIs, go to constructs on backoffice and find your construct. In Elements tab seach "core". Open the core element and in properties select "gameplayTag", set it's value to "tag_location_marketplace", and click "Submit Query".
-- If the market should become a "system" market, Go to Constructs in backoffice and find your construct. In Overview tab, Edit and change "Player ID" to 2. Note the construct ID. Switch to Properties tab and edit:  
-    "isFixture": true  
+- If the market should become a "system" market, Go to Constructs in backoffice and find your construct. In Overview tab, Edit and change "Player ID" to 2. Note the construct ID. Switch to Properties tab and edit:
+```json 
+    "isFixture": true
+
     Under "header":  
       "uniqueIdentifier": "planetsMarkets/<CID>_Marketplace_<Planet>_<number>",  
         where <CID> is construction id. Sample:  
         "uniqueIdentifier": "planetsMarkets/123456_Marketplace_Ion_1",
+
       "folder": "planetsMarkets",  
+
       "constructIdHint": <CID>,  
-        where <CID> is construction id  
+        where <CID> is construction id
+```
     Scroll to bottom and press "Save".  
     Using e.g. PGAdmin, open Postgres table "market", search your new market and change column "owner_id" to 3 and update.
 - If making your own market, add e.g. "Market" tag to construct. Then in RDMS make a new policy "actor:All, rights:Use Elements, tag:Market".
