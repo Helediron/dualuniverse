@@ -43342,8 +43342,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbControlPlugOut: 20
   nbIndustryPlugIn: 20
+  nbControlPlugOut: 20
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -55576,3 +55576,24 @@ Symeon:
   constructId: 110
   moonsConstructId: []
   maxStaticAltitude: 1200
+Ares:
+  parent: SolarSystemPlanet
+  constructId: 130
+  moonsConstructId: []
+  maxStaticAltitude: 5000
+---
+LegacyTerritoryScannerUnit:
+  parent: TerritoryScannerUnit
+---
+LegacyTerritoryScanner:
+  parent: LegacyTerritoryScannerUnit
+  displayName: Legacy Territory Scanner
+  description: A Territory Scanner scans a whole territory for diggable underground ore.
+  duration: 180
+  newPlayerDefaultQty: 0
+  unitVolume: 12702.90
+  unitMass: 66461.96
+  level: 2
+  scale: xl
+  price: 2525.5
+  hitpoints: 53309
