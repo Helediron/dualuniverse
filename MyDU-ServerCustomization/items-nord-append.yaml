@@ -134,6 +134,30 @@ RetroEngineLarge5:
     kinetic: 0.4
     electromagnetic: 0.5
 ---
+Headlight2:
+  parent: LightUnit
+  displayName: Uncommon Headlight
+  assetAlias: Headlight
+  unitMass: 79.34
+  newPlayerDefaultQty: 0
+  subdescription: It casts a spotlight.
+  unitVolume: 21.60
+  level: 2
+  scale: xs
+  price: 212.203265
+  lightProperties:
+    limitPerCell: 4
+    shadowCaster: false
+    materialEmissionColorOn: 1,1,1,1
+    materialEmissionColorOff: 0.25,0.25,0.25,1
+    materialEmissionScaleOff: 1
+    materialEmissionScaleOn: 10
+    proj:
+      attenuationDistance: 320.0
+      attenuationPower: 0.25
+      intensity: 0.75
+  hitpoints: 50
+---
 Ion:
   parent: SolarSystemPlanet
   constructId: 120
