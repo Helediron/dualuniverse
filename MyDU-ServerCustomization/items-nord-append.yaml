@@ -1,6 +1,7 @@
 AdjusterLarge2:
   parent: Adjustor
   displayName: Uncommon Adjustor
+  assetAlias: AdjusterLarge
   subdescription: ''
   maxPower: 128000
   unitMass: 1550
@@ -14,6 +15,7 @@ AdjusterLarge2:
 AdjusterLarge3:
   parent: Adjustor
   displayName: Advanced Adjustor
+  assetAlias: AdjusterLarge
   subdescription: ''
   maxPower: 128000
   unitMass: 1550
@@ -27,6 +29,7 @@ AdjusterLarge3:
 AdjusterLarge4:
   parent: Adjustor
   displayName: Rare Adjustor
+  assetAlias: AdjusterLarge
   subdescription: ''
   maxPower: 128000
   unitMass: 1550
@@ -40,6 +43,7 @@ AdjusterLarge4:
 AdjusterLarge5:
   parent: Adjustor
   displayName: Exotic Adjustor
+  assetAlias: AdjusterLarge
   subdescription: ''
   maxPower: 128000
   unitMass: 1550
@@ -53,6 +57,7 @@ AdjusterLarge5:
 RetroEngineLarge2:
   parent: Spacebrake
   displayName: Uncommon Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: ''
   functionInSpace: true
   maxPower: 3600000
@@ -74,6 +79,7 @@ RetroEngineLarge2:
 RetroEngineLarge3:
   parent: Spacebrake
   displayName: Advanced Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: ''
   functionInSpace: true
   maxPower: 3600000
@@ -95,6 +101,7 @@ RetroEngineLarge3:
 RetroEngineLarge4:
   parent: Spacebrake
   displayName: Rare Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: ''
   functionInSpace: true
   maxPower: 3600000
@@ -116,6 +123,7 @@ RetroEngineLarge4:
 RetroEngineLarge5:
   parent: Spacebrake
   displayName: Exotic Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: ''
   functionInSpace: true
   maxPower: 3600000

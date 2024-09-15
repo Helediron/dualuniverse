@@ -108,6 +108,8 @@ AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values)
   $values.miningUnitCalibration = $false
   $values.orgConstructLimit = $false
   $values.deactivateCollidingElements = $false
+  $values.allowIndustryOnDynamicConstruct = $true
+  $values.allowMarketOnDynamicConstruct = $true
   return $values, $true
 }
 

@@ -93,6 +93,8 @@ FeaturesList:
   orgConstructLimitWarnOnly: false
   deactivateCollidingElements: false
   skinSelector: true
+  allowMarketOnDynamicConstruct: true
+  allowIndustryOnDynamicConstruct: true
 ---
 Pet:
   parent: GameplayObject
@@ -55420,6 +55422,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary5:
 AdjusterLarge2:
   parent: Adjustor
   displayName: Uncommon Adjustor
+  assetAlias: AdjusterLarge
   subdescription: Max power boosted 1.3 * basic.
   maxPower: 166400
   unitMass: 1550
@@ -55433,6 +55436,7 @@ AdjusterLarge2:
 AdjusterLarge3:
   parent: Adjustor
   displayName: Advanced Adjustor
+  assetAlias: AdjusterLarge
   subdescription: Max power boosted 2.6 * basic.
   maxPower: 332800
   unitMass: 1550
@@ -55446,6 +55450,7 @@ AdjusterLarge3:
 AdjusterLarge4:
   parent: Adjustor
   displayName: Rare Adjustor
+  assetAlias: AdjusterLarge
   subdescription: Max power boosted 8 * basic.
   maxPower: 1024000
   unitMass: 1550
@@ -55459,6 +55464,7 @@ AdjusterLarge4:
 AdjusterLarge5:
   parent: Adjustor
   displayName: Exotic Adjustor
+  assetAlias: AdjusterLarge
   subdescription: Max power boosted 16 * basic.
   maxPower: 2048000
   unitMass: 1550
@@ -55472,6 +55478,7 @@ AdjusterLarge5:
 RetroEngineLarge2:
   parent: Spacebrake
   displayName: Uncommon Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: Max power boosted 1.3 * basic.
   functionInSpace: true
   maxPower: 4680000
@@ -55493,6 +55500,7 @@ RetroEngineLarge2:
 RetroEngineLarge3:
   parent: Spacebrake
   displayName: Advanced Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: Max power boosted 2.6 * basic.
   functionInSpace: true
   maxPower: 9360000
@@ -55514,6 +55522,7 @@ RetroEngineLarge3:
 RetroEngineLarge4:
   parent: Spacebrake
   displayName: Rare Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: Max power boosted 8 * basic.
   functionInSpace: true
   maxPower: 28800000
@@ -55535,6 +55544,7 @@ RetroEngineLarge4:
 RetroEngineLarge5:
   parent: Spacebrake
   displayName: Exotic Retro-rocket Brake
+  assetAlias: RetroEngineLarge
   subdescription: Max power boosted 16 * basic.
   functionInSpace: true
   maxPower: 57600000
