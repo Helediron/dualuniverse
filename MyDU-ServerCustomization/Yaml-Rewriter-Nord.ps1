@@ -186,15 +186,20 @@ AddSectionModifier "MarketPodUnit" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
-<# 
+
 AddSectionModifier "CoreUnitStatic512" { param([string]$name, [hashtable]$values) 
   $values.hidden = $false
   $values.displayName = "Static Core Unit"
-  $values.scale = "xl"
+  #$values.scale = "xl"
   $values.newPlayerDefaultQty = 0
   $values.unitVolume = 10001.00
   $values.unitMass = 20066.30
-  $values.level = 2
+  $values.price = 251905
+  $values.level = 4
+  $values.requiredTalents = ,@{
+    name = "StaticCoreUnitExpertise"
+    level = 4
+  }
   $values.hitpoints = 20710  
   return $values, $true
 }
@@ -202,15 +207,20 @@ AddSectionModifier "CoreUnitStatic512" { param([string]$name, [hashtable]$values
 AddSectionModifier "CoreUnitDynamic512" { param([string]$name, [hashtable]$values) 
   $values.hidden = $false
   $values.displayName = "Dynamic Core Unit"
-  $values.scale = "xl"
+  #$values.scale = "xl"
   $values.newPlayerDefaultQty = 0
   $values.unitVolume = 10001.00
   $values.unitMass = 20066.30
-  $values.level = 2
+  $values.price = 251905
+  $values.level = 4
+  $values.requiredTalents = ,@{
+    name = "DynamicCoreUnitExpertise"
+    level = 4
+  }
   $values.hitpoints = 20710
   return $values, $true
 }
- #>
+
 AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values) 
   $values.calibrationGracePeriodHours = 7200
   return $values, $true
@@ -260,6 +270,11 @@ AddPatternModifier "^(Aileron|Stabilizer|Wing)X.*Large" { param([string]$name, [
   if ($values.hidden) {
     $values.hidden = $false
   }
+  if ($name -eq "StabilizerXLarge") {
+    $values.assetAlias=  "WingXLarge2"
+  }
+  
+
   return $values, $true
 }
   

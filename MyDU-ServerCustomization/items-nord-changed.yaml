@@ -32031,10 +32031,18 @@ CoreUnitDynamic4096:
 CoreUnitDynamic512:
   parent: CoreUnitDynamic
   constructSize: 512
-  displayName: Dynamic Core Unit 256m
+  displayName: Dynamic Core Unit
   cellSize: 0.5
-  hidden: true
-  hitpoints: 50
+  hidden: false
+  hitpoints: 20710
+  unitMass: 20066.3
+  unitVolume: 10001
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  newPlayerDefaultQty: 0
+  price: 251905
+  level: 4
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32209,10 +32217,18 @@ CoreUnitStatic4096:
 CoreUnitStatic512:
   parent: CoreUnitStatic
   constructSize: 512
-  displayName: Static Core Unit 256m
+  displayName: Static Core Unit
   cellSize: 0.5
-  hidden: true
-  hitpoints: 50
+  hidden: false
+  hitpoints: 20710
+  unitMass: 20066.3
+  unitVolume: 10001
+  requiredTalents:
+  - name: StaticCoreUnitExpertise
+    level: 4
+  newPlayerDefaultQty: 0
+  price: 251905
+  level: 4
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -43344,8 +43360,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 20
   nbControlPlugOut: 20
+  nbIndustryPlugIn: 20
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -50474,6 +50490,7 @@ StabilizerXLarge:
   hitpoints: 100000
   liftDragRatio: 5
   hidden: false
+  assetAlias: WingXLarge2
 ---
 StabilizerXtraSmall:
   parent: Stabilizer
