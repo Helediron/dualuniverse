@@ -57,42 +57,62 @@ If there is a list of positions inside "taxii", the last of them is closest to a
 
 ### Feli
 
+Complete set of markets available.
+
+- Pick construct exports from here: <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports>
+- Reserve hexes for each market (locations below, pick lat, lon from pos field)
+- In backoffice, go to Constructs and import each constructs. Note: these are construct exports - not blueprints.
+  - Click "Import".
+  - Browse one file, e.g. *Market_Feli_01.json*.
+  - Set Forced Construct id to 6PPPMM, e.g. 600501 ( 6 + Feli's id 5, market number 1, fill zeros: 6 + 005 + 01).
+  - Check "Replace if exists".
+  - Click "Import".
+- In backoffice, go to Territories and modify each reserved territory.
+  - Find and select each territory.
+  - Click "Edit".
+  - Change Owner, Player ID to 2 .
+  - Click "Save".
+
+These are updated locations matching Feli construct exports.
+
 ```lua
     locations = {
       {
         name = "Feli M01",
         pos = "::pos{0,5,0.5869,178.9424,18371}",
-        sectorLeft = 0,
-        sectorRight = 280,
-        taxii = {"::pos{0,5,0.7491,178.7489,18395}"}
+        sectorLeft = 330,
+        sectorRight = 290,
+        taxii = {"::pos{0,5,0.7118,178.7828,18390.3691}"}
       }, {
         name = "Feli M02",
         pos = "::pos{0,5,1.0577,-92.0922,18384}",
-        sectorLeft = 80,
-        sectorRight = 5,
-        taxii = {"::pos{0,5,1.3509,-92.0043,18418}"}
+        sectorLeft = 60,
+        sectorRight = 20,
+        taxii = {"::pos{0,5,1.2612,-91.9882,18413.2578}"}
       }, {
         name = "Feli M03",
-        pos = "::pos{0,5,-0.8740,-17.6586,18454}",
-        vectors = {105, 180, 310, 25},
-        taxii = {"::pos{0,5,-0.8309,-17.4960,18458}"}
+        pos = "::pos{0,5,-0.7751,-17.4513,18455.3535}",
+        sectorLeft = 40,
+        sectorRight = 0,
+        taxii = {"::pos{0,5,-0.6937,-17.4304,18450.8398}"}
       }, {
         name = "Feli M04",
-        pos = "::pos{0,5,15.7664,25.6039,18475}",
-        vectors = {210, 270, 0, 110},
-        taxii = {"::pos{0,5,15.4355,25.7264,18476}"}
+        pos = "::pos{0,5,15.6811,25.4256,18472.6602}",
+        sectorLeft = 270,
+        sectorRight = 250,
+        taxii = {"::pos{0,5,15.6866,25.3332,18472.7930}"}
       }, {
         name = "Feli M05",
-        pos = "::pos{0,5,-87.2990,-20.6490,18414}",
-        sectorLeft = 330,
-        sectorRight = 240,
-        taxii = {"::pos{0,5,-87.3008,-24.2722,18406}"}
+        pos = "::pos{0,5,-87.1867,-28.3558,18416.7520}",
+        sectorLeft = 80,
+        sectorRight = 50,
+        taxii = {"::pos{0,5,-87.1494,-25.6241,18416.6543}"}
       }, {
         name = "Feli M06",
         pos = "::pos{0,5,85.6824,-29.1127,18414}",
-        sectorLeft = 40,
-        sectorRight = 320,
-        taxii = {"::pos{0,5,85.8712,-30.8048,18412}"}
+        sectorLeft = 340,
+        sectorRight = 310,
+        taxii = {"::pos{0,5,85.8266,-31.0682,18413.2500}"}
       }
     },
 ```
