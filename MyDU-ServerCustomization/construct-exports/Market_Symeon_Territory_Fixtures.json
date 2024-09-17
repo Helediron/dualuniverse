@@ -1,0 +1,232 @@
+{
+    "fixtureheader": {
+        "Kind": {
+            "Type": 5,
+            "Version": 0
+        },
+        "PrettyName": "Symeon(110) territories",
+        "Dependencies": {
+            "ConstructDependencies": []
+        },
+        "Construct": null,
+        "Player": null,
+        "Territories": {
+            "PlanetId": 110,
+            "PlanetName": "Symeon"
+        }
+    },
+    "PlanetName": "Symeon",
+    "PlanetId": 110,
+    "territories": [
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 30033,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 95458.20697115813,
+                    "y": 26460.175625082014,
+                    "z": 64352.336331638566
+                },
+                "name": "Symeon Missions",
+                "buildDate": {
+                    "networkTime": 1725796513028
+                },
+                "welcomesVisitors": false,
+                "balance": 1950000,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 17464,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 64958.330012290935,
+                    "y": 74202.34524436865,
+                    "z": 17189.599280006427
+                },
+                "name": "Symeon Market 6",
+                "buildDate": {
+                    "networkTime": 1725796068144
+                },
+                "welcomesVisitors": false,
+                "balance": 1950000,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 7991,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 63961.40919933539,
+                    "y": 71663.06402323926,
+                    "z": 114246.02666993225
+                },
+                "name": "Symeon Market 5",
+                "buildDate": {
+                    "networkTime": 1725795467685
+                },
+                "welcomesVisitors": false,
+                "balance": 1950000,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 159,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 55600.93377799642,
+                    "y": 108268.40545750326,
+                    "z": 43361.11860820674
+                },
+                "name": "Symeon Market 4",
+                "buildDate": {
+                    "networkTime": 1725794954852
+                },
+                "welcomesVisitors": false,
+                "balance": 1950000,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 11920,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 111520.57016993871,
+                    "y": 73888.67461457642,
+                    "z": 80909.99310304226
+                },
+                "name": "Symeon Market 3",
+                "buildDate": {
+                    "networkTime": 1725794402924
+                },
+                "welcomesVisitors": false,
+                "balance": 1950000,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 2476,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 66471.48524561925,
+                    "y": 114737.88860159637,
+                    "z": 64951.07022249484
+                },
+                "name": "Symeon Market 2",
+                "buildDate": {
+                    "networkTime": 1725793937781
+                },
+                "welcomesVisitors": false,
+                "balance": 1950700,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "planetId": 110,
+                "tileIndex": 23040,
+                "ownerId": {
+                    "playerId": 2,
+                    "organizationId": 0
+                },
+                "itemType": 1358842892,
+                "position": {
+                    "x": 16532.300813155085,
+                    "y": 60905.89741026899,
+                    "z": 68286.4717035029
+                },
+                "name": "Symeon Market 1",
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "welcomesVisitors": false,
+                "balance": 0,
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "headquarters": false
+            }
+        }
+    ]
+}

@@ -20,6 +20,7 @@
       "organizationId": 0
     },
     "blueprintId": 872,
+    "isFixture": true,
     "isDynamicWreck": false
   },
   "elements": [
@@ -585,6 +586,13 @@
           {
             "type": 3,
             "value": 1184.0
+          }
+        ],
+        [
+          "gameplayTag",
+          {
+            "type": 4,
+            "value": "tag_location_marketplace"
           }
         ]
       ],

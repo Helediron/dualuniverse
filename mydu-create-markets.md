@@ -55,10 +55,6 @@ These are ready-made market sets for legacy planets. They use the old "Small Mar
 
 Creating markets require first reservation of the hexes, and then importing constructs.
 
-### Feli
-
-Complete set of markets available.
-
 - Pick construct and territory exports from here: <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports>
 - Reserve hexes for markets. All hexes for a planet are in one file.
   - In backoffice, go to Territories to import them.
@@ -81,11 +77,11 @@ Note: importing territories trigger three day expiration. With e.g. PGAdmin, ope
 
 ## Locations of old markets
 
-In the list below are snippets from Lua code containing some old market positions. The information is several years old, and just snitched from a flight script. Anything named "xxx Pad" landed on landing pad of a market. 
-Entries NOT named as "xx Pad" are landing spots near a market, on ground.
-If there is a list of positions inside "taxii", the last of them is closest to a market
+In the list below are snippets from Lua code containing some old market positions. The information is several years old, and just snitched from a flight script. Anything named "xxx Pad" landed on landing pad of a market. Entries NOT named as "xx Pad" are landing spots near a market, on ground. If there is a list of positions inside "taxii", the last of them is closest to a market.
 
-These are updated locations matching Feli construct exports.
+### Feli
+
+Feli locations updated to match construct exports.
 
 ```lua
     locations = {
