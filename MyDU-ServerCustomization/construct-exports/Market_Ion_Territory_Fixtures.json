@@ -1,0 +1,203 @@
+{
+    "fixtureheader": {
+        "Construct": null,
+        "Dependencies": {
+            "ConstructDependencies": [
+            ]
+        },
+        "Kind": {
+            "Type": 5,
+            "Version": 0
+        },
+        "Player": null,
+        "PrettyName": "Ion(120) territories",
+        "Territories": {
+            "PlanetId": 120,
+            "PlanetName": "Ion"
+        }
+    },
+    "PlanetId": 120,
+    "PlanetName": "Ion",
+    "territories": [
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 3",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 74826.041491167,
+                    "y": 110342.707003848,
+                    "z": 70416.3065744549
+                },
+                "tileIndex": 1803,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 6",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 77343.4257343264,
+                    "y": 69161.9709756782,
+                    "z": 21517.5244816145
+                },
+                "tileIndex": 14358,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 5",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 60049.1691303666,
+                    "y": 60937.1690429494,
+                    "z": 110241.261732013
+                },
+                "tileIndex": 22843,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 4",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 76438.9486844964,
+                    "y": 22361.5160634963,
+                    "z": 55386.0204003587
+                },
+                "tileIndex": 25312,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 2",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 111184.704775827,
+                    "y": 64763.9913285386,
+                    "z": 66960.1369481173
+                },
+                "tileIndex": 10038,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 0
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Ion Market 1",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 120,
+                "position": {
+                    "x": 21511.4781195776,
+                    "y": 72203.0625734087,
+                    "z": 75601.4958114907
+                },
+                "tileIndex": 19622,
+                "welcomesVisitors": false
+            }
+        }
+    ]
+}

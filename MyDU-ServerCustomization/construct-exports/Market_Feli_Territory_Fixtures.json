@@ -1,0 +1,203 @@
+{
+    "fixtureheader": {
+        "Construct": null,
+        "Dependencies": {
+            "ConstructDependencies": [
+            ]
+        },
+        "Kind": {
+            "Type": 5,
+            "Version": 0
+        },
+        "Player": null,
+        "PrettyName": "Feli(5) territories",
+        "Territories": {
+            "PlanetId": 5,
+            "PlanetName": "Feli"
+        }
+    },
+    "PlanetId": 5,
+    "PlanetName": "Feli",
+    "territories": [
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725730427604
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli Market 6",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 69864.210730458,
+                    "y": 63149.8050697889,
+                    "z": 125570.811552891
+                },
+                "tileIndex": 18756,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725729510368
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli Market 5",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 68191.0400693236,
+                    "y": 64792.1524684977,
+                    "z": 5385.53288205187
+                },
+                "tileIndex": 24102,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725727441100
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli Market 2",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 62893.1691228256,
+                    "y": 5417.51786433779,
+                    "z": 66541.7309796489
+                },
+                "tileIndex": 25769,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725726930731
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli Market 3",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 122877.038675513,
+                    "y": 47068.3936988656,
+                    "z": 64694.0083576488
+                },
+                "tileIndex": 9946,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725725727794
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli market 4",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 117940.490109126,
+                    "y": 90894.3010191934,
+                    "z": 81102.5505336856
+                },
+                "tileIndex": 8609,
+                "welcomesVisitors": false
+            }
+        },
+        {
+            "specialOwner": "Aphelia",
+            "territory": {
+                "balance": 0,
+                "buildDate": {
+                    "networkTime": 1725728592568
+                },
+                "expiresAt": {
+                    "networkTime": 32503680000000
+                },
+                "headquarters": false,
+                "itemType": 1358842892,
+                "keyExpiration": {
+                    "networkTime": 0
+                },
+                "name": "Feli Market 1",
+                "ownerId": {
+                    "organizationId": 0,
+                    "playerId": 2
+                },
+                "planetId": 5,
+                "position": {
+                    "x": 5399.94042842359,
+                    "y": 67116.1382343662,
+                    "z": 65607.5453339218
+                },
+                "tileIndex": 16238,
+                "welcomesVisitors": false
+            }
+        }
+    ]
+}
