@@ -10,7 +10,7 @@ In Item hierarchy, make required market elements visible:
 - Make sure all the other children under node "Other" have hidden:true .
 - Search marketPodUnit and in it's properties, set hidden: false .
 
-## How to create a market
+## How to create a new custom market
 
 This procedure creates one market. You can use a construct blueprint or make a custom construct. What makes it a market is that it has Market Unit element and at least one Market Pod, and then some data tweaking in MyDU.
 
@@ -49,19 +49,23 @@ This procedure creates one market. You can use a construct blueprint or make a c
   - In RDMS make a new policy "actor:All, rights:Use Elements, tag:Market".
 - The new market should now NOT have orders. Re-seed markets.
 
-## Locations
+## How to import ready-made markets to a planet
 
-In the list below are snippets from Lua code containing some old market positions. Anything named "xxx Pad" landed on landing pad of a market.
-Entries NOT named as "xx Pad" are landing spots near a market, on ground.
-If there is a list of positions inside "taxii", the last of them is closest to a market
+These are ready-made market sets for legacy planets. They use the old "Small Market" building.
+
+Creating markets require first reservation of the hexes, and then importing constructs.
 
 ### Feli
 
 Complete set of markets available.
 
-- Pick construct exports from here: <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports>
-- Reserve hexes for each market (locations below, pick lat, lon from pos field)
-- In backoffice, go to Constructs and import each constructs. Note: these are construct exports - not blueprints.
+- Pick construct and territory exports from here: <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports>
+- Reserve hexes for markets. All hexes for a planet are in one file.
+  - In backoffice, go to Territories to import them.
+  - Scroll down to "Select fixture" on left.
+  - Click "Browse..." and select fixture file, e.g. *Market_Feli_Territory_Fixtures.json* .
+  - Click "Replace Fixture Territories".
+- In backoffice, go to Constructs and import each construct. Note: these are construct exports - not blueprints.
   - Click "Import".
   - Browse one file, e.g. *Market_Feli_01.json*.
   - Set Forced Construct id to 6PPPMM, e.g. 600501 ( 6 + Feli's id 5, market number 1, fill zeros: 6 + 005 + 01).
@@ -72,6 +76,14 @@ Complete set of markets available.
   - Click "Edit".
   - Change Owner, Player ID to 2 .
   - Click "Save".
+
+Note: importing territories trigger three day expiration. With e.g. PGAdmin, open Postgres table "territory", search your market hexes and change column "expires_at" to 3000-01-01 00:00:00 and update.
+
+## Locations of old markets
+
+In the list below are snippets from Lua code containing some old market positions. The information is several years old, and just snitched from a flight script. Anything named "xxx Pad" landed on landing pad of a market. 
+Entries NOT named as "xx Pad" are landing spots near a market, on ground.
+If there is a list of positions inside "taxii", the last of them is closest to a market
 
 These are updated locations matching Feli construct exports.
 
