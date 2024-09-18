@@ -27067,15 +27067,15 @@ TerritoryUnitBasicSanctuary:
   parent: TerritoryUnit
   subdescription: A sanctuary Territory Unit is used to gain ownership over an available sanctuary territory. You will then be able to set permissions on the territory you now own. The sanctuary Territory Unit can only be used on a sanctuary moon.
   sanctuary: true
-  unitMass: 1.0
-  unitVolume: 1.0
+  unitMass: 1
+  unitVolume: 1
   level: 5
   scale: xl
   hitpoints: 5931
-  isTradable: false
+  isTradable: true
   keptOnDeath: true
-  droppable: false
-  isMovable: false
+  droppable: true
+  isMovable: true
 ---
 TerritoryUnitInternal:
   parent: TerritoryUnit
@@ -32035,14 +32035,14 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
-  unitVolume: 10001
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  newPlayerDefaultQty: 0
-  price: 251905
+  unitMass: 20066.3
   level: 4
+  unitVolume: 10001
+  price: 251905
+  newPlayerDefaultQty: 0
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32221,14 +32221,14 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
-  unitVolume: 10001
   requiredTalents:
   - name: StaticCoreUnitExpertise
     level: 4
-  newPlayerDefaultQty: 0
-  price: 251905
+  unitMass: 20066.3
   level: 4
+  unitVolume: 10001
+  price: 251905
+  newPlayerDefaultQty: 0
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -43360,8 +43360,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbControlPlugOut: 20
   nbIndustryPlugIn: 20
+  nbControlPlugOut: 20
 ---
 MissionContainer:
   parent: ItemContainerBase

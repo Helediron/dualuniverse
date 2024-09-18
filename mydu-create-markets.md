@@ -20,6 +20,8 @@ It's a standard L core construct and therefore easy to place and does not need X
 
 The blueprint json is available [here](https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/blueprints/SmallMarketTemplate2.json) .
 
+You can find more market blueprints on [MYDU Blueprints, Scripts & Modding Discord](https://discord.gg/R8Z4SXjE), e.g. standard [Market - Medium](https://discord.com/channels/1278879926598242323/1279434109000744982) (and a [variation](https://discord.com/channels/1278879926598242323/1279434109000744982/1285335397076832256) of it without landing pads).
+
 - Claim a hex and set name to something suitable, e.g. "Ion Market 1".
 - Deploy a static construct.
 - If not yet in construct, Add Market Unid (e.g. size M).

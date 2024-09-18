@@ -159,7 +159,14 @@ AddSectionModifier "TerritoriesConfig" { param([string]$name, [hashtable]$values
   $values.upkeepFee = 500
   return $values, $true
 }
-  
+
+AddSectionModifier "TerritoryUnitBasicSanctuary" { param([string]$name, [hashtable]$values) 
+  $values.isTradable = $true
+  $values.droppable = $true
+  $values.isMovable = $true
+  return $values, $true
+}
+
 AddPatternModifier "^(Consumable|Part)$" { param([string]$name, [hashtable]$values) 
   $values.keptOnDeath = $true
   return $values, $true
