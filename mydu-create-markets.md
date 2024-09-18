@@ -39,11 +39,13 @@ If you made a new planet and want the markets seeded, add a seed file with plane
 
 ## How to import ready-made markets to a planet
 
-These are ready-made market sets for legacy planets. They use the old "Small Market" building.
+These are ready-made market sets for legacy planets. They use the old "Small Market" building. ![Small Market](./MyDU-ServerCustomization/blueprints/SmallMarket.png) .
+
+The blueprint json is available [here](https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/blueprints/SmallMarketTemplate2.json) . There are six markets per planet. There are no markets on their moons.
 
 Creating markets require first reservation of the hexes, and then importing constructs.
 
-- Pick construct and territory exports from here: <https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports>
+- Pick construct and territory export json files from a folder [here](https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/construct-exports) .
 - Reserve hexes for markets. All hexes for a planet are in one file.
   - In backoffice, go to Territories to import them.
   - Scroll down to "Select fixture" on left.
@@ -52,7 +54,7 @@ Creating markets require first reservation of the hexes, and then importing cons
 - In backoffice, go to Constructs and import each construct. Note: these are construct exports - not blueprints.
   - Click "Import".
   - Browse one file, e.g. *Market_Feli_01.json*.
-  - Set Forced Construct id to 6PPPMM where P is planet id and M is market number. A sample is e.g. 600501 ( 6 + Feli's id 5, market number 1, fill zeros: 6 + 005 + 01 = 600501). (Number series 600000 .. 699999 is unused by NQ).
+  - Set field "Forced Construct id" to a number in format 6PPPMM where P is planet id and M is market number. A sample is e.g. 600501 ( 6 + Feli's id 5 + market number 1, zero-filled: 6 + 005 + 01 = 600501). (Number series 600000 .. 699999 is unused by NQ).
   - Double-check that import file, planet id, and construct id match.
   - Check "Replace if exists".
   - Click "Import".
