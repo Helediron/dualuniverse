@@ -50,8 +50,8 @@ Character:
   calibrationChargeAtStart: 50
   researchSlots: 5
   maxHeadquarters: 3
-  maxConstructs: 100
-  orgConstructSlots: 100
+  maxConstructs: 1000
+  orgConstructSlots: 1000
   orgConstructSlotsAllocationCooldown: 2592000
   orgConstructLimitEnforcerIntervalDays: 14
   orgConstructLimitEnforcerReferenceTime: 2022-01-22T22:00:00
@@ -26976,7 +26976,7 @@ ControlUnit:
     thermic: 0.1
     kinetic: 0.1
     electromagnetic: 0.1
-  nbControlPlugOut: 20
+  nbControlPlugOut: 50
 ---
 DeepSpaceAsteroidTrackerUnit:
   parent: Systems
@@ -43360,8 +43360,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 20
-  nbControlPlugOut: 20
+  nbIndustryPlugIn: 50
+  nbControlPlugOut: 50
 ---
 MissionContainer:
   parent: ItemContainerBase

@@ -89,8 +89,8 @@ AddSectionModifier "Character" { param([string]$name, [hashtable]$values)
   $values.defaultWallet = 2000000000.0
   $values.calibrationChargeMax = 100
   $values.calibrationChargeAtStart = 50
-  $values.maxConstructs = 100
-  $values.orgConstructSlots = 100  
+  $values.maxConstructs = 1000
+  $values.orgConstructSlots = 1000 
   return $values, $true
 }
 
@@ -253,13 +253,13 @@ AddSectionModifier "WarpCellStandard" { param([string]$name, [hashtable]$values)
 }
 
 AddSectionModifier "ItemContainer" { param([string]$name, [hashtable]$values) 
-  $values.nbIndustryPlugIn = 20
-  $values.nbControlPlugOut = 20
+  $values.nbIndustryPlugIn = 50
+  $values.nbControlPlugOut = 50
   return $values, $true
 }
 
 AddSectionModifier "ControlUnit" { param([string]$name, [hashtable]$values) 
-  $values.nbControlPlugOut = 20
+  $values.nbControlPlugOut = 50
   return $values, $true
 }
 
