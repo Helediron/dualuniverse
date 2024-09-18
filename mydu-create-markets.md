@@ -14,7 +14,9 @@ In Item hierarchy, make required market elements visible:
 
 This procedure creates one market. You can use a construct blueprint or make a custom construct. What makes it a market is that it has Market Unit element and at least one Market Pod, and then some data tweaking in MyDU.
 
-One option for markets is the old "Small Market" building. ![Small Market](./MyDU-ServerCustomization/blueprints/SmallMarket.png) . It's a standard L core construct and therefore easy to place and does not need XL core tweaks.
+One option for markets is the old "Small Market" building. ![Small Market](./MyDU-ServerCustomization/blueprints/SmallMarket.png)
+
+It's a standard L core construct and therefore easy to place and does not need XL core tweaks.
 
 The blueprint json is available [here](https://github.com/Helediron/dualuniverse/tree/master/MyDU-ServerCustomization/blueprints/SmallMarketTemplate2.json) .
 
