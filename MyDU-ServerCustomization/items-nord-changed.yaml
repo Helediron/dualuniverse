@@ -32038,11 +32038,11 @@ CoreUnitDynamic512:
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  unitMass: 20066.3
   level: 4
-  unitVolume: 10001
   price: 251905
+  unitVolume: 10001
   newPlayerDefaultQty: 0
+  unitMass: 20066.3
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32224,11 +32224,11 @@ CoreUnitStatic512:
   requiredTalents:
   - name: StaticCoreUnitExpertise
     level: 4
-  unitMass: 20066.3
   level: 4
-  unitVolume: 10001
   price: 251905
+  unitVolume: 10001
   newPlayerDefaultQty: 0
+  unitMass: 20066.3
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -43360,8 +43360,8 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 50
   nbControlPlugOut: 50
+  nbIndustryPlugIn: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44339,13 +44339,13 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  parent: EngineDisplay
-  displayName: Rocket Engines
-  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
   functionInSpace: true
-  maxPower: 30000.0
-  t50: 0.0
-  fuelRate: 0.000033
+  displayName: Rocket Engines
+  parent: EngineDisplay
+  maxPower: 30000
+  fuelRate: 1.65E-06
+  t50: 0
+  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
   maxSpeedBoost: 0.3
 ---
 SpaceEngine:
@@ -50815,7 +50815,7 @@ RocketEngineLarge:
   price: 49652.81
   visibilityLOD: 3
   hitpoints: 29067
-  fuelRate: 3.3E-05
+  fuelRate: 1.65E-06
   t50: 0
   optimalShipMass: 1750000
   resistances:
@@ -50837,7 +50837,7 @@ RocketEngineMedium:
   scale: m
   price: 7811.780000000001
   hitpoints: 2145
-  fuelRate: 3.3E-05
+  fuelRate: 1.65E-06
   t50: 0
   optimalShipMass: 885000
   resistances:
@@ -50859,7 +50859,7 @@ RocketEngineSmall:
   scale: s
   price: 3800.96
   hitpoints: 339
-  fuelRate: 3.3E-05
+  fuelRate: 1.65E-06
   t50: 0
   optimalShipMass: 20000
   resistances:

@@ -285,7 +285,13 @@ AddPatternModifier "^(Aileron|Stabilizer|Wing)X.*Large" { param([string]$name, [
   return $values, $true
 }
   
-
+AddPatternModifier "^RocketEngine" { param([string]$name, [hashtable]$values) 
+  if ($values.fuelRate) {
+    $values.fuelRate = $values.fuelRate / 20
+  }
+   return $values, $true
+}
+  
 AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
   $item = $treeNodes[$name]
   if ($item) {
@@ -640,6 +646,7 @@ foreach ($INFILE in $INFILES) {
               Write-Output "" " Modifier $pat done, didn't modify"
               $modified3 = $modified2
             } else {
+              Write-Output "" " Modifier $pat done, section is modified"
               $changes = $changes + 1
               foreach ($key2 in $keystate.Keys) {
                 if ($modified2.ContainsKey($key2)) {
@@ -649,45 +656,50 @@ foreach ($INFILE in $INFILES) {
                   }
 
                   # Try to maintain original datatype.
-                  $oldType = $value1[$key2].GetType().Name
-                  $newType = $modified2[$key2].GetType().Name
-                  $newValue1 = $modified2[$key2]
-                  $newValue2 = $null
-                  if ($newType -eq $oldType) {
+                  if ($null -eq $value1[$key2]) {
+                    $newValue1 = $modified2[$key2]
+                    Write-Output "  New value: $key1.$key2 <$newValue1>."
                     $newValue2 = $newValue1
-                  }
-                  else {
-                    if ($oldType -eq "Double") {
-                      $newValue2 = [Double]$newValue1
-                    }
-                    elseif ($oldType -eq "Int32") {
-                      if ($newType -eq "Double") {
-                        # Allow change from int to double when new value has significant decimals
-                        $rounded = ([Math]::Round($newValue1, 0))
-                        $decimals = 0.0
-                        if ($rounded -lt $newValue1 ) {
-                          $decimals = $newValue1 - $rounded
+                  } else {
+                    $oldType = $value1[$key2].GetType().Name
+                    $newType = $modified2[$key2].GetType().Name
+                    $newValue1 = $modified2[$key2]
+                    $newValue2 = $null
+                    if ($newType -eq $oldType) {
+                      $newValue2 = $newValue1
+                    } else {
+                      if ($oldType -eq "Double") {
+                        $newValue2 = [Double]$newValue1
+                      }
+                      elseif ($oldType -eq "Int32") {
+                        if ($newType -eq "Double") {
+                          # Allow change from int to double when new value has significant decimals
+                          $rounded = ([Math]::Round($newValue1, 0))
+                          $decimals = 0.0
+                          if ($rounded -lt $newValue1 ) {
+                            $decimals = $newValue1 - $rounded
+                          }
+                          else {
+                            $decimals = $rounded - $newValue1
+                          }
+                          if ($decimals -lt 0.000000001) {
+                            $newValue2 = [Int32]$rounded
+                            Write-Output "    Type change $key2 double to int <$newValue1> to <$newValue2>"
+                          }
+                          else {
+                            $newValue2 = $newValue1
+                          }
+        
                         }
                         else {
-                          $decimals = $rounded - $newValue1
+                          $newValue2 = [Int32]$newValue1
+                          Write-Output "    Type change $key2 $newType to int <$newValue1> to <$newValue2>"
                         }
-                        if ($decimals -lt 0.000000001) {
-                          $newValue2 = [Int32]$rounded
-                          Write-Output "    Type change $key2 double to int <$newValue1> to <$newValue2>"
-                        }
-                        else {
-                          $newValue2 = $newValue1
-                        }
-      
                       }
                       else {
-                        $newValue2 = [Int32]$newValue1
-                        Write-Output "    Type change $key2 $newType to int <$newValue1> to <$newValue2>"
+                        $newValue2 = $newValue1
+                        Write-Output "    Type change $key2 $oldType to $newType <$newValue1> to <$newValue2>"
                       }
-                    }
-                    else {
-                      $newValue2 = $newValue1
-                      Write-Output "    Type change $key2 $oldType to $newType <$newValue1> to <$newValue2>"
                     }
                   }
                   $modified3[$key2] = $newValue2
@@ -699,7 +711,7 @@ foreach ($INFILE in $INFILES) {
               }
               foreach ($key2 in $modified2.Keys) {
                 if (!$keystate[$key2]) {
-                  Write-Output "  Key added: $key1.$key2"
+                  Write-Output "  Key added: $key1.$key2 <$modified2[$key2]>"
                   $modified3[$key2] = $modified2[$key2]
                   $keystate[$key2] = $true
                 }
