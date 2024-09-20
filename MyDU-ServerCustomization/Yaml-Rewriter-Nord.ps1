@@ -6,7 +6,22 @@ if (Test-Path $INFILE_2) {
   $INFILES += $INFILE_2
 }
 $OUTFILE = ".\items-nord-changed.yaml"
-
+$BACKUP = ".\old-items-nord-changed.yaml"
+if (Test-Path $BACKUP) {
+  $lastWrite = (get-item $BACKUP).LastWriteTime
+  $timespan = new-timespan -hours 16
+  if (((get-date) - $lastWrite) -gt $timespan -or !(Test-Path $OUTFILE)) {
+    Write-Output "Removed old backup $BACKUP"
+    Remove-Item $BACKUP
+    if (Test-Path $OUTFILE) {
+      Write-Output "Saving $OUTFILE to backup $BACKUP"
+      Rename-Item -Path $OUTFILE -NewName $BACKUP
+    }
+  }
+} elseif (Test-Path $OUTFILE) {
+  Write-Output "Saving $OUTFILE to backup $BACKUP"
+  Rename-Item -Path $OUTFILE -NewName $BACKUP
+}
 
 # DON'T TOUCH CODE BELOW, until modifiable part begins
 
@@ -166,62 +181,37 @@ function generateTierVariations($baseName) {
 }
 
 generateTierVariations "AirbrakeLarge"
-
 generateTierVariations "AirbrakeMedium"
-
 generateTierVariations "AtmosphericFlap"
 
-
 generateTierVariations "AdjusterLarge"
-
 generateTierVariations "AdjusterMedium"
-
 generateTierVariations "AdjusterSmall"
-
 generateTierVariations "AdjusterXtraSmall"
 
-
 generateTierVariations "RetroEngineLarge"
-
 generateTierVariations "RetroEngineMedium"
-
 generateTierVariations "RetroEngine"
 
-
 generateTierVariations "WingLarge2"
-
+generateTierVariations "WingXLarge2"
 generateTierVariations "WingMedium2"
-
 generateTierVariations "WingMedium2Bis"
-
 generateTierVariations "WingXtraSmall2"
 
-
 generateTierVariations "StabilizerXLarge"
-
 generateTierVariations "StabilizerLarge"
-
 generateTierVariations "StabilizerSmall"
-
 generateTierVariations "StabilizerXtraSmall"
 
-
 generateTierVariations "AileronLarge2"
-
 generateTierVariations "AileronXLarge2"
-
-generateTierVariations "AileronShortXLarge2"
-
-generateTierVariations "AileronShortXXLarge2"
-
+#generateTierVariations "AileronShortXLarge2"
+#generateTierVariations "AileronShortXXLarge2"
 generateTierVariations "AileronShortLarge2"
-
 generateTierVariations "AileronMedium2"
-
 generateTierVariations "AileronShortMedium2"
-
 generateTierVariations "AileronSmall2"
-
 generateTierVariations "AileronShortSmall2"
 
 
@@ -425,15 +415,16 @@ AddSectionModifier "FireworkPalmtreeGold" { param([string]$name, [hashtable]$val
   return $values, $true
 }
 
-AddPatternModifier "^(Aileron|Stabilizer|Wing).*X+Large" { param([string]$name, [hashtable]$values) 
+AddPatternModifier "^(Aileron|Stabilizer|Wing)XLarge" { param([string]$name, [hashtable]$values) 
   if ($values.hidden) {
     $values.hidden = $false
   }
-  if ($name -match "XXXL") {
-    $values.scale = "xxxl"
-  } elseif ($name -match "XXL") {
-    $values.scale = "xxl"
-  } elseif ($name -match "XL") {
+  #if ($name -match "XXXL") {
+  #  $values.scale = "xxxl"
+  #} elseif ($name -match "XXL") {
+  #  $values.scale = "xxl"
+  #} else
+  if ($name -match "XL") {
     $values.scale = "xl"
   }
 
@@ -484,6 +475,25 @@ AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
             }
           }
           $values.subdescription = $oldText + "Max power boosted $multiplier * basic."
+        }
+      }
+      if ($values.fuelRate) {
+        # TRy half of boost per tier
+        $divider = 1
+        if ($values.level -eq 2) {
+          $divider = 1.3
+        }
+        elseif ($values.level -eq 3) {
+          $divider = 1.3
+        }
+        elseif ($values.level -eq 4) {
+          $divider = 4.0
+        }
+        elseif ($values.level -eq 5) {
+          $divider = 8.0
+        }
+        if ($divider -gt 1) {
+          [Double]$values.fuelRate = $values.fuelRate / $divider
         }
       }
       if ($values.t50 -and $values.t50 -gt 30) {

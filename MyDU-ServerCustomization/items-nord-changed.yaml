@@ -50673,74 +50673,10 @@ AileronShortXLarge2:
   unitMass: 14000
   unitVolume: 5600
   level: 1
-  scale: xl
+  scale: l
   hitpoints: 1695
   liftDragRatio: 9
-  hidden: false
----
-AileronShortXLarge22:
-  parent: Aileron2
-  displayName: Uncommon Compact Aileron
-  size: 4
-  maxPower: 2080000
-  maxLiftFactor: 16
-  unitMass: 14000
-  unitVolume: 5600
-  level: 2
-  scale: xl
-  hitpoints: 2542
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXLarge2
-  subdescription: Max power boosted 1.3 * basic.
----
-AileronShortXLarge23:
-  parent: Aileron2
-  displayName: Advanced Compact Aileron
-  size: 4
-  maxPower: 4160000
-  maxLiftFactor: 16
-  unitMass: 14000
-  unitVolume: 5600
-  level: 3
-  scale: xl
-  hitpoints: 5085
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXLarge2
-  subdescription: Max power boosted 2.6 * basic.
----
-AileronShortXLarge24:
-  parent: Aileron2
-  displayName: Rare Compact Aileron
-  size: 4
-  maxPower: 12800000
-  maxLiftFactor: 16
-  unitMass: 14000
-  unitVolume: 5600
-  level: 4
-  scale: xl
-  hitpoints: 7628
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXLarge2
-  subdescription: Max power boosted 8 * basic.
----
-AileronShortXLarge25:
-  parent: Aileron2
-  displayName: Exotic Compact Aileron
-  size: 4
-  maxPower: 25600000
-  maxLiftFactor: 16
-  unitMass: 14000
-  unitVolume: 5600
-  level: 5
-  scale: xl
-  hitpoints: 10170
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXLarge2
-  subdescription: Max power boosted 16 * basic.
+  hidden: true
 ---
 AileronShortXXLarge2:
   parent: Aileron2
@@ -50751,74 +50687,10 @@ AileronShortXXLarge2:
   unitMass: 45000
   unitVolume: 16000
   level: 1
-  scale: xxl
+  scale: xl
   hitpoints: 1600
   liftDragRatio: 9
-  hidden: false
----
-AileronShortXXLarge22:
-  parent: Aileron2
-  displayName: Uncommon Compact Aileron
-  size: 5
-  maxPower: 4160000
-  maxLiftFactor: 320
-  unitMass: 45000
-  unitVolume: 16000
-  level: 2
-  scale: xxl
-  hitpoints: 2400
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXXLarge2
-  subdescription: Max power boosted 1.3 * basic.
----
-AileronShortXXLarge23:
-  parent: Aileron2
-  displayName: Advanced Compact Aileron
-  size: 5
-  maxPower: 8320000
-  maxLiftFactor: 320
-  unitMass: 45000
-  unitVolume: 16000
-  level: 3
-  scale: xxl
-  hitpoints: 4800
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXXLarge2
-  subdescription: Max power boosted 2.6 * basic.
----
-AileronShortXXLarge24:
-  parent: Aileron2
-  displayName: Rare Compact Aileron
-  size: 5
-  maxPower: 25600000
-  maxLiftFactor: 320
-  unitMass: 45000
-  unitVolume: 16000
-  level: 4
-  scale: xxl
-  hitpoints: 7200
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXXLarge2
-  subdescription: Max power boosted 8 * basic.
----
-AileronShortXXLarge25:
-  parent: Aileron2
-  displayName: Exotic Compact Aileron
-  size: 5
-  maxPower: 51200000
-  maxLiftFactor: 320
-  unitMass: 45000
-  unitVolume: 16000
-  level: 5
-  scale: xxl
-  hitpoints: 9600
-  liftDragRatio: 9
-  hidden: false
-  assetAlias: AileronShortXXLarge2
-  subdescription: Max power boosted 16 * basic.
+  hidden: true
 ---
 AileronSmall2:
   parent: Aileron2
@@ -50989,10 +50861,10 @@ AileronXXLarge2:
   unitMass: 90000
   unitVolume: 36000
   level: 1
-  scale: xxl
+  scale: xl
   hitpoints: 3391
   liftDragRatio: 9
-  hidden: false
+  hidden: true
 ---
 StabilizerLarge:
   parent: Stabilizer
@@ -51564,6 +51436,70 @@ WingXLarge2:
   hitpoints: 5000
   liftDragRatio: 7
   hidden: false
+---
+WingXLarge22:
+  parent: Wing2
+  displayName: Uncommon Wing
+  maxPower: 3900000
+  maxLiftFactor: 600
+  unitMass: 30000
+  unitVolume: 12000
+  level: 2
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 7500
+  liftDragRatio: 7
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+WingXLarge23:
+  parent: Wing2
+  displayName: Advanced Wing
+  maxPower: 7800000
+  maxLiftFactor: 600
+  unitMass: 30000
+  unitVolume: 12000
+  level: 3
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 15000
+  liftDragRatio: 7
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+WingXLarge24:
+  parent: Wing2
+  displayName: Rare Wing
+  maxPower: 24000000
+  maxLiftFactor: 600
+  unitMass: 30000
+  unitVolume: 12000
+  level: 4
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 22500
+  liftDragRatio: 7
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+WingXLarge25:
+  parent: Wing2
+  displayName: Exotic Wing
+  maxPower: 48000000
+  maxLiftFactor: 600
+  unitMass: 30000
+  unitVolume: 12000
+  level: 5
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 30000
+  liftDragRatio: 7
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 16 * basic.
 ---
 WingXtraSmall2:
   parent: Wing2
@@ -52630,7 +52566,7 @@ RocketEngineLarge:
   price: 49652.81
   visibilityLOD: 3
   hitpoints: 29067
-  fuelRate: 1.65E-06
+  fuelRate: 1.2692307692307692E-06
   t50: 0
   optimalShipMass: 1750000
   resistances:
@@ -52652,7 +52588,7 @@ RocketEngineMedium:
   scale: m
   price: 7811.780000000001
   hitpoints: 2145
-  fuelRate: 1.65E-06
+  fuelRate: 1.2692307692307692E-06
   t50: 0
   optimalShipMass: 885000
   resistances:
@@ -52674,7 +52610,7 @@ RocketEngineSmall:
   scale: s
   price: 3800.96
   hitpoints: 339
-  fuelRate: 1.65E-06
+  fuelRate: 1.2692307692307692E-06
   t50: 0
   optimalShipMass: 20000
   resistances:
@@ -53473,7 +53409,7 @@ AtmosphericEngineLargeFreight:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
-  fuelRate: 3.84E-07
+  fuelRate: 2.953846153846154E-07
   unitMass: 11900
   t50: 12
   unitVolume: 3355
@@ -53490,7 +53426,7 @@ AtmosphericEngineLargeFreight3:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5616000
-  fuelRate: 2.88E-07
+  fuelRate: 2.2153846153846153E-07
   unitMass: 8330
   t50: 18
   unitVolume: 3355
@@ -53507,7 +53443,7 @@ AtmosphericEngineLargeFreight4:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 17280000
-  fuelRate: 2.16E-07
+  fuelRate: 5.4E-08
   unitMass: 5831
   t50: 27
   unitVolume: 3355
@@ -53524,7 +53460,7 @@ AtmosphericEngineLargeFreight5:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 34560000
-  fuelRate: 1.62E-07
+  fuelRate: 2.025E-08
   unitMass: 4082
   t50: 30
   unitVolume: 3355
@@ -53541,7 +53477,7 @@ AtmosphericEngineLargeManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
-  fuelRate: 3.84E-07
+  fuelRate: 2.953846153846154E-07
   unitMass: 17000
   t50: 4
   unitVolume: 3355
@@ -53558,7 +53494,7 @@ AtmosphericEngineLargeManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5616000
-  fuelRate: 2.88E-07
+  fuelRate: 2.2153846153846153E-07
   unitMass: 17000
   t50: 2
   unitVolume: 3355
@@ -53575,7 +53511,7 @@ AtmosphericEngineLargeManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 17280000
-  fuelRate: 2.16E-07
+  fuelRate: 5.4E-08
   unitMass: 17000
   t50: 1
   unitVolume: 3355
@@ -53592,7 +53528,7 @@ AtmosphericEngineLargeManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 34560000
-  fuelRate: 1.62E-07
+  fuelRate: 2.025E-08
   unitMass: 17000
   t50: 0.5
   unitVolume: 3355
@@ -53609,7 +53545,7 @@ AtmosphericEngineLargeMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 3369600
-  fuelRate: 6.144E-07
+  fuelRate: 4.726153846153846E-07
   unitMass: 17000
   t50: 8
   unitVolume: 3355
@@ -53626,7 +53562,7 @@ AtmosphericEngineLargeMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8087040
-  fuelRate: 7.373E-07
+  fuelRate: 5.671538461538462E-07
   unitMass: 17000
   t50: 8
   unitVolume: 3355
@@ -53643,7 +53579,7 @@ AtmosphericEngineLargeMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 29859840
-  fuelRate: 8.847E-07
+  fuelRate: 2.21175E-07
   unitMass: 17000
   t50: 8
   unitVolume: 3355
@@ -53660,7 +53596,7 @@ AtmosphericEngineLargeMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 71663616
-  fuelRate: 1.062E-06
+  fuelRate: 1.3275E-07
   unitMass: 17000
   t50: 8
   unitVolume: 3355
@@ -53677,7 +53613,7 @@ AtmosphericEngineLargeSafe:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2667600
-  fuelRate: 5.12E-07
+  fuelRate: 3.9384615384615385E-07
   unitMass: 17000
   t50: 4
   unitVolume: 3355
@@ -53694,7 +53630,7 @@ AtmosphericEngineLargeSafe3:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 5068440
-  fuelRate: 5.12E-07
+  fuelRate: 3.9384615384615385E-07
   unitMass: 17000
   t50: 2
   unitVolume: 3355
@@ -53711,7 +53647,7 @@ AtmosphericEngineLargeSafe4:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 14815440
-  fuelRate: 5.12E-07
+  fuelRate: 1.28E-07
   unitMass: 17000
   t50: 1
   unitVolume: 3355
@@ -53728,7 +53664,7 @@ AtmosphericEngineLargeSafe5:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 28149328
-  fuelRate: 5.12E-07
+  fuelRate: 6.4E-08
   unitMass: 17000
   t50: 0.5
   unitVolume: 3355
@@ -53762,7 +53698,7 @@ AtmosphericEngineMediumFreight:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
-  fuelRate: 4.8E-07
+  fuelRate: 3.6923076923076917E-07
   unitMass: 2100
   t50: 6
   unitVolume: 619.2
@@ -53779,7 +53715,7 @@ AtmosphericEngineMediumFreight3:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 936000
-  fuelRate: 3.6E-07
+  fuelRate: 2.7692307692307693E-07
   unitMass: 1470
   t50: 9
   unitVolume: 619.2
@@ -53796,7 +53732,7 @@ AtmosphericEngineMediumFreight4:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 2880000
-  fuelRate: 2.7E-07
+  fuelRate: 6.75E-08
   unitMass: 1029
   t50: 13.5
   unitVolume: 619.2
@@ -53813,7 +53749,7 @@ AtmosphericEngineMediumFreight5:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 5760000
-  fuelRate: 2.025E-07
+  fuelRate: 2.53125E-08
   unitMass: 720.3
   t50: 20.25
   unitVolume: 619.2
@@ -53830,7 +53766,7 @@ AtmosphericEngineMediumManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
-  fuelRate: 4.8E-07
+  fuelRate: 3.6923076923076917E-07
   unitMass: 3000
   t50: 2
   unitVolume: 619.2
@@ -53847,7 +53783,7 @@ AtmosphericEngineMediumManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 936000
-  fuelRate: 3.6E-07
+  fuelRate: 2.7692307692307693E-07
   unitMass: 3000
   t50: 1
   unitVolume: 619.2
@@ -53864,7 +53800,7 @@ AtmosphericEngineMediumManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 2880000
-  fuelRate: 2.7E-07
+  fuelRate: 6.75E-08
   unitMass: 3000
   t50: 0.5
   unitVolume: 619.2
@@ -53881,7 +53817,7 @@ AtmosphericEngineMediumManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 5760000
-  fuelRate: 2.025E-07
+  fuelRate: 2.53125E-08
   unitMass: 3000
   t50: 0.25
   unitVolume: 619.2
@@ -53898,7 +53834,7 @@ AtmosphericEngineMediumMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 561600
-  fuelRate: 7.68E-07
+  fuelRate: 5.907692307692307E-07
   unitMass: 3000
   t50: 4
   unitVolume: 619.2
@@ -53915,7 +53851,7 @@ AtmosphericEngineMediumMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1347840
-  fuelRate: 9.216E-07
+  fuelRate: 7.089230769230769E-07
   unitMass: 3000
   t50: 4
   unitVolume: 619.2
@@ -53932,7 +53868,7 @@ AtmosphericEngineMediumMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 4976640
-  fuelRate: 1.106E-06
+  fuelRate: 2.765E-07
   unitMass: 3000
   t50: 4
   unitVolume: 619.2
@@ -53949,7 +53885,7 @@ AtmosphericEngineMediumMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 11943936
-  fuelRate: 1.327E-06
+  fuelRate: 1.65875E-07
   unitMass: 3000
   t50: 4
   unitVolume: 619.2
@@ -53966,7 +53902,7 @@ AtmosphericEngineMediumSafe:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 444600
-  fuelRate: 6.4E-07
+  fuelRate: 4.923076923076923E-07
   unitMass: 3000
   t50: 2
   unitVolume: 619.2
@@ -53983,7 +53919,7 @@ AtmosphericEngineMediumSafe3:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 844740
-  fuelRate: 6.4E-07
+  fuelRate: 4.923076923076923E-07
   unitMass: 3000
   t50: 1
   unitVolume: 619.2
@@ -54000,7 +53936,7 @@ AtmosphericEngineMediumSafe4:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 2469240
-  fuelRate: 6.4E-07
+  fuelRate: 1.6E-07
   unitMass: 3000
   t50: 0.5
   unitVolume: 619.2
@@ -54017,7 +53953,7 @@ AtmosphericEngineMediumSafe5:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 4691552
-  fuelRate: 6.4E-07
+  fuelRate: 8E-08
   unitMass: 3000
   t50: 0.25
   unitVolume: 619.2
@@ -54051,7 +53987,7 @@ AtmosphericEngineSmallFreight:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
-  fuelRate: 6E-07
+  fuelRate: 4.615384615384615E-07
   unitMass: 378
   t50: 3
   unitVolume: 116.6
@@ -54068,7 +54004,7 @@ AtmosphericEngineSmallFreight3:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 156000
-  fuelRate: 4.5E-07
+  fuelRate: 3.461538461538461E-07
   unitMass: 264.6
   t50: 4.5
   unitVolume: 116.6
@@ -54085,7 +54021,7 @@ AtmosphericEngineSmallFreight4:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 480000
-  fuelRate: 3.375E-07
+  fuelRate: 8.4375E-08
   unitMass: 185.2
   t50: 6.75
   unitVolume: 116.6
@@ -54102,7 +54038,7 @@ AtmosphericEngineSmallFreight5:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 960000
-  fuelRate: 2.531E-07
+  fuelRate: 3.16375E-08
   unitMass: 129.7
   t50: 10.13
   unitVolume: 116.6
@@ -54119,7 +54055,7 @@ AtmosphericEngineSmallManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
-  fuelRate: 6E-07
+  fuelRate: 4.615384615384615E-07
   unitMass: 540
   t50: 1
   unitVolume: 116.6
@@ -54136,7 +54072,7 @@ AtmosphericEngineSmallManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 156000
-  fuelRate: 4.5E-07
+  fuelRate: 3.461538461538461E-07
   unitMass: 540
   t50: 0.5
   unitVolume: 116.6
@@ -54153,7 +54089,7 @@ AtmosphericEngineSmallManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 480000
-  fuelRate: 3.375E-07
+  fuelRate: 8.4375E-08
   unitMass: 540
   t50: 0.25
   unitVolume: 116.6
@@ -54170,7 +54106,7 @@ AtmosphericEngineSmallManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 960000
-  fuelRate: 2.531E-07
+  fuelRate: 3.16375E-08
   unitMass: 540
   t50: 0.125
   unitVolume: 116.6
@@ -54187,7 +54123,7 @@ AtmosphericEngineSmallMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 93600
-  fuelRate: 9.6E-07
+  fuelRate: 7.384615384615383E-07
   unitMass: 540
   t50: 2
   unitVolume: 116.6
@@ -54204,7 +54140,7 @@ AtmosphericEngineSmallMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 224640
-  fuelRate: 1.152E-06
+  fuelRate: 8.861538461538461E-07
   unitMass: 540
   t50: 2
   unitVolume: 116.6
@@ -54221,7 +54157,7 @@ AtmosphericEngineSmallMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 829440
-  fuelRate: 1.382E-06
+  fuelRate: 3.455E-07
   unitMass: 540
   t50: 2
   unitVolume: 116.6
@@ -54238,7 +54174,7 @@ AtmosphericEngineSmallMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 1990656
-  fuelRate: 1.659E-06
+  fuelRate: 2.07375E-07
   unitMass: 540
   t50: 2
   unitVolume: 116.6
@@ -54255,7 +54191,7 @@ AtmosphericEngineSmallSafe:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 74100
-  fuelRate: 8E-07
+  fuelRate: 6.153846153846154E-07
   unitMass: 540
   t50: 1
   unitVolume: 116.6
@@ -54272,7 +54208,7 @@ AtmosphericEngineSmallSafe3:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 140790
-  fuelRate: 8E-07
+  fuelRate: 6.153846153846154E-07
   unitMass: 540
   t50: 0.5
   unitVolume: 116.6
@@ -54289,7 +54225,7 @@ AtmosphericEngineSmallSafe4:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 411536
-  fuelRate: 8E-07
+  fuelRate: 2E-07
   unitMass: 540
   t50: 0.25
   unitVolume: 116.6
@@ -54306,7 +54242,7 @@ AtmosphericEngineSmallSafe5:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 781920
-  fuelRate: 8E-07
+  fuelRate: 1E-07
   unitMass: 540
   t50: 0.125
   unitVolume: 116.6
@@ -54340,7 +54276,7 @@ AtmosphericEngineXtraSmallFreight:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 13000
-  fuelRate: 7.5E-07
+  fuelRate: 5.769230769230769E-07
   unitMass: 70
   t50: 0.0015
   unitVolume: 22.6
@@ -54357,7 +54293,7 @@ AtmosphericEngineXtraSmallFreight3:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 26000
-  fuelRate: 5.625E-07
+  fuelRate: 4.326923076923077E-07
   unitMass: 49
   t50: 0.00225
   unitVolume: 22.6
@@ -54374,7 +54310,7 @@ AtmosphericEngineXtraSmallFreight4:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 80000
-  fuelRate: 4.219E-07
+  fuelRate: 1.05475E-07
   unitMass: 34.3
   t50: 0.003375
   unitVolume: 22.6
@@ -54391,7 +54327,7 @@ AtmosphericEngineXtraSmallFreight5:
   subdescription: The Freight variation is lighter and consumes less fuel, but is slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 160000
-  fuelRate: 3.164E-07
+  fuelRate: 3.955E-08
   unitMass: 24.01
   t50: 0.005063
   unitVolume: 22.6
@@ -54408,7 +54344,7 @@ AtmosphericEngineXtraSmallManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 13000
-  fuelRate: 7.5E-07
+  fuelRate: 5.769230769230769E-07
   unitMass: 100
   t50: 0.0005
   unitVolume: 22.6
@@ -54425,7 +54361,7 @@ AtmosphericEngineXtraSmallManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 26000
-  fuelRate: 5.625E-07
+  fuelRate: 4.326923076923077E-07
   unitMass: 100
   t50: 0.00025
   unitVolume: 22.6
@@ -54442,7 +54378,7 @@ AtmosphericEngineXtraSmallManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 80000
-  fuelRate: 4.219E-07
+  fuelRate: 1.05475E-07
   unitMass: 100
   t50: 0.000125
   unitVolume: 22.6
@@ -54459,7 +54395,7 @@ AtmosphericEngineXtraSmallManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 160000
-  fuelRate: 3.164E-07
+  fuelRate: 3.955E-08
   unitMass: 100
   t50: 6.25E-05
   unitVolume: 22.6
@@ -54476,7 +54412,7 @@ AtmosphericEngineXtraSmallMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 15600
-  fuelRate: 1.2E-06
+  fuelRate: 9.23076923076923E-07
   unitMass: 100
   t50: 0.001
   unitVolume: 22.6
@@ -54493,7 +54429,7 @@ AtmosphericEngineXtraSmallMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 37440
-  fuelRate: 1.44E-06
+  fuelRate: 1.1076923076923077E-06
   unitMass: 100
   t50: 0.001
   unitVolume: 22.6
@@ -54510,7 +54446,7 @@ AtmosphericEngineXtraSmallMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 138240
-  fuelRate: 1.728E-06
+  fuelRate: 4.32E-07
   unitMass: 100
   t50: 0.001
   unitVolume: 22.6
@@ -54527,7 +54463,7 @@ AtmosphericEngineXtraSmallMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 331776
-  fuelRate: 2.074E-06
+  fuelRate: 2.5925E-07
   unitMass: 100
   t50: 0.001
   unitVolume: 22.6
@@ -54544,7 +54480,7 @@ AtmosphericEngineXtraSmallSafe:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 12350
-  fuelRate: 1E-06
+  fuelRate: 7.692307692307691E-07
   unitMass: 100
   t50: 0.0005
   unitVolume: 22.6
@@ -54561,7 +54497,7 @@ AtmosphericEngineXtraSmallSafe3:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 23465
-  fuelRate: 1E-06
+  fuelRate: 7.692307692307691E-07
   unitMass: 100
   t50: 0.00025
   unitVolume: 22.6
@@ -54578,7 +54514,7 @@ AtmosphericEngineXtraSmallSafe4:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 8 * basic.
   level: 4
   maxPower: 68592
-  fuelRate: 1E-06
+  fuelRate: 2.5E-07
   unitMass: 100
   t50: 0.000125
   unitVolume: 22.6
@@ -54595,7 +54531,7 @@ AtmosphericEngineXtraSmallSafe5:
   subdescription: The Safe variation is faster to warm up and more resistant, but is less powerful. Max power boosted 16 * basic.
   level: 5
   maxPower: 130320
-  fuelRate: 1E-06
+  fuelRate: 1.25E-07
   unitMass: 100
   t50: 6.25E-05
   unitVolume: 22.6
@@ -54629,7 +54565,7 @@ SpaceEngineLargeFreight:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
-  fuelRate: 1.92E-07
+  fuelRate: 1.476923076923077E-07
   unitMass: 19102
   t50: 28
   unitVolume: 3071
@@ -54646,7 +54582,7 @@ SpaceEngineLargeFreight3:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
-  fuelRate: 1.44E-07
+  fuelRate: 1.1076923076923077E-07
   unitMass: 16237
   t50: 30
   unitVolume: 3071
@@ -54663,7 +54599,7 @@ SpaceEngineLargeFreight4:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
-  fuelRate: 1.08E-07
+  fuelRate: 2.7E-08
   unitMass: 13801
   t50: 30
   unitVolume: 3071
@@ -54680,7 +54616,7 @@ SpaceEngineLargeFreight5:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
-  fuelRate: 8.1E-08
+  fuelRate: 1.0125E-08
   unitMass: 11731
   t50: 30
   unitVolume: 3071
@@ -54697,7 +54633,7 @@ SpaceEngineLargeManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
-  fuelRate: 2.048E-07
+  fuelRate: 1.5753846153846154E-07
   unitMass: 22473
   t50: 12
   unitVolume: 3071
@@ -54714,7 +54650,7 @@ SpaceEngineLargeManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
-  fuelRate: 1.638E-07
+  fuelRate: 1.26E-07
   unitMass: 22473
   t50: 9
   unitVolume: 3071
@@ -54731,7 +54667,7 @@ SpaceEngineLargeManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
-  fuelRate: 1.311E-07
+  fuelRate: 3.2775E-08
   unitMass: 22473
   t50: 6.75
   unitVolume: 3071
@@ -54748,7 +54684,7 @@ SpaceEngineLargeManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
-  fuelRate: 1.049E-07
+  fuelRate: 1.31125E-08
   unitMass: 22473
   t50: 5.063
   unitVolume: 3071
@@ -54765,7 +54701,7 @@ SpaceEngineLargeMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 5054400
-  fuelRate: 3.072E-07
+  fuelRate: 2.363076923076923E-07
   unitMass: 22473
   t50: 16
   unitVolume: 3071
@@ -54782,7 +54718,7 @@ SpaceEngineLargeMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 12130560
-  fuelRate: 3.686E-07
+  fuelRate: 2.8353846153846153E-07
   unitMass: 22473
   t50: 16
   unitVolume: 3071
@@ -54799,7 +54735,7 @@ SpaceEngineLargeMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 44789760
-  fuelRate: 4.424E-07
+  fuelRate: 1.106E-07
   unitMass: 22473
   t50: 16
   unitVolume: 3071
@@ -54816,7 +54752,7 @@ SpaceEngineLargeMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 107495424
-  fuelRate: 5.308E-07
+  fuelRate: 6.635E-08
   unitMass: 22473
   t50: 16
   unitVolume: 3071
@@ -54833,7 +54769,7 @@ SpaceEngineLargeSafe:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
-  fuelRate: 2.304E-07
+  fuelRate: 1.7723076923076922E-07
   unitMass: 22473
   t50: 8
   unitVolume: 3071
@@ -54850,7 +54786,7 @@ SpaceEngineLargeSafe3:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
-  fuelRate: 2.074E-07
+  fuelRate: 1.5953846153846153E-07
   unitMass: 22473
   t50: 4
   unitVolume: 3071
@@ -54867,7 +54803,7 @@ SpaceEngineLargeSafe4:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
-  fuelRate: 1.866E-07
+  fuelRate: 4.665E-08
   unitMass: 22473
   t50: 2
   unitVolume: 3071
@@ -54884,7 +54820,7 @@ SpaceEngineLargeSafe5:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
-  fuelRate: 1.68E-07
+  fuelRate: 2.1E-08
   unitMass: 22473
   t50: 1
   unitVolume: 3071
@@ -54918,7 +54854,7 @@ SpaceEngineMediumFreight:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
-  fuelRate: 2.4E-07
+  fuelRate: 1.8461538461538458E-07
   unitMass: 3478
   t50: 7
   unitVolume: 562.4
@@ -54935,7 +54871,7 @@ SpaceEngineMediumFreight3:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
-  fuelRate: 1.8E-07
+  fuelRate: 1.3846153846153846E-07
   unitMass: 2957
   t50: 12.25
   unitVolume: 562.4
@@ -54952,7 +54888,7 @@ SpaceEngineMediumFreight4:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
-  fuelRate: 1.35E-07
+  fuelRate: 3.375E-08
   unitMass: 2513
   t50: 21.44
   unitVolume: 562.4
@@ -54969,7 +54905,7 @@ SpaceEngineMediumFreight5:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
-  fuelRate: 1.012E-07
+  fuelRate: 1.265E-08
   unitMass: 2136
   t50: 30
   unitVolume: 562.4
@@ -54986,7 +54922,7 @@ SpaceEngineMediumManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
-  fuelRate: 2.56E-07
+  fuelRate: 1.9692307692307693E-07
   unitMass: 4092
   t50: 3
   unitVolume: 562.4
@@ -55003,7 +54939,7 @@ SpaceEngineMediumManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
-  fuelRate: 2.048E-07
+  fuelRate: 1.5753846153846154E-07
   unitMass: 4092
   t50: 2.25
   unitVolume: 562.4
@@ -55020,7 +54956,7 @@ SpaceEngineMediumManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
-  fuelRate: 1.638E-07
+  fuelRate: 4.095E-08
   unitMass: 4092
   t50: 1.688
   unitVolume: 562.4
@@ -55037,7 +54973,7 @@ SpaceEngineMediumManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
-  fuelRate: 1.311E-07
+  fuelRate: 1.63875E-08
   unitMass: 4092
   t50: 1.266
   unitVolume: 562.4
@@ -55054,7 +54990,7 @@ SpaceEngineMediumMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 842400
-  fuelRate: 3.84E-07
+  fuelRate: 2.953846153846154E-07
   unitMass: 4092
   t50: 4
   unitVolume: 562.4
@@ -55071,7 +55007,7 @@ SpaceEngineMediumMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 2021760
-  fuelRate: 4.608E-07
+  fuelRate: 3.5446153846153844E-07
   unitMass: 4092
   t50: 4
   unitVolume: 562.4
@@ -55088,7 +55024,7 @@ SpaceEngineMediumMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 7464960
-  fuelRate: 5.53E-07
+  fuelRate: 1.3825E-07
   unitMass: 4092
   t50: 4
   unitVolume: 562.4
@@ -55105,7 +55041,7 @@ SpaceEngineMediumMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 17915904
-  fuelRate: 6.636E-07
+  fuelRate: 8.295E-08
   unitMass: 4092
   t50: 4
   unitVolume: 562.4
@@ -55122,7 +55058,7 @@ SpaceEngineMediumSafe:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
-  fuelRate: 2.88E-07
+  fuelRate: 2.2153846153846153E-07
   unitMass: 4092
   t50: 2
   unitVolume: 562.4
@@ -55139,7 +55075,7 @@ SpaceEngineMediumSafe3:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
-  fuelRate: 2.592E-07
+  fuelRate: 1.9938461538461536E-07
   unitMass: 4092
   t50: 1
   unitVolume: 562.4
@@ -55156,7 +55092,7 @@ SpaceEngineMediumSafe4:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
-  fuelRate: 2.333E-07
+  fuelRate: 5.8325E-08
   unitMass: 4092
   t50: 0.5
   unitVolume: 562.4
@@ -55173,7 +55109,7 @@ SpaceEngineMediumSafe5:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
-  fuelRate: 2.1E-07
+  fuelRate: 2.625E-08
   unitMass: 4092
   t50: 0.25
   unitVolume: 562.4
@@ -55207,7 +55143,7 @@ SpaceEngineSmallFreight:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
-  fuelRate: 3E-07
+  fuelRate: 2.3076923076923075E-07
   unitMass: 647.5
   t50: 1.75
   unitVolume: 105.2
@@ -55224,7 +55160,7 @@ SpaceEngineSmallFreight3:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
-  fuelRate: 2.25E-07
+  fuelRate: 1.7307692307692305E-07
   unitMass: 550.4
   t50: 3.063
   unitVolume: 105.2
@@ -55241,7 +55177,7 @@ SpaceEngineSmallFreight4:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
-  fuelRate: 1.687E-07
+  fuelRate: 4.2175E-08
   unitMass: 467.8
   t50: 5.359
   unitVolume: 105.2
@@ -55258,7 +55194,7 @@ SpaceEngineSmallFreight5:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
-  fuelRate: 1.266E-07
+  fuelRate: 1.5825E-08
   unitMass: 397.6
   t50: 9.379
   unitVolume: 105.2
@@ -55275,7 +55211,7 @@ SpaceEngineSmallManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
-  fuelRate: 3.2E-07
+  fuelRate: 2.4615384615384616E-07
   unitMass: 761.7
   t50: 0.75
   unitVolume: 105.2
@@ -55292,7 +55228,7 @@ SpaceEngineSmallManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
-  fuelRate: 2.56E-07
+  fuelRate: 1.9692307692307693E-07
   unitMass: 761.7
   t50: 0.5625
   unitVolume: 105.2
@@ -55309,7 +55245,7 @@ SpaceEngineSmallManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
-  fuelRate: 2.048E-07
+  fuelRate: 5.12E-08
   unitMass: 761.7
   t50: 0.4219
   unitVolume: 105.2
@@ -55326,7 +55262,7 @@ SpaceEngineSmallManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
-  fuelRate: 1.638E-07
+  fuelRate: 2.0475E-08
   unitMass: 761.7
   t50: 0.3164
   unitVolume: 105.2
@@ -55343,7 +55279,7 @@ SpaceEngineSmallMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 140400
-  fuelRate: 4.8E-07
+  fuelRate: 3.6923076923076917E-07
   unitMass: 761.7
   t50: 1
   unitVolume: 105.2
@@ -55360,7 +55296,7 @@ SpaceEngineSmallMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 336960
-  fuelRate: 5.76E-07
+  fuelRate: 4.4307692307692306E-07
   unitMass: 761.7
   t50: 1
   unitVolume: 105.2
@@ -55377,7 +55313,7 @@ SpaceEngineSmallMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 1244160
-  fuelRate: 6.912E-07
+  fuelRate: 1.728E-07
   unitMass: 761.7
   t50: 1
   unitVolume: 105.2
@@ -55394,7 +55330,7 @@ SpaceEngineSmallMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 2985984
-  fuelRate: 8.294E-07
+  fuelRate: 1.03675E-07
   unitMass: 761.7
   t50: 1
   unitVolume: 105.2
@@ -55411,7 +55347,7 @@ SpaceEngineSmallSafe:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
-  fuelRate: 3.6E-07
+  fuelRate: 2.7692307692307693E-07
   unitMass: 761.7
   t50: 0.5
   unitVolume: 105.2
@@ -55428,7 +55364,7 @@ SpaceEngineSmallSafe3:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
-  fuelRate: 3.24E-07
+  fuelRate: 2.492307692307692E-07
   unitMass: 761.7
   t50: 0.25
   unitVolume: 105.2
@@ -55445,7 +55381,7 @@ SpaceEngineSmallSafe4:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
-  fuelRate: 2.916E-07
+  fuelRate: 7.29E-08
   unitMass: 761.7
   t50: 0.125
   unitVolume: 105.2
@@ -55462,7 +55398,7 @@ SpaceEngineSmallSafe5:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
-  fuelRate: 2.624E-07
+  fuelRate: 3.28E-08
   unitMass: 761.7
   t50: 0.0625
   unitVolume: 105.2
@@ -55496,7 +55432,7 @@ SpaceEngineXtraLargeFreight:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
-  fuelRate: 1.536E-07
+  fuelRate: 1.1815384615384616E-07
   unitMass: 107303
   t50: 30
   unitVolume: 17149
@@ -55513,7 +55449,7 @@ SpaceEngineXtraLargeFreight3:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
-  fuelRate: 1.152E-07
+  fuelRate: 8.861538461538461E-08
   unitMass: 91208
   t50: 30
   unitVolume: 17149
@@ -55530,7 +55466,7 @@ SpaceEngineXtraLargeFreight4:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
-  fuelRate: 8.64E-08
+  fuelRate: 2.16E-08
   unitMass: 77527
   t50: 30
   unitVolume: 17149
@@ -55547,7 +55483,7 @@ SpaceEngineXtraLargeFreight5:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
-  fuelRate: 6.48E-08
+  fuelRate: 8.1E-09
   unitMass: 65898
   t50: 30
   unitVolume: 17149
@@ -55564,7 +55500,7 @@ SpaceEngineXtraLargeManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
-  fuelRate: 1.638E-07
+  fuelRate: 1.26E-07
   unitMass: 126239
   t50: 24
   unitVolume: 17149
@@ -55581,7 +55517,7 @@ SpaceEngineXtraLargeManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
-  fuelRate: 1.311E-07
+  fuelRate: 1.0084615384615385E-07
   unitMass: 126239
   t50: 18
   unitVolume: 17149
@@ -55598,7 +55534,7 @@ SpaceEngineXtraLargeManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
-  fuelRate: 1.049E-07
+  fuelRate: 2.6225E-08
   unitMass: 126239
   t50: 13.5
   unitVolume: 17149
@@ -55615,7 +55551,7 @@ SpaceEngineXtraLargeManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
-  fuelRate: 8.389E-08
+  fuelRate: 1.048625E-08
   unitMass: 126239
   t50: 10.13
   unitVolume: 17149
@@ -55632,7 +55568,7 @@ SpaceEngineXtraLargeMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 30326400
-  fuelRate: 2.458E-07
+  fuelRate: 1.8907692307692306E-07
   unitMass: 126239
   t50: 30
   unitVolume: 17149
@@ -55649,7 +55585,7 @@ SpaceEngineXtraLargeMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 72783360
-  fuelRate: 2.949E-07
+  fuelRate: 2.2684615384615382E-07
   unitMass: 126239
   t50: 30
   unitVolume: 17149
@@ -55666,7 +55602,7 @@ SpaceEngineXtraLargeMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 268738560
-  fuelRate: 3.539E-07
+  fuelRate: 8.8475E-08
   unitMass: 126239
   t50: 30
   unitVolume: 17149
@@ -55683,7 +55619,7 @@ SpaceEngineXtraLargeMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 644972544
-  fuelRate: 4.247E-07
+  fuelRate: 5.30875E-08
   unitMass: 126239
   t50: 30
   unitVolume: 17149
@@ -55700,7 +55636,7 @@ SpaceEngineXtraLargeSafe:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 25272000
-  fuelRate: 1.843E-07
+  fuelRate: 1.4176923076923077E-07
   unitMass: 126239
   t50: 16
   unitVolume: 17149
@@ -55717,7 +55653,7 @@ SpaceEngineXtraLargeSafe3:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 50544000
-  fuelRate: 1.659E-07
+  fuelRate: 1.2761538461538461E-07
   unitMass: 126239
   t50: 8
   unitVolume: 17149
@@ -55734,7 +55670,7 @@ SpaceEngineXtraLargeSafe4:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 155520000
-  fuelRate: 1.493E-07
+  fuelRate: 3.7325E-08
   unitMass: 126239
   t50: 4
   unitVolume: 17149
@@ -55751,7 +55687,7 @@ SpaceEngineXtraLargeSafe5:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 311040000
-  fuelRate: 1.344E-07
+  fuelRate: 1.68E-08
   unitMass: 126239
   t50: 2
   unitVolume: 17149
@@ -55785,7 +55721,7 @@ SpaceEngineXtraSmallFreight:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
-  fuelRate: 3.75E-07
+  fuelRate: 2.8846153846153846E-07
   unitMass: 124.3
   t50: 0.4375
   unitVolume: 20.33
@@ -55802,7 +55738,7 @@ SpaceEngineXtraSmallFreight3:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
-  fuelRate: 2.813E-07
+  fuelRate: 2.163846153846154E-07
   unitMass: 105.7
   t50: 0.7656
   unitVolume: 20.33
@@ -55819,7 +55755,7 @@ SpaceEngineXtraSmallFreight4:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
-  fuelRate: 2.109E-07
+  fuelRate: 5.2725E-08
   unitMass: 89.8
   t50: 1.34
   unitVolume: 20.33
@@ -55836,7 +55772,7 @@ SpaceEngineXtraSmallFreight5:
   subdescription: The Freight variation is lighter and consumes significantly less fuel, but is much slower to warm up. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
-  fuelRate: 1.582E-07
+  fuelRate: 1.9775E-08
   unitMass: 76.33
   t50: 2.345
   unitVolume: 20.33
@@ -55853,7 +55789,7 @@ SpaceEngineXtraSmallManeuver:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
-  fuelRate: 4E-07
+  fuelRate: 3.076923076923077E-07
   unitMass: 146.2
   t50: 0.1875
   unitVolume: 20.33
@@ -55870,7 +55806,7 @@ SpaceEngineXtraSmallManeuver3:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
-  fuelRate: 3.2E-07
+  fuelRate: 2.4615384615384616E-07
   unitMass: 146.2
   t50: 0.1406
   unitVolume: 20.33
@@ -55887,7 +55823,7 @@ SpaceEngineXtraSmallManeuver4:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
-  fuelRate: 2.56E-07
+  fuelRate: 6.4E-08
   unitMass: 146.2
   t50: 0.1055
   unitVolume: 20.33
@@ -55904,7 +55840,7 @@ SpaceEngineXtraSmallManeuver5:
   subdescription: The Maneuver variation is faster to warm up and consumes less fuel, but is less resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
-  fuelRate: 2.048E-07
+  fuelRate: 2.56E-08
   unitMass: 146.2
   t50: 0.0791
   unitVolume: 20.33
@@ -55921,7 +55857,7 @@ SpaceEngineXtraSmallMilitary:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 23400
-  fuelRate: 6E-07
+  fuelRate: 4.615384615384615E-07
   unitMass: 146.2
   t50: 0.25
   unitVolume: 20.33
@@ -55938,7 +55874,7 @@ SpaceEngineXtraSmallMilitary3:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 56160
-  fuelRate: 7.2E-07
+  fuelRate: 5.538461538461539E-07
   unitMass: 146.2
   t50: 0.25
   unitVolume: 20.33
@@ -55955,7 +55891,7 @@ SpaceEngineXtraSmallMilitary4:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 8 * basic.
   level: 4
   maxPower: 207360
-  fuelRate: 8.64E-07
+  fuelRate: 2.16E-07
   unitMass: 146.2
   t50: 0.25
   unitVolume: 20.33
@@ -55972,7 +55908,7 @@ SpaceEngineXtraSmallMilitary5:
   subdescription: The Military variation is more powerful and resistant, but consumes more fuel. Max power boosted 16 * basic.
   level: 5
   maxPower: 497664
-  fuelRate: 1.037E-06
+  fuelRate: 1.29625E-07
   unitMass: 146.2
   t50: 0.25
   unitVolume: 20.33
@@ -55989,7 +55925,7 @@ SpaceEngineXtraSmallSafe:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
-  fuelRate: 4.5E-07
+  fuelRate: 3.461538461538461E-07
   unitMass: 146.2
   t50: 0.125
   unitVolume: 20.33
@@ -56006,7 +55942,7 @@ SpaceEngineXtraSmallSafe3:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
-  fuelRate: 4.05E-07
+  fuelRate: 3.115384615384615E-07
   unitMass: 146.2
   t50: 0.0625
   unitVolume: 20.33
@@ -56023,7 +55959,7 @@ SpaceEngineXtraSmallSafe4:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
-  fuelRate: 3.645E-07
+  fuelRate: 9.1125E-08
   unitMass: 146.2
   t50: 0.03125
   unitVolume: 20.33
@@ -56040,7 +55976,7 @@ SpaceEngineXtraSmallSafe5:
   subdescription: The Safe variation is significantly faster to warm up and more resistant. Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
-  fuelRate: 3.281E-07
+  fuelRate: 4.10125E-08
   unitMass: 146.2
   t50: 0.01563
   unitVolume: 20.33
@@ -56124,7 +56060,7 @@ HoverEngineLargeFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2340000
-  fuelRate: 7.5E-09
+  fuelRate: 5.769230769230768E-09
   maxAltitude: 22.5
   unitMass: 1702
   unitVolume: 619.2
@@ -56135,7 +56071,7 @@ HoverEngineLargeFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 4680000
-  fuelRate: 5.625E-09
+  fuelRate: 4.326923076923077E-09
   maxAltitude: 16.88
   unitMass: 1702
   unitVolume: 619.2
@@ -56146,7 +56082,7 @@ HoverEngineLargeFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 14400000
-  fuelRate: 4.219E-09
+  fuelRate: 1.05475E-09
   maxAltitude: 12.66
   unitMass: 1702
   unitVolume: 619.2
@@ -56157,7 +56093,7 @@ HoverEngineLargeFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 28800000
-  fuelRate: 3.164E-09
+  fuelRate: 3.955E-10
   maxAltitude: 9.492
   unitMass: 1702
   unitVolume: 619.2
@@ -56168,7 +56104,7 @@ HoverEngineLargeManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2106000
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 36
   unitMass: 1702
   unitVolume: 619.2
@@ -56179,7 +56115,7 @@ HoverEngineLargeManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 3790800
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 43.2
   unitMass: 1702
   unitVolume: 619.2
@@ -56190,7 +56126,7 @@ HoverEngineLargeManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 10497600
-  fuelRate: 1E-08
+  fuelRate: 2.5E-09
   maxAltitude: 51.84
   unitMass: 1702
   unitVolume: 619.2
@@ -56201,7 +56137,7 @@ HoverEngineLargeManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 18895680
-  fuelRate: 1E-08
+  fuelRate: 1.25E-09
   maxAltitude: 62.21
   unitMass: 1702
   unitVolume: 619.2
@@ -56212,7 +56148,7 @@ HoverEngineLargeMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
-  fuelRate: 1.15E-08
+  fuelRate: 8.846153846153846E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56223,7 +56159,7 @@ HoverEngineLargeMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6739200
-  fuelRate: 1.322E-08
+  fuelRate: 1.016923076923077E-08
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56234,7 +56170,7 @@ HoverEngineLargeMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 24883200
-  fuelRate: 1.521E-08
+  fuelRate: 3.8025E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56245,7 +56181,7 @@ HoverEngineLargeMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 59719680
-  fuelRate: 1.749E-08
+  fuelRate: 2.18625E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56267,7 +56203,7 @@ HoverEngineLargeUnderFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2340000
-  fuelRate: 7.5E-09
+  fuelRate: 5.769230769230768E-09
   maxAltitude: 22.5
   unitMass: 1702
   unitVolume: 619.2
@@ -56278,7 +56214,7 @@ HoverEngineLargeUnderFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 4680000
-  fuelRate: 5.625E-09
+  fuelRate: 4.326923076923077E-09
   maxAltitude: 16.88
   unitMass: 1702
   unitVolume: 619.2
@@ -56289,7 +56225,7 @@ HoverEngineLargeUnderFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 14400000
-  fuelRate: 4.219E-09
+  fuelRate: 1.05475E-09
   maxAltitude: 12.66
   unitMass: 1702
   unitVolume: 619.2
@@ -56300,7 +56236,7 @@ HoverEngineLargeUnderFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 28800000
-  fuelRate: 3.164E-09
+  fuelRate: 3.955E-10
   maxAltitude: 9.492
   unitMass: 1702
   unitVolume: 619.2
@@ -56311,7 +56247,7 @@ HoverEngineLargeUnderManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2106000
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 36
   unitMass: 1702
   unitVolume: 619.2
@@ -56322,7 +56258,7 @@ HoverEngineLargeUnderManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 3790800
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 43.2
   unitMass: 1702
   unitVolume: 619.2
@@ -56333,7 +56269,7 @@ HoverEngineLargeUnderManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 10497600
-  fuelRate: 1E-08
+  fuelRate: 2.5E-09
   maxAltitude: 51.84
   unitMass: 1702
   unitVolume: 619.2
@@ -56344,7 +56280,7 @@ HoverEngineLargeUnderManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 18895680
-  fuelRate: 1E-08
+  fuelRate: 1.25E-09
   maxAltitude: 62.21
   unitMass: 1702
   unitVolume: 619.2
@@ -56355,7 +56291,7 @@ HoverEngineLargeUnderMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 2808000
-  fuelRate: 1.15E-08
+  fuelRate: 8.846153846153846E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56366,7 +56302,7 @@ HoverEngineLargeUnderMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6739200
-  fuelRate: 1.322E-08
+  fuelRate: 1.016923076923077E-08
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56377,7 +56313,7 @@ HoverEngineLargeUnderMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 24883200
-  fuelRate: 1.521E-08
+  fuelRate: 3.8025E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56388,7 +56324,7 @@ HoverEngineLargeUnderMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 59719680
-  fuelRate: 1.749E-08
+  fuelRate: 2.18625E-09
   maxAltitude: 30
   unitMass: 1702
   unitVolume: 619.2
@@ -56410,7 +56346,7 @@ HoverEngineMediumFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 390000
-  fuelRate: 7.5E-09
+  fuelRate: 5.769230769230768E-09
   maxAltitude: 22.5
   unitMass: 302
   unitVolume: 116.6
@@ -56421,7 +56357,7 @@ HoverEngineMediumFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 780000
-  fuelRate: 5.625E-09
+  fuelRate: 4.326923076923077E-09
   maxAltitude: 16.88
   unitMass: 302
   unitVolume: 116.6
@@ -56432,7 +56368,7 @@ HoverEngineMediumFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 2400000
-  fuelRate: 4.219E-09
+  fuelRate: 1.05475E-09
   maxAltitude: 12.66
   unitMass: 302
   unitVolume: 116.6
@@ -56443,7 +56379,7 @@ HoverEngineMediumFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 4800000
-  fuelRate: 3.164E-09
+  fuelRate: 3.955E-10
   maxAltitude: 9.492
   unitMass: 302
   unitVolume: 116.6
@@ -56454,7 +56390,7 @@ HoverEngineMediumManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 351000
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 36
   unitMass: 302
   unitVolume: 116.6
@@ -56465,7 +56401,7 @@ HoverEngineMediumManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 631800
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 43.2
   unitMass: 302
   unitVolume: 116.6
@@ -56476,7 +56412,7 @@ HoverEngineMediumManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 1749600
-  fuelRate: 1E-08
+  fuelRate: 2.5E-09
   maxAltitude: 51.84
   unitMass: 302
   unitVolume: 116.6
@@ -56487,7 +56423,7 @@ HoverEngineMediumManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 3149280
-  fuelRate: 1E-08
+  fuelRate: 1.25E-09
   maxAltitude: 62.21
   unitMass: 302
   unitVolume: 116.6
@@ -56498,7 +56434,7 @@ HoverEngineMediumMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 468000
-  fuelRate: 1.15E-08
+  fuelRate: 8.846153846153846E-09
   maxAltitude: 30
   unitMass: 302
   unitVolume: 116.6
@@ -56509,7 +56445,7 @@ HoverEngineMediumMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1123200
-  fuelRate: 1.322E-08
+  fuelRate: 1.016923076923077E-08
   maxAltitude: 30
   unitMass: 302
   unitVolume: 116.6
@@ -56520,7 +56456,7 @@ HoverEngineMediumMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 4147200
-  fuelRate: 1.521E-08
+  fuelRate: 3.8025E-09
   maxAltitude: 30
   unitMass: 302
   unitVolume: 116.6
@@ -56531,7 +56467,7 @@ HoverEngineMediumMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 9953280
-  fuelRate: 1.749E-08
+  fuelRate: 2.18625E-09
   maxAltitude: 30
   unitMass: 302
   unitVolume: 116.6
@@ -56553,7 +56489,7 @@ HoverEngineSmallFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 65000
-  fuelRate: 7.5E-09
+  fuelRate: 5.769230769230768E-09
   maxAltitude: 22.5
   unitMass: 56.91
   unitVolume: 22.6
@@ -56564,7 +56500,7 @@ HoverEngineSmallFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 130000
-  fuelRate: 5.625E-09
+  fuelRate: 4.326923076923077E-09
   maxAltitude: 16.88
   unitMass: 56.91
   unitVolume: 22.6
@@ -56575,7 +56511,7 @@ HoverEngineSmallFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 400000
-  fuelRate: 4.219E-09
+  fuelRate: 1.05475E-09
   maxAltitude: 12.66
   unitMass: 56.91
   unitVolume: 22.6
@@ -56586,7 +56522,7 @@ HoverEngineSmallFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 800000
-  fuelRate: 3.164E-09
+  fuelRate: 3.955E-10
   maxAltitude: 9.492
   unitMass: 56.91
   unitVolume: 22.6
@@ -56597,7 +56533,7 @@ HoverEngineSmallManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 58500
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 36
   unitMass: 56.91
   unitVolume: 22.6
@@ -56608,7 +56544,7 @@ HoverEngineSmallManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 105300
-  fuelRate: 1E-08
+  fuelRate: 7.692307692307693E-09
   maxAltitude: 43.2
   unitMass: 56.91
   unitVolume: 22.6
@@ -56619,7 +56555,7 @@ HoverEngineSmallManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 291600
-  fuelRate: 1E-08
+  fuelRate: 2.5E-09
   maxAltitude: 51.84
   unitMass: 56.91
   unitVolume: 22.6
@@ -56630,7 +56566,7 @@ HoverEngineSmallManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 524880
-  fuelRate: 1E-08
+  fuelRate: 1.25E-09
   maxAltitude: 62.21
   unitMass: 56.91
   unitVolume: 22.6
@@ -56641,7 +56577,7 @@ HoverEngineSmallMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 78000
-  fuelRate: 1.15E-08
+  fuelRate: 8.846153846153846E-09
   maxAltitude: 30
   unitMass: 56.91
   unitVolume: 22.6
@@ -56652,7 +56588,7 @@ HoverEngineSmallMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 187200
-  fuelRate: 1.322E-08
+  fuelRate: 1.016923076923077E-08
   maxAltitude: 30
   unitMass: 56.91
   unitVolume: 22.6
@@ -56663,7 +56599,7 @@ HoverEngineSmallMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 691200
-  fuelRate: 1.521E-08
+  fuelRate: 3.8025E-09
   maxAltitude: 30
   unitMass: 56.91
   unitVolume: 22.6
@@ -56674,7 +56610,7 @@ HoverEngineSmallMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 1658880
-  fuelRate: 1.749E-08
+  fuelRate: 2.18625E-09
   maxAltitude: 30
   unitMass: 56.91
   unitVolume: 22.6
@@ -56696,7 +56632,7 @@ AtmosphericVerticalBoosterLargeFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 4212000
-  fuelRate: 3.75E-07
+  fuelRate: 2.8846153846153846E-07
   maxAltitude: 22.5
   unitMass: 2820
   unitVolume: 562.4
@@ -56707,7 +56643,7 @@ AtmosphericVerticalBoosterLargeFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 8424000
-  fuelRate: 2.813E-07
+  fuelRate: 2.163846153846154E-07
   maxAltitude: 16.88
   unitMass: 2820
   unitVolume: 562.4
@@ -56718,7 +56654,7 @@ AtmosphericVerticalBoosterLargeFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 25920000
-  fuelRate: 2.109E-07
+  fuelRate: 5.2725E-08
   maxAltitude: 12.66
   unitMass: 2820
   unitVolume: 562.4
@@ -56729,7 +56665,7 @@ AtmosphericVerticalBoosterLargeFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 51840000
-  fuelRate: 1.582E-07
+  fuelRate: 1.9775E-08
   maxAltitude: 9.492
   unitMass: 2820
   unitVolume: 562.4
@@ -56740,7 +56676,7 @@ AtmosphericVerticalBoosterLargeManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 3790800
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 36
   unitMass: 2820
   unitVolume: 562.4
@@ -56751,7 +56687,7 @@ AtmosphericVerticalBoosterLargeManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 6823440
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 43.2
   unitMass: 2820
   unitVolume: 562.4
@@ -56762,7 +56698,7 @@ AtmosphericVerticalBoosterLargeManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 18895680
-  fuelRate: 5E-07
+  fuelRate: 1.25E-07
   maxAltitude: 51.84
   unitMass: 2820
   unitVolume: 562.4
@@ -56773,7 +56709,7 @@ AtmosphericVerticalBoosterLargeManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 34012224
-  fuelRate: 5E-07
+  fuelRate: 6.25E-08
   maxAltitude: 62.21
   unitMass: 2820
   unitVolume: 562.4
@@ -56784,7 +56720,7 @@ AtmosphericVerticalBoosterLargeMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 5054400
-  fuelRate: 5.75E-07
+  fuelRate: 4.423076923076923E-07
   maxAltitude: 30
   unitMass: 2820
   unitVolume: 562.4
@@ -56795,7 +56731,7 @@ AtmosphericVerticalBoosterLargeMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 12130560
-  fuelRate: 6.612E-07
+  fuelRate: 5.086153846153846E-07
   maxAltitude: 30
   unitMass: 2820
   unitVolume: 562.4
@@ -56806,7 +56742,7 @@ AtmosphericVerticalBoosterLargeMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 44789760
-  fuelRate: 7.604E-07
+  fuelRate: 1.901E-07
   maxAltitude: 30
   unitMass: 2820
   unitVolume: 562.4
@@ -56817,7 +56753,7 @@ AtmosphericVerticalBoosterLargeMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 107495424
-  fuelRate: 8.745E-07
+  fuelRate: 1.093125E-07
   maxAltitude: 30
   unitMass: 2820
   unitVolume: 562.4
@@ -56839,7 +56775,7 @@ AtmosphericVerticalBoosterMediumFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 702000
-  fuelRate: 3.75E-07
+  fuelRate: 2.8846153846153846E-07
   maxAltitude: 22.5
   unitMass: 530.6
   unitVolume: 105.2
@@ -56850,7 +56786,7 @@ AtmosphericVerticalBoosterMediumFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1404000
-  fuelRate: 2.813E-07
+  fuelRate: 2.163846153846154E-07
   maxAltitude: 16.88
   unitMass: 530.6
   unitVolume: 105.2
@@ -56861,7 +56797,7 @@ AtmosphericVerticalBoosterMediumFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 4320000
-  fuelRate: 2.109E-07
+  fuelRate: 5.2725E-08
   maxAltitude: 12.66
   unitMass: 530.6
   unitVolume: 105.2
@@ -56872,7 +56808,7 @@ AtmosphericVerticalBoosterMediumFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 8640000
-  fuelRate: 1.582E-07
+  fuelRate: 1.9775E-08
   maxAltitude: 9.492
   unitMass: 530.6
   unitVolume: 105.2
@@ -56883,7 +56819,7 @@ AtmosphericVerticalBoosterMediumManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 631800
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 36
   unitMass: 530.6
   unitVolume: 105.2
@@ -56894,7 +56830,7 @@ AtmosphericVerticalBoosterMediumManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 1137240
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 43.2
   unitMass: 530.6
   unitVolume: 105.2
@@ -56905,7 +56841,7 @@ AtmosphericVerticalBoosterMediumManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 3149280
-  fuelRate: 5E-07
+  fuelRate: 1.25E-07
   maxAltitude: 51.84
   unitMass: 530.6
   unitVolume: 105.2
@@ -56916,7 +56852,7 @@ AtmosphericVerticalBoosterMediumManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 5668704
-  fuelRate: 5E-07
+  fuelRate: 6.25E-08
   maxAltitude: 62.21
   unitMass: 530.6
   unitVolume: 105.2
@@ -56927,7 +56863,7 @@ AtmosphericVerticalBoosterMediumMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 842400
-  fuelRate: 5.75E-07
+  fuelRate: 4.423076923076923E-07
   maxAltitude: 30
   unitMass: 530.6
   unitVolume: 105.2
@@ -56938,7 +56874,7 @@ AtmosphericVerticalBoosterMediumMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 2021760
-  fuelRate: 6.612E-07
+  fuelRate: 5.086153846153846E-07
   maxAltitude: 30
   unitMass: 530.6
   unitVolume: 105.2
@@ -56949,7 +56885,7 @@ AtmosphericVerticalBoosterMediumMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 7464960
-  fuelRate: 7.604E-07
+  fuelRate: 1.901E-07
   maxAltitude: 30
   unitMass: 530.6
   unitVolume: 105.2
@@ -56960,7 +56896,7 @@ AtmosphericVerticalBoosterMediumMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 17915904
-  fuelRate: 8.745E-07
+  fuelRate: 1.093125E-07
   maxAltitude: 30
   unitMass: 530.6
   unitVolume: 105.2
@@ -56982,7 +56918,7 @@ AtmosphericVerticalBoosterSmallFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 117000
-  fuelRate: 3.75E-07
+  fuelRate: 2.8846153846153846E-07
   maxAltitude: 22.5
   unitMass: 102
   unitVolume: 20.33
@@ -56993,7 +56929,7 @@ AtmosphericVerticalBoosterSmallFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 234000
-  fuelRate: 2.813E-07
+  fuelRate: 2.163846153846154E-07
   maxAltitude: 16.88
   unitMass: 102
   unitVolume: 20.33
@@ -57004,7 +56940,7 @@ AtmosphericVerticalBoosterSmallFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 720000
-  fuelRate: 2.109E-07
+  fuelRate: 5.2725E-08
   maxAltitude: 12.66
   unitMass: 102
   unitVolume: 20.33
@@ -57015,7 +56951,7 @@ AtmosphericVerticalBoosterSmallFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 1440000
-  fuelRate: 1.582E-07
+  fuelRate: 1.9775E-08
   maxAltitude: 9.492
   unitMass: 102
   unitVolume: 20.33
@@ -57026,7 +56962,7 @@ AtmosphericVerticalBoosterSmallManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 105300
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 36
   unitMass: 102
   unitVolume: 20.33
@@ -57037,7 +56973,7 @@ AtmosphericVerticalBoosterSmallManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 189540
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 43.2
   unitMass: 102
   unitVolume: 20.33
@@ -57048,7 +56984,7 @@ AtmosphericVerticalBoosterSmallManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 524880
-  fuelRate: 5E-07
+  fuelRate: 1.25E-07
   maxAltitude: 51.84
   unitMass: 102
   unitVolume: 20.33
@@ -57059,7 +56995,7 @@ AtmosphericVerticalBoosterSmallManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 944784
-  fuelRate: 5E-07
+  fuelRate: 6.25E-08
   maxAltitude: 62.21
   unitMass: 102
   unitVolume: 20.33
@@ -57070,7 +57006,7 @@ AtmosphericVerticalBoosterSmallMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 140400
-  fuelRate: 5.75E-07
+  fuelRate: 4.423076923076923E-07
   maxAltitude: 30
   unitMass: 102
   unitVolume: 20.33
@@ -57081,7 +57017,7 @@ AtmosphericVerticalBoosterSmallMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 336960
-  fuelRate: 6.612E-07
+  fuelRate: 5.086153846153846E-07
   maxAltitude: 30
   unitMass: 102
   unitVolume: 20.33
@@ -57092,7 +57028,7 @@ AtmosphericVerticalBoosterSmallMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 1244160
-  fuelRate: 7.604E-07
+  fuelRate: 1.901E-07
   maxAltitude: 30
   unitMass: 102
   unitVolume: 20.33
@@ -57103,7 +57039,7 @@ AtmosphericVerticalBoosterSmallMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 2985984
-  fuelRate: 8.745E-07
+  fuelRate: 1.093125E-07
   maxAltitude: 30
   unitMass: 102
   unitVolume: 20.33
@@ -57125,7 +57061,7 @@ AtmosphericVerticalBoosterXtraSmallFreight:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 1.3 * basic.
   level: 2
   maxPower: 19500
-  fuelRate: 3.75E-07
+  fuelRate: 2.8846153846153846E-07
   maxAltitude: 22.5
   unitMass: 22.7
   unitVolume: 11
@@ -57136,7 +57072,7 @@ AtmosphericVerticalBoosterXtraSmallFreight3:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 2.6 * basic.
   level: 3
   maxPower: 39000
-  fuelRate: 2.813E-07
+  fuelRate: 2.163846153846154E-07
   maxAltitude: 16.88
   unitMass: 22.7
   unitVolume: 11
@@ -57147,7 +57083,7 @@ AtmosphericVerticalBoosterXtraSmallFreight4:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 8 * basic.
   level: 4
   maxPower: 120000
-  fuelRate: 2.109E-07
+  fuelRate: 5.2725E-08
   maxAltitude: 12.66
   unitMass: 22.7
   unitVolume: 11
@@ -57158,7 +57094,7 @@ AtmosphericVerticalBoosterXtraSmallFreight5:
   subdescription: The freight variation consumes less fuel but has smaller range Max power boosted 16 * basic.
   level: 5
   maxPower: 240000
-  fuelRate: 1.582E-07
+  fuelRate: 1.9775E-08
   maxAltitude: 9.492
   unitMass: 22.7
   unitVolume: 11
@@ -57169,7 +57105,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 1.3 * basic.
   level: 2
   maxPower: 17550
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 36
   unitMass: 22.7
   unitVolume: 11
@@ -57180,7 +57116,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver3:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 2.6 * basic.
   level: 3
   maxPower: 31590
-  fuelRate: 5E-07
+  fuelRate: 3.846153846153846E-07
   maxAltitude: 43.2
   unitMass: 22.7
   unitVolume: 11
@@ -57191,7 +57127,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver4:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 8 * basic.
   level: 4
   maxPower: 87480
-  fuelRate: 5E-07
+  fuelRate: 1.25E-07
   maxAltitude: 51.84
   unitMass: 22.7
   unitVolume: 11
@@ -57202,7 +57138,7 @@ AtmosphericVerticalBoosterXtraSmallManeuver5:
   subdescription: The maneuver variation has more range but is less powerful Max power boosted 16 * basic.
   level: 5
   maxPower: 157472
-  fuelRate: 5E-07
+  fuelRate: 6.25E-08
   maxAltitude: 62.21
   unitMass: 22.7
   unitVolume: 11
@@ -57213,7 +57149,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 1.3 * basic.
   level: 2
   maxPower: 23400
-  fuelRate: 5.75E-07
+  fuelRate: 4.423076923076923E-07
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11
@@ -57224,7 +57160,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary3:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 2.6 * basic.
   level: 3
   maxPower: 56160
-  fuelRate: 6.612E-07
+  fuelRate: 5.086153846153846E-07
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11
@@ -57235,7 +57171,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary4:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 8 * basic.
   level: 4
   maxPower: 207360
-  fuelRate: 7.604E-07
+  fuelRate: 1.901E-07
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11
@@ -57246,7 +57182,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary5:
   subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
   level: 5
   maxPower: 497664
-  fuelRate: 8.745E-07
+  fuelRate: 1.093125E-07
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11

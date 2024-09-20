@@ -8,7 +8,7 @@ if (!(Test-Path $INFILE)) {
   exit 1
 }
 $OUTFILE = ".\markets.csv"
-Write-Output "Genmerating prices, reading $INFILE, writing $OUTFILE ."
+Write-Output "Generating prices, reading $INFILE, writing $OUTFILE ."
 
 
 # Modifiable code: data and function to generate price for one item.
