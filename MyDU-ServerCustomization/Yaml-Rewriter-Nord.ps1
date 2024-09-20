@@ -12,6 +12,9 @@ $OUTFILE = ".\items-nord-changed.yaml"
 
 $subtrees = @{}
 $sections = @{}
+$cloneSections = @{}
+$cloneSourceSections = @{}
+$assetAliases = @{}
 $patterns = @{}
 $treeNodes = @{}
 
@@ -44,6 +47,47 @@ function VerifySectionParameters($filter, $func, $collection) {
   }
 }  
 
+function addAssetAlias($newName, $name) {
+  $assetAliases[$newName] = $name
+}
+function getAssetAlias($name) {
+  $alias = $name
+  $count = 0
+  while ($count -lt 10 -and $assetAliases.Contains($alias)) {
+    $count = $count + 1
+    if ($count -ge 10) {
+      Write-Error "getAssetAlias recursion $name $alias $count"
+    }
+    $alias = $assetAliases[$alias]
+  }
+  return $alias
+}
+function CloneSection($name, $newName, $func) {
+  VerifySectionParameters $newName $func $sections
+  if ($name -match "[A-Za-z][A-Za-z0-9]*") {
+    if ($newName -match "[A-Za-z][A-Za-z0-9]*") {
+      # Add plain property names into keyword table for direct access.
+      $clones = @()
+      if ($cloneSections.ContainsKey($name)) {
+        $clones = $cloneSections[$name]
+      }
+      $clones += $newName
+      $cloneSections[$name] = $clones
+      $cloneSourceSections[$newName] = $name
+      addAssetAlias $newName $name
+      $len = $clones.Length
+
+      $sections[$newName] = $func
+      Write-Output "Copying section $name to $newName $len"
+    }
+    else {
+      Write-Error "Section name <$newName> is not plain YAML property name"
+    }
+  }
+  else {
+    Write-Error "Section name <$name> is not plain YAML property name"
+  }
+}
 function AddSectionModifier($filter, $func) {
   VerifySectionParameters $filter  $func $sections
   if ($filter -match "[A-Za-z][A-Za-z0-9]*") {
@@ -81,6 +125,109 @@ function AddPatternModifier($filter, $func) {
 
 # Add a function with the name of the section in yaml file
 # NO printing etc. in these functions - just assign values
+
+$cloneToUncommon = { param([string]$name, [hashtable]$values) 
+  $values.level = 2
+  $values.displayName = "Uncommon " + $values.displayName
+  $values.assetAlias = getAssetAlias $name
+  return $values, $true
+}
+
+$cloneToAdvanced = { param([string]$name, [hashtable]$values) 
+  $values.level = 3
+  $values.displayName = "Advanced " + $values.displayName
+  $values.assetAlias = getAssetAlias $name
+  return $values, $true
+}
+
+$cloneToRare = { param([string]$name, [hashtable]$values) 
+  $values.level = 4
+  $values.displayName = "Rare " + $values.displayName
+  $values.assetAlias = getAssetAlias $name
+  return $values, $true
+}
+
+$cloneToExotic = { param([string]$name, [hashtable]$values) 
+  $values.level = 5
+  $values.displayName = "Exotic " + $values.displayName
+  $values.assetAlias = getAssetAlias $name
+  return $values, $true
+}
+
+function generateTierVariations($baseName) {
+  $tier2Name = $baseName + "2"
+  $tier3Name = $baseName + "3"
+  $tier4Name = $baseName + "4"
+  $tier5Name = $baseName + "5"
+  cloneSection $baseName $tier2Name $cloneToUncommon
+  cloneSection $baseName $tier3Name $cloneToAdvanced
+  cloneSection $baseName $tier4Name $cloneToRare
+  cloneSection $baseName $tier5Name $cloneToExotic
+}
+
+generateTierVariations "AirbrakeLarge"
+
+generateTierVariations "AirbrakeMedium"
+
+generateTierVariations "AtmosphericFlap"
+
+
+generateTierVariations "AdjusterLarge"
+
+generateTierVariations "AdjusterMedium"
+
+generateTierVariations "AdjusterSmall"
+
+generateTierVariations "AdjusterXtraSmall"
+
+
+generateTierVariations "RetroEngineLarge"
+
+generateTierVariations "RetroEngineMedium"
+
+generateTierVariations "RetroEngine"
+
+
+generateTierVariations "WingLarge2"
+
+generateTierVariations "WingMedium2"
+
+generateTierVariations "WingMedium2Bis"
+
+generateTierVariations "WingXtraSmall2"
+
+
+generateTierVariations "StabilizerXLarge"
+
+generateTierVariations "StabilizerLarge"
+
+generateTierVariations "StabilizerSmall"
+
+generateTierVariations "StabilizerXtraSmall"
+
+
+generateTierVariations "AileronLarge2"
+
+generateTierVariations "AileronXLarge2"
+
+generateTierVariations "AileronShortXLarge2"
+
+generateTierVariations "AileronShortXXLarge2"
+
+generateTierVariations "AileronShortLarge2"
+
+generateTierVariations "AileronMedium2"
+
+generateTierVariations "AileronShortMedium2"
+
+generateTierVariations "AileronSmall2"
+
+generateTierVariations "AileronShortSmall2"
+
+
+#generateTierVariations ""
+
+
 AddSectionModifier "Character" { param([string]$name, [hashtable]$values) 
   $values.talentPointsPerSecond = 100
   $values.nanopackMassMul = 0.001
@@ -273,17 +420,30 @@ AddSectionModifier "CoherentConfig" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
-AddPatternModifier "^(Aileron|Stabilizer|Wing)X.*Large" { param([string]$name, [hashtable]$values) 
+AddSectionModifier "FireworkPalmtreeGold" { param([string]$name, [hashtable]$values) 
+  $values.price = 1000000000.0
+  return $values, $true
+}
+
+AddPatternModifier "^(Aileron|Stabilizer|Wing).*X+Large" { param([string]$name, [hashtable]$values) 
   if ($values.hidden) {
     $values.hidden = $false
   }
-  if ($name -eq "StabilizerXLarge") {
-    $values.assetAlias=  "WingXLarge2"
+  if ($name -match "XXXL") {
+    $values.scale = "xxxl"
+  } elseif ($name -match "XXL") {
+    $values.scale = "xxl"
+  } elseif ($name -match "XL") {
+    $values.scale = "xl"
   }
-  
 
+  if ($name -eq "StabilizerXLarge") {
+    $values.assetAlias =  "WingXLarge2"
+  }
   return $values, $true
 }
+# Remember recursive asset alias
+addAssetAlias "StabilizerXLarge" "WingXLarge2"
   
 AddPatternModifier "^RocketEngine" { param([string]$name, [hashtable]$values) 
   if ($values.fuelRate) {
@@ -367,6 +527,9 @@ AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
   }
   return $values, $true
 }
+
+# From appended items
+addAssetAlias "Headlight2" "Headlight"
 
 
 # END OF MODIFIABLE CODE
@@ -563,9 +726,146 @@ function buildModifiers() {
   }
 }
 
+function processSection($value1, $key1) {
+
+  # Find section processors
+  $changes1 = 0
+  $log = @()
+  if (!$treeNodes.ContainsKey($key1)) {
+    $log += " Section $key1 not found in treeNodes"
+    return $value1, $changes1, $log
+  }
+  $item = $treeNodes[$key1]
+  $filters = $item["handlers"]
+
+  $modified1 = $value1
+  if ($filters.Count -gt 0) {
+    # Run the processors.
+    $modified1 = @{}
+    foreach ($key2 in $value1.Keys) {
+      $modified1[$key2] = $value1[$key2]
+    }
+    $keystate = [ordered]@{}
+    foreach ($key2 in $value1.Keys) {
+      $keystate[$key2] = $true
+    }
+
+    foreach ($pat in $filters.Keys) {
+      $func = $filters[$pat]
+      $log += printTable "" "Section $key1 modifier $pat start" $modified1  
+            
+      # Recreate the section with same property order as original, to help diffing the files
+      $modified3 = [ordered]@{}
+      $modified2, $isModified = Invoke-Command $func -ArgumentList $key1, $modified1
+      if (!$isModified) {
+        $log += " Modifier $pat done, didn't modify"
+        $modified3 = $modified2
+      } else {
+        $log += " Modifier $pat done, section is modified"
+        $changes1 = $changes1 + 1
+        foreach ($key2 in $keystate.Keys) {
+          if ($modified2.ContainsKey($key2)) {
+            if (!$keystate[$key2]) {
+              $log += "  Key restored: $key1.$key2"
+              $keystate[$key2] = $true
+            }
+
+            # Try to maintain original datatype.
+            if ($null -eq $value1[$key2]) {
+              $newValue1 = $modified2[$key2]
+              $log += "  New value: $key1.$key2 <$newValue1>."
+              $newValue2 = $newValue1
+            } else {
+              $oldType = $value1[$key2].GetType().Name
+              $newType = $modified2[$key2].GetType().Name
+              $newValue1 = $modified2[$key2]
+              $newValue2 = $null
+              if ($newType -eq $oldType) {
+                $newValue2 = $newValue1
+              } else {
+                if ($oldType -eq "Double") {
+                  $newValue2 = [Double]$newValue1
+                }
+                elseif ($oldType -eq "Int32") {
+                  if ($newType -eq "Double") {
+                    # Allow change from int to double when new value has significant decimals
+                    $rounded = ([Math]::Round($newValue1, 0))
+                    $decimals = 0.0
+                    if ($rounded -lt $newValue1 ) {
+                      $decimals = $newValue1 - $rounded
+                    }
+                    else {
+                      $decimals = $rounded - $newValue1
+                    }
+                    if ($decimals -lt 0.000000001) {
+                      $newValue2 = [Int32]$rounded
+                      $log += "    Type change $key2 double to int <$newValue1> to <$newValue2>"
+                    }
+                    else {
+                      $newValue2 = $newValue1
+                    }
+
+                  }
+                  else {
+                    $newValue2 = [Int32]$newValue1
+                    $log += "    Type change $key2 $newType to int <$newValue1> to <$newValue2>"
+                  }
+                }
+                else {
+                  $newValue2 = $newValue1
+                  $log += "    Type change $key2 $oldType to $newType <$newValue1> to <$newValue2>"
+                }
+              }
+            }
+            $modified3[$key2] = $newValue2
+          }
+          elseif ($keystate[$key2]) {
+            $log += "  Key removed: $key1.$key2"
+            $keystate[$key2] = $false
+          }
+        }
+        foreach ($key2 in $modified2.Keys) {
+          if (!$keystate[$key2]) {
+            $log += "  Key added: $key1.$key2 <$modified2[$key2]>"
+            $modified3[$key2] = $modified2[$key2]
+            $keystate[$key2] = $true
+          }
+        }
+      }
+      $modified1 = $modified3
+      $log += " Modifier $pat done $modified1"
+    }
+  }
+  return $modified1, $changes1, $log
+}
+
+function writeYaml($modifiedObj, $doc, $docCount, $changes) {
+  $yamlText = ""
+  if ($changes -gt 0) {
+    $newText = ConvertTo-Yaml $modifiedObj
+    $newText = $newText -replace ': ""', ": ''"
+    $yamlText = $newText
+  } else {
+    # No processors found. Keep original
+    $yamlText = $doc
+  }
+  if ($docCount -gt 1) {
+    if ($changes -gt 0) {
+      Add-Content -Path $OUTFILE "---"
+    }
+    else {
+      # Unchanged doc starts with newline
+      Add-Content -NoNewline -Path $OUTFILE "---"
+    }
+    Add-Content -NoNewline -Path $OUTFILE $yamlText
+  }
+  else {
+    Set-Content -NoNewline -Path $OUTFILE $yamlText
+  }
+}
+
 # Main
 $allSections = [ordered]@{}
-$docCount = 0
 
 foreach ($INFILE in $INFILES) {
   $ymlInfile = Get-Content -Path $INFILE -Raw
@@ -574,7 +874,6 @@ foreach ($INFILE in $INFILES) {
   #Read the yaml file
   foreach ($doc in $yamlDocs) {
     if ($doc -and $doc.Length -gt 5) {
-      $docCount = $docCount + 1
       $yamlObj = ConvertFrom-Yaml -Yaml $doc -Ordered
       foreach ($key1 in $yamlObj.Keys) {
         $sect = $yamlObj[$key1]
@@ -582,6 +881,12 @@ foreach ($INFILE in $INFILES) {
         Write-Output "Section $key1 p $pName ."
 
         $allSections[$key1] = $sect
+        if ($cloneSections.ContainsKey($key1)) {
+          foreach ($newName in $cloneSections[$key1]) {
+            Write-Output "Section $key1 cloned to $newName."
+            $allSections[$newName] = $sect
+          }
+        }
       }
     }
   }
@@ -601,6 +906,9 @@ Write-Output "=========================================="
 Write-Output "Modify yaml."
 
 Set-Content -Path $OUTFILE ""
+$docCount = 0
+$writtenSections = [ordered]@{}
+
 foreach ($INFILE in $INFILES) {
   $ymlInfile = Get-Content -Path $INFILE -Raw
   $yamlDocs = $ymlInfile -split '---'
@@ -610,143 +918,63 @@ foreach ($INFILE in $INFILES) {
   #Write-Output Sections:
   foreach ($doc in $yamlDocs) {
     if ($doc -and $doc.Length -gt 5) {
+      $docCount = $docCount + 1
       $yamlObj = ConvertFrom-Yaml -Yaml $doc -Ordered
       $modifiedObj = [ordered]@{}
       $changes = 0
       $yamlText = ""
+      #$newYamlText = ""
       #Write-Output "Yaml doc" $doc
+      $keyCount = 0
+      $newModifiedSections = @()
+
       foreach ($key1 in $yamlObj.Keys) {
         #Write-Output "Section $key1."
-
-        # Find section processors
-        $item = $treeNodes[$key1]
-        $filters = $item["handlers"]
-
-        $value1 = $yamlObj[$key1]
-        $modified1 = $value1
-        if ($filters.Count -gt 0) {
-          # Run the processors.
-          $modified1 = @{}
-          foreach ($key2 in $value1.Keys) {
-            $modified1[$key2] = $value1[$key2]
+        if ($writtenSections.Contains($key1)) {
+          Write-Error "Section $key1 already written"  
+        } else {
+          $writtenSections[$key1] = $true
+          $keyCount = $keyCount + 1
+          $value1 = $yamlObj[$key1]
+          $modified1, $changes1, $log1 = processSection $value1 $key1
+          $changes = $changes + $changes1
+          $modifiedObj[$key1] = $modified1
+          Write-Output "Section $key1 processed:"
+          foreach ($line in $log1) {
+            Write-Output $line
           }
-          $keystate = [ordered]@{}
-          foreach ($key2 in $value1.Keys) {
-            $keystate[$key2] = $true
-          }
+        }
 
-          foreach ($pat in $filters.Keys) {
-            $func = $filters[$pat]
-            printTable "" "Section $key1 modifier $pat start" $modified1  
-                  
-            # Recreate the section with same property order as original, to help diffing the files
-            $modified3 = [ordered]@{}
-            $modified2, $isModified = Invoke-Command $func -ArgumentList $key1, $modified1
-            if (!$isModified) {
-              Write-Output "" " Modifier $pat done, didn't modify"
-              $modified3 = $modified2
+        if ($cloneSections.ContainsKey($key1)) {
+          $clones = $cloneSections[$key1]
+          $len = $clones.Length
+          Write-Output "Processing clones from section $key1 $len :"
+          foreach ($newName in $clones) {
+            if ($writtenSections.Contains($newName)) {
+              Write-Error "Clone section $newName already written"  
             } else {
-              Write-Output "" " Modifier $pat done, section is modified"
-              $changes = $changes + 1
-              foreach ($key2 in $keystate.Keys) {
-                if ($modified2.ContainsKey($key2)) {
-                  if (!$keystate[$key2]) {
-                    Write-Output "  Key restored: $key1.$key2"
-                    $keystate[$key2] = $true
-                  }
+              $writtenSections[$newName] = $true
+              Write-Output "Processing clone $newName from section $key1 $len :"
+              $newModifiedObj = [ordered]@{}
 
-                  # Try to maintain original datatype.
-                  if ($null -eq $value1[$key2]) {
-                    $newValue1 = $modified2[$key2]
-                    Write-Output "  New value: $key1.$key2 <$newValue1>."
-                    $newValue2 = $newValue1
-                  } else {
-                    $oldType = $value1[$key2].GetType().Name
-                    $newType = $modified2[$key2].GetType().Name
-                    $newValue1 = $modified2[$key2]
-                    $newValue2 = $null
-                    if ($newType -eq $oldType) {
-                      $newValue2 = $newValue1
-                    } else {
-                      if ($oldType -eq "Double") {
-                        $newValue2 = [Double]$newValue1
-                      }
-                      elseif ($oldType -eq "Int32") {
-                        if ($newType -eq "Double") {
-                          # Allow change from int to double when new value has significant decimals
-                          $rounded = ([Math]::Round($newValue1, 0))
-                          $decimals = 0.0
-                          if ($rounded -lt $newValue1 ) {
-                            $decimals = $newValue1 - $rounded
-                          }
-                          else {
-                            $decimals = $rounded - $newValue1
-                          }
-                          if ($decimals -lt 0.000000001) {
-                            $newValue2 = [Int32]$rounded
-                            Write-Output "    Type change $key2 double to int <$newValue1> to <$newValue2>"
-                          }
-                          else {
-                            $newValue2 = $newValue1
-                          }
-        
-                        }
-                        else {
-                          $newValue2 = [Int32]$newValue1
-                          Write-Output "    Type change $key2 $newType to int <$newValue1> to <$newValue2>"
-                        }
-                      }
-                      else {
-                        $newValue2 = $newValue1
-                        Write-Output "    Type change $key2 $oldType to $newType <$newValue1> to <$newValue2>"
-                      }
-                    }
-                  }
-                  $modified3[$key2] = $newValue2
-                }
-                elseif ($keystate[$key2]) {
-                  Write-Output "  Key removed: $key1.$key2"
-                  $keystate[$key2] = $false
-                }
+              $modified1, $changes1, $log1 = processSection $value1 $newName
+              $changes = $changes + $changes1 + 1
+              $newModifiedObj[$newName] = $modified1
+              Write-Output "Clone section $newName processed:"
+              foreach ($line in $log1) {
+                Write-Output $line
               }
-              foreach ($key2 in $modified2.Keys) {
-                if (!$keystate[$key2]) {
-                  Write-Output "  Key added: $key1.$key2 <$modified2[$key2]>"
-                  $modified3[$key2] = $modified2[$key2]
-                  $keystate[$key2] = $true
-                }
-              }
+              $newModifiedSections += $newModifiedObj
             }
-            $modified1 = $modified3
-            printTable "" " Modifier $pat done" $modified1  
           }
         }
-        $modifiedObj[$key1] = $modified1
       }
 
-      if ($changes -gt 0) {
-        $newText = ConvertTo-Yaml $modifiedObj
-        $newText = $newText -replace ': ""', ": ''"
-        $yamlText = $newText
-      }
-      else {
-        # No processors found. Keep original
-        $yamlText = $doc
-      }
-      if ($docCount -gt 1) {
-        if ($changes -gt 0) {
-          Add-Content -Path $OUTFILE "---"
-        }
-        else {
-          # Unchanged doc starts with newline
-          Add-Content -NoNewline -Path $OUTFILE "---"
-        }
-        Add-Content -NoNewline -Path $OUTFILE $yamlText
-      }
-      else {
-        Set-Content -NoNewline -Path $OUTFILE $yamlText
-      }
+      writeYaml $modifiedObj $doc $docCount $changes
 
+      foreach ($newModifiedObj in $newModifiedSections) {
+        writeYaml $newModifiedObj $doc $docCount $changes
+      }
     }
   }
 }

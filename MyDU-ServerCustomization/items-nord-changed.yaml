@@ -1,5 +1,4 @@
-
----GameplayObject:
+GameplayObject:
   displayName: All gameplay objects
 ---
 Asset:
@@ -26156,7 +26155,7 @@ FireworkPalmtreeGold:
   description: A firework shell that produces a golden palm tree in the sky
   unitVolume: 1
   level: 1
-  price: 81.15
+  price: 1000000000
 ---
 FireworkPalmtreeGreen:
   parent: FireworkPalmtree
@@ -32035,14 +32034,14 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
+  unitVolume: 10001
+  price: 251905
+  level: 4
+  unitMass: 20066.3
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
-  price: 251905
-  unitVolume: 10001
   newPlayerDefaultQty: 0
-  unitMass: 20066.3
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32221,14 +32220,14 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
+  unitVolume: 10001
+  price: 251905
+  level: 4
+  unitMass: 20066.3
   requiredTalents:
   - name: StaticCoreUnitExpertise
     level: 4
-  level: 4
-  price: 251905
-  unitVolume: 10001
   newPlayerDefaultQty: 0
-  unitMass: 20066.3
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -44339,14 +44338,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  functionInSpace: true
-  displayName: Rocket Engines
-  parent: EngineDisplay
-  maxPower: 30000
   fuelRate: 1.65E-06
+  functionInSpace: true
   t50: 0
+  maxPower: 30000
   description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  displayName: Rocket Engines
   maxSpeedBoost: 0.3
+  parent: EngineDisplay
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -50314,6 +50313,66 @@ AileronLarge2:
   hitpoints: 3391
   liftDragRatio: 9
 ---
+AileronLarge22:
+  parent: Aileron2
+  displayName: Uncommon Aileron
+  size: 3
+  maxPower: 2080000
+  maxLiftFactor: 160
+  unitMass: 3409.9
+  unitVolume: 1238.4
+  level: 2
+  scale: m
+  hitpoints: 5086
+  liftDragRatio: 9
+  assetAlias: AileronLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronLarge23:
+  parent: Aileron2
+  displayName: Advanced Aileron
+  size: 3
+  maxPower: 4160000
+  maxLiftFactor: 160
+  unitMass: 3409.9
+  unitVolume: 1238.4
+  level: 3
+  scale: m
+  hitpoints: 10173
+  liftDragRatio: 9
+  assetAlias: AileronLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronLarge24:
+  parent: Aileron2
+  displayName: Rare Aileron
+  size: 3
+  maxPower: 12800000
+  maxLiftFactor: 160
+  unitMass: 3409.9
+  unitVolume: 1238.4
+  level: 4
+  scale: m
+  hitpoints: 15260
+  liftDragRatio: 9
+  assetAlias: AileronLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronLarge25:
+  parent: Aileron2
+  displayName: Exotic Aileron
+  size: 3
+  maxPower: 25600000
+  maxLiftFactor: 160
+  unitMass: 3409.9
+  unitVolume: 1238.4
+  level: 5
+  scale: m
+  hitpoints: 20346
+  liftDragRatio: 9
+  assetAlias: AileronLarge2
+  subdescription: Max power boosted 16 * basic.
+---
 AileronMedium2:
   parent: Aileron2
   displayName: Aileron
@@ -50326,6 +50385,66 @@ AileronMedium2:
   scale: s
   hitpoints: 423
   liftDragRatio: 9
+---
+AileronMedium22:
+  parent: Aileron2
+  displayName: Uncommon Aileron
+  size: 2
+  maxPower: 520000
+  maxLiftFactor: 40
+  unitMass: 638.3
+  unitVolume: 233.2
+  level: 2
+  scale: s
+  hitpoints: 634
+  liftDragRatio: 9
+  assetAlias: AileronMedium2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronMedium23:
+  parent: Aileron2
+  displayName: Advanced Aileron
+  size: 2
+  maxPower: 1040000
+  maxLiftFactor: 40
+  unitMass: 638.3
+  unitVolume: 233.2
+  level: 3
+  scale: s
+  hitpoints: 1269
+  liftDragRatio: 9
+  assetAlias: AileronMedium2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronMedium24:
+  parent: Aileron2
+  displayName: Rare Aileron
+  size: 2
+  maxPower: 3200000
+  maxLiftFactor: 40
+  unitMass: 638.3
+  unitVolume: 233.2
+  level: 4
+  scale: s
+  hitpoints: 1904
+  liftDragRatio: 9
+  assetAlias: AileronMedium2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronMedium25:
+  parent: Aileron2
+  displayName: Exotic Aileron
+  size: 2
+  maxPower: 6400000
+  maxLiftFactor: 40
+  unitMass: 638.3
+  unitVolume: 233.2
+  level: 5
+  scale: s
+  hitpoints: 2538
+  liftDragRatio: 9
+  assetAlias: AileronMedium2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronShortLarge2:
   parent: Aileron2
@@ -50340,6 +50459,66 @@ AileronShortLarge2:
   hitpoints: 1695
   liftDragRatio: 9
 ---
+AileronShortLarge22:
+  parent: Aileron2
+  displayName: Uncommon Compact Aileron
+  size: 3
+  maxPower: 1040000
+  maxLiftFactor: 80
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 2
+  scale: m
+  hitpoints: 2542
+  liftDragRatio: 9
+  assetAlias: AileronShortLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronShortLarge23:
+  parent: Aileron2
+  displayName: Advanced Compact Aileron
+  size: 3
+  maxPower: 2080000
+  maxLiftFactor: 80
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 3
+  scale: m
+  hitpoints: 5085
+  liftDragRatio: 9
+  assetAlias: AileronShortLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronShortLarge24:
+  parent: Aileron2
+  displayName: Rare Compact Aileron
+  size: 3
+  maxPower: 6400000
+  maxLiftFactor: 80
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 4
+  scale: m
+  hitpoints: 7628
+  liftDragRatio: 9
+  assetAlias: AileronShortLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronShortLarge25:
+  parent: Aileron2
+  displayName: Exotic Compact Aileron
+  size: 3
+  maxPower: 12800000
+  maxLiftFactor: 80
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 5
+  scale: m
+  hitpoints: 10170
+  liftDragRatio: 9
+  assetAlias: AileronShortLarge2
+  subdescription: Max power boosted 16 * basic.
+---
 AileronShortMedium2:
   parent: Aileron2
   displayName: Compact Aileron
@@ -50352,6 +50531,65 @@ AileronShortMedium2:
   scale: s
   hitpoints: 211
   liftDragRatio: 9
+---
+AileronShortMedium22:
+  parent: Aileron2
+  displayName: Uncommon Compact Aileron
+  size: 2
+  maxPower: 200000
+  maxLiftFactor: 20
+  unitMass: 319.15
+  unitVolume: 116.6
+  level: 2
+  scale: s
+  hitpoints: 211
+  liftDragRatio: 9
+  assetAlias: AileronShortMedium2
+---
+AileronShortMedium23:
+  parent: Aileron2
+  displayName: Advanced Compact Aileron
+  size: 2
+  maxPower: 520000
+  maxLiftFactor: 20
+  unitMass: 319.15
+  unitVolume: 116.6
+  level: 3
+  scale: s
+  hitpoints: 633
+  liftDragRatio: 9
+  assetAlias: AileronShortMedium2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronShortMedium24:
+  parent: Aileron2
+  displayName: Rare Compact Aileron
+  size: 2
+  maxPower: 1600000
+  maxLiftFactor: 20
+  unitMass: 319.15
+  unitVolume: 116.6
+  level: 4
+  scale: s
+  hitpoints: 950
+  liftDragRatio: 9
+  assetAlias: AileronShortMedium2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronShortMedium25:
+  parent: Aileron2
+  displayName: Exotic Compact Aileron
+  size: 2
+  maxPower: 3200000
+  maxLiftFactor: 20
+  unitMass: 319.15
+  unitVolume: 116.6
+  level: 5
+  scale: s
+  hitpoints: 1266
+  liftDragRatio: 9
+  assetAlias: AileronShortMedium2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronShortSmall2:
   parent: Aileron2
@@ -50366,6 +50604,66 @@ AileronShortSmall2:
   hitpoints: 50
   liftDragRatio: 9
 ---
+AileronShortSmall22:
+  parent: Aileron2
+  displayName: Uncommon Compact Aileron
+  maxPower: 65000
+  maxLiftFactor: 5
+  size: 1
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 2
+  scale: xs
+  hitpoints: 75
+  liftDragRatio: 9
+  assetAlias: AileronShortSmall2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronShortSmall23:
+  parent: Aileron2
+  displayName: Advanced Compact Aileron
+  maxPower: 130000
+  maxLiftFactor: 5
+  size: 1
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 3
+  scale: xs
+  hitpoints: 150
+  liftDragRatio: 9
+  assetAlias: AileronShortSmall2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronShortSmall24:
+  parent: Aileron2
+  displayName: Rare Compact Aileron
+  maxPower: 400000
+  maxLiftFactor: 5
+  size: 1
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 4
+  scale: xs
+  hitpoints: 225
+  liftDragRatio: 9
+  assetAlias: AileronShortSmall2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronShortSmall25:
+  parent: Aileron2
+  displayName: Exotic Compact Aileron
+  maxPower: 800000
+  maxLiftFactor: 5
+  size: 1
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 5
+  scale: xs
+  hitpoints: 300
+  liftDragRatio: 9
+  assetAlias: AileronShortSmall2
+  subdescription: Max power boosted 16 * basic.
+---
 AileronShortXLarge2:
   parent: Aileron2
   displayName: Compact Aileron
@@ -50375,10 +50673,74 @@ AileronShortXLarge2:
   unitMass: 14000
   unitVolume: 5600
   level: 1
-  scale: l
+  scale: xl
   hitpoints: 1695
   liftDragRatio: 9
-  hidden: true
+  hidden: false
+---
+AileronShortXLarge22:
+  parent: Aileron2
+  displayName: Uncommon Compact Aileron
+  size: 4
+  maxPower: 2080000
+  maxLiftFactor: 16
+  unitMass: 14000
+  unitVolume: 5600
+  level: 2
+  scale: xl
+  hitpoints: 2542
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronShortXLarge23:
+  parent: Aileron2
+  displayName: Advanced Compact Aileron
+  size: 4
+  maxPower: 4160000
+  maxLiftFactor: 16
+  unitMass: 14000
+  unitVolume: 5600
+  level: 3
+  scale: xl
+  hitpoints: 5085
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronShortXLarge24:
+  parent: Aileron2
+  displayName: Rare Compact Aileron
+  size: 4
+  maxPower: 12800000
+  maxLiftFactor: 16
+  unitMass: 14000
+  unitVolume: 5600
+  level: 4
+  scale: xl
+  hitpoints: 7628
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronShortXLarge25:
+  parent: Aileron2
+  displayName: Exotic Compact Aileron
+  size: 4
+  maxPower: 25600000
+  maxLiftFactor: 16
+  unitMass: 14000
+  unitVolume: 5600
+  level: 5
+  scale: xl
+  hitpoints: 10170
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXLarge2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronShortXXLarge2:
   parent: Aileron2
@@ -50389,10 +50751,74 @@ AileronShortXXLarge2:
   unitMass: 45000
   unitVolume: 16000
   level: 1
-  scale: xl
+  scale: xxl
   hitpoints: 1600
   liftDragRatio: 9
-  hidden: true
+  hidden: false
+---
+AileronShortXXLarge22:
+  parent: Aileron2
+  displayName: Uncommon Compact Aileron
+  size: 5
+  maxPower: 4160000
+  maxLiftFactor: 320
+  unitMass: 45000
+  unitVolume: 16000
+  level: 2
+  scale: xxl
+  hitpoints: 2400
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXXLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronShortXXLarge23:
+  parent: Aileron2
+  displayName: Advanced Compact Aileron
+  size: 5
+  maxPower: 8320000
+  maxLiftFactor: 320
+  unitMass: 45000
+  unitVolume: 16000
+  level: 3
+  scale: xxl
+  hitpoints: 4800
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXXLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronShortXXLarge24:
+  parent: Aileron2
+  displayName: Rare Compact Aileron
+  size: 5
+  maxPower: 25600000
+  maxLiftFactor: 320
+  unitMass: 45000
+  unitVolume: 16000
+  level: 4
+  scale: xxl
+  hitpoints: 7200
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXXLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronShortXXLarge25:
+  parent: Aileron2
+  displayName: Exotic Compact Aileron
+  size: 5
+  maxPower: 51200000
+  maxLiftFactor: 320
+  unitMass: 45000
+  unitVolume: 16000
+  level: 5
+  scale: xxl
+  hitpoints: 9600
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronShortXXLarge2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronSmall2:
   parent: Aileron2
@@ -50409,6 +50835,73 @@ AileronSmall2:
   hitpoints: 50
   liftDragRatio: 9
 ---
+AileronSmall22:
+  parent: Aileron2
+  displayName: Uncommon Aileron
+  maxPower: 100000
+  maxLiftFactor: 10
+  size: 1
+  newPlayerDefaultQty: 0
+  unitMass: 122.4
+  unitVolume: 45.2
+  level: 2
+  scale: xs
+  price: 78.36
+  hitpoints: 50
+  liftDragRatio: 9
+  assetAlias: AileronSmall2
+---
+AileronSmall23:
+  parent: Aileron2
+  displayName: Advanced Aileron
+  maxPower: 260000
+  maxLiftFactor: 10
+  size: 1
+  newPlayerDefaultQty: 0
+  unitMass: 122.4
+  unitVolume: 45.2
+  level: 3
+  scale: xs
+  price: 78.36
+  hitpoints: 150
+  liftDragRatio: 9
+  assetAlias: AileronSmall2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronSmall24:
+  parent: Aileron2
+  displayName: Rare Aileron
+  maxPower: 800000
+  maxLiftFactor: 10
+  size: 1
+  newPlayerDefaultQty: 0
+  unitMass: 122.4
+  unitVolume: 45.2
+  level: 4
+  scale: xs
+  price: 78.36
+  hitpoints: 225
+  liftDragRatio: 9
+  assetAlias: AileronSmall2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronSmall25:
+  parent: Aileron2
+  displayName: Exotic Aileron
+  maxPower: 1600000
+  maxLiftFactor: 10
+  size: 1
+  newPlayerDefaultQty: 0
+  unitMass: 122.4
+  unitVolume: 45.2
+  level: 5
+  scale: xs
+  price: 78.36
+  hitpoints: 300
+  liftDragRatio: 9
+  assetAlias: AileronSmall2
+  subdescription: Max power boosted 16 * basic.
+---
 AileronXLarge2:
   parent: Aileron2
   displayName: Aileron
@@ -50418,10 +50911,74 @@ AileronXLarge2:
   unitMass: 28000
   unitVolume: 11200
   level: 1
-  scale: l
+  scale: xl
   hitpoints: 3391
   liftDragRatio: 9
   hidden: false
+---
+AileronXLarge22:
+  parent: Aileron2
+  displayName: Uncommon Aileron
+  size: 4
+  maxPower: 4160000
+  maxLiftFactor: 320
+  unitMass: 28000
+  unitVolume: 11200
+  level: 2
+  scale: xl
+  hitpoints: 5086
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronXLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+AileronXLarge23:
+  parent: Aileron2
+  displayName: Advanced Aileron
+  size: 4
+  maxPower: 8320000
+  maxLiftFactor: 320
+  unitMass: 28000
+  unitVolume: 11200
+  level: 3
+  scale: xl
+  hitpoints: 10173
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronXLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+AileronXLarge24:
+  parent: Aileron2
+  displayName: Rare Aileron
+  size: 4
+  maxPower: 25600000
+  maxLiftFactor: 320
+  unitMass: 28000
+  unitVolume: 11200
+  level: 4
+  scale: xl
+  hitpoints: 15260
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronXLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+AileronXLarge25:
+  parent: Aileron2
+  displayName: Exotic Aileron
+  size: 4
+  maxPower: 51200000
+  maxLiftFactor: 320
+  unitMass: 28000
+  unitVolume: 11200
+  level: 5
+  scale: xl
+  hitpoints: 20346
+  liftDragRatio: 9
+  hidden: false
+  assetAlias: AileronXLarge2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronXXLarge2:
   parent: Aileron2
@@ -50432,7 +50989,7 @@ AileronXXLarge2:
   unitMass: 90000
   unitVolume: 36000
   level: 1
-  scale: xl
+  scale: xxl
   hitpoints: 3391
   liftDragRatio: 9
   hidden: false
@@ -50449,6 +51006,66 @@ StabilizerLarge:
   visibilityLOD: 4
   hitpoints: 60926
   liftDragRatio: 5
+---
+StabilizerLarge2:
+  parent: Stabilizer
+  displayName: Uncommon Stabilizer
+  maxPower: 5200000
+  maxLiftFactor: 800
+  unitMass: 11501.15
+  unitVolume: 3355.4
+  level: 2
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 91389
+  liftDragRatio: 5
+  assetAlias: StabilizerLarge
+  subdescription: Max power boosted 1.3 * basic.
+---
+StabilizerLarge3:
+  parent: Stabilizer
+  displayName: Advanced Stabilizer
+  maxPower: 10400000
+  maxLiftFactor: 800
+  unitMass: 11501.15
+  unitVolume: 3355.4
+  level: 3
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 182778
+  liftDragRatio: 5
+  assetAlias: StabilizerLarge
+  subdescription: Max power boosted 2.6 * basic.
+---
+StabilizerLarge4:
+  parent: Stabilizer
+  displayName: Rare Stabilizer
+  maxPower: 32000000
+  maxLiftFactor: 800
+  unitMass: 11501.15
+  unitVolume: 3355.4
+  level: 4
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 274167
+  liftDragRatio: 5
+  assetAlias: StabilizerLarge
+  subdescription: Max power boosted 8 * basic.
+---
+StabilizerLarge5:
+  parent: Stabilizer
+  displayName: Exotic Stabilizer
+  maxPower: 64000000
+  maxLiftFactor: 800
+  unitMass: 11501.15
+  unitVolume: 3355.4
+  level: 5
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 365556
+  liftDragRatio: 5
+  assetAlias: StabilizerLarge
+  subdescription: Max power boosted 16 * basic.
 ---
 StabilizerMedium:
   parent: Stabilizer
@@ -50477,6 +51094,69 @@ StabilizerSmall:
   hitpoints: 225
   liftDragRatio: 5
 ---
+StabilizerSmall2:
+  parent: Stabilizer
+  displayName: Uncommon Stabilizer
+  maxPower: 325000
+  maxLiftFactor: 50
+  unitMass: 366.89
+  unitVolume: 116.6
+  level: 2
+  scale: s
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 338
+  liftDragRatio: 5
+  assetAlias: StabilizerSmall
+  subdescription: Max power boosted 1.3 * basic.
+---
+StabilizerSmall3:
+  parent: Stabilizer
+  displayName: Advanced Stabilizer
+  maxPower: 250000
+  maxLiftFactor: 50
+  unitMass: 366.89
+  unitVolume: 116.6
+  level: 3
+  scale: s
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 225
+  liftDragRatio: 5
+  assetAlias: StabilizerSmall
+---
+StabilizerSmall4:
+  parent: Stabilizer
+  displayName: Rare Stabilizer
+  maxPower: 2000000
+  maxLiftFactor: 50
+  unitMass: 366.89
+  unitVolume: 116.6
+  level: 4
+  scale: s
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 1012
+  liftDragRatio: 5
+  assetAlias: StabilizerSmall
+  subdescription: Max power boosted 8 * basic.
+---
+StabilizerSmall5:
+  parent: Stabilizer
+  displayName: Exotic Stabilizer
+  maxPower: 4000000
+  maxLiftFactor: 50
+  unitMass: 366.89
+  unitVolume: 116.6
+  level: 5
+  scale: s
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 1350
+  liftDragRatio: 5
+  assetAlias: StabilizerSmall
+  subdescription: Max power boosted 16 * basic.
+---
 StabilizerXLarge:
   parent: Stabilizer
   displayName: Stabilizer
@@ -50492,6 +51172,70 @@ StabilizerXLarge:
   hidden: false
   assetAlias: WingXLarge2
 ---
+StabilizerXLarge2:
+  parent: Stabilizer
+  displayName: Uncommon Stabilizer
+  maxPower: 20800000
+  maxLiftFactor: 3200
+  unitMass: 25000
+  unitVolume: 10000
+  level: 2
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 150000
+  liftDragRatio: 5
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+StabilizerXLarge3:
+  parent: Stabilizer
+  displayName: Advanced Stabilizer
+  maxPower: 41600000
+  maxLiftFactor: 3200
+  unitMass: 25000
+  unitVolume: 10000
+  level: 3
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 300000
+  liftDragRatio: 5
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+StabilizerXLarge4:
+  parent: Stabilizer
+  displayName: Rare Stabilizer
+  maxPower: 128000000
+  maxLiftFactor: 3200
+  unitMass: 25000
+  unitVolume: 10000
+  level: 4
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 450000
+  liftDragRatio: 5
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+StabilizerXLarge5:
+  parent: Stabilizer
+  displayName: Exotic Stabilizer
+  maxPower: 256000000
+  maxLiftFactor: 3200
+  unitMass: 25000
+  unitVolume: 10000
+  level: 5
+  scale: xl
+  visibilityLOD: 4
+  hitpoints: 600000
+  liftDragRatio: 5
+  hidden: false
+  assetAlias: WingXLarge2
+  subdescription: Max power boosted 16 * basic.
+---
 StabilizerXtraSmall:
   parent: Stabilizer
   displayName: Stabilizer
@@ -50505,6 +51249,70 @@ StabilizerXtraSmall:
   visibilityLOD: 2
   hitpoints: 50
   liftDragRatio: 5
+---
+StabilizerXtraSmall2:
+  parent: Stabilizer
+  displayName: Uncommon Stabilizer
+  maxPower: 81250
+  maxLiftFactor: 12.5
+  unitMass: 69.88
+  unitVolume: 22.6
+  level: 2
+  scale: xs
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 75
+  liftDragRatio: 5
+  assetAlias: StabilizerXtraSmall
+  subdescription: Max power boosted 1.3 * basic.
+---
+StabilizerXtraSmall3:
+  parent: Stabilizer
+  displayName: Advanced Stabilizer
+  maxPower: 162500
+  maxLiftFactor: 12.5
+  unitMass: 69.88
+  unitVolume: 22.6
+  level: 3
+  scale: xs
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 150
+  liftDragRatio: 5
+  assetAlias: StabilizerXtraSmall
+  subdescription: Max power boosted 2.6 * basic.
+---
+StabilizerXtraSmall4:
+  parent: Stabilizer
+  displayName: Rare Stabilizer
+  maxPower: 500000
+  maxLiftFactor: 12.5
+  unitMass: 69.88
+  unitVolume: 22.6
+  level: 4
+  scale: xs
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 225
+  liftDragRatio: 5
+  assetAlias: StabilizerXtraSmall
+  subdescription: Max power boosted 8 * basic.
+---
+StabilizerXtraSmall5:
+  parent: Stabilizer
+  displayName: Exotic Stabilizer
+  maxPower: 1000000
+  maxLiftFactor: 12.5
+  unitMass: 69.88
+  unitVolume: 22.6
+  level: 5
+  scale: xs
+  price: 83.785
+  visibilityLOD: 2
+  hitpoints: 300
+  liftDragRatio: 5
+  assetAlias: StabilizerXtraSmall
+  subdescription: Max power boosted 16 * basic.
 ---
 WingLarge2:
   parent: Wing2
@@ -50520,6 +51328,70 @@ WingLarge2:
   liftDragRatio: 7
   hidden: true
 ---
+WingLarge22:
+  parent: Wing2
+  displayName: Uncommon Wing
+  maxPower: 3900000
+  maxLiftFactor: 600
+  unitMass: 8144
+  unitVolume: 3257.625
+  level: 2
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 1382
+  liftDragRatio: 7
+  hidden: true
+  assetAlias: WingLarge2
+  subdescription: Max power boosted 1.3 * basic.
+---
+WingLarge23:
+  parent: Wing2
+  displayName: Advanced Wing
+  maxPower: 7800000
+  maxLiftFactor: 600
+  unitMass: 8144
+  unitVolume: 3257.625
+  level: 3
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 2763
+  liftDragRatio: 7
+  hidden: true
+  assetAlias: WingLarge2
+  subdescription: Max power boosted 2.6 * basic.
+---
+WingLarge24:
+  parent: Wing2
+  displayName: Rare Wing
+  maxPower: 24000000
+  maxLiftFactor: 600
+  unitMass: 8144
+  unitVolume: 3257.625
+  level: 4
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 4144
+  liftDragRatio: 7
+  hidden: true
+  assetAlias: WingLarge2
+  subdescription: Max power boosted 8 * basic.
+---
+WingLarge25:
+  parent: Wing2
+  displayName: Exotic Wing
+  maxPower: 48000000
+  maxLiftFactor: 600
+  unitMass: 8144
+  unitVolume: 3257.625
+  level: 5
+  scale: l
+  visibilityLOD: 4
+  hitpoints: 5526
+  liftDragRatio: 7
+  hidden: true
+  assetAlias: WingLarge2
+  subdescription: Max power boosted 16 * basic.
+---
 WingMedium2:
   parent: Wing2
   displayName: Wing
@@ -50533,6 +51405,66 @@ WingMedium2:
   hitpoints: 1500
   liftDragRatio: 7
 ---
+WingMedium22:
+  parent: Wing2
+  displayName: Uncommon Wing
+  maxPower: 1300000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 2
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 2250
+  liftDragRatio: 7
+  assetAlias: WingMedium2
+  subdescription: Max power boosted 1.3 * basic.
+---
+WingMedium23:
+  parent: Wing2
+  displayName: Advanced Wing
+  maxPower: 2600000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 3
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 4500
+  liftDragRatio: 7
+  assetAlias: WingMedium2
+  subdescription: Max power boosted 2.6 * basic.
+---
+WingMedium24:
+  parent: Wing2
+  displayName: Rare Wing
+  maxPower: 8000000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 4
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 6750
+  liftDragRatio: 7
+  assetAlias: WingMedium2
+  subdescription: Max power boosted 8 * basic.
+---
+WingMedium25:
+  parent: Wing2
+  displayName: Exotic Wing
+  maxPower: 16000000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 5
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 9000
+  liftDragRatio: 7
+  assetAlias: WingMedium2
+  subdescription: Max power boosted 16 * basic.
+---
 WingMedium2Bis:
   parent: Wing2
   displayName: Wing variant
@@ -50545,6 +51477,66 @@ WingMedium2Bis:
   visibilityLOD: 4
   hitpoints: 1500
   liftDragRatio: 7
+---
+WingMedium2Bis2:
+  parent: Wing2
+  displayName: Uncommon Wing variant
+  maxPower: 1300000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 2
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 2250
+  liftDragRatio: 7
+  assetAlias: WingMedium2Bis
+  subdescription: Max power boosted 1.3 * basic.
+---
+WingMedium2Bis3:
+  parent: Wing2
+  displayName: Advanced Wing variant
+  maxPower: 2600000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 3
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 4500
+  liftDragRatio: 7
+  assetAlias: WingMedium2Bis
+  subdescription: Max power boosted 2.6 * basic.
+---
+WingMedium2Bis4:
+  parent: Wing2
+  displayName: Rare Wing variant
+  maxPower: 8000000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 4
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 6750
+  liftDragRatio: 7
+  assetAlias: WingMedium2Bis
+  subdescription: Max power boosted 8 * basic.
+---
+WingMedium2Bis5:
+  parent: Wing2
+  displayName: Exotic Wing variant
+  maxPower: 16000000
+  maxLiftFactor: 200
+  unitMass: 1704.95
+  unitVolume: 619.2
+  level: 5
+  scale: m
+  visibilityLOD: 4
+  hitpoints: 9000
+  liftDragRatio: 7
+  assetAlias: WingMedium2Bis
+  subdescription: Max power boosted 16 * basic.
 ---
 WingSmall2:
   parent: Wing2
@@ -50586,6 +51578,65 @@ WingXtraSmall2:
   hitpoints: 50
   liftDragRatio: 7
 ---
+WingXtraSmall22:
+  parent: Wing2
+  displayName: Uncommon Wing
+  maxPower: 62500
+  maxLiftFactor: 12.5
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 2
+  scale: xs
+  visibilityLOD: 2
+  hitpoints: 50
+  liftDragRatio: 7
+  assetAlias: WingXtraSmall2
+---
+WingXtraSmall23:
+  parent: Wing2
+  displayName: Advanced Wing
+  maxPower: 162500
+  maxLiftFactor: 12.5
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 3
+  scale: xs
+  visibilityLOD: 2
+  hitpoints: 150
+  liftDragRatio: 7
+  assetAlias: WingXtraSmall2
+  subdescription: Max power boosted 2.6 * basic.
+---
+WingXtraSmall24:
+  parent: Wing2
+  displayName: Rare Wing
+  maxPower: 500000
+  maxLiftFactor: 12.5
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 4
+  scale: xs
+  visibilityLOD: 2
+  hitpoints: 225
+  liftDragRatio: 7
+  assetAlias: WingXtraSmall2
+  subdescription: Max power boosted 8 * basic.
+---
+WingXtraSmall25:
+  parent: Wing2
+  displayName: Exotic Wing
+  maxPower: 1000000
+  maxLiftFactor: 12.5
+  unitMass: 61.2
+  unitVolume: 22.6
+  level: 5
+  scale: xs
+  visibilityLOD: 2
+  hitpoints: 300
+  liftDragRatio: 7
+  assetAlias: WingXtraSmall2
+  subdescription: Max power boosted 16 * basic.
+---
 AirbrakeLarge:
   parent: Airbrake
   displayName: Atmospheric Airbrake
@@ -50606,6 +51657,94 @@ AirbrakeLarge:
     thermic: 0.4
     kinetic: 0.4
     electromagnetic: 0.5
+---
+AirbrakeLarge2:
+  parent: Airbrake
+  displayName: Uncommon Atmospheric Airbrake
+  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 1.3 * basic.
+  functionInSpace: false
+  maxPower: 6500000
+  newPlayerDefaultQty: 0
+  unitMass: 1501.55
+  unitVolume: 619.2
+  level: 2
+  scale: l
+  price: 349.24
+  hitpoints: 1150
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeLarge
+---
+AirbrakeLarge3:
+  parent: Airbrake
+  displayName: Advanced Atmospheric Airbrake
+  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 2.6 * basic.
+  functionInSpace: false
+  maxPower: 13000000
+  newPlayerDefaultQty: 0
+  unitMass: 1501.55
+  unitVolume: 619.2
+  level: 3
+  scale: l
+  price: 349.24
+  hitpoints: 2301
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeLarge
+---
+AirbrakeLarge4:
+  parent: Airbrake
+  displayName: Rare Atmospheric Airbrake
+  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 8 * basic.
+  functionInSpace: false
+  maxPower: 40000000
+  newPlayerDefaultQty: 0
+  unitMass: 1501.55
+  unitVolume: 619.2
+  level: 4
+  scale: l
+  price: 349.24
+  hitpoints: 3452
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeLarge
+---
+AirbrakeLarge5:
+  parent: Airbrake
+  displayName: Exotic Atmospheric Airbrake
+  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 16 * basic.
+  functionInSpace: false
+  maxPower: 80000000
+  newPlayerDefaultQty: 0
+  unitMass: 1501.55
+  unitVolume: 619.2
+  level: 5
+  scale: l
+  price: 349.24
+  hitpoints: 4602
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeLarge
 ---
 AirbrakeMedium:
   parent: Airbrake
@@ -50628,6 +51767,94 @@ AirbrakeMedium:
     kinetic: 0.4
     electromagnetic: 0.5
 ---
+AirbrakeMedium2:
+  parent: Airbrake
+  displayName: Uncommon Atmospheric Airbrake
+  subdescription: Medium airbrakes are appropriate for moderately sized atmospheric constructs such as cargo transports or heavy fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 1.3 * basic.
+  functionInSpace: false
+  maxPower: 650000
+  newPlayerDefaultQty: 0
+  unitMass: 285.25
+  unitVolume: 116.6
+  level: 2
+  scale: m
+  price: 119.47
+  hitpoints: 75
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeMedium
+---
+AirbrakeMedium3:
+  parent: Airbrake
+  displayName: Advanced Atmospheric Airbrake
+  subdescription: Medium airbrakes are appropriate for moderately sized atmospheric constructs such as cargo transports or heavy fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 2.6 * basic.
+  functionInSpace: false
+  maxPower: 1300000
+  newPlayerDefaultQty: 0
+  unitMass: 285.25
+  unitVolume: 116.6
+  level: 3
+  scale: m
+  price: 119.47
+  hitpoints: 150
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeMedium
+---
+AirbrakeMedium4:
+  parent: Airbrake
+  displayName: Rare Atmospheric Airbrake
+  subdescription: Medium airbrakes are appropriate for moderately sized atmospheric constructs such as cargo transports or heavy fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 8 * basic.
+  functionInSpace: false
+  maxPower: 4000000
+  newPlayerDefaultQty: 0
+  unitMass: 285.25
+  unitVolume: 116.6
+  level: 4
+  scale: m
+  price: 119.47
+  hitpoints: 225
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeMedium
+---
+AirbrakeMedium5:
+  parent: Airbrake
+  displayName: Exotic Atmospheric Airbrake
+  subdescription: Medium airbrakes are appropriate for moderately sized atmospheric constructs such as cargo transports or heavy fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 16 * basic.
+  functionInSpace: false
+  maxPower: 8000000
+  newPlayerDefaultQty: 0
+  unitMass: 285.25
+  unitVolume: 116.6
+  level: 5
+  scale: m
+  price: 119.47
+  hitpoints: 300
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AirbrakeMedium
+---
 AtmosphericFlap:
   parent: Airbrake
   displayName: Atmospheric Airbrake
@@ -50648,6 +51875,94 @@ AtmosphericFlap:
     thermic: 0.4
     kinetic: 0.4
     electromagnetic: 0.5
+---
+AtmosphericFlap2:
+  parent: Airbrake
+  displayName: Uncommon Atmospheric Airbrake
+  subdescription: Small airbrakes are appropriate for smaller sized atmospheric constructs such as shuttles or light fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 1.3 * basic.
+  functionInSpace: false
+  maxPower: 65000
+  newPlayerDefaultQty: 0
+  unitMass: 55.55
+  unitVolume: 22.6
+  level: 2
+  scale: s
+  price: 76.8293905
+  hitpoints: 75
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AtmosphericFlap
+---
+AtmosphericFlap3:
+  parent: Airbrake
+  displayName: Advanced Atmospheric Airbrake
+  subdescription: Small airbrakes are appropriate for smaller sized atmospheric constructs such as shuttles or light fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 2.6 * basic.
+  functionInSpace: false
+  maxPower: 130000
+  newPlayerDefaultQty: 0
+  unitMass: 55.55
+  unitVolume: 22.6
+  level: 3
+  scale: s
+  price: 76.8293905
+  hitpoints: 150
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AtmosphericFlap
+---
+AtmosphericFlap4:
+  parent: Airbrake
+  displayName: Rare Atmospheric Airbrake
+  subdescription: Small airbrakes are appropriate for smaller sized atmospheric constructs such as shuttles or light fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 8 * basic.
+  functionInSpace: false
+  maxPower: 400000
+  newPlayerDefaultQty: 0
+  unitMass: 55.55
+  unitVolume: 22.6
+  level: 4
+  scale: s
+  price: 76.8293905
+  hitpoints: 225
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AtmosphericFlap
+---
+AtmosphericFlap5:
+  parent: Airbrake
+  displayName: Exotic Atmospheric Airbrake
+  subdescription: Small airbrakes are appropriate for smaller sized atmospheric constructs such as shuttles or light fighters. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 16 * basic.
+  functionInSpace: false
+  maxPower: 800000
+  newPlayerDefaultQty: 0
+  unitMass: 55.55
+  unitVolume: 22.6
+  level: 5
+  scale: s
+  price: 76.8293905
+  hitpoints: 300
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: AtmosphericFlap
 ---
 RetroEngine:
   parent: Spacebrake
@@ -50671,6 +51986,98 @@ RetroEngine:
     kinetic: 0.4
     electromagnetic: 0.5
 ---
+RetroEngine2:
+  parent: Spacebrake
+  displayName: Uncommon Retro-rocket Brake
+  subdescription: Max power boosted 1.3 * basic.
+  functionInSpace: true
+  maxPower: 130000
+  unitMass: 137.55
+  newPlayerDefaultQty: 0
+  size: 1
+  unitVolume: 20.33
+  level: 2
+  scale: s
+  price: 118.78
+  hitpoints: 75
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngine
+---
+RetroEngine3:
+  parent: Spacebrake
+  displayName: Advanced Retro-rocket Brake
+  subdescription: Max power boosted 2.6 * basic.
+  functionInSpace: true
+  maxPower: 260000
+  unitMass: 137.55
+  newPlayerDefaultQty: 0
+  size: 1
+  unitVolume: 20.33
+  level: 3
+  scale: s
+  price: 118.78
+  hitpoints: 150
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngine
+---
+RetroEngine4:
+  parent: Spacebrake
+  displayName: Rare Retro-rocket Brake
+  subdescription: Max power boosted 8 * basic.
+  functionInSpace: true
+  maxPower: 800000
+  unitMass: 137.55
+  newPlayerDefaultQty: 0
+  size: 1
+  unitVolume: 20.33
+  level: 4
+  scale: s
+  price: 118.78
+  hitpoints: 225
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngine
+---
+RetroEngine5:
+  parent: Spacebrake
+  displayName: Exotic Retro-rocket Brake
+  subdescription: Max power boosted 16 * basic.
+  functionInSpace: true
+  maxPower: 1600000
+  unitMass: 137.55
+  newPlayerDefaultQty: 0
+  size: 1
+  unitVolume: 20.33
+  level: 5
+  scale: s
+  price: 118.78
+  hitpoints: 300
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngine
+---
 RetroEngineLarge:
   parent: Spacebrake
   displayName: Retro-rocket Brake
@@ -50692,6 +52099,98 @@ RetroEngineLarge:
     thermic: 0.4
     kinetic: 0.4
     electromagnetic: 0.5
+---
+RetroEngineLarge2:
+  parent: Spacebrake
+  displayName: Uncommon Retro-rocket Brake
+  subdescription: Max power boosted 1.3 * basic.
+  functionInSpace: true
+  maxPower: 4680000
+  unitMass: 3770.9
+  newPlayerDefaultQty: 0
+  size: 3
+  unitVolume: 562.4
+  level: 2
+  scale: l
+  price: 3092.2149999999997
+  hitpoints: 2133
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineLarge
+---
+RetroEngineLarge3:
+  parent: Spacebrake
+  displayName: Advanced Retro-rocket Brake
+  subdescription: Max power boosted 2.6 * basic.
+  functionInSpace: true
+  maxPower: 9360000
+  unitMass: 3770.9
+  newPlayerDefaultQty: 0
+  size: 3
+  unitVolume: 562.4
+  level: 3
+  scale: l
+  price: 3092.2149999999997
+  hitpoints: 4266
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineLarge
+---
+RetroEngineLarge4:
+  parent: Spacebrake
+  displayName: Rare Retro-rocket Brake
+  subdescription: Max power boosted 8 * basic.
+  functionInSpace: true
+  maxPower: 28800000
+  unitMass: 3770.9
+  newPlayerDefaultQty: 0
+  size: 3
+  unitVolume: 562.4
+  level: 4
+  scale: l
+  price: 3092.2149999999997
+  hitpoints: 6399
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineLarge
+---
+RetroEngineLarge5:
+  parent: Spacebrake
+  displayName: Exotic Retro-rocket Brake
+  subdescription: Max power boosted 16 * basic.
+  functionInSpace: true
+  maxPower: 57600000
+  unitMass: 3770.9
+  newPlayerDefaultQty: 0
+  size: 3
+  unitVolume: 562.4
+  level: 5
+  scale: l
+  price: 3092.2149999999997
+  hitpoints: 8532
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineLarge
 ---
 RetroEngineMedium:
   parent: Spacebrake
@@ -50715,6 +52214,98 @@ RetroEngineMedium:
     kinetic: 0.4
     electromagnetic: 0.5
 ---
+RetroEngineMedium2:
+  parent: Spacebrake
+  displayName: Uncommon Retro-rocket Brake
+  subdescription: Max power boosted 1.3 * basic.
+  functionInSpace: true
+  maxPower: 780000
+  unitMass: 714
+  newPlayerDefaultQty: 0
+  size: 2
+  unitVolume: 105.24
+  level: 2
+  scale: m
+  price: 970.81
+  hitpoints: 298
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineMedium
+---
+RetroEngineMedium3:
+  parent: Spacebrake
+  displayName: Advanced Retro-rocket Brake
+  subdescription: Max power boosted 2.6 * basic.
+  functionInSpace: true
+  maxPower: 1560000
+  unitMass: 714
+  newPlayerDefaultQty: 0
+  size: 2
+  unitVolume: 105.24
+  level: 3
+  scale: m
+  price: 970.81
+  hitpoints: 597
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineMedium
+---
+RetroEngineMedium4:
+  parent: Spacebrake
+  displayName: Rare Retro-rocket Brake
+  subdescription: Max power boosted 8 * basic.
+  functionInSpace: true
+  maxPower: 4800000
+  unitMass: 714
+  newPlayerDefaultQty: 0
+  size: 2
+  unitVolume: 105.24
+  level: 4
+  scale: m
+  price: 970.81
+  hitpoints: 896
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineMedium
+---
+RetroEngineMedium5:
+  parent: Spacebrake
+  displayName: Exotic Retro-rocket Brake
+  subdescription: Max power boosted 16 * basic.
+  functionInSpace: true
+  maxPower: 9600000
+  unitMass: 714
+  newPlayerDefaultQty: 0
+  size: 2
+  unitVolume: 105.24
+  level: 5
+  scale: m
+  price: 970.81
+  hitpoints: 1194
+  fuelRate: 0
+  t50: 0
+  resistances:
+    antimatter: 0.5
+    thermic: 0.4
+    kinetic: 0.4
+    electromagnetic: 0.5
+  assetAlias: RetroEngineMedium
+---
 AdjusterLarge:
   parent: Adjustor
   displayName: Adjustor
@@ -50727,6 +52318,62 @@ AdjusterLarge:
   hitpoints: 298
   size: 3
   visibilityLOD: 3
+---
+AdjusterLarge2:
+  parent: Adjustor
+  displayName: Uncommon Adjustor
+  subdescription: Max power boosted 1.3 * basic.
+  maxPower: 166400
+  unitMass: 1550
+  unitVolume: 619.2
+  level: 2
+  scale: l
+  hitpoints: 447
+  size: 3
+  visibilityLOD: 3
+  assetAlias: AdjusterLarge
+---
+AdjusterLarge3:
+  parent: Adjustor
+  displayName: Advanced Adjustor
+  subdescription: Max power boosted 2.6 * basic.
+  maxPower: 332800
+  unitMass: 1550
+  unitVolume: 619.2
+  level: 3
+  scale: l
+  hitpoints: 894
+  size: 3
+  visibilityLOD: 3
+  assetAlias: AdjusterLarge
+---
+AdjusterLarge4:
+  parent: Adjustor
+  displayName: Rare Adjustor
+  subdescription: Max power boosted 8 * basic.
+  maxPower: 1024000
+  unitMass: 1550
+  unitVolume: 619.2
+  level: 4
+  scale: l
+  hitpoints: 1341
+  size: 3
+  visibilityLOD: 3
+  assetAlias: AdjusterLarge
+---
+AdjusterLarge5:
+  parent: Adjustor
+  displayName: Exotic Adjustor
+  subdescription: Max power boosted 16 * basic.
+  maxPower: 2048000
+  unitMass: 1550
+  unitVolume: 619.2
+  level: 5
+  scale: l
+  hitpoints: 1788
+  size: 3
+  visibilityLOD: 3
+  assetAlias: AdjusterLarge
 ---
 AdjusterMedium:
   parent: Adjustor
@@ -50741,6 +52388,62 @@ AdjusterMedium:
   size: 2
   visibilityLOD: 2
 ---
+AdjusterMedium2:
+  parent: Adjustor
+  displayName: Uncommon Adjustor
+  subdescription: Max power boosted 1.3 * basic.
+  maxPower: 41600
+  unitMass: 450
+  unitVolume: 116.6
+  level: 2
+  scale: m
+  hitpoints: 75
+  size: 2
+  visibilityLOD: 2
+  assetAlias: AdjusterMedium
+---
+AdjusterMedium3:
+  parent: Adjustor
+  displayName: Advanced Adjustor
+  subdescription: Max power boosted 2.6 * basic.
+  maxPower: 83200
+  unitMass: 450
+  unitVolume: 116.6
+  level: 3
+  scale: m
+  hitpoints: 150
+  size: 2
+  visibilityLOD: 2
+  assetAlias: AdjusterMedium
+---
+AdjusterMedium4:
+  parent: Adjustor
+  displayName: Rare Adjustor
+  subdescription: Max power boosted 8 * basic.
+  maxPower: 256000
+  unitMass: 450
+  unitVolume: 116.6
+  level: 4
+  scale: m
+  hitpoints: 225
+  size: 2
+  visibilityLOD: 2
+  assetAlias: AdjusterMedium
+---
+AdjusterMedium5:
+  parent: Adjustor
+  displayName: Exotic Adjustor
+  subdescription: Max power boosted 16 * basic.
+  maxPower: 512000
+  unitMass: 450
+  unitVolume: 116.6
+  level: 5
+  scale: m
+  hitpoints: 300
+  size: 2
+  visibilityLOD: 2
+  assetAlias: AdjusterMedium
+---
 AdjusterSmall:
   parent: Adjustor
   displayName: Adjustor
@@ -50754,6 +52457,62 @@ AdjusterSmall:
   size: 1
   visibilityLOD: 1
 ---
+AdjusterSmall2:
+  parent: Adjustor
+  displayName: Uncommon Adjustor
+  subdescription: Max power boosted 1.3 * basic.
+  maxPower: 10400
+  unitMass: 100
+  unitVolume: 22.6
+  level: 2
+  scale: s
+  hitpoints: 75
+  size: 1
+  visibilityLOD: 1
+  assetAlias: AdjusterSmall
+---
+AdjusterSmall3:
+  parent: Adjustor
+  displayName: Advanced Adjustor
+  subdescription: Max power boosted 2.6 * basic.
+  maxPower: 20800
+  unitMass: 100
+  unitVolume: 22.6
+  level: 3
+  scale: s
+  hitpoints: 150
+  size: 1
+  visibilityLOD: 1
+  assetAlias: AdjusterSmall
+---
+AdjusterSmall4:
+  parent: Adjustor
+  displayName: Rare Adjustor
+  subdescription: Max power boosted 8 * basic.
+  maxPower: 64000
+  unitMass: 100
+  unitVolume: 22.6
+  level: 4
+  scale: s
+  hitpoints: 225
+  size: 1
+  visibilityLOD: 1
+  assetAlias: AdjusterSmall
+---
+AdjusterSmall5:
+  parent: Adjustor
+  displayName: Exotic Adjustor
+  subdescription: Max power boosted 16 * basic.
+  maxPower: 128000
+  unitMass: 100
+  unitVolume: 22.6
+  level: 5
+  scale: s
+  hitpoints: 300
+  size: 1
+  visibilityLOD: 1
+  assetAlias: AdjusterSmall
+---
 AdjusterXtraSmall:
   parent: Adjustor
   displayName: Adjustor
@@ -50766,6 +52525,62 @@ AdjusterXtraSmall:
   hitpoints: 50
   size: 0
   visibilityLOD: 1
+---
+AdjusterXtraSmall2:
+  parent: Adjustor
+  displayName: Uncommon Adjustor
+  subdescription: ''
+  maxPower: 2000
+  unitMass: 25
+  unitVolume: 11
+  level: 2
+  scale: xs
+  hitpoints: 50
+  size: 0
+  visibilityLOD: 1
+  assetAlias: AdjusterXtraSmall
+---
+AdjusterXtraSmall3:
+  parent: Adjustor
+  displayName: Advanced Adjustor
+  subdescription: Max power boosted 2.6 * basic.
+  maxPower: 5200
+  unitMass: 25
+  unitVolume: 11
+  level: 3
+  scale: xs
+  hitpoints: 150
+  size: 0
+  visibilityLOD: 1
+  assetAlias: AdjusterXtraSmall
+---
+AdjusterXtraSmall4:
+  parent: Adjustor
+  displayName: Rare Adjustor
+  subdescription: Max power boosted 8 * basic.
+  maxPower: 16000
+  unitMass: 25
+  unitVolume: 11
+  level: 4
+  scale: xs
+  hitpoints: 225
+  size: 0
+  visibilityLOD: 1
+  assetAlias: AdjusterXtraSmall
+---
+AdjusterXtraSmall5:
+  parent: Adjustor
+  displayName: Exotic Adjustor
+  subdescription: Max power boosted 16 * basic.
+  maxPower: 32000
+  unitMass: 25
+  unitVolume: 11
+  level: 5
+  scale: xs
+  hitpoints: 300
+  size: 0
+  visibilityLOD: 1
+  assetAlias: AdjusterXtraSmall
 ---
 AtmosphericEngineLargeGroup:
   parent: AtmosphericEngine
@@ -55435,152 +57250,7 @@ AtmosphericVerticalBoosterXtraSmallMilitary5:
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11
----
-AdjusterLarge2:
-  parent: Adjustor
-  displayName: Uncommon Adjustor
-  assetAlias: AdjusterLarge
-  subdescription: Max power boosted 1.3 * basic.
-  maxPower: 166400
-  unitMass: 1550
-  unitVolume: 619.2
-  level: 2
-  scale: l
-  hitpoints: 750
-  size: 3
-  visibilityLOD: 3
----
-AdjusterLarge3:
-  parent: Adjustor
-  displayName: Advanced Adjustor
-  assetAlias: AdjusterLarge
-  subdescription: Max power boosted 2.6 * basic.
-  maxPower: 332800
-  unitMass: 1550
-  unitVolume: 619.2
-  level: 3
-  scale: l
-  hitpoints: 1500
-  size: 3
-  visibilityLOD: 3
----
-AdjusterLarge4:
-  parent: Adjustor
-  displayName: Rare Adjustor
-  assetAlias: AdjusterLarge
-  subdescription: Max power boosted 8 * basic.
-  maxPower: 1024000
-  unitMass: 1550
-  unitVolume: 619.2
-  level: 4
-  scale: l
-  hitpoints: 2250
-  size: 3
-  visibilityLOD: 3
----
-AdjusterLarge5:
-  parent: Adjustor
-  displayName: Exotic Adjustor
-  assetAlias: AdjusterLarge
-  subdescription: Max power boosted 16 * basic.
-  maxPower: 2048000
-  unitMass: 1550
-  unitVolume: 619.2
-  level: 5
-  scale: l
-  hitpoints: 3000
-  size: 3
-  visibilityLOD: 3
----
-RetroEngineLarge2:
-  parent: Spacebrake
-  displayName: Uncommon Retro-rocket Brake
-  assetAlias: RetroEngineLarge
-  subdescription: Max power boosted 1.3 * basic.
-  functionInSpace: true
-  maxPower: 4680000
-  unitMass: 3770.9
-  newPlayerDefaultQty: 0
-  size: 3
-  unitVolume: 562.4
-  level: 2
-  scale: l
-  hitpoints: 2133
-  fuelRate: 0
-  t50: 0
-  resistances:
-    antimatter: 0.5
-    thermic: 0.4
-    kinetic: 0.4
-    electromagnetic: 0.5
----
-RetroEngineLarge3:
-  parent: Spacebrake
-  displayName: Advanced Retro-rocket Brake
-  assetAlias: RetroEngineLarge
-  subdescription: Max power boosted 2.6 * basic.
-  functionInSpace: true
-  maxPower: 9360000
-  unitMass: 3770.9
-  newPlayerDefaultQty: 0
-  size: 3
-  unitVolume: 562.4
-  level: 3
-  scale: l
-  hitpoints: 4266
-  fuelRate: 0
-  t50: 0
-  resistances:
-    antimatter: 0.5
-    thermic: 0.4
-    kinetic: 0.4
-    electromagnetic: 0.5
----
-RetroEngineLarge4:
-  parent: Spacebrake
-  displayName: Rare Retro-rocket Brake
-  assetAlias: RetroEngineLarge
-  subdescription: Max power boosted 8 * basic.
-  functionInSpace: true
-  maxPower: 28800000
-  unitMass: 3770.9
-  newPlayerDefaultQty: 0
-  size: 3
-  unitVolume: 562.4
-  level: 4
-  scale: l
-  hitpoints: 6399
-  fuelRate: 0
-  t50: 0
-  resistances:
-    antimatter: 0.5
-    thermic: 0.4
-    kinetic: 0.4
-    electromagnetic: 0.5
----
-RetroEngineLarge5:
-  parent: Spacebrake
-  displayName: Exotic Retro-rocket Brake
-  assetAlias: RetroEngineLarge
-  subdescription: Max power boosted 16 * basic.
-  functionInSpace: true
-  maxPower: 57600000
-  unitMass: 3770.9
-  newPlayerDefaultQty: 0
-  size: 3
-  unitVolume: 562.4
-  level: 5
-  scale: l
-  hitpoints: 8532
-  fuelRate: 0
-  t50: 0
-  resistances:
-    antimatter: 0.5
-    thermic: 0.4
-    kinetic: 0.4
-    electromagnetic: 0.5
----
-Headlight2:
+---Headlight2:
   parent: LightUnit
   displayName: Uncommon Headlight
   assetAlias: Headlight
