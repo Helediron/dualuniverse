@@ -237,7 +237,7 @@ AddSectionModifier "ArkshipModel" { param([string]$name, [hashtable]$values)
 }
 
 AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values) 
-  $values.pvp = $false
+  $values.pvp = $true
   $values.talentTree = $true
   $values.preventExternalUrl = $false
   $values.talentRespec = $true
@@ -391,6 +391,7 @@ AddSectionModifier "WarpCellStandard" { param([string]$name, [hashtable]$values)
 
 AddSectionModifier "ItemContainer" { param([string]$name, [hashtable]$values) 
   $values.nbIndustryPlugIn = 50
+  $values.nbIndustryPlugOut = 50
   $values.nbControlPlugOut = 50
   return $values, $true
 }

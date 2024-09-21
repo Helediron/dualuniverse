@@ -92,8 +92,8 @@ FeaturesList:
   orgConstructLimitWarnOnly: false
   deactivateCollidingElements: false
   skinSelector: true
-  allowMarketOnDynamicConstruct: true
   allowIndustryOnDynamicConstruct: true
+  allowMarketOnDynamicConstruct: true
 ---
 Pet:
   parent: GameplayObject
@@ -32035,13 +32035,13 @@ CoreUnitDynamic512:
   hidden: false
   hitpoints: 20710
   unitVolume: 10001
-  price: 251905
-  level: 4
-  unitMass: 20066.3
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
   newPlayerDefaultQty: 0
+  unitMass: 20066.3
+  level: 4
+  price: 251905
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32221,13 +32221,13 @@ CoreUnitStatic512:
   hidden: false
   hitpoints: 20710
   unitVolume: 10001
-  price: 251905
-  level: 4
-  unitMass: 20066.3
   requiredTalents:
   - name: StaticCoreUnitExpertise
     level: 4
   newPlayerDefaultQty: 0
+  unitMass: 20066.3
+  level: 4
+  price: 251905
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -43361,6 +43361,7 @@ ItemContainer:
       precision: 2
   nbControlPlugOut: 50
   nbIndustryPlugIn: 50
+  nbIndustryPlugOut: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44338,14 +44339,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  fuelRate: 1.65E-06
-  functionInSpace: true
-  t50: 0
+  parent: EngineDisplay
   maxPower: 30000
   description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  functionInSpace: true
   displayName: Rocket Engines
+  t50: 0
   maxSpeedBoost: 0.3
-  parent: EngineDisplay
+  fuelRate: 1.65E-06
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -50536,15 +50537,16 @@ AileronShortMedium22:
   parent: Aileron2
   displayName: Uncommon Compact Aileron
   size: 2
-  maxPower: 200000
+  maxPower: 260000
   maxLiftFactor: 20
   unitMass: 319.15
   unitVolume: 116.6
   level: 2
   scale: s
-  hitpoints: 211
+  hitpoints: 316
   liftDragRatio: 9
   assetAlias: AileronShortMedium2
+  subdescription: Max power boosted 1.3 * basic.
 ---
 AileronShortMedium23:
   parent: Aileron2
@@ -50622,32 +50624,30 @@ AileronShortSmall22:
 AileronShortSmall23:
   parent: Aileron2
   displayName: Advanced Compact Aileron
-  maxPower: 130000
+  maxPower: 50000
   maxLiftFactor: 5
   size: 1
   unitMass: 61.2
   unitVolume: 22.6
   level: 3
   scale: xs
-  hitpoints: 150
+  hitpoints: 50
   liftDragRatio: 9
   assetAlias: AileronShortSmall2
-  subdescription: Max power boosted 2.6 * basic.
 ---
 AileronShortSmall24:
   parent: Aileron2
   displayName: Rare Compact Aileron
-  maxPower: 400000
+  maxPower: 50000
   maxLiftFactor: 5
   size: 1
   unitMass: 61.2
   unitVolume: 22.6
   level: 4
   scale: xs
-  hitpoints: 225
+  hitpoints: 50
   liftDragRatio: 9
   assetAlias: AileronShortSmall2
-  subdescription: Max power boosted 8 * basic.
 ---
 AileronShortSmall25:
   parent: Aileron2
@@ -50710,7 +50710,7 @@ AileronSmall2:
 AileronSmall22:
   parent: Aileron2
   displayName: Uncommon Aileron
-  maxPower: 100000
+  maxPower: 130000
   maxLiftFactor: 10
   size: 1
   newPlayerDefaultQty: 0
@@ -50719,9 +50719,10 @@ AileronSmall22:
   level: 2
   scale: xs
   price: 78.36
-  hitpoints: 50
+  hitpoints: 75
   liftDragRatio: 9
   assetAlias: AileronSmall2
+  subdescription: Max power boosted 1.3 * basic.
 ---
 AileronSmall23:
   parent: Aileron2
@@ -50808,17 +50809,16 @@ AileronXLarge23:
   parent: Aileron2
   displayName: Advanced Aileron
   size: 4
-  maxPower: 8320000
+  maxPower: 3200000
   maxLiftFactor: 320
   unitMass: 28000
   unitVolume: 11200
   level: 3
   scale: xl
-  hitpoints: 10173
+  hitpoints: 3391
   liftDragRatio: 9
   hidden: false
   assetAlias: AileronXLarge2
-  subdescription: Max power boosted 2.6 * basic.
 ---
 AileronXLarge24:
   parent: Aileron2
@@ -50985,7 +50985,7 @@ StabilizerSmall2:
 StabilizerSmall3:
   parent: Stabilizer
   displayName: Advanced Stabilizer
-  maxPower: 250000
+  maxPower: 650000
   maxLiftFactor: 50
   unitMass: 366.89
   unitVolume: 116.6
@@ -50993,9 +50993,10 @@ StabilizerSmall3:
   scale: s
   price: 83.785
   visibilityLOD: 2
-  hitpoints: 225
+  hitpoints: 675
   liftDragRatio: 5
   assetAlias: StabilizerSmall
+  subdescription: Max power boosted 2.6 * basic.
 ---
 StabilizerSmall4:
   parent: Stabilizer
@@ -51517,16 +51518,17 @@ WingXtraSmall2:
 WingXtraSmall22:
   parent: Wing2
   displayName: Uncommon Wing
-  maxPower: 62500
+  maxPower: 81250
   maxLiftFactor: 12.5
   unitMass: 61.2
   unitVolume: 22.6
   level: 2
   scale: xs
   visibilityLOD: 2
-  hitpoints: 50
+  hitpoints: 75
   liftDragRatio: 7
   assetAlias: WingXtraSmall2
+  subdescription: Max power boosted 1.3 * basic.
 ---
 WingXtraSmall23:
   parent: Wing2
@@ -51663,16 +51665,16 @@ AirbrakeLarge4:
 AirbrakeLarge5:
   parent: Airbrake
   displayName: Exotic Atmospheric Airbrake
-  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage. Max power boosted 16 * basic.
+  subdescription: Large airbrakes are appropriate for the largest of atmospheric crafts such as transport barges or large crafts. They do not consume fuel but demand proper placement on the construct for optimal usage.
   functionInSpace: false
-  maxPower: 80000000
+  maxPower: 5000000
   newPlayerDefaultQty: 0
   unitMass: 1501.55
   unitVolume: 619.2
   level: 5
   scale: l
   price: 349.24
-  hitpoints: 4602
+  hitpoints: 767
   fuelRate: 0
   t50: 0
   resistances:
@@ -52465,13 +52467,13 @@ AdjusterXtraSmall:
 AdjusterXtraSmall2:
   parent: Adjustor
   displayName: Uncommon Adjustor
-  subdescription: ''
-  maxPower: 2000
+  subdescription: Max power boosted 1.3 * basic.
+  maxPower: 2600
   unitMass: 25
   unitVolume: 11
   level: 2
   scale: xs
-  hitpoints: 50
+  hitpoints: 75
   size: 0
   visibilityLOD: 1
   assetAlias: AdjusterXtraSmall
