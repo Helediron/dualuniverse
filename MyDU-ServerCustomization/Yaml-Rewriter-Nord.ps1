@@ -297,6 +297,11 @@ AddSectionModifier "TerritoriesConfig" { param([string]$name, [hashtable]$values
   return $values, $true
 }
 
+AddSectionModifier "Talemai" { param([string]$name, [hashtable]$values) 
+  $values.maxStaticAltitude = 200000
+  return $values, $true
+}
+
 AddSectionModifier "TerritoryUnitBasicSanctuary" { param([string]$name, [hashtable]$values) 
   $values.isTradable = $true
   $values.droppable = $true
