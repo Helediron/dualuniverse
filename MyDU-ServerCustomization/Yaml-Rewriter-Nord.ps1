@@ -394,6 +394,11 @@ AddSectionModifier "WarpCellStandard" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
+AddSectionModifier "WarpBeaconUnit" { param([string]$name, [hashtable]$values) 
+  $values.maxWarpDistance = 200000000
+  return $values, $true
+}
+
 AddSectionModifier "ItemContainer" { param([string]$name, [hashtable]$values) 
   $values.nbIndustryPlugIn = 50
   $values.nbIndustryPlugOut = 50
