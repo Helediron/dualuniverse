@@ -241,8 +241,8 @@ AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values)
   $values.talentTree = $true
   $values.preventExternalUrl = $false
   $values.talentRespec = $true
-  $values.territoryUpkeep = $false
-  $values.miningUnitCalibration = $false
+  #$values.territoryUpkeep = $false
+  #$values.miningUnitCalibration = $false
   $values.orgConstructLimit = $false
   $values.deactivateCollidingElements = $false
   $values.allowIndustryOnDynamicConstruct = $true
@@ -396,6 +396,7 @@ AddSectionModifier "WarpCellStandard" { param([string]$name, [hashtable]$values)
 
 AddSectionModifier "WarpBeaconUnit" { param([string]$name, [hashtable]$values) 
   $values.maxWarpDistance = 200000000
+  $values.cruiseSpeedKmH = 13370000
   return $values, $true
 }
 
