@@ -31806,8 +31806,8 @@ WarpBeaconUnit:
     kinetic: 0.5
     electromagnetic: 0.5
   setupTimer: 86400
-  maxWarpDistance: 200000000
   cruiseSpeedKmH: 13370000
+  maxWarpDistance: 200000000
 ---
 WarpDriveUnit:
   parent: HighTechTransportation
@@ -31964,9 +31964,17 @@ CoreUnitDynamic1024:
   parent: CoreUnitDynamic
   constructSize: 1024
   displayName: Dynamic Core Unit 512m
-  cellSize: 1.0
-  hidden: true
-  hitpoints: 50
+  cellSize: 1
+  hidden: false
+  hitpoints: 41420
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 20002
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitDynamic128:
   parent: CoreUnitDynamic
@@ -31975,8 +31983,8 @@ CoreUnitDynamic128:
   scale: m
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 454.80
-  unitMass: 1984.60
+  unitVolume: 454.8
+  unitMass: 1984.6
   level: 3
   price: 1074.9626365
   requiredTalents:
@@ -31988,9 +31996,17 @@ CoreUnitDynamic2048:
   parent: CoreUnitDynamic
   constructSize: 2048
   displayName: Dynamic Core Unit 1024m
-  hidden: true
-  hitpoints: 50
-  cellSize: 2.0
+  hidden: false
+  hitpoints: 82840
+  cellSize: 2
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 40004
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 80265.2
+  price: 1007620
 ---
 CoreUnitDynamic256:
   parent: CoreUnitDynamic
@@ -31999,7 +32015,7 @@ CoreUnitDynamic256:
   scale: l
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 2501.00
+  unitVolume: 2501
   unitMass: 12141.47
   level: 4
   price: 121905.98000000001
@@ -32015,7 +32031,7 @@ CoreUnitDynamic32:
   scale: xs
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 16.10
+  unitVolume: 16.1
   unitMass: 70.89
   level: 1
   price: 76.754789
@@ -32028,9 +32044,17 @@ CoreUnitDynamic4096:
   parent: CoreUnitDynamic
   constructSize: 4096
   displayName: Dynamic Core Unit 2048m
-  hidden: true
-  hitpoints: 50
-  cellSize: 4.0
+  hidden: false
+  hitpoints: 165680
+  cellSize: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 80008
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 160530.4
+  price: 2015240
 ---
 CoreUnitDynamic512:
   parent: CoreUnitDynamic
@@ -32039,14 +32063,14 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  price: 251905
-  level: 4
   requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 20066.3
+  - level: 4
+    name: DynamicCoreUnitExpertise
   unitVolume: 10001
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 20066.3
+  price: 251905
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32055,7 +32079,7 @@ CoreUnitDynamic64:
   scale: s
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 87.20
+  unitVolume: 87.2
   unitMass: 375.97
   level: 2
   price: 119.573638
@@ -32068,9 +32092,17 @@ CoreUnitDynamic8192:
   parent: CoreUnitDynamic
   constructSize: 8192
   displayName: Dynamic Core Unit 4096m
-  hidden: true
-  hitpoints: 50
-  cellSize: 8.0
+  hidden: false
+  hitpoints: 331360
+  cellSize: 8
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 160016
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 321060.8
+  price: 4030480
 ---
 CoreUnitSpace128:
   parent: CoreUnitSpace
@@ -32134,15 +32166,23 @@ CoreUnitArtifact1024:
   parent: CoreUnitStatic
   constructSize: 1024
   displayName: Artifact Core Unit 512m
-  cellSize: 8.0
-  hidden: true
-  hitpoints: 50
+  cellSize: 8
+  hidden: false
+  hitpoints: 41420
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 20002
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitArtifact256:
   parent: CoreUnitStatic
   constructSize: 256
   displayName: Artifact Core Unit 128m
-  cellSize: 2.0
+  cellSize: 2
   hidden: true
   hitpoints: 50
 ---
@@ -32150,9 +32190,17 @@ CoreUnitStatic1024:
   parent: CoreUnitStatic
   constructSize: 1024
   displayName: Static Core Unit 512m
-  cellSize: 1.0
-  hidden: true
-  hitpoints: 50
+  cellSize: 1
+  hidden: false
+  hitpoints: 41420
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 20002
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitStatic128:
   parent: CoreUnitStatic
@@ -32161,7 +32209,7 @@ CoreUnitStatic128:
   displayName: Static Core Unit
   scale: m
   cellSize: 0.25
-  unitVolume: 454.80
+  unitVolume: 454.8
   unitMass: 1926.91
   level: 2
   price: 176.356843
@@ -32174,9 +32222,17 @@ CoreUnitStatic2048:
   parent: CoreUnitStatic
   constructSize: 2048
   displayName: Static Core Unit 1024m
-  hidden: true
-  hitpoints: 50
-  cellSize: 2.0
+  hidden: false
+  hitpoints: 82840
+  cellSize: 2
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 40004
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 80265.2
+  price: 1007620
 ---
 CoreUnitStatic256:
   parent: CoreUnitStatic
@@ -32185,8 +32241,8 @@ CoreUnitStatic256:
   scale: l
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 2501.00
-  unitMass: 10066.30
+  unitVolume: 2501
+  unitMass: 10066.3
   level: 2
   price: 4325.71
   requiredTalents:
@@ -32201,7 +32257,7 @@ CoreUnitStatic32:
   scale: xs
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 16.10
+  unitVolume: 16.1
   unitMass: 70.89
   level: 1
   price: 76.754789
@@ -32214,9 +32270,17 @@ CoreUnitStatic4096:
   parent: CoreUnitStatic
   constructSize: 4096
   displayName: Static Core Unit 2048m
-  hidden: true
-  hitpoints: 50
-  cellSize: 4.0
+  hidden: false
+  hitpoints: 165680
+  cellSize: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  unitVolume: 80008
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 160530.4
+  price: 2015240
 ---
 CoreUnitStatic512:
   parent: CoreUnitStatic
@@ -32225,14 +32289,14 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  price: 251905
-  level: 4
   requiredTalents:
-  - name: StaticCoreUnitExpertise
-    level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 20066.3
+  - level: 4
+    name: StaticCoreUnitExpertise
   unitVolume: 10001
+  newPlayerDefaultQty: 0
+  level: 4
+  unitMass: 20066.3
+  price: 251905
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -32241,7 +32305,7 @@ CoreUnitStatic64:
   scale: s
   newPlayerDefaultQty: 0
   cellSize: 0.25
-  unitVolume: 83.60
+  unitVolume: 83.6
   unitMass: 360.18
   level: 1
   price: 78.538281
@@ -43364,9 +43428,9 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
+  nbIndustryPlugOut: 50
   nbIndustryPlugIn: 50
   nbControlPlugOut: 50
-  nbIndustryPlugOut: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44344,14 +44408,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  maxSpeedBoost: 0.3
-  functionInSpace: true
-  displayName: Rocket Engines
-  t50: 0
-  fuelRate: 1.65E-06
   description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  t50: 0
+  displayName: Rocket Engines
+  functionInSpace: true
   parent: EngineDisplay
   maxPower: 30000
+  fuelRate: 1.65E-06
+  maxSpeedBoost: 0.3
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -50557,15 +50621,16 @@ AileronShortMedium23:
   parent: Aileron2
   displayName: Advanced Compact Aileron
   size: 2
-  maxPower: 200000
+  maxPower: 520000
   maxLiftFactor: 20
   unitMass: 319.15
   unitVolume: 116.6
   level: 3
   scale: s
-  hitpoints: 211
+  hitpoints: 633
   liftDragRatio: 9
   assetAlias: AileronShortMedium2
+  subdescription: Max power boosted 2.6 * basic.
 ---
 AileronShortMedium24:
   parent: Aileron2
@@ -50767,7 +50832,7 @@ AileronSmall24:
 AileronSmall25:
   parent: Aileron2
   displayName: Exotic Aileron
-  maxPower: 100000
+  maxPower: 1600000
   maxLiftFactor: 10
   size: 1
   newPlayerDefaultQty: 0
@@ -50776,9 +50841,10 @@ AileronSmall25:
   level: 5
   scale: xs
   price: 78.36
-  hitpoints: 50
+  hitpoints: 300
   liftDragRatio: 9
   assetAlias: AileronSmall2
+  subdescription: Max power boosted 16 * basic.
 ---
 AileronXLarge2:
   parent: Aileron2
@@ -51554,16 +51620,17 @@ WingXtraSmall23:
 WingXtraSmall24:
   parent: Wing2
   displayName: Rare Wing
-  maxPower: 62500
+  maxPower: 500000
   maxLiftFactor: 12.5
   unitMass: 61.2
   unitVolume: 22.6
   level: 4
   scale: xs
   visibilityLOD: 2
-  hitpoints: 50
+  hitpoints: 225
   liftDragRatio: 7
   assetAlias: WingXtraSmall2
+  subdescription: Max power boosted 8 * basic.
 ---
 WingXtraSmall25:
   parent: Wing2
@@ -51978,9 +52045,9 @@ RetroEngine3:
 RetroEngine4:
   parent: Spacebrake
   displayName: Rare Retro-rocket Brake
-  subdescription: ''
+  subdescription: Max power boosted 8 * basic.
   functionInSpace: true
-  maxPower: 100000
+  maxPower: 800000
   unitMass: 137.55
   newPlayerDefaultQty: 0
   size: 1
@@ -51988,7 +52055,7 @@ RetroEngine4:
   level: 4
   scale: s
   price: 118.78
-  hitpoints: 50
+  hitpoints: 225
   fuelRate: 0
   t50: 0
   resistances:
@@ -52046,9 +52113,9 @@ RetroEngineLarge:
 RetroEngineLarge2:
   parent: Spacebrake
   displayName: Uncommon Retro-rocket Brake
-  subdescription: ''
+  subdescription: Max power boosted 1.3 * basic.
   functionInSpace: true
-  maxPower: 3600000
+  maxPower: 4680000
   unitMass: 3770.9
   newPlayerDefaultQty: 0
   size: 3
@@ -52056,7 +52123,7 @@ RetroEngineLarge2:
   level: 2
   scale: l
   price: 3092.2149999999997
-  hitpoints: 1422
+  hitpoints: 2133
   fuelRate: 0
   t50: 0
   resistances:
@@ -57186,14 +57253,15 @@ AtmosphericVerticalBoosterXtraSmallMilitary4:
 AtmosphericVerticalBoosterXtraSmallMilitary5:
   parent: AtmosphericVerticalBoosterXtraSmallGroup
   displayName: Exotic Military Vertical Booster
-  subdescription: The military variation is more powerful but consumes more fuel Max power boosted 16 * basic.
+  subdescription: The military variation is more powerful but consumes more fuel
   level: 5
-  maxPower: 497664
-  fuelRate: 1.093125E-07
+  maxPower: 31104
+  fuelRate: 8.745e-7
   maxAltitude: 30
   unitMass: 22.7
   unitVolume: 11
----Headlight2:
+---
+Headlight2:
   parent: LightUnit
   displayName: Uncommon Headlight
   assetAlias: Headlight
@@ -57212,9 +57280,33 @@ AtmosphericVerticalBoosterXtraSmallMilitary5:
     materialEmissionScaleOff: 1
     materialEmissionScaleOn: 10
     proj:
-      attenuationDistance: 320.0
-      attenuationPower: 0.25
-      intensity: 0.75
+      attenuationDistance: 420.0
+      attenuationPower: 0.5
+      intensity: 0.5
+  hitpoints: 50
+---
+Headlight3:
+  parent: LightUnit
+  displayName: Advanced Headlight
+  assetAlias: Headlight
+  unitMass: 79.34
+  newPlayerDefaultQty: 0
+  subdescription: It casts a spotlight.
+  unitVolume: 21.60
+  level: 3
+  scale: xs
+  price: 612.203265
+  lightProperties:
+    limitPerCell: 4
+    shadowCaster: false
+    materialEmissionColorOn: 1,1,1,1
+    materialEmissionColorOff: 0.25,0.25,0.25,1
+    materialEmissionScaleOff: 1
+    materialEmissionScaleOn: 10
+    proj:
+      attenuationDistance: 1420.0
+      attenuationPower: 0.7
+      intensity: 0.25
   hitpoints: 50
 ---
 Ion:
