@@ -417,6 +417,36 @@ AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
+AddPatternModifier "MiningUnitLarge" { param([string]$name, [hashtable]$values) 
+  if ($values.maxMiningRate) {
+    if ($values.level -eq 1) {
+      $values.maxMiningRate = 600
+      $values.runtimeHours = 1
+    }
+    elseif ($values.level -eq 2) {
+      $values.maxMiningRate = 500
+      $values.runtimeHours = 1.5
+    }
+    elseif ($values.level -eq 3) {
+      $values.maxMiningRate = 300
+      $values.runtimeHours = 2
+    }
+    elseif ($values.level -eq 4) {
+      $values.maxMiningRate = 200
+      $values.runtimeHours = 3
+    }
+    elseif ($values.level -eq 5) {
+      $values.maxMiningRate = 150
+      $values.runtimeHours = 4
+    }
+
+    $values.calibrationCooldownHour = 0
+    $values.pickupCooldownHour = 0
+    $values.stopCooldownHour = 0
+  }
+  return $values, $true
+}
+
 AddSectionModifier "BaseItem" { param([string]$name, [hashtable]$values) 
   $values.transferUnitSpeedFactor = 0.01
   return $values, $true

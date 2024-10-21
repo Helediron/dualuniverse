@@ -31469,11 +31469,15 @@ MiningUnitLarge1:
   level: 1
   parent: MiningUnit
   oreTier: 1
-  maxMiningRate: 100
+  maxMiningRate: 600
   miningEfficiency: 0.9
   unitMass: 5131
   unitVolume: 2200
   hitpoints: 11250
+  calibrationCooldownHour: 0
+  pickupCooldownHour: 0
+  runtimeHours: 1
+  stopCooldownHour: 0
 ---
 MiningUnitLarge2:
   displayName: Uncommon Mining Unit
@@ -31481,11 +31485,15 @@ MiningUnitLarge2:
   level: 2
   parent: MiningUnit
   oreTier: 2
-  maxMiningRate: 100
+  maxMiningRate: 500
   miningEfficiency: 0.9
   unitMass: 5160
   unitVolume: 2454
   hitpoints: 11250
+  calibrationCooldownHour: 0
+  pickupCooldownHour: 0
+  runtimeHours: 1.5
+  stopCooldownHour: 0
 ---
 MiningUnitLarge3:
   displayName: Advanced Mining Unit
@@ -31493,11 +31501,15 @@ MiningUnitLarge3:
   level: 3
   parent: MiningUnit
   oreTier: 3
-  maxMiningRate: 100
+  maxMiningRate: 300
   miningEfficiency: 0.9
   unitMass: 7500
   unitVolume: 4050
   hitpoints: 11250
+  calibrationCooldownHour: 0
+  pickupCooldownHour: 0
+  runtimeHours: 2
+  stopCooldownHour: 0
 ---
 MiningUnitLarge4:
   displayName: Rare Mining Unit
@@ -31505,11 +31517,15 @@ MiningUnitLarge4:
   level: 4
   parent: MiningUnit
   oreTier: 4
-  maxMiningRate: 100
+  maxMiningRate: 200
   miningEfficiency: 0.9
   unitMass: 7800
   unitVolume: 4200
   hitpoints: 11250
+  calibrationCooldownHour: 0
+  pickupCooldownHour: 0
+  runtimeHours: 3
+  stopCooldownHour: 0
 ---
 MiningUnitLarge5:
   displayName: Exotic Mining Unit
@@ -31517,11 +31533,15 @@ MiningUnitLarge5:
   level: 5
   parent: MiningUnit
   oreTier: 5
-  maxMiningRate: 100
+  maxMiningRate: 150
   miningEfficiency: 0.9
   unitMass: 8500
   unitVolume: 4400
   hitpoints: 11250
+  calibrationCooldownHour: 0
+  pickupCooldownHour: 0
+  runtimeHours: 4
+  stopCooldownHour: 0
 ---
 MiningUnitSmall1:
   displayName: Basic Mining Unit
