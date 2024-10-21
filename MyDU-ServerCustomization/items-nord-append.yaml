@@ -47,6 +47,34 @@ Headlight3:
       intensity: 0.25
   hitpoints: 50
 ---
+AntiGravityGeneratorXtraLarge:
+  parent: AntiGravityGeneratorUnit
+  displayName: Basic Anti-Gravity Generator
+  assetAlias: AntiGravityGeneratorLarge
+  subdescription: Basic extra-large anti-gravity generators can be used on 512m dynamic Core Units and require 26 pulsors for optimal usage.
+  unitMass: 660865.28
+  unitVolume: 86468.35
+  level: 1
+  scale: xl
+  visibilityLOD: 4
+  coreUnitSize: 512
+  nbGravitonPlug: 32
+  hitpoints: 3330350
+---
+AntiGravityGeneratorXtraLarge2:
+  parent: AntiGravityGeneratorUnit
+  displayName: Uncommon Anti-Gravity Generator
+  assetAlias: AntiGravityGeneratorLarge
+  subdescription: Uncommon extra-large anti-gravity generators can be used on 1024m dynamic Core Units and require 34 pulsors for optimal usage.
+  unitMass: 770865.28
+  unitVolume: 86468.35
+  level: 2
+  scale: xl
+  visibilityLOD: 4
+  coreUnitSize: 1024
+  nbGravitonPlug: 42
+  hitpoints: 4330350
+---
 Ion:
   parent: SolarSystemPlanet
   constructId: 120

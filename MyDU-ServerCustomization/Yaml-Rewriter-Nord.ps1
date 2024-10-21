@@ -265,6 +265,17 @@ AddSectionModifier "MiningConfig" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
+AddSectionModifier "CoherentConfig" { param([string]$name, [hashtable]$values) 
+  $values.imageCDNList = ,"*"
+  return $values, $true
+}
+
+AddSectionModifier "ConstructGCConfig" { param([string]$name, [hashtable]$values) 
+  $values.abandonedConstructDeleteDelayHours = 24
+  return $values, $true
+}
+
+
 AddSectionModifier "PVPConfig" { param([string]$name, [hashtable]$values)
   # planetProperties is list of {planetName, atmosphericRadius} hashtables
   # $pprops = $values.planetProperties
@@ -448,13 +459,13 @@ AddSectionModifier "Element" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
-AddSectionModifier "CoherentConfig" { param([string]$name, [hashtable]$values) 
-  $values.imageCDNList = ,"*"
+AddSectionModifier "FireworkPalmtreeGold" { param([string]$name, [hashtable]$values) 
+  $values.price = 1000000000.0
   return $values, $true
 }
 
-AddSectionModifier "FireworkPalmtreeGold" { param([string]$name, [hashtable]$values) 
-  $values.price = 1000000000.0
+AddSectionModifier "ElevatorXSmall" { param([string]$name, [hashtable]$values) 
+  $values.max_range = 512
   return $values, $true
 }
 
