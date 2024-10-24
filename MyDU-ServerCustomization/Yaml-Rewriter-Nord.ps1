@@ -420,23 +420,23 @@ AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values)
 AddPatternModifier "MiningUnitLarge" { param([string]$name, [hashtable]$values) 
   if ($values.maxMiningRate) {
     if ($values.level -eq 1) {
-      $values.maxMiningRate = 600
+      $values.maxMiningRate = 12000
       $values.runtimeHours = 1
     }
     elseif ($values.level -eq 2) {
-      $values.maxMiningRate = 500
+      $values.maxMiningRate = 10000
       $values.runtimeHours = 1.5
     }
     elseif ($values.level -eq 3) {
-      $values.maxMiningRate = 300
+      $values.maxMiningRate = 6000
       $values.runtimeHours = 2
     }
     elseif ($values.level -eq 4) {
-      $values.maxMiningRate = 200
+      $values.maxMiningRate = 4000
       $values.runtimeHours = 3
     }
     elseif ($values.level -eq 5) {
-      $values.maxMiningRate = 150
+      $values.maxMiningRate = 3000
       $values.runtimeHours = 4
     }
 

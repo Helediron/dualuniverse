@@ -92,8 +92,8 @@ FeaturesList:
   orgConstructLimitWarnOnly: false
   deactivateCollidingElements: false
   skinSelector: true
-  allowIndustryOnDynamicConstruct: true
   allowMarketOnDynamicConstruct: true
+  allowIndustryOnDynamicConstruct: true
 ---
 Pet:
   parent: GameplayObject
@@ -31469,15 +31469,15 @@ MiningUnitLarge1:
   level: 1
   parent: MiningUnit
   oreTier: 1
-  maxMiningRate: 600
+  maxMiningRate: 12000
   miningEfficiency: 0.9
   unitMass: 5131
   unitVolume: 2200
   hitpoints: 11250
-  calibrationCooldownHour: 0
   pickupCooldownHour: 0
-  runtimeHours: 1
   stopCooldownHour: 0
+  calibrationCooldownHour: 0
+  runtimeHours: 1
 ---
 MiningUnitLarge2:
   displayName: Uncommon Mining Unit
@@ -31485,15 +31485,15 @@ MiningUnitLarge2:
   level: 2
   parent: MiningUnit
   oreTier: 2
-  maxMiningRate: 500
+  maxMiningRate: 10000
   miningEfficiency: 0.9
   unitMass: 5160
   unitVolume: 2454
   hitpoints: 11250
-  calibrationCooldownHour: 0
   pickupCooldownHour: 0
-  runtimeHours: 1.5
   stopCooldownHour: 0
+  calibrationCooldownHour: 0
+  runtimeHours: 1.5
 ---
 MiningUnitLarge3:
   displayName: Advanced Mining Unit
@@ -31501,15 +31501,15 @@ MiningUnitLarge3:
   level: 3
   parent: MiningUnit
   oreTier: 3
-  maxMiningRate: 300
+  maxMiningRate: 6000
   miningEfficiency: 0.9
   unitMass: 7500
   unitVolume: 4050
   hitpoints: 11250
-  calibrationCooldownHour: 0
   pickupCooldownHour: 0
-  runtimeHours: 2
   stopCooldownHour: 0
+  calibrationCooldownHour: 0
+  runtimeHours: 2
 ---
 MiningUnitLarge4:
   displayName: Rare Mining Unit
@@ -31517,15 +31517,15 @@ MiningUnitLarge4:
   level: 4
   parent: MiningUnit
   oreTier: 4
-  maxMiningRate: 200
+  maxMiningRate: 4000
   miningEfficiency: 0.9
   unitMass: 7800
   unitVolume: 4200
   hitpoints: 11250
-  calibrationCooldownHour: 0
   pickupCooldownHour: 0
-  runtimeHours: 3
   stopCooldownHour: 0
+  calibrationCooldownHour: 0
+  runtimeHours: 3
 ---
 MiningUnitLarge5:
   displayName: Exotic Mining Unit
@@ -31533,15 +31533,15 @@ MiningUnitLarge5:
   level: 5
   parent: MiningUnit
   oreTier: 5
-  maxMiningRate: 150
+  maxMiningRate: 3000
   miningEfficiency: 0.9
   unitMass: 8500
   unitVolume: 4400
   hitpoints: 11250
-  calibrationCooldownHour: 0
   pickupCooldownHour: 0
-  runtimeHours: 4
   stopCooldownHour: 0
+  calibrationCooldownHour: 0
+  runtimeHours: 4
 ---
 MiningUnitSmall1:
   displayName: Basic Mining Unit
@@ -31826,8 +31826,8 @@ WarpBeaconUnit:
     kinetic: 0.5
     electromagnetic: 0.5
   setupTimer: 86400
-  cruiseSpeedKmH: 13370000
   maxWarpDistance: 200000000
+  cruiseSpeedKmH: 13370000
 ---
 WarpDriveUnit:
   parent: HighTechTransportation
@@ -31987,13 +31987,13 @@ CoreUnitDynamic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
+  level: 4
   unitVolume: 20002
+  unitMass: 40132.6
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 503810
 ---
 CoreUnitDynamic128:
@@ -32019,13 +32019,13 @@ CoreUnitDynamic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
-  unitMass: 80265.2
+  level: 4
   unitVolume: 40004
+  unitMass: 80265.2
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 1007620
 ---
 CoreUnitDynamic256:
@@ -32067,13 +32067,13 @@ CoreUnitDynamic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
-  unitMass: 160530.4
+  level: 4
   unitVolume: 80008
+  unitMass: 160530.4
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 2015240
 ---
 CoreUnitDynamic512:
@@ -32083,13 +32083,13 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
+  level: 4
   unitVolume: 10001
+  unitMass: 20066.3
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 251905
 ---
 CoreUnitDynamic64:
@@ -32115,13 +32115,13 @@ CoreUnitDynamic8192:
   hidden: false
   hitpoints: 331360
   cellSize: 8
-  unitMass: 321060.8
+  level: 4
   unitVolume: 160016
+  unitMass: 321060.8
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 4030480
 ---
 CoreUnitSpace128:
@@ -32189,13 +32189,13 @@ CoreUnitArtifact1024:
   cellSize: 8
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
+  level: 4
   unitVolume: 20002
+  unitMass: 40132.6
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 503810
 ---
 CoreUnitArtifact256:
@@ -32213,13 +32213,13 @@ CoreUnitStatic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
+  level: 4
   unitVolume: 20002
+  unitMass: 40132.6
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 503810
 ---
 CoreUnitStatic128:
@@ -32245,13 +32245,13 @@ CoreUnitStatic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
-  unitMass: 80265.2
+  level: 4
   unitVolume: 40004
+  unitMass: 80265.2
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 1007620
 ---
 CoreUnitStatic256:
@@ -32293,13 +32293,13 @@ CoreUnitStatic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
-  unitMass: 160530.4
+  level: 4
   unitVolume: 80008
+  unitMass: 160530.4
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: DynamicCoreUnitExpertise
     level: 4
-  level: 4
   price: 2015240
 ---
 CoreUnitStatic512:
@@ -32309,13 +32309,13 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
+  level: 4
   unitVolume: 10001
+  unitMass: 20066.3
   newPlayerDefaultQty: 0
   requiredTalents:
   - name: StaticCoreUnitExpertise
     level: 4
-  level: 4
   price: 251905
 ---
 CoreUnitStatic64:
@@ -43448,9 +43448,9 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 50
-  nbControlPlugOut: 50
   nbIndustryPlugOut: 50
+  nbControlPlugOut: 50
+  nbIndustryPlugIn: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44428,14 +44428,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  parent: EngineDisplay
-  displayName: Rocket Engines
   description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  displayName: Rocket Engines
   functionInSpace: true
-  maxPower: 30000
-  t50: 0
   fuelRate: 1.65E-06
   maxSpeedBoost: 0.3
+  maxPower: 30000
+  t50: 0
+  parent: EngineDisplay
 ---
 SpaceEngine:
   displayName: Space Engines
