@@ -479,6 +479,13 @@ AddSectionModifier "ItemContainer" { param([string]$name, [hashtable]$values)
   return $values, $true
 }
 
+AddSectionModifier "ContainerXXXLOptimised5" { param([string]$name, [hashtable]$values) 
+  $values.maxVolume = 5462323
+  return $values, $true
+}
+
+
+
 AddSectionModifier "ControlUnit" { param([string]$name, [hashtable]$values) 
   $values.nbControlPlugOut = 50
   return $values, $true
@@ -496,6 +503,11 @@ AddSectionModifier "FireworkPalmtreeGold" { param([string]$name, [hashtable]$val
 
 AddSectionModifier "ElevatorXSmall" { param([string]$name, [hashtable]$values) 
   $values.max_range = 512
+  return $values, $true
+}
+
+AddSectionModifier "LightAlien" { param([string]$name, [hashtable]$values) 
+  $values.hidden = $false
   return $values, $true
 }
 

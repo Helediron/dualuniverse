@@ -92,8 +92,8 @@ FeaturesList:
   orgConstructLimitWarnOnly: false
   deactivateCollidingElements: false
   skinSelector: true
-  allowMarketOnDynamicConstruct: true
   allowIndustryOnDynamicConstruct: true
+  allowMarketOnDynamicConstruct: true
 ---
 Pet:
   parent: GameplayObject
@@ -30817,7 +30817,7 @@ Headlight:
 ---
 LightAlien:
   parent: LightUnit
-  hidden: true
+  hidden: false
   displayName: Alien light orb
   subdescription: The alien light orb is an Element that illuminates your immediate surroundings.
   unitVolume: 1
@@ -30825,9 +30825,9 @@ LightAlien:
   level: 2
   lightProperties:
     omni:
-      attenuationDistance: 256.0
-      attenuationPower: 0.750
-      intensity: 2.0
+      attenuationDistance: 256
+      attenuationPower: 0.75
+      intensity: 2
   hitpoints: 100
 ---
 LightQuadLarge:
@@ -31474,10 +31474,10 @@ MiningUnitLarge1:
   unitMass: 5131
   unitVolume: 2200
   hitpoints: 11250
-  pickupCooldownHour: 0
   stopCooldownHour: 0
-  calibrationCooldownHour: 0
   runtimeHours: 1
+  pickupCooldownHour: 0
+  calibrationCooldownHour: 0
 ---
 MiningUnitLarge2:
   displayName: Uncommon Mining Unit
@@ -31490,10 +31490,10 @@ MiningUnitLarge2:
   unitMass: 5160
   unitVolume: 2454
   hitpoints: 11250
-  pickupCooldownHour: 0
   stopCooldownHour: 0
-  calibrationCooldownHour: 0
   runtimeHours: 1.5
+  pickupCooldownHour: 0
+  calibrationCooldownHour: 0
 ---
 MiningUnitLarge3:
   displayName: Advanced Mining Unit
@@ -31506,10 +31506,10 @@ MiningUnitLarge3:
   unitMass: 7500
   unitVolume: 4050
   hitpoints: 11250
-  pickupCooldownHour: 0
   stopCooldownHour: 0
-  calibrationCooldownHour: 0
   runtimeHours: 2
+  pickupCooldownHour: 0
+  calibrationCooldownHour: 0
 ---
 MiningUnitLarge4:
   displayName: Rare Mining Unit
@@ -31522,10 +31522,10 @@ MiningUnitLarge4:
   unitMass: 7800
   unitVolume: 4200
   hitpoints: 11250
-  pickupCooldownHour: 0
   stopCooldownHour: 0
-  calibrationCooldownHour: 0
   runtimeHours: 3
+  pickupCooldownHour: 0
+  calibrationCooldownHour: 0
 ---
 MiningUnitLarge5:
   displayName: Exotic Mining Unit
@@ -31538,10 +31538,10 @@ MiningUnitLarge5:
   unitMass: 8500
   unitVolume: 4400
   hitpoints: 11250
-  pickupCooldownHour: 0
   stopCooldownHour: 0
-  calibrationCooldownHour: 0
   runtimeHours: 4
+  pickupCooldownHour: 0
+  calibrationCooldownHour: 0
 ---
 MiningUnitSmall1:
   displayName: Basic Mining Unit
@@ -31826,8 +31826,8 @@ WarpBeaconUnit:
     kinetic: 0.5
     electromagnetic: 0.5
   setupTimer: 86400
-  maxWarpDistance: 200000000
   cruiseSpeedKmH: 13370000
+  maxWarpDistance: 200000000
 ---
 WarpDriveUnit:
   parent: HighTechTransportation
@@ -31988,12 +31988,12 @@ CoreUnitDynamic1024:
   hidden: false
   hitpoints: 41420
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 20002
   unitMass: 40132.6
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 503810
 ---
 CoreUnitDynamic128:
@@ -32020,12 +32020,12 @@ CoreUnitDynamic2048:
   hitpoints: 82840
   cellSize: 2
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 40004
   unitMass: 80265.2
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 1007620
 ---
 CoreUnitDynamic256:
@@ -32068,12 +32068,12 @@ CoreUnitDynamic4096:
   hitpoints: 165680
   cellSize: 4
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 80008
   unitMass: 160530.4
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 2015240
 ---
 CoreUnitDynamic512:
@@ -32084,12 +32084,12 @@ CoreUnitDynamic512:
   hidden: false
   hitpoints: 20710
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 10001
   unitMass: 20066.3
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 251905
 ---
 CoreUnitDynamic64:
@@ -32116,12 +32116,12 @@ CoreUnitDynamic8192:
   hitpoints: 331360
   cellSize: 8
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 160016
   unitMass: 321060.8
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 4030480
 ---
 CoreUnitSpace128:
@@ -32190,12 +32190,12 @@ CoreUnitArtifact1024:
   hidden: false
   hitpoints: 41420
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 20002
   unitMass: 40132.6
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 503810
 ---
 CoreUnitArtifact256:
@@ -32214,12 +32214,12 @@ CoreUnitStatic1024:
   hidden: false
   hitpoints: 41420
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 20002
   unitMass: 40132.6
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 503810
 ---
 CoreUnitStatic128:
@@ -32246,12 +32246,12 @@ CoreUnitStatic2048:
   hitpoints: 82840
   cellSize: 2
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 40004
   unitMass: 80265.2
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 1007620
 ---
 CoreUnitStatic256:
@@ -32294,12 +32294,12 @@ CoreUnitStatic4096:
   hitpoints: 165680
   cellSize: 4
   level: 4
+  requiredTalents:
+  - level: 4
+    name: DynamicCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 80008
   unitMass: 160530.4
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: DynamicCoreUnitExpertise
-    level: 4
   price: 2015240
 ---
 CoreUnitStatic512:
@@ -32310,12 +32310,12 @@ CoreUnitStatic512:
   hidden: false
   hitpoints: 20710
   level: 4
+  requiredTalents:
+  - level: 4
+    name: StaticCoreUnitExpertise
+  newPlayerDefaultQty: 0
   unitVolume: 10001
   unitMass: 20066.3
-  newPlayerDefaultQty: 0
-  requiredTalents:
-  - name: StaticCoreUnitExpertise
-    level: 4
   price: 251905
 ---
 CoreUnitStatic64:
@@ -43448,9 +43448,9 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
+  nbIndustryPlugIn: 50
   nbIndustryPlugOut: 50
   nbControlPlugOut: 50
-  nbIndustryPlugIn: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44428,14 +44428,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  parent: EngineDisplay
   displayName: Rocket Engines
+  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
   functionInSpace: true
-  fuelRate: 1.65E-06
-  maxSpeedBoost: 0.3
   maxPower: 30000
   t50: 0
-  parent: EngineDisplay
+  fuelRate: 1.65E-06
+  maxSpeedBoost: 0.3
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -53476,7 +53476,7 @@ ContainerXXXLOptimised5:
   displayName: Expanded Exotic Optimised Container
   subdescription: The optimised variation is lighter and has more capacity.
   level: 5
-  maxVolume: 1462323
+  maxVolume: 5462323
   unitMass: 36214
   massFactor: 1
 ---
