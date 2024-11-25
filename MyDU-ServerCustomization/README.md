@@ -16,6 +16,26 @@ This script may be useful if your MyDU installation is behind dynamic DNS name. 
 
 Simple script to upload and seed new market orders from data/market_orders . Place it into ./scripts folder and start in MyDU top folder.
 
+## Script: deletewrecks.py
+
+The script runs in host and hard deletes soft-deleted wrecks. To be deleted the wreck requires
+
+- The construct must have "Dynamic Wreck" flag on.
+- Must have deleted_at datetime between June 2024 and ten days before today.
+
+Install Postgres libraries for Python (Ubuntu 24 LTS)
+
+```sh
+sudo apt install python3-dev libpq-dev
+sudo apt install python3-psycopg2
+```
+
+Run
+
+```sh
+python3 ./deletewrecks.py
+```
+
 ## Script: FixBlueprints.ps1
 
 Updates blueprint files and changes CreatorId to 2 (Aphelia) and all playerId's to 0.
