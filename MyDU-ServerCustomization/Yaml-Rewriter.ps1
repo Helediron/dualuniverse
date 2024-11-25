@@ -1,19 +1,36 @@
 # Set input and output file
 $INFILES = @(".\items.yaml")
-$INFILE_2 = ".\items-append.yaml"
+$INFILE_2 = ".\items-nord-append.yaml"
 if (Test-Path $INFILE_2) {
   # Support second file for local additions
   $INFILES += $INFILE_2
 }
-$OUTFILE = ".\items-changed.yaml"
-
+$OUTFILE = ".\items-nord-changed.yaml"
+$BACKUP = ".\old-items-nord-changed.yaml"
+if (Test-Path $BACKUP) {
+  $lastWrite = (get-item $BACKUP).LastWriteTime
+  $timespan = new-timespan -hours 16
+  if (((get-date) - $lastWrite) -gt $timespan -or !(Test-Path $OUTFILE)) {
+    Write-Output "Removed old backup $BACKUP"
+    Remove-Item $BACKUP
+    if (Test-Path $OUTFILE) {
+      Write-Output "Saving $OUTFILE to backup $BACKUP"
+      Rename-Item -Path $OUTFILE -NewName $BACKUP
+    }
+  }
+} elseif (Test-Path $OUTFILE) {
+  Write-Output "Saving $OUTFILE to backup $BACKUP"
+  Rename-Item -Path $OUTFILE -NewName $BACKUP
+}
 
 # DON'T TOUCH CODE BELOW, until modifiable part begins
 
 $subtrees = @{}
-$sections = @{}
+$sectionHandlers = @{}
 $cloneSections = @{}
 $cloneSourceSections = @{}
+$cloneHandlers = @{}
+$assetAliases = @{}
 $patterns = @{}
 $treeNodes = @{}
 
@@ -46,9 +63,23 @@ function VerifySectionParameters($filter, $func, $collection) {
   }
 }  
 
+function addAssetAlias($newName, $name) {
+  $assetAliases[$newName] = $name
+}
+function getAssetAlias($name) {
+  $alias = $name
+  $count = 0
+  while ($count -lt 10 -and $assetAliases.Contains($alias)) {
+    $count = $count + 1
+    if ($count -ge 10) {
+      Write-Error "getAssetAlias recursion $name $alias $count"
+    }
+    $alias = $assetAliases[$alias]
+  }
+  return $alias
+}
 function CloneSection($name, $newName, $func) {
-  VerifySectionParameters $name  $func $sections
-  VerifySectionParameters $newName  $func $cloneSections
+  VerifySectionParameters $newName $func $cloneHandlers
   if ($name -match "[A-Za-z][A-Za-z0-9]*") {
     if ($newName -match "[A-Za-z][A-Za-z0-9]*") {
       # Add plain property names into keyword table for direct access.
@@ -59,9 +90,10 @@ function CloneSection($name, $newName, $func) {
       $clones += $newName
       $cloneSections[$name] = $clones
       $cloneSourceSections[$newName] = $name
+      addAssetAlias $newName $name
       $len = $clones.Length
 
-      $sections[$newName] = $func
+      $cloneHandlers[$newName] = $func
       Write-Output "Copying section $name to $newName $len"
     }
     else {
@@ -73,10 +105,10 @@ function CloneSection($name, $newName, $func) {
   }
 }
 function AddSectionModifier($filter, $func) {
-  VerifySectionParameters $filter  $func $sections
+  VerifySectionParameters $filter  $func $sectionHandlers
   if ($filter -match "[A-Za-z][A-Za-z0-9]*") {
     # Add plain property names into keyword table for direct access.
-    $sections[$filter] = $func
+    $sectionHandlers[$filter] = $func
     Write-Output "Added section modifier $filter"
   }
   else {
@@ -257,19 +289,45 @@ function buildTree() {
 }
 function buildModifiers() {
 
+  # Clone handler first.
   foreach ($key1 in $treeNodes.Keys) {
     #Write-Output "Section $key1."
     $item = $treeNodes[$key1]
-    $handlers = $item["handlers"]
-
-    # Find section processors
-    foreach ($pat in $patterns.Keys) {
-      if ($key1 -match $pat) {
-        Write-Output "Section $key1 matches pattern modifier $pat."
-        $handlers["P-" + $pat] = $patterns[$pat]
+    $handlers = [ordered]@{}
+    $handlers1 = $item["handlers"]
+    if ($null -ne $handlers1) {
+      foreach ($key2 in $handlers1.Keys) {
+        $handlers[$key2] = $handlers1[$key2]
       }
     }
 
+    if ($cloneHandlers[$key1]) {
+      # Run cloning processor
+      $handlers["C-" + $key1] = $cloneHandlers[$key1]
+      $count = $handlers.Count
+      Write-Output "Adding  $key1 cloning modifier."
+    }
+    $count = $handlers.Count
+    Write-Output "Section $key1 modifiers: $count ."
+    if ($count -gt 0) {
+      foreach ($key2 in $handlers.Keys) {
+        Write-Output " Modifier: $key2"        
+      }
+    }
+
+    $item["handlers"] = $handlers
+  }
+
+  foreach ($key1 in $treeNodes.Keys) {
+    #Write-Output "Section $key1."
+    $item = $treeNodes[$key1]
+    $handlers = [ordered]@{}
+    $handlers1 = $item["handlers"]
+    if ($null -ne $handlers1) {
+      foreach ($key2 in $handlers1.Keys) {
+        $handlers[$key2] = $handlers1[$key2]
+      }
+    }
     # Find subtree processors. Recurse down children and add the processor to each.
     if ($subtrees[$key1]) {
       # Add the node and all children for processing
@@ -281,26 +339,44 @@ function buildModifiers() {
       while ($sectStack.Count -gt 0) {
         $newSect = [ordered]@{}
         foreach ($key2 in $sectStack.Keys) {
-          $subkey = "S-" + $key1 + "-" + $key2
+          $newSect[$key2] = $sectStack[$key2]
           $item2 = $treeNodes[$key2]
-          $handlers2 = $item2["handlers"]
-        if ($handlers2.Contains($subkey)) {
-            Write-Output "Skip dup subtree $key1 section $key2"  
+          if ($null -eq $item2) {
+            Write-Output "Missing subtree $key1 section $key2"  
           } else {
-            Write-Output "Adding subtree $key1 section $key2"
-        
-            $handlers2[$subkey] = $func
-            $newSect[$key2] = $sectStack[$key2]
+            $handlers2 = [ordered]@{}
+            $handlers3 = $item2["handlers"]
+            if ($null -ne $handlers3) {
+              foreach ($key3 in $handlers3.Keys) {
+                $handlers2[$key3] = $handlers3[$key3]
+              }
+            }
+            $subkey = "S-" + $key1 + "-" + $key2
+            if ($handlers2.Contains($subkey)) {
+              Write-Output "Skip dup $key1 subtree handler $subkey in $key2"  
+            } else {
+              $handlers2[$subkey] = $func
+              Write-Output "Adding $key1 subtree handler $subkey to $key2"
+            }
+            $count = $handlers2.Count
+            Write-Output " Section $key2 modifiers: $count ."
+            if ($count -gt 0) {
+              foreach ($key4 in $handlers2.Keys) {
+                Write-Output "  Modifier: $key4"
+              }
+            }
+            $item2["handlers"] = $handlers2
           }
         }
         $sectStack.Clear()
 
+        # Add next level children to stack
         foreach ($key2 in $newSect.Keys) {
-          $item = $treeNodes[$key2]
-          if ($item) {
-            Write-Output "Subtree $key2 children:"
-            $children = $item.Children
+          $item3 = $treeNodes[$key2]
+          if ($item3) {
+            $children = $item3.Children
             if ($children.Count -gt 0) {
+              Write-Output "Subtree $key2 children:"
               foreach ($key3 in $children.Keys) {
                 Write-Output "  Child $key2/$key3"
                 $sectStack[$key3] = $true                  
@@ -310,11 +386,30 @@ function buildModifiers() {
         }
       }
     }
-    if ($sections[$key1]) {
-      # Run the exact matching processor last
-      Write-Output "Section $key1 has section modifier."
-      $handlers["K-" + $key1] = $sections[$key1]
+
+    # Find pattern processors
+    foreach ($pat in $patterns.Keys) {
+      if ($key1 -match $pat) {
+        $handlers["P-" + $pat] = $patterns[$pat]
+        $count = $handlers.Count
+        Write-Output "Adding $key1 pattern handler $pat."
+      }
     }
+
+    if ($sectionHandlers[$key1]) {
+      # Run the exact matching processor last
+      $handlers["K-" + $key1] = $sectionHandlers[$key1]
+      $count = $handlers.Count
+      Write-Output "Adding $key1 section modifier."
+    }
+    $count = $handlers.Count
+    Write-Output "Section $key1 modifiers: $count ."
+    if ($count -gt 0) {
+      foreach ($key2 in $handlers.Keys) {
+        Write-Output " Modifier: $key2"        
+      }
+    }
+    $item["handlers"] = $handlers
   }
 }
 
@@ -328,22 +423,23 @@ function processSection($value1, $key1) {
     return $value1, $changes1, $log
   }
   $item = $treeNodes[$key1]
-  $filters = $item["handlers"]
+  $handlers = $item["handlers"]
 
-  $modified1 = $value1
-  if ($filters.Count -gt 0) {
+  $modified1 = [ordered]@{}
+  foreach ($key2 in $value1.Keys) {
+    $modified1[$key2] = $value1[$key2]
+  }
+  $count = $handlers.Count
+  if ($count -gt 0) {
     # Run the processors.
-    $modified1 = @{}
-    foreach ($key2 in $value1.Keys) {
-      $modified1[$key2] = $value1[$key2]
-    }
+    $log += printTable "" "Section $key1 has $count modifiers"
     $keystate = [ordered]@{}
     foreach ($key2 in $value1.Keys) {
       $keystate[$key2] = $true
     }
 
-    foreach ($pat in $filters.Keys) {
-      $func = $filters[$pat]
+    foreach ($pat in $handlers.Keys) {
+      $func = $handlers[$pat]
       $log += printTable "" "Section $key1 modifier $pat start" $modified1  
             
       # Recreate the section with same property order as original, to help diffing the files
@@ -499,6 +595,7 @@ Write-Output "Modify yaml."
 
 Set-Content -Path $OUTFILE ""
 $docCount = 0
+$writtenSections = [ordered]@{}
 
 foreach ($INFILE in $INFILES) {
   $ymlInfile = Get-Content -Path $INFILE -Raw
@@ -521,32 +618,42 @@ foreach ($INFILE in $INFILES) {
 
       foreach ($key1 in $yamlObj.Keys) {
         #Write-Output "Section $key1."
-        $keyCount = $keyCount + 1
-        $value1 = $yamlObj[$key1]
-        $modified1, $changes1, $log1 = processSection $value1 $key1
-        $changes = $changes + $changes1
-        $modifiedObj[$key1] = $modified1
-        Write-Output "Section $key1 processed:"
-        foreach ($line in $log1) {
-          Write-Output $line
+        if ($writtenSections.Contains($key1)) {
+          Write-Error "Section $key1 already written"  
+        } else {
+          $writtenSections[$key1] = $true
+          $keyCount = $keyCount + 1
+          $value1 = $yamlObj[$key1]
+          $modified1, $changes1, $log1 = processSection $value1 $key1
+          $changes = $changes + $changes1
+          $modifiedObj[$key1] = $modified1
+          Write-Output "Section $key1 processed:"
+          foreach ($line in $log1) {
+            Write-Output $line
+          }
         }
-        
+
         if ($cloneSections.ContainsKey($key1)) {
           $clones = $cloneSections[$key1]
           $len = $clones.Length
           Write-Output "Processing clones from section $key1 $len :"
           foreach ($newName in $clones) {
-            Write-Output "Processing clone $newName from section $key1 $len :"
-            $newModifiedObj = [ordered]@{}
+            if ($writtenSections.Contains($newName)) {
+              Write-Error "Clone section $newName already written"  
+            } else {
+              $writtenSections[$newName] = $true
+              Write-Output "Processing clone $newName from section $key1 $len :"
+              $newModifiedObj = [ordered]@{}
 
-            $modified1, $changes1, $log1 = processSection $value1 $newName
-            $changes = $changes + $changes1 + 1
-            $newModifiedObj[$newName] = $modified1
-            Write-Output "Clone section $newName processed:"
-            foreach ($line in $log1) {
-              Write-Output $line
+              $modified1, $changes1, $log1 = processSection $value1 $newName
+              $changes = $changes + $changes1 + 1
+              $newModifiedObj[$newName] = $modified1
+              Write-Output "Clone section $newName processed:"
+              foreach ($line in $log1) {
+                Write-Output $line
+              }
+              $newModifiedSections += $newModifiedObj
             }
-            $newModifiedSections += $newModifiedObj
           }
         }
       }

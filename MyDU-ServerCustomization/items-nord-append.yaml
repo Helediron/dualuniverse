@@ -75,6 +75,22 @@ AntiGravityGeneratorXtraLarge2:
   nbGravitonPlug: 42
   hitpoints: 4330350
 ---
+CoreUnitStatic20484:
+  parent: CoreUnitStatic
+  constructSize: 2048
+  displayName: Rare Static Core Unit 1024m
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.25
+---
+CoreUnitDynamic20484:
+  parent: CoreUnitDynamic
+  constructSize: 2048
+  displayName: Rare Dynamic Core Unit 1024m
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.25
+---
 Ion:
   parent: SolarSystemPlanet
   constructId: 120

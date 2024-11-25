@@ -775,17 +775,26 @@ function buildModifiers() {
   foreach ($key1 in $treeNodes.Keys) {
     #Write-Output "Section $key1."
     $item = $treeNodes[$key1]
-    $handlers1 = $item["handlers"]
     $handlers = [ordered]@{}
-    foreach ($key2 in $handlers1.Keys) {
-      $handlers[$key2] = $handlers1[$key2]
+    $handlers1 = $item["handlers"]
+    if ($null -ne $handlers1) {
+      foreach ($key2 in $handlers1.Keys) {
+        $handlers[$key2] = $handlers1[$key2]
+      }
     }
 
     if ($cloneHandlers[$key1]) {
       # Run cloning processor
       $handlers["C-" + $key1] = $cloneHandlers[$key1]
       $count = $handlers.Count
-      Write-Output "Section $key1 has cloning modifier $count ."
+      Write-Output "Adding  $key1 cloning modifier."
+    }
+    $count = $handlers.Count
+    Write-Output "Section $key1 modifiers: $count ."
+    if ($count -gt 0) {
+      foreach ($key2 in $handlers.Keys) {
+        Write-Output " Modifier: $key2"        
+      }
     }
 
     $item["handlers"] = $handlers
@@ -794,12 +803,13 @@ function buildModifiers() {
   foreach ($key1 in $treeNodes.Keys) {
     #Write-Output "Section $key1."
     $item = $treeNodes[$key1]
-    $handlers1 = $item["handlers"]
     $handlers = [ordered]@{}
-    foreach ($key2 in $handlers1.Keys) {
-      $handlers[$key2] = $handlers1[$key2]
+    $handlers1 = $item["handlers"]
+    if ($null -ne $handlers1) {
+      foreach ($key2 in $handlers1.Keys) {
+        $handlers[$key2] = $handlers1[$key2]
+      }
     }
-
     # Find subtree processors. Recurse down children and add the processor to each.
     if ($subtrees[$key1]) {
       # Add the node and all children for processing
@@ -811,31 +821,44 @@ function buildModifiers() {
       while ($sectStack.Count -gt 0) {
         $newSect = [ordered]@{}
         foreach ($key2 in $sectStack.Keys) {
-          $subkey = "S-" + $key1 + "-" + $key2
+          $newSect[$key2] = $sectStack[$key2]
           $item2 = $treeNodes[$key2]
-          $handlers3 = $item2["handlers"]
-          $handlers2 = [ordered]@{}
-          foreach ($key3 in $handlers3.Keys) {
-            $handlers2[$key3] = $handlers3[$key3]
-          }
-          if ($handlers2.Contains($subkey)) {
-            Write-Output "Skip dup subtree $key1 section $key2"  
+          if ($null -eq $item2) {
+            Write-Output "Missing subtree $key1 section $key2"  
           } else {
-            $handlers2[$subkey] = $func
-            $item2["handlers"] = $handlers2
-            $newSect[$key2] = $sectStack[$key2]
+            $handlers2 = [ordered]@{}
+            $handlers3 = $item2["handlers"]
+            if ($null -ne $handlers3) {
+              foreach ($key3 in $handlers3.Keys) {
+                $handlers2[$key3] = $handlers3[$key3]
+              }
+            }
+            $subkey = "S-" + $key1 + "-" + $key2
+            if ($handlers2.Contains($subkey)) {
+              Write-Output "Skip dup $key1 subtree handler $subkey in $key2"  
+            } else {
+              $handlers2[$subkey] = $func
+              Write-Output "Adding $key1 subtree handler $subkey to $key2"
+            }
             $count = $handlers2.Count
-            Write-Output "Adding subtree $key1 section handler $count $subkey for $key2"
+            Write-Output " Section $key2 modifiers: $count ."
+            if ($count -gt 0) {
+              foreach ($key4 in $handlers2.Keys) {
+                Write-Output "  Modifier: $key4"
+              }
+            }
+            $item2["handlers"] = $handlers2
           }
         }
         $sectStack.Clear()
 
+        # Add next level children to stack
         foreach ($key2 in $newSect.Keys) {
-          $item = $treeNodes[$key2]
-          if ($item) {
-            Write-Output "Subtree $key2 children:"
-            $children = $item.Children
+          $item3 = $treeNodes[$key2]
+          if ($item3) {
+            $children = $item3.Children
             if ($children.Count -gt 0) {
+              Write-Output "Subtree $key2 children:"
               foreach ($key3 in $children.Keys) {
                 Write-Output "  Child $key2/$key3"
                 $sectStack[$key3] = $true                  
@@ -851,7 +874,7 @@ function buildModifiers() {
       if ($key1 -match $pat) {
         $handlers["P-" + $pat] = $patterns[$pat]
         $count = $handlers.Count
-        Write-Output "Section $key1 matches pattern handler $count $pat."
+        Write-Output "Adding $key1 pattern handler $pat."
       }
     }
 
@@ -859,7 +882,14 @@ function buildModifiers() {
       # Run the exact matching processor last
       $handlers["K-" + $key1] = $sectionHandlers[$key1]
       $count = $handlers.Count
-      Write-Output "Section $key1 has section modifier $count ."
+      Write-Output "Adding $key1 section modifier."
+    }
+    $count = $handlers.Count
+    Write-Output "Section $key1 modifiers: $count ."
+    if ($count -gt 0) {
+      foreach ($key2 in $handlers.Keys) {
+        Write-Output " Modifier: $key2"        
+      }
     }
     $item["handlers"] = $handlers
   }
