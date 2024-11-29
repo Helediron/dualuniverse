@@ -31474,9 +31474,9 @@ MiningUnitLarge1:
   unitMass: 5131
   unitVolume: 2200
   hitpoints: 11250
+  pickupCooldownHour: 0
   stopCooldownHour: 0
   calibrationCooldownHour: 0
-  pickupCooldownHour: 0
   runtimeHours: 1
 ---
 MiningUnitLarge2:
@@ -31490,9 +31490,9 @@ MiningUnitLarge2:
   unitMass: 5160
   unitVolume: 2454
   hitpoints: 11250
+  pickupCooldownHour: 0
   stopCooldownHour: 0
   calibrationCooldownHour: 0
-  pickupCooldownHour: 0
   runtimeHours: 1.5
 ---
 MiningUnitLarge3:
@@ -31506,9 +31506,9 @@ MiningUnitLarge3:
   unitMass: 7500
   unitVolume: 4050
   hitpoints: 11250
+  pickupCooldownHour: 0
   stopCooldownHour: 0
   calibrationCooldownHour: 0
-  pickupCooldownHour: 0
   runtimeHours: 2
 ---
 MiningUnitLarge4:
@@ -31522,9 +31522,9 @@ MiningUnitLarge4:
   unitMass: 7800
   unitVolume: 4200
   hitpoints: 11250
+  pickupCooldownHour: 0
   stopCooldownHour: 0
   calibrationCooldownHour: 0
-  pickupCooldownHour: 0
   runtimeHours: 3
 ---
 MiningUnitLarge5:
@@ -31538,9 +31538,9 @@ MiningUnitLarge5:
   unitMass: 8500
   unitVolume: 4400
   hitpoints: 11250
+  pickupCooldownHour: 0
   stopCooldownHour: 0
   calibrationCooldownHour: 0
-  pickupCooldownHour: 0
   runtimeHours: 4
 ---
 MiningUnitSmall1:
@@ -31987,14 +31987,14 @@ CoreUnitDynamic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
   unitVolume: 20002
-  price: 503810
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitDynamic128:
   parent: CoreUnitDynamic
@@ -32019,14 +32019,14 @@ CoreUnitDynamic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
-  unitMass: 80265.2
   unitVolume: 40004
-  price: 1007620
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 80265.2
+  price: 1007620
 ---
 CoreUnitDynamic256:
   parent: CoreUnitDynamic
@@ -32067,14 +32067,14 @@ CoreUnitDynamic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
-  unitMass: 160530.4
   unitVolume: 80008
-  price: 2015240
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 160530.4
+  price: 2015240
 ---
 CoreUnitDynamic512:
   parent: CoreUnitDynamic
@@ -32083,14 +32083,14 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
   unitVolume: 10001
-  price: 251905
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 20066.3
+  price: 251905
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32115,14 +32115,14 @@ CoreUnitDynamic8192:
   hidden: false
   hitpoints: 331360
   cellSize: 8
-  unitMass: 321060.8
   unitVolume: 160016
-  price: 4030480
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 321060.8
+  price: 4030480
 ---
 CoreUnitSpace128:
   parent: CoreUnitSpace
@@ -32189,14 +32189,14 @@ CoreUnitArtifact1024:
   cellSize: 8
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
   unitVolume: 20002
-  price: 503810
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitArtifact256:
   parent: CoreUnitStatic
@@ -32213,14 +32213,14 @@ CoreUnitStatic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
-  unitMass: 40132.6
   unitVolume: 20002
-  price: 503810
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 40132.6
+  price: 503810
 ---
 CoreUnitStatic128:
   parent: CoreUnitStatic
@@ -32245,14 +32245,14 @@ CoreUnitStatic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
-  unitMass: 80265.2
   unitVolume: 40004
-  price: 1007620
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 80265.2
+  price: 1007620
 ---
 CoreUnitStatic256:
   parent: CoreUnitStatic
@@ -32293,14 +32293,14 @@ CoreUnitStatic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
-  unitMass: 160530.4
   unitVolume: 80008
-  price: 2015240
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 160530.4
+  price: 2015240
 ---
 CoreUnitStatic512:
   parent: CoreUnitStatic
@@ -32309,14 +32309,14 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
-  unitMass: 20066.3
   unitVolume: 10001
-  price: 251905
   requiredTalents:
-  - level: 4
-    name: StaticCoreUnitExpertise
+  - name: StaticCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 20066.3
+  price: 251905
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -32341,14 +32341,14 @@ CoreUnitStatic8192:
   hidden: false
   hitpoints: 331360
   cellSize: 8
-  unitMass: 321060.8
   unitVolume: 160016
-  price: 4030480
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
   newPlayerDefaultQty: 0
   level: 4
+  unitMass: 321060.8
+  price: 4030480
 ---
 hcAlLiAged:
   parent: alLiHoneycomb
@@ -43456,9 +43456,9 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
+  nbIndustryPlugIn: 50
   nbIndustryPlugOut: 50
   nbControlPlugOut: 50
-  nbIndustryPlugIn: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44436,14 +44436,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
+  fuelRate: 1.65E-06
   parent: EngineDisplay
+  maxSpeedBoost: 0.3
   displayName: Rocket Engines
+  t50: 0
+  maxPower: 30000
   description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
   functionInSpace: true
-  maxPower: 30000
-  t50: 0
-  fuelRate: 1.65E-06
-  maxSpeedBoost: 0.3
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -57365,37 +57365,175 @@ AntiGravityGeneratorXtraLarge2:
   nbGravitonPlug: 42
   hitpoints: 4330350
 ---
+CoreUnitStatic10242:
+  parent: CoreUnitStatic
+  constructSize: 1024
+  displayName: Uncommon Static Core Unit 512m
+  description: Static core unit with 512m build area, two voxels per meter.
+  cellSize: 0.5
+  hidden: false
+  hitpoints: 41420
+  unitVolume: 20002
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 40132.6
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 503810
+---
+CoreUnitStatic10243:
+  parent: CoreUnitStatic
+  constructSize: 1024
+  displayName: Advanced Static Core Unit 512m
+  description: Static core unit with 512m build area, four voxels per meter.
+  cellSize: 0.25
+  hidden: false
+  hitpoints: 41420
+  unitVolume: 20002
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 40132.6
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 503810
+---
+CoreUnitDynamic10242:
+  parent: CoreUnitDynamic
+  constructSize: 1024
+  displayName: Uncommon Dynamic Core Unit 512m
+  description: Dynamic core unit with 512m build area, two voxels per meter.
+  cellSize: 0.5
+  hidden: false
+  hitpoints: 41420
+  unitVolume: 20002
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 40132.6
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 503810
+---
+CoreUnitDynamic10243:
+  parent: CoreUnitDynamic
+  constructSize: 1024
+  displayName: Advanced Dynamic Core Unit 512m
+  description: Dynamic core unit with 512m build area, four voxels per meter.
+  cellSize: 0.25
+  hidden: false
+  hitpoints: 41420
+  unitVolume: 20002
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 40132.6
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 503810
+---
+CoreUnitStatic20482:
+  parent: CoreUnitStatic
+  constructSize: 2048
+  displayName: Uncommon Static Core Unit 1024m
+  description: Static core unit with 1024m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 82840
+  cellSize: 1
+  unitVolume: 40004
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 1007620
+---
+CoreUnitStatic20483:
+  parent: CoreUnitStatic
+  constructSize: 2048
+  displayName: Advanced Static Core Unit 1024m
+  description: Static core unit with 1024m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 82840
+  cellSize: 0.5
+  unitVolume: 40004
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 1007620
+---
 CoreUnitStatic20484:
   parent: CoreUnitStatic
   constructSize: 2048
   displayName: Rare Static Core Unit 1024m
+  description: Static core unit with 1024m build area, four voxels per meter.
   hidden: false
   hitpoints: 82840
   cellSize: 0.25
-  unitMass: 80265.2
   unitVolume: 40004
-  price: 1007620
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
   newPlayerDefaultQty: 0
   level: 4
+  price: 1007620
+---
+CoreUnitDynamic20482:
+  parent: CoreUnitDynamic
+  constructSize: 2048
+  displayName: Uncommon Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 82840
+  cellSize: 1
+  unitVolume: 40004
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 1007620
+---
+CoreUnitDynamic20483:
+  parent: CoreUnitDynamic
+  constructSize: 2048
+  displayName: Advanced Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 82840
+  cellSize: 0.5
+  unitVolume: 40004
+  requiredTalents:
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
+  newPlayerDefaultQty: 0
+  level: 4
+  price: 1007620
 ---
 CoreUnitDynamic20484:
   parent: CoreUnitDynamic
   constructSize: 2048
   displayName: Rare Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, four voxels per meter.
   hidden: false
   hitpoints: 82840
   cellSize: 0.25
-  unitMass: 80265.2
   unitVolume: 40004
-  price: 1007620
   requiredTalents:
-  - level: 4
-    name: DynamicCoreUnitExpertise
+  - name: DynamicCoreUnitExpertise
+    level: 4
+  unitMass: 80265.2
   newPlayerDefaultQty: 0
   level: 4
+  price: 1007620
 ---
 Ion:
   parent: SolarSystemPlanet

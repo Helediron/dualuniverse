@@ -1,8 +1,7 @@
-MyDU-ServerCustomization/items-changed.yaml
-MyDU-ServerCustomization/items.txt
-MyDU-ServerCustomization/markets.txt
-MyDU-ServerCustomization/markets.csv
-MyDU-ServerCustomization/old-items-nord-changed.yaml
 MyDU-Orepools/bin
 MyDU-Orepools/obj
-
+MyDU-ServerCustomization/item-hierarchy/items-changed.yaml
+MyDU-ServerCustomization/item-hierarchy/old-items-nord-changed.yaml
+MyDU-ServerCustomization/item-hierarchy/markets.txt
+MyDU-ServerCustomization/item-hierarchy/markets.csv
+MyDU-ServerCustomization/item-hierarchy/items.txt

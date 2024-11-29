@@ -75,18 +75,92 @@ AntiGravityGeneratorXtraLarge2:
   nbGravitonPlug: 42
   hitpoints: 4330350
 ---
+CoreUnitStatic10242:
+  parent: CoreUnitStatic
+  constructSize: 1024
+  displayName: Uncommon Static Core Unit 512m
+  description: Static core unit with 512m build area, two voxels per meter.
+  cellSize: 0.5
+  hidden: false
+  hitpoints: 50
+---
+CoreUnitStatic10243:
+  parent: CoreUnitStatic
+  constructSize: 1024
+  displayName: Advanced Static Core Unit 512m
+  description: Static core unit with 512m build area, four voxels per meter.
+  cellSize: 0.25
+  hidden: false
+  hitpoints: 50
+---
+CoreUnitDynamic10242:
+  parent: CoreUnitDynamic
+  constructSize: 1024
+  displayName: Uncommon Dynamic Core Unit 512m
+  description: Dynamic core unit with 512m build area, two voxels per meter.
+  cellSize: 0.5
+  hidden: false
+  hitpoints: 50
+---
+CoreUnitDynamic10243:
+  parent: CoreUnitDynamic
+  constructSize: 1024
+  displayName: Advanced Dynamic Core Unit 512m
+  description: Dynamic core unit with 512m build area, four voxels per meter.
+  cellSize: 0.25
+  hidden: false
+  hitpoints: 50
+---
+CoreUnitStatic20482:
+  parent: CoreUnitStatic
+  constructSize: 2048
+  displayName: Uncommon Static Core Unit 1024m
+  description: Static core unit with 1024m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 1
+---
+CoreUnitStatic20483:
+  parent: CoreUnitStatic
+  constructSize: 2048
+  displayName: Advanced Static Core Unit 1024m
+  description: Static core unit with 1024m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.5
+---
 CoreUnitStatic20484:
   parent: CoreUnitStatic
   constructSize: 2048
   displayName: Rare Static Core Unit 1024m
+  description: Static core unit with 1024m build area, four voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.25
+---
+CoreUnitDynamic20482:
+  parent: CoreUnitDynamic
+  constructSize: 2048
+  displayName: Uncommon Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 1
+---
+CoreUnitDynamic20483:
+  parent: CoreUnitDynamic
+  constructSize: 2048
+  displayName: Advanced Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.5
 ---
 CoreUnitDynamic20484:
   parent: CoreUnitDynamic
   constructSize: 2048
   displayName: Rare Dynamic Core Unit 1024m
+  description: Dynamic core unit with 1024m build area, four voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.25
