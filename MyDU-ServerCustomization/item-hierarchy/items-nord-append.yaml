@@ -77,90 +77,180 @@ AntiGravityGeneratorXtraLarge2:
 ---
 CoreUnitStatic10242:
   parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic1024
   constructSize: 1024
-  displayName: Uncommon Static Core Unit 512m
-  description: Static core unit with 512m build area, two voxels per meter.
+  displayName: Uncommon Static Core Unit 512m 2 vpm
+  subdescription: Static core unit with 512m build area, two voxels per meter.
   cellSize: 0.5
   hidden: false
   hitpoints: 50
 ---
 CoreUnitStatic10243:
   parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic1024
   constructSize: 1024
-  displayName: Advanced Static Core Unit 512m
-  description: Static core unit with 512m build area, four voxels per meter.
+  displayName: Advanced Static Core Unit 512m 4 vpm
+  subdescription: Static core unit with 512m build area, four voxels per meter.
   cellSize: 0.25
   hidden: false
   hitpoints: 50
 ---
 CoreUnitDynamic10242:
   parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic1024
   constructSize: 1024
-  displayName: Uncommon Dynamic Core Unit 512m
-  description: Dynamic core unit with 512m build area, two voxels per meter.
+  displayName: Uncommon Dynamic Core Unit 512m 2 vpm
+  subdescription: Dynamic core unit with 512m build area, two voxels per meter.
   cellSize: 0.5
   hidden: false
   hitpoints: 50
 ---
 CoreUnitDynamic10243:
   parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic1024
   constructSize: 1024
-  displayName: Advanced Dynamic Core Unit 512m
-  description: Dynamic core unit with 512m build area, four voxels per meter.
+  displayName: Advanced Dynamic Core Unit 512m 4 vpm
+  subdescription: Dynamic core unit with 512m build area, four voxels per meter.
   cellSize: 0.25
   hidden: false
   hitpoints: 50
 ---
 CoreUnitStatic20482:
   parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic2048
   constructSize: 2048
-  displayName: Uncommon Static Core Unit 1024m
-  description: Static core unit with 1024m build area, one voxel per meter.
+  displayName: Uncommon Static Core Unit 1024m 1 vpm
+  subdescription: Static core unit with 1024m build area, one voxel per meter.
   hidden: false
   hitpoints: 50
   cellSize: 1
 ---
 CoreUnitStatic20483:
   parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic2048
   constructSize: 2048
-  displayName: Advanced Static Core Unit 1024m
-  description: Static core unit with 1024m build area, two voxels per meter.
+  displayName: Advanced Static Core Unit 1024m 2 vpm
+  subdescription: Static core unit with 1024m build area, two voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.5
 ---
 CoreUnitStatic20484:
   parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic2048
   constructSize: 2048
-  displayName: Rare Static Core Unit 1024m
-  description: Static core unit with 1024m build area, four voxels per meter.
+  displayName: Rare Static Core Unit 1024m 4 vpm
+  subdescription: Static core unit with 1024m build area, four voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.25
 ---
 CoreUnitDynamic20482:
   parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic2048
   constructSize: 2048
-  displayName: Uncommon Dynamic Core Unit 1024m
-  description: Dynamic core unit with 1024m build area, one voxel per meter.
+  displayName: Uncommon Dynamic Core Unit 1024m 1 vpm
+  subdescription: Dynamic core unit with 1024m build area, one voxel per meter.
   hidden: false
   hitpoints: 50
   cellSize: 1
 ---
 CoreUnitDynamic20483:
   parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic2048
   constructSize: 2048
-  displayName: Advanced Dynamic Core Unit 1024m
-  description: Dynamic core unit with 1024m build area, two voxels per meter.
+  displayName: Advanced Dynamic Core Unit 1024m 2 vpm
+  subdescription: Dynamic core unit with 1024m build area, two voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.5
 ---
 CoreUnitDynamic20484:
   parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic2048
   constructSize: 2048
-  displayName: Rare Dynamic Core Unit 1024m
-  description: Dynamic core unit with 1024m build area, four voxels per meter.
+  displayName: Rare Dynamic Core Unit 1024m 4 vpm
+  subdescription: Dynamic core unit with 1024m build area, four voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.25
+---
+CoreUnitStatic40962:
+  parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic4096
+  constructSize: 4096
+  displayName: Uncommon Static Core Unit 2048m 0.5 vpm
+  subdescription: Static core unit with 2048m build area, one voxel per two meters.
+  hidden: false
+  hitpoints: 50
+  cellSize: 2.0
+---
+CoreUnitStatic40963:
+  parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic4096
+  constructSize: 4096
+  displayName: Advanced Static Core Unit 2048m 1 vpm
+  subdescription: Static core unit with 2048m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 1.0
+---
+CoreUnitStatic40964:
+  parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic4096
+  constructSize: 4096
+  displayName: Rare Static Core Unit 2048m 2 vpm
+  subdescription: Static core unit with 2048m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.5
+---
+CoreUnitStatic40965:
+  parent: CoreUnitStatic
+  assetAlias: CoreUnitStatic4096
+  constructSize: 4096
+  displayName: Exotic Static Core Unit 2048m 4 vpm
+  subdescription: Static core unit with 2048m build area, four voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.25
+---
+CoreUnitDynamic40962:
+  parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic4096
+  constructSize: 4096
+  displayName: Uncommon Dynamic Core Unit 2048m 0.5 vpm
+  subdescription: Dynamic core unit with 2048m build area, one voxel per two meters.
+  hidden: false
+  hitpoints: 50
+  cellSize: 2.0
+---
+CoreUnitDynamic40963:
+  parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic4096
+  constructSize: 4096
+  displayName: Advanced Dynamic Core Unit 2048m 1 vpm
+  subdescription: Dynamic core unit with 2048m build area, one voxel per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 1.0
+---
+CoreUnitDynamic40964:
+  parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic4096
+  constructSize: 4096
+  displayName: Rare Dynamic Core Unit 2048m 2 vpm
+  subdescription: Dynamic core unit with 2048m build area, two voxels per meter.
+  hidden: false
+  hitpoints: 50
+  cellSize: 0.5
+---
+CoreUnitDynamic40965:
+  parent: CoreUnitDynamic
+  assetAlias: CoreUnitDynamic4096
+  constructSize: 4096
+  displayName: Exotic Dynamic Core Unit 2048m 4 vpm
+  subdescription: Dynamic core unit with 2048m build area, four voxels per meter.
   hidden: false
   hitpoints: 50
   cellSize: 0.25
