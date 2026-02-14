@@ -248,6 +248,7 @@ AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values)
   $values.deactivateCollidingElements = $false
   $values.allowIndustryOnDynamicConstruct = $true
   $values.allowMarketOnDynamicConstruct = $true
+  $values.allowBaseShieldOnStaticConstruct = $true
   return $values, $true
 }
 
@@ -256,6 +257,13 @@ AddSectionModifier "FetchConstructConfig" { param([string]$name, [hashtable]$val
   $values.fromPlanetSurface = $true
   $values.delay = "60"
   $values.maxDistance = 400000000.0
+  return $values, $true
+}
+
+
+AddSectionModifier "ConstructSpeedConfig" { param([string]$name, [hashtable]$values) 
+  $values.maxHeavyLinearSpeedKmH = 40000
+  $values.maxHeavyAngularSpeed = 0.3
   return $values, $true
 }
 
