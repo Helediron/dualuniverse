@@ -317,6 +317,14 @@ AddSectionModifier "TerritoriesConfig" { param([string]$name, [hashtable]$values
   return $values, $true
 }
 
+AddSectionModifier "FlatteningTool" { param([string]$name, [hashtable]$values) 
+  $values.cylinderHeight = 7 # From 3.5
+  $values.cylinderScaleRange = 2 # From 1
+  $values.range = 30 # From 20
+  return $values, $true
+}
+
+
 AddSectionModifier "Talemai" { param([string]$name, [hashtable]$values) 
   $values.maxStaticAltitude = 200000
   return $values, $true
@@ -424,6 +432,12 @@ AddSectionModifier "MiningUnit" { param([string]$name, [hashtable]$values)
   $values.calibrationGracePeriodHours = 7200
   return $values, $true
 }
+
+AddPatternModifier "TeleportationNode" { param([string]$name, [hashtable]$values) 
+  $values.hidden = $false
+  return $values, $true
+}
+
 
 AddPatternModifier "MiningUnitLarge" { param([string]$name, [hashtable]$values) 
   if ($values.maxMiningRate) {
