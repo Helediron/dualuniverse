@@ -249,6 +249,7 @@ AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values)
   $values.allowIndustryOnDynamicConstruct = $true
   $values.allowMarketOnDynamicConstruct = $true
   $values.allowBaseShieldOnStaticConstruct = $true
+  $values.luaRadarRestrictions = $false
   return $values, $true
 }
 
