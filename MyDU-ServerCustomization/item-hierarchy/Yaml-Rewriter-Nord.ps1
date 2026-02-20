@@ -268,6 +268,14 @@ AddSectionModifier "ConstructSpeedConfig" { param([string]$name, [hashtable]$val
   return $values, $true
 }
 
+AddSectionModifier "RepairUnit" { param([string]$name, [hashtable]$values) 
+  $values.repairDuration16m = 300
+  $values.repairDuration32m = 900
+  $values.repairDuration64m = 1800
+  $values.repairDuration128m = 3600
+  return $values, $true
+}
+
 AddSectionModifier "MiningConfig" { param([string]$name, [hashtable]$values) 
   $values.maxBattery = 1000
   $values.revealCircleRadius = 0.2
@@ -280,7 +288,7 @@ AddSectionModifier "CoherentConfig" { param([string]$name, [hashtable]$values)
 }
 
 AddSectionModifier "ConstructGCConfig" { param([string]$name, [hashtable]$values) 
-  $values.abandonedConstructDeleteDelayHours = 24
+  $values.abandonedConstructDeleteDelayHours = 2
   return $values, $true
 }
 
