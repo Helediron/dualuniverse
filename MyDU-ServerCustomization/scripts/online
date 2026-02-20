@@ -1,4 +1,4 @@
 #!/bin/bash
-# Count online users and print it.
+# Count online users and print it. Requires psql-cli.
 psql postgres://dual:dual@postgres/dual -t -c 'select count(*) from player where connected = true;' | xargs
 
