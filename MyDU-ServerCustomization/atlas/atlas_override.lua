@@ -9,18 +9,6 @@
 -- bodies of the universe.
 -----------------------------------------------------------------------------------
 
-
-
--- atlas.lua from NQ with added planets for MyDU, Nord Creative.
---
--- The file is named as atlas_override.lua, according to NQ announcement:
--- >  Lua require for example argument "foo" now searches in order: data/lua/foo_override.lua, 
--- >  server-side loaded lua/foo.lua, then data/lua/foo.lua.
--- Place it into <game folder>/data/lua
--- BR: Helediron
-
-
-
 return {
   [0] = {
     [1] = {
@@ -1924,7 +1912,7 @@ return {
       ores = {4234772167, 262147665, 3724036288, 299255727, 343766315},      
       territories = 1922
     },
-    [122] = {
+        [122] = {
       id = 122,
       name = {"Ion Moon 2", "Ion Moon 2", "Ion Moon 2"},
       type = {"Moon", "Lune", "Mond"},
@@ -1939,7 +1927,7 @@ return {
       systemId = 12,
       positionInSystem = 3,
       satellites = nil,
-      center = {x = 2995424.5, -99275010, -1378480.7},
+      center = {2995424.5, -99275010, -1378480.7},
       gravity = 1.1872,
       radius = 15000,
       atmosphereThickness = 0.00,
@@ -1953,33 +1941,36 @@ return {
       ores = {4234772167, 262147665, 3724036288, 299255727, 2289641763, 4041459743}, 
       territories = 3632
     },
+
+    -- Ares: new planet after Ion system
     [130] = {
-        name = { "Ares", "Ares", "Ares" },
-        type = { "Planet", "Planet", "Planet" },
-        biosphere = { "Desert", "Desert", "Desert" },
-        classification = nil,
-        habitability = nil,
-        description = nil,
-		iconPath = "gui/screen_unit/img/planets/thades.png",
-        hasAtmosphere = true,
-        isSanctuary = false,
-        isInSafeZone = false,
-        systemId = 0,
-        positionInSystem = 13,
-        satellites = nil,
-        center = { 1239818.377, -109910271.069, -587935.658 },
-        gravity = 7.59,
-        radius = 62495,
-        atmosphereThickness = 33985,
-        atmosphereRadius = 96480,
-        GM = 29738637249.75,
-        surfaceArea = 49087390000.0,
-        surfaceAverageAltitude = 234,
-        surfaceMinAltitude = 0.0,
-        surfaceMaxAltitude = 1734,
-        ores = { 3724036288, 299255727, 262147665, 4234772167, 2289641763, 1065079614 },
-        territories = 63482,
-        maxStaticAltitude = 5000.00,
+      id = 130,
+      name = {"Ares", "Ares", "Ares"},
+      type = {"Planet", "Planète", "Planet"},
+      biosphere = {"Desert", "Désert", "Wüste"},
+      classification = {"Thermoplanet", "Thermoplanète", "Thermoplanet"},
+      habitability = {"Low", "Faible", "Niedrig"},
+      description = nil,
+      iconPath = "gui/screen_unit/img/planets/thades.png",
+      hasAtmosphere = true,
+      isSanctuary = false,
+      isInSafeZone = false,
+      systemId = 0,
+      positionInSystem = 13,
+      satellites = nil,
+      center = {1239818.377, -109910271.069, -587935.658},
+      gravity = 7.59,
+      radius = 62495.00,
+      atmosphereThickness = 33985.00,
+      atmosphereRadius = 96480.00,
+      GM = 29738637249.75,
+      surfaceArea = 49087390000.00,
+      surfaceAverageAltitude = 234.00,
+      surfaceMinAltitude = 0.00,
+      surfaceMaxAltitude = 1734.00,
+      ores = {3724036288, 299255727, 262147665, 4234772167, 2289641763, 1065079614},
+      territories = 63482,
+      maxStaticAltitude = 5000.00
     }
   }
 }
