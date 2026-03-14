@@ -202,6 +202,7 @@ generateTierVariations "WingXtraSmall2"
 
 generateTierVariations "StabilizerXLarge"
 generateTierVariations "StabilizerLarge"
+generateTierVariations "StabilizerMedium"
 generateTierVariations "StabilizerSmall"
 generateTierVariations "StabilizerXtraSmall"
 
@@ -218,11 +219,15 @@ generateTierVariations "AileronShortSmall2"
 
 #generateTierVariations ""
 
+generateTierVariations "RadialAtmoFuelTankXSmall"
+generateTierVariations "RadialSpaceFuelTankXSmall"
+generateTierVariations "RadialRocketFuelTankXSmall"
+
 
 AddSectionModifier "Character" { param([string]$name, [hashtable]$values) 
   $values.talentPointsPerSecond = 100
-  $values.nanopackMassMul = 0.001
-  $values.nanopackMaxVolume = 400000
+  $values.nanopackMassMul = 0.0001
+  $values.nanopackMaxVolume = 1000000
   $values.nanopackMaxSlots = 100
   $values.defaultWallet = 2000000000.0
   $values.calibrationChargeMax = 100
@@ -249,7 +254,7 @@ AddSectionModifier "FeaturesList" { param([string]$name, [hashtable]$values)
   $values.allowIndustryOnDynamicConstruct = $true
   $values.allowMarketOnDynamicConstruct = $true
   $values.allowBaseShieldOnStaticConstruct = $true
-  $values.luaRadarRestrictions = $false
+  $values.luaRadarRestrictions = $true
   return $values, $true
 }
 
@@ -664,6 +669,37 @@ AddSubtreeModifier "EngineUnit" { param([string]$name, [hashtable]$values)
   }
   return $values, $true
 }
+
+AddPatternModifier "^Radial.*FuelTankXSmall" { param([string]$name, [hashtable]$values) 
+  # Magic fueltanks
+  $multiplier = 1
+  if ($values.level -eq 2) {
+    $multiplier = 10
+  }
+  elseif ($values.level -eq 3) {
+    $multiplier = 100
+  }
+  elseif ($values.level -eq 4) {
+    $multiplier = 1000
+  }
+  elseif ($values.level -eq 5) {
+    $multiplier = 10000
+  }
+  if ($multiplier -gt 1) {
+    if ($values.maxVolume) {
+      [int]$values.maxVolume = $values.maxVolume * $multiplier
+    }
+    [Double]$values.massFactor = 1 / $multiplier
+    if ($values.hitpoints) {
+      [int]$values.hitpoints = $values.hitpoints * $values.level
+    }
+    #if ($values.nbFuelPlugOut) {
+    #  [int]$values.nbFuelPlugOut = $values.nbFuelPlugOut * 4
+    #}
+  }
+  return $values, $true
+}
+  
 
 # From appended items
 addAssetAlias "Headlight2" "Headlight"

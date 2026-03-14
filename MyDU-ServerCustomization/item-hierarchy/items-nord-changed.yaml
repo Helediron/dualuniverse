@@ -35,8 +35,8 @@ Character:
   jumpSpeed: 4
   jumpDuration: 0.2
   doubleJumpDuration: 0.6
-  nanopackMassMul: 0.001
-  nanopackMaxVolume: 400000
+  nanopackMassMul: 0.0001
+  nanopackMaxVolume: 1000000
   nanopackMaxSlots: 100
   linkedRanged: 250
   defaultWallet: 2000000000
@@ -92,9 +92,10 @@ FeaturesList:
   orgConstructLimitWarnOnly: false
   deactivateCollidingElements: false
   skinSelector: true
+  allowMarketOnDynamicConstruct: true
+  luaRadarRestrictions: true
   allowIndustryOnDynamicConstruct: true
   allowBaseShieldOnStaticConstruct: true
-  allowMarketOnDynamicConstruct: true
 ---
 Pet:
   parent: GameplayObject
@@ -206,7 +207,7 @@ ConstructGCConfig:
   apheliaTerritoryConstructAbandonDelayHours: 168
   apheliaTerritoryAbandonedConstructDeleteDelayHours: 48
   unsubscribedEntityConstructAbandonDelayHours: 2160
-  abandonedConstructDeleteDelayHours: 24
+  abandonedConstructDeleteDelayHours: 2
 ---
 ConstructSpeedConfig:
   parent: FeaturesConfig
@@ -18743,8 +18744,8 @@ FlatteningTool:
   tooltip: Flatten Voxel surfaces
   collectTime: 1
   range: 30
-  cylinderScaleRange: 2
   cylinderHeight: 7
+  cylinderScaleRange: 2
 ---
 HarvestTool:
   parent: ExploreTool
@@ -26608,10 +26609,10 @@ RepairUnit:
   displayName: Maintenance Unit
   description: Maintenance Units can repair and reset Constructs, based on saved snapshots. They can also dismantle Constructs.
   isUseable: true
-  repairDuration16m: 900
-  repairDuration32m: 3600
-  repairDuration64m: 10800
-  repairDuration128m: 43200
+  repairDuration16m: 300
+  repairDuration32m: 900
+  repairDuration64m: 1800
+  repairDuration128m: 3600
   unitMass: 25590
   unitVolume: 4366
   scale: xl
@@ -31478,9 +31479,9 @@ MiningUnitLarge1:
   unitMass: 5131
   unitVolume: 2200
   hitpoints: 11250
+  runtimeHours: 1
   pickupCooldownHour: 0
   stopCooldownHour: 0
-  runtimeHours: 1
   calibrationCooldownHour: 0
 ---
 MiningUnitLarge2:
@@ -31494,9 +31495,9 @@ MiningUnitLarge2:
   unitMass: 5160
   unitVolume: 2454
   hitpoints: 11250
+  runtimeHours: 1.5
   pickupCooldownHour: 0
   stopCooldownHour: 0
-  runtimeHours: 1.5
   calibrationCooldownHour: 0
 ---
 MiningUnitLarge3:
@@ -31510,9 +31511,9 @@ MiningUnitLarge3:
   unitMass: 7500
   unitVolume: 4050
   hitpoints: 11250
+  runtimeHours: 2
   pickupCooldownHour: 0
   stopCooldownHour: 0
-  runtimeHours: 2
   calibrationCooldownHour: 0
 ---
 MiningUnitLarge4:
@@ -31526,9 +31527,9 @@ MiningUnitLarge4:
   unitMass: 7800
   unitVolume: 4200
   hitpoints: 11250
+  runtimeHours: 3
   pickupCooldownHour: 0
   stopCooldownHour: 0
-  runtimeHours: 3
   calibrationCooldownHour: 0
 ---
 MiningUnitLarge5:
@@ -31542,9 +31543,9 @@ MiningUnitLarge5:
   unitMass: 8500
   unitVolume: 4400
   hitpoints: 11250
+  runtimeHours: 4
   pickupCooldownHour: 0
   stopCooldownHour: 0
-  runtimeHours: 4
   calibrationCooldownHour: 0
 ---
 MiningUnitSmall1:
@@ -31830,8 +31831,8 @@ WarpBeaconUnit:
     kinetic: 0.5
     electromagnetic: 0.5
   setupTimer: 86400
-  cruiseSpeedKmH: 13370000
   maxWarpDistance: 200000000
+  cruiseSpeedKmH: 13370000
 ---
 WarpDriveUnit:
   parent: HighTechTransportation
@@ -31991,14 +31992,14 @@ CoreUnitDynamic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitDynamic128:
   parent: CoreUnitDynamic
@@ -32023,14 +32024,14 @@ CoreUnitDynamic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitDynamic256:
   parent: CoreUnitDynamic
@@ -32071,14 +32072,14 @@ CoreUnitDynamic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitDynamic512:
   parent: CoreUnitDynamic
@@ -32087,14 +32088,14 @@ CoreUnitDynamic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 251905
+  unitMass: 20066.3
   unitVolume: 10001
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 20066.3
-  price: 251905
 ---
 CoreUnitDynamic64:
   parent: CoreUnitDynamic
@@ -32119,14 +32120,14 @@ CoreUnitDynamic8192:
   hidden: false
   hitpoints: 331360
   cellSize: 8
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 4030480
+  unitMass: 321060.8
   unitVolume: 160016
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 321060.8
-  price: 4030480
 ---
 CoreUnitSpace128:
   parent: CoreUnitSpace
@@ -32193,14 +32194,14 @@ CoreUnitArtifact1024:
   cellSize: 8
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitArtifact256:
   parent: CoreUnitStatic
@@ -32217,14 +32218,14 @@ CoreUnitStatic1024:
   cellSize: 1
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitStatic128:
   parent: CoreUnitStatic
@@ -32249,14 +32250,14 @@ CoreUnitStatic2048:
   hidden: false
   hitpoints: 82840
   cellSize: 2
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitStatic256:
   parent: CoreUnitStatic
@@ -32297,14 +32298,14 @@ CoreUnitStatic4096:
   hidden: false
   hitpoints: 165680
   cellSize: 4
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitStatic512:
   parent: CoreUnitStatic
@@ -32313,14 +32314,14 @@ CoreUnitStatic512:
   cellSize: 0.5
   hidden: false
   hitpoints: 20710
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: StaticCoreUnitExpertise
+  price: 251905
+  unitMass: 20066.3
   unitVolume: 10001
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 20066.3
-  price: 251905
 ---
 CoreUnitStatic64:
   parent: CoreUnitStatic
@@ -32345,14 +32346,14 @@ CoreUnitStatic8192:
   hidden: false
   hitpoints: 331360
   cellSize: 8
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 4030480
+  unitMass: 321060.8
   unitVolume: 160016
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 321060.8
-  price: 4030480
 ---
 hcAlLiAged:
   parent: alLiHoneycomb
@@ -43460,9 +43461,9 @@ ItemContainer:
     massFactor:
       label: Mass Factor
       precision: 2
-  nbIndustryPlugIn: 50
   nbIndustryPlugOut: 50
   nbControlPlugOut: 50
+  nbIndustryPlugIn: 50
 ---
 MissionContainer:
   parent: ItemContainerBase
@@ -44440,14 +44441,14 @@ AtmosphericEngine:
   parent: EngineDisplay
 ---
 RocketEngine:
-  functionInSpace: true
   fuelRate: 1.65E-06
-  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
+  t50: 0
   maxPower: 30000
+  functionInSpace: true
   maxSpeedBoost: 0.3
+  description: Rocket Engines are capable of producing huge thrust and boosting your maximum speed for a short amount of time. They consume rocket fuel and demand proper placement for best usage.
   displayName: Rocket Engines
   parent: EngineDisplay
-  t50: 0
 ---
 SpaceEngine:
   displayName: Space Engines
@@ -50172,11 +50173,67 @@ RadialAtmoFuelTankXSmall:
   subdescription: Atmospheric Fuel Tanks XS are appropriate for minuscule vessels such as hovercrafts and planes.
   maxVolume: 100
   unitMass: 35.03
-  unitVolume: 17.80
+  unitVolume: 17.8
   level: 1
   scale: xs
   hitpoints: 50
   visibilityLOD: 2
+---
+RadialAtmoFuelTankXSmall2:
+  parent: AtmoFuelContainer
+  displayName: Uncommon Atmospheric Fuel Tank
+  subdescription: Atmospheric Fuel Tanks XS are appropriate for minuscule vessels such as hovercrafts and planes.
+  maxVolume: 1000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 2
+  scale: xs
+  hitpoints: 100
+  visibilityLOD: 2
+  assetAlias: RadialAtmoFuelTankXSmall
+  massFactor: 0.1
+---
+RadialAtmoFuelTankXSmall3:
+  parent: AtmoFuelContainer
+  displayName: Advanced Atmospheric Fuel Tank
+  subdescription: Atmospheric Fuel Tanks XS are appropriate for minuscule vessels such as hovercrafts and planes.
+  maxVolume: 10000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 3
+  scale: xs
+  hitpoints: 150
+  visibilityLOD: 2
+  assetAlias: RadialAtmoFuelTankXSmall
+  massFactor: 0.01
+---
+RadialAtmoFuelTankXSmall4:
+  parent: AtmoFuelContainer
+  displayName: Rare Atmospheric Fuel Tank
+  subdescription: Atmospheric Fuel Tanks XS are appropriate for minuscule vessels such as hovercrafts and planes.
+  maxVolume: 100000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 4
+  scale: xs
+  hitpoints: 200
+  visibilityLOD: 2
+  assetAlias: RadialAtmoFuelTankXSmall
+  massFactor: 0.001
+---
+RadialAtmoFuelTankXSmall5:
+  parent: AtmoFuelContainer
+  displayName: Exotic Atmospheric Fuel Tank
+  subdescription: Atmospheric Fuel Tanks XS are appropriate for minuscule vessels such as hovercrafts and planes.
+  maxVolume: 1000000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 5
+  scale: xs
+  hitpoints: 250
+  visibilityLOD: 2
+  assetAlias: RadialAtmoFuelTankXSmall
+  massFactor: 0.0001
 ---
 RadialRocketFuelTank:
   parent: RocketFuelContainer
@@ -50219,13 +50276,70 @@ RadialRocketFuelTankXSmall:
   parent: RocketFuelContainer
   displayName: Rocket Fuel Tank
   subdescription: Rocket Fuel Tanks XS are to be used exclusively with small rocket boosters.
-  maxVolume: 400
+  maxVolume: 40000
   unitMass: 173.42
-  unitVolume: 96.60
+  unitVolume: 96.6
   level: 3
   scale: xs
-  hitpoints: 366
+  hitpoints: 1098
   visibilityLOD: 2
+  massFactor: 0.01
+---
+RadialRocketFuelTankXSmall2:
+  parent: RocketFuelContainer
+  displayName: Uncommon Rocket Fuel Tank
+  subdescription: Rocket Fuel Tanks XS are to be used exclusively with small rocket boosters.
+  maxVolume: 4000
+  unitMass: 173.42
+  unitVolume: 96.6
+  level: 2
+  scale: xs
+  hitpoints: 732
+  visibilityLOD: 2
+  assetAlias: RadialRocketFuelTankXSmall
+  massFactor: 0.1
+---
+RadialRocketFuelTankXSmall3:
+  parent: RocketFuelContainer
+  displayName: Advanced Rocket Fuel Tank
+  subdescription: Rocket Fuel Tanks XS are to be used exclusively with small rocket boosters.
+  maxVolume: 40000
+  unitMass: 173.42
+  unitVolume: 96.6
+  level: 3
+  scale: xs
+  hitpoints: 1098
+  visibilityLOD: 2
+  assetAlias: RadialRocketFuelTankXSmall
+  massFactor: 0.01
+---
+RadialRocketFuelTankXSmall4:
+  parent: RocketFuelContainer
+  displayName: Rare Rocket Fuel Tank
+  subdescription: Rocket Fuel Tanks XS are to be used exclusively with small rocket boosters.
+  maxVolume: 400000
+  unitMass: 173.42
+  unitVolume: 96.6
+  level: 4
+  scale: xs
+  hitpoints: 1464
+  visibilityLOD: 2
+  assetAlias: RadialRocketFuelTankXSmall
+  massFactor: 0.001
+---
+RadialRocketFuelTankXSmall5:
+  parent: RocketFuelContainer
+  displayName: Exotic Rocket Fuel Tank
+  subdescription: Rocket Fuel Tanks XS are to be used exclusively with small rocket boosters.
+  maxVolume: 4000000
+  unitMass: 173.42
+  unitVolume: 96.6
+  level: 5
+  scale: xs
+  hitpoints: 1830
+  visibilityLOD: 2
+  assetAlias: RadialRocketFuelTankXSmall
+  massFactor: 0.0001
 ---
 RadialSpaceFuelLarge:
   parent: SpaceFuelContainer
@@ -50269,11 +50383,67 @@ RadialSpaceFuelTankXSmall:
   subdescription: Fuel Tanks XS are appropriate for minuscule vessels such as fighters.
   maxVolume: 100
   unitMass: 35.03
-  unitVolume: 17.80
+  unitVolume: 17.8
   level: 1
   scale: xs
   hitpoints: 50
   visibilityLOD: 2
+---
+RadialSpaceFuelTankXSmall2:
+  parent: SpaceFuelContainer
+  displayName: Uncommon Space Fuel Tank
+  subdescription: Fuel Tanks XS are appropriate for minuscule vessels such as fighters.
+  maxVolume: 1000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 2
+  scale: xs
+  hitpoints: 100
+  visibilityLOD: 2
+  assetAlias: RadialSpaceFuelTankXSmall
+  massFactor: 0.1
+---
+RadialSpaceFuelTankXSmall3:
+  parent: SpaceFuelContainer
+  displayName: Advanced Space Fuel Tank
+  subdescription: Fuel Tanks XS are appropriate for minuscule vessels such as fighters.
+  maxVolume: 10000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 3
+  scale: xs
+  hitpoints: 150
+  visibilityLOD: 2
+  assetAlias: RadialSpaceFuelTankXSmall
+  massFactor: 0.01
+---
+RadialSpaceFuelTankXSmall4:
+  parent: SpaceFuelContainer
+  displayName: Rare Space Fuel Tank
+  subdescription: Fuel Tanks XS are appropriate for minuscule vessels such as fighters.
+  maxVolume: 100000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 4
+  scale: xs
+  hitpoints: 200
+  visibilityLOD: 2
+  assetAlias: RadialSpaceFuelTankXSmall
+  massFactor: 0.001
+---
+RadialSpaceFuelTankXSmall5:
+  parent: SpaceFuelContainer
+  displayName: Exotic Space Fuel Tank
+  subdescription: Fuel Tanks XS are appropriate for minuscule vessels such as fighters.
+  maxVolume: 1000000
+  unitMass: 35.03
+  unitVolume: 17.8
+  level: 5
+  scale: xs
+  hitpoints: 250
+  visibilityLOD: 2
+  assetAlias: RadialSpaceFuelTankXSmall
+  massFactor: 0.0001
 ---
 ContainerHub:
   parent: ItemContainer
@@ -51055,6 +51225,66 @@ StabilizerMedium:
   visibilityLOD: 2
   hitpoints: 4810
   liftDragRatio: 5
+---
+StabilizerMedium2:
+  parent: Stabilizer
+  displayName: Uncommon Stabilizer
+  maxPower: 1300000
+  maxLiftFactor: 200
+  unitMass: 2026.11
+  unitVolume: 619.2
+  level: 2
+  scale: m
+  visibilityLOD: 2
+  hitpoints: 7215
+  liftDragRatio: 5
+  assetAlias: StabilizerMedium
+  subdescription: Max power boosted 1.3 * basic.
+---
+StabilizerMedium3:
+  parent: Stabilizer
+  displayName: Advanced Stabilizer
+  maxPower: 2600000
+  maxLiftFactor: 200
+  unitMass: 2026.11
+  unitVolume: 619.2
+  level: 3
+  scale: m
+  visibilityLOD: 2
+  hitpoints: 14430
+  liftDragRatio: 5
+  assetAlias: StabilizerMedium
+  subdescription: Max power boosted 2.6 * basic.
+---
+StabilizerMedium4:
+  parent: Stabilizer
+  displayName: Rare Stabilizer
+  maxPower: 8000000
+  maxLiftFactor: 200
+  unitMass: 2026.11
+  unitVolume: 619.2
+  level: 4
+  scale: m
+  visibilityLOD: 2
+  hitpoints: 21645
+  liftDragRatio: 5
+  assetAlias: StabilizerMedium
+  subdescription: Max power boosted 8 * basic.
+---
+StabilizerMedium5:
+  parent: Stabilizer
+  displayName: Exotic Stabilizer
+  maxPower: 16000000
+  maxLiftFactor: 200
+  unitMass: 2026.11
+  unitVolume: 619.2
+  level: 5
+  scale: m
+  visibilityLOD: 2
+  hitpoints: 28860
+  liftDragRatio: 5
+  assetAlias: StabilizerMedium
+  subdescription: Max power boosted 16 * basic.
 ---
 StabilizerSmall:
   parent: Stabilizer
@@ -57378,14 +57608,14 @@ CoreUnitStatic10242:
   cellSize: 0.5
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitStatic10243:
   parent: CoreUnitStatic
@@ -57396,14 +57626,14 @@ CoreUnitStatic10243:
   cellSize: 0.25
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitDynamic10242:
   parent: CoreUnitDynamic
@@ -57414,14 +57644,14 @@ CoreUnitDynamic10242:
   cellSize: 0.5
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitDynamic10243:
   parent: CoreUnitDynamic
@@ -57432,14 +57662,14 @@ CoreUnitDynamic10243:
   cellSize: 0.25
   hidden: false
   hitpoints: 41420
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 503810
+  unitMass: 40132.6
   unitVolume: 20002
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 40132.6
-  price: 503810
 ---
 CoreUnitStatic20482:
   parent: CoreUnitStatic
@@ -57450,14 +57680,14 @@ CoreUnitStatic20482:
   hidden: false
   hitpoints: 82840
   cellSize: 1
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitStatic20483:
   parent: CoreUnitStatic
@@ -57468,14 +57698,14 @@ CoreUnitStatic20483:
   hidden: false
   hitpoints: 82840
   cellSize: 0.5
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitStatic20484:
   parent: CoreUnitStatic
@@ -57486,14 +57716,14 @@ CoreUnitStatic20484:
   hidden: false
   hitpoints: 82840
   cellSize: 0.25
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitDynamic20482:
   parent: CoreUnitDynamic
@@ -57504,14 +57734,14 @@ CoreUnitDynamic20482:
   hidden: false
   hitpoints: 82840
   cellSize: 1
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitDynamic20483:
   parent: CoreUnitDynamic
@@ -57522,14 +57752,14 @@ CoreUnitDynamic20483:
   hidden: false
   hitpoints: 82840
   cellSize: 0.5
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitDynamic20484:
   parent: CoreUnitDynamic
@@ -57540,14 +57770,14 @@ CoreUnitDynamic20484:
   hidden: false
   hitpoints: 82840
   cellSize: 0.25
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 1007620
+  unitMass: 80265.2
   unitVolume: 40004
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 80265.2
-  price: 1007620
 ---
 CoreUnitStatic40962:
   parent: CoreUnitStatic
@@ -57558,14 +57788,14 @@ CoreUnitStatic40962:
   hidden: false
   hitpoints: 165680
   cellSize: 2
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitStatic40963:
   parent: CoreUnitStatic
@@ -57576,14 +57806,14 @@ CoreUnitStatic40963:
   hidden: false
   hitpoints: 165680
   cellSize: 1
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitStatic40964:
   parent: CoreUnitStatic
@@ -57594,14 +57824,14 @@ CoreUnitStatic40964:
   hidden: false
   hitpoints: 165680
   cellSize: 0.5
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitStatic40965:
   parent: CoreUnitStatic
@@ -57612,14 +57842,14 @@ CoreUnitStatic40965:
   hidden: false
   hitpoints: 165680
   cellSize: 0.25
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitDynamic40962:
   parent: CoreUnitDynamic
@@ -57630,14 +57860,14 @@ CoreUnitDynamic40962:
   hidden: false
   hitpoints: 165680
   cellSize: 2
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitDynamic40963:
   parent: CoreUnitDynamic
@@ -57648,14 +57878,14 @@ CoreUnitDynamic40963:
   hidden: false
   hitpoints: 165680
   cellSize: 1
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitDynamic40964:
   parent: CoreUnitDynamic
@@ -57666,14 +57896,14 @@ CoreUnitDynamic40964:
   hidden: false
   hitpoints: 165680
   cellSize: 0.5
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 CoreUnitDynamic40965:
   parent: CoreUnitDynamic
@@ -57684,14 +57914,14 @@ CoreUnitDynamic40965:
   hidden: false
   hitpoints: 165680
   cellSize: 0.25
+  newPlayerDefaultQty: 0
   requiredTalents:
   - level: 4
     name: DynamicCoreUnitExpertise
+  price: 2015240
+  unitMass: 160530.4
   unitVolume: 80008
   level: 4
-  newPlayerDefaultQty: 0
-  unitMass: 160530.4
-  price: 2015240
 ---
 Ion:
   parent: SolarSystemPlanet
